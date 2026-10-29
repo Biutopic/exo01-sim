@@ -18,16 +18,16 @@ OUT = ROOT / "docs" / "website" / "img"
 T = {
     "fr": dict(title="EXO-01 + L'Hydronaute — implantation recommandée (modèle v1.2, exploratoire)", top="Vue de dessus", side="Vue de côté",
                deck="pont arrière", upper="plateforme haute (z 2,2 m)", nodeck="pas de pont : accès interdit", crew="zone équipage / matériel — pas de passagers\n(pas de flotteur sous les 0,5 m arrière)",
-               pax_rear="passagers : 4 max au total, répartis", pax_upper="passagers : plateforme haute", batt="batteries 2 × 120 kg\nmontant d'extrémité x 4,24 m", cw="contrepoids 2 × 50 kg\n(ou armoire avancée à x 3,5 m)",
-               cab="armoire → x 3,5 m", fender="défenses / push knees\nx 2,1, y ±0,9 m, ≥ 3 kN, course ≥ 50 mm", cross="aussières croisées (poupe)", tow="aussières de remorquage → taquets milieu",
+               pax_rear="passagers : 4 max au total, répartis", pax_upper="passagers : plateforme haute", batt="batteries 2 × 120 kg\nmontant d'extrémité x 4,24 m", cw="contrepoids 2 × 75 kg\nlongerons, x 4,75 m",
+               cab="armoire : pont arrière, centrée,\nau plus près du bateau (x 1,75)", fender="défenses / push knees\nx 2,1, y ±0,9 m, ≥ 3 kN, course ≥ 50 mm", cross="aussières croisées (poupe)", tow="aussières de remorquage → taquets milieu",
                lines="cordes ≈ 10 kN/m (snubber / nylon 12 mm), prétension 200–400 N", boat="L'Hydronaute (position d'accostage supposée)", floats="flotteurs Flofiz Ø 0,60 × 1,60 m (×6)",
-               wl="flottaison à vide (batteries x 4,24) : franc-bord pont arrière 0,38 m, assiette +1,2°", pax4="4 passagers sur un bord (moitié avant) : franc-bord résiduel 0,21 m avec contrepoids", note="Exploratoire — géométrie du plan d'assemblage, masses déclarées ; critères ES-TRIN 19.03 utilisés en lecture, régime applicable à confirmer."),
+               wl="flottaison à vide (batteries x 4,24, contrepoids) : franc-bord pont arrière 0,38 m, assiette +3,3°", pax4="4 passagers sur un bord (moitié avant) : franc-bord résiduel 0,21 m avec contrepoids 150 kg", note="Exploratoire — géométrie du plan d'assemblage, masses déclarées ; critères ES-TRIN 19.03 utilisés en lecture, régime applicable à confirmer."),
     "en": dict(title="EXO-01 + L'Hydronaute — recommended layout (model v1.2, exploratory)", top="Top view", side="Side view",
                deck="rear deck", upper="upper platform (z 2.2 m)", nodeck="no deck: no access", crew="crew / equipment zone — no passengers\n(no float under the aft 0.5 m)",
-               pax_rear="passengers: 4 max in total, spread", pax_upper="passengers: upper platform", batt="batteries 2 × 120 kg\nend upright x 4.24 m", cw="counterweight 2 × 50 kg\n(or cabinet moved to x 3.5 m)",
-               cab="cabinet → x 3.5 m", fender="fenders / push knees\nx 2.1, y ±0.9 m, ≥ 3 kN, stroke ≥ 50 mm", cross="crossed stern lines", tow="tow lines → midship cleats",
+               pax_rear="passengers: 4 max in total, spread", pax_upper="passengers: upper platform", batt="batteries 2 × 120 kg\nend upright x 4.24 m", cw="counterweight 2 × 75 kg\nside rails, x 4.75 m",
+               cab="cabinet: rear deck, centred,\nas close to the boat as possible (x 1.75)", fender="fenders / push knees\nx 2.1, y ±0.9 m, ≥ 3 kN, stroke ≥ 50 mm", cross="crossed stern lines", tow="tow lines → midship cleats",
                lines="lines ≈ 10 kN/m (snubber / 12 mm nylon), pretension 200–400 N", boat="L'Hydronaute (assumed berth)", floats="Flofiz floats Ø 0.60 × 1.60 m (×6)",
-               wl="light-ship waterline (batteries x 4.24): rear-deck freeboard 0.38 m, trim +1.2°", pax4="4 passengers on one side (forward half): residual freeboard 0.21 m with counterweight", note="Exploratory — assembly-drawing geometry, declared masses; ES-TRIN 19.03 figures used as a reading grid, applicable regime to be confirmed."),
+               wl="light-ship waterline (batteries x 4.24, counterweight): rear-deck freeboard 0.38 m, trim +3.3°", pax4="4 passengers on one side (forward half): residual freeboard 0.21 m with 150 kg counterweight", note="Exploratory — assembly-drawing geometry, declared masses; ES-TRIN 19.03 figures used as a reading grid, applicable regime to be confirmed."),
 }
 BX = 2.2          # boat stern in the EXO frame
 C = dict(deck="#cfd8dc", upper="#b0bec5", float="#37474f", boat="#eceff1", pax="#43a047", crew="#e53935", nodeck="#9e9e9e", batt="#ef6c00", cw="#6d4c41", fender="#00acc1", line="#f9a825", frame="#455a64")
@@ -59,7 +59,7 @@ for lang, t in T.items():
     ax.add_patch(Rectangle((2.1, -1.6), 1.425, 3.2, facecolor=C["pax"], alpha=0.25, edgecolor=C["pax"], ls=":", zorder=1.6))
     ax.add_patch(Rectangle((3.525, -2.2485), 1.425, 4.497, facecolor=C["nodeck"], alpha=0.25, hatch="xx", edgecolor=C["nodeck"], zorder=1.5))
     ax.text(-0.5, 2.75, t["crew"], ha="left", fontsize=8, color=C["crew"], rotation=0)
-    ax.text(1.55, 0.0, t["pax_rear"], ha="center", va="center", fontsize=8, color="#1b5e20", zorder=4, rotation=90)
+    ax.text(1.3, 0.0, t["pax_rear"], ha="center", va="center", fontsize=8, color="#1b5e20", zorder=4, rotation=90)
     ax.text(2.81, 2.55, t["pax_upper"], ha="center", fontsize=8, color="#1b5e20")
     ax.text(4.24, -2.6, t["nodeck"], ha="center", fontsize=8, color="#616161")
     ax.text(1.05, -3.1, t["deck"], fontsize=8); ax.text(2.2, -3.1, t["upper"], fontsize=8)
@@ -75,8 +75,8 @@ for lang, t in T.items():
         ax.add_patch(Rectangle((4.75 - 0.15, y - 0.15), 0.30, 0.30, facecolor=C["cw"], edgecolor="k", zorder=6))
     ax.annotate(t["batt"], (4.24, 2.2), (6.6, 2.75), fontsize=8, color=C["batt"], arrowprops=dict(arrowstyle="->", color=C["batt"]))
     ax.annotate(t["cw"], (4.75, -2.2), (6.3, -3.1), fontsize=8, color=C["cw"], arrowprops=dict(arrowstyle="->", color=C["cw"]))
-    ax.add_patch(Rectangle((3.5 - 0.325, 1.08 - 0.225), 0.65, 0.45, facecolor="#80cbc4", edgecolor="k", zorder=6))
-    ax.annotate(t["cab"], (3.5, 1.3), (2.4, 3.25), fontsize=8, color="#00695c", arrowprops=dict(arrowstyle="->", color="#00695c"))
+    ax.add_patch(Rectangle((1.75 - 0.325, -0.225), 0.65, 0.45, facecolor="#80cbc4", edgecolor="k", zorder=6))
+    ax.annotate(t["cab"], (1.75, -0.22), (2.6, -1.45), fontsize=8, color="#00695c", arrowprops=dict(arrowstyle="->", color="#00695c"), bbox=dict(fc="white", ec="none", alpha=0.8), zorder=9)
     # fenders
     for y in (-0.9, 0.9):
         ax.add_patch(FancyBboxPatch((2.08, y - 0.18), 0.12, 0.36, boxstyle="round,pad=0.01", facecolor=C["fender"], edgecolor="k", zorder=7))
@@ -116,7 +116,7 @@ for lang, t in T.items():
     ax2.add_patch(Rectangle((2.08, 0.05), 0.12, 0.4, facecolor=C["fender"], edgecolor="k", zorder=5))
     ax2.add_patch(Rectangle((4.24 - 0.275, 0.03), 0.55, 0.5, facecolor=C["batt"], edgecolor="k", zorder=5))
     ax2.add_patch(Rectangle((4.75 - 0.15, 0.03), 0.30, 0.3, facecolor=C["cw"], edgecolor="k", zorder=5))
-    ax2.add_patch(Rectangle((3.5 - 0.325, 2.23), 0.65, 0.3, facecolor="#80cbc4", edgecolor="k", zorder=5))
+    ax2.add_patch(Rectangle((1.75 - 0.325, 0.03), 0.65, 1.0, facecolor="#80cbc4", edgecolor="k", zorder=5))
     for i in range(4):
         x = 1.05 + 0.26 * i
         ax2.add_patch(Circle((x, 1.55), 0.11, facecolor=C["pax"], zorder=6)); ax2.plot([x, x], [0.03, 1.44], color=C["pax"], lw=4, zorder=6)
