@@ -90,6 +90,29 @@
    ]
   },
   {
+   "name": "battery_float_frame",
+   "title": "Batteries moved forward onto the float-top side frames (x 1.425 -> 3.60 m, above the floats, between the mid and end uprights)",
+   "label": "Exploratory \u2014 assumed geometry and mass distribution.",
+   "status": "solved",
+   "total_listed_mass_kg": 856.0,
+   "com_x_m": 2.9064719626168216,
+   "com_y_m": 0.06308411214953268,
+   "com_z_m": 0.6415420560747664,
+   "heel_deg": -0.1650763853931947,
+   "trim_deg": 0.1229232725074444,
+   "draft_max_m": 0.2443246197370983,
+   "float_top_freeboard_min_m": 0.35867479918108297,
+   "lower_deck_freeboard_min_m": 0.3612117340057316,
+   "displaced_volume_m3": 0.8568568568568569,
+   "GM_transverse_m": 21.91132414471675,
+   "GM_longitudinal_m": 9.205812150555323,
+   "heave_amp_m": 0.034577583308757626,
+   "roll_amp_deg": 4.416033619983012,
+   "pitch_amp_deg": 0.03739017163155069,
+   "deck_accel_vertical_max_amp_ms2": 1.1407668576282342,
+   "wave_flags": []
+  },
+  {
    "name": "occupants_symmetric",
    "title": "Two illustrative 80 kg occupants standing symmetrically on the observation deck",
    "label": "Exploratory \u2014 assumed geometry and mass distribution.",
@@ -494,6 +517,124 @@
     1.1864021753028304,
     1.3617569807471794,
     1.6737573720028878
+   ],
+   "note": "Undamped roots on the computed band (added mass evaluated at the root). Several roots per DOF can occur because potential-flow added mass varies sharply near the resonances of the water trapped between the float rows (and between the boat hull and the floats); those bands are listed. Real viscous damping, absent from the BEM, limits them."
+  },
+  "battery_float_frame": {
+   "bodies": {
+    "EXO": {
+     "uncoupled_roots": {
+      "heave": [
+       4.427897594244741,
+       4.525652136700967,
+       5.4796674807186045
+      ],
+      "roll": [
+       4.736029630859084,
+       5.454666340548375
+      ],
+      "pitch": [
+       4.205646359841898,
+       4.817100691169795,
+       5.117441594180118
+      ]
+     },
+     "T_uncoupled_s": {
+      "heave": [
+       1.4189996885533886,
+       1.388349152208547,
+       1.1466362382915265
+      ],
+      "roll": [
+       1.32667778643941,
+       1.1518917775909128
+      ],
+      "pitch": [
+       1.4939880269476078,
+       1.3043500042872809,
+       1.2277981470907702
+      ]
+     }
+    }
+   },
+   "coupled_roots": [
+    4.204653663813654,
+    4.430462846807447,
+    4.522942816332037,
+    4.735635796621443,
+    4.8165229353160575,
+    5.11750916712097,
+    5.455673010274459,
+    5.478474487938978
+   ],
+   "coupled_labels": [
+    "EXO pitch",
+    "EXO heave",
+    "EXO heave",
+    "EXO roll",
+    "EXO pitch",
+    "EXO pitch",
+    "EXO heave",
+    "EXO heave"
+   ],
+   "T_coupled_s": [
+    1.494340749454424,
+    1.4181780830657897,
+    1.3891807971773231,
+    1.3267881182210455,
+    1.3045064648420048,
+    1.2277819349201884,
+    1.151679232854811,
+    1.1468859298354317
+   ],
+   "band": [
+    0.5,
+    5.9
+   ],
+   "gap_resonance_bands_rad_s": [
+    [
+     3.5,
+     4.2
+    ],
+    [
+     4.35,
+     5.1000000000000005
+    ],
+    [
+     5.1499999999999995,
+     5.8500000000000005
+    ]
+   ],
+   "labels": [
+    "heave",
+    "roll",
+    "pitch"
+   ],
+   "uncoupled_roots": {
+    "heave": [
+     4.427897594244741,
+     4.525652136700967,
+     5.4796674807186045
+    ],
+    "roll": [
+     4.736029630859084,
+     5.454666340548375
+    ],
+    "pitch": [
+     4.205646359841898,
+     4.817100691169795,
+     5.117441594180118
+    ]
+   },
+   "omega_diag": [
+    4.427897594244741,
+    4.736029630859084,
+    4.205646359841898
+   ],
+   "T_diag_s": [
+    1.4189996885533886,
+    1.32667778643941,
+    1.4939880269476078
    ],
    "note": "Undamped roots on the computed band (added mass evaluated at the root). Several roots per DOF can occur because potential-flow added mass varies sharply near the resonances of the water trapped between the float rows (and between the boat hull and the floats); those bands are listed. Real viscous damping, absent from the BEM, limits them."
   },
@@ -2269,6 +2410,484 @@
       ],
       "G_body": [
        2.065350467289719,
+       0.06308411214953268,
+       0.6415420560747664
+      ]
+     }
+    }
+   }
+  },
+  "illustrative/battery_float_frame": {
+   "name": "illustrative",
+   "scenario": "battery_float_frame",
+   "title": "Batteries moved forward onto the float-top side frames (x 1.425 -> 3.60 m, above the floats, between the mid and end uprights)",
+   "mode": "exploratory",
+   "label": "Exploratory \u2014 assumed geometry and mass distribution.",
+   "issues": [
+    [
+     "info",
+     "no host boat: EXO-only case; combined-vessel claims are not supported"
+    ]
+   ],
+   "host_boat_included": true,
+   "status": {
+    "equilibrium": "solved"
+   },
+   "not_computed": {},
+   "mass": {
+    "total_listed_mass_kg": 856.0,
+    "n_items": 18,
+    "missing_mass": [],
+    "missing_com": [],
+    "missing_inertia": [],
+    "total_mass_kg": 856.0,
+    "com_m": [
+     2.9064719626168216,
+     0.06308411214953268,
+     0.6415420560747664
+    ],
+    "inertia_com_kgm2": [
+     [
+      3415.1903001263336,
+      63.5294859813084,
+      -446.28925700934576
+     ],
+     [
+      63.5294859813084,
+      2413.41725289693,
+      7.643271028037411
+     ],
+     [
+      -446.28925700934576,
+      7.643271028037411,
+      4229.293140082361
+     ]
+    ],
+    "by_item": [
+     {
+      "id": "EXO_REAR_150",
+      "category": "structure",
+      "mass_kg": 150,
+      "com_m": [
+       1.05,
+       0.0,
+       0.38
+      ],
+      "com_status": "assumption",
+      "inertia_model": "shell_box",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "EXO_MIDDLE_70",
+      "category": "structure",
+      "mass_kg": 70,
+      "com_m": [
+       2.8125,
+       0.0,
+       1.35
+      ],
+      "com_status": "assumption",
+      "inertia_model": "shell_box",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "EXO_END_70",
+      "category": "structure",
+      "mass_kg": 70,
+      "com_m": [
+       4.2375,
+       0.0,
+       1.35
+      ],
+      "com_status": "assumption",
+      "inertia_model": "shell_box",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "FLOAT_NEG_Y_1",
+      "category": "float",
+      "mass_kg": 30,
+      "com_m": [
+       1.45,
+       -1.97,
+       -0.3
+      ],
+      "com_status": "assumption",
+      "inertia_model": "cylinder_shell_x",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "FLOAT_NEG_Y_2",
+      "category": "float",
+      "mass_kg": 30,
+      "com_m": [
+       2.77,
+       -1.97,
+       -0.3
+      ],
+      "com_status": "assumption",
+      "inertia_model": "cylinder_shell_x",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "FLOAT_NEG_Y_3",
+      "category": "float",
+      "mass_kg": 30,
+      "com_m": [
+       4.39,
+       -1.97,
+       -0.3
+      ],
+      "com_status": "assumption",
+      "inertia_model": "cylinder_shell_x",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "FLOAT_POS_Y_1",
+      "category": "float",
+      "mass_kg": 30,
+      "com_m": [
+       1.45,
+       1.97,
+       -0.3
+      ],
+      "com_status": "assumption",
+      "inertia_model": "cylinder_shell_x",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "FLOAT_POS_Y_2",
+      "category": "float",
+      "mass_kg": 30,
+      "com_m": [
+       2.77,
+       1.97,
+       -0.3
+      ],
+      "com_status": "assumption",
+      "inertia_model": "cylinder_shell_x",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "FLOAT_POS_Y_3",
+      "category": "float",
+      "mass_kg": 30,
+      "com_m": [
+       4.39,
+       1.97,
+       -0.3
+      ],
+      "com_status": "assumption",
+      "inertia_model": "cylinder_shell_x",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "SOLAR_1",
+      "category": "solar",
+      "mass_kg": 20,
+      "com_m": [
+       4.555,
+       -1.720125,
+       2.74
+      ],
+      "com_status": "assumption",
+      "inertia_model": "solid_box",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "SOLAR_2",
+      "category": "solar",
+      "mass_kg": 20,
+      "com_m": [
+       4.555,
+       -0.573375,
+       2.74
+      ],
+      "com_status": "assumption",
+      "inertia_model": "solid_box",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "SOLAR_3",
+      "category": "solar",
+      "mass_kg": 20,
+      "com_m": [
+       4.555,
+       0.573375,
+       2.74
+      ],
+      "com_status": "assumption",
+      "inertia_model": "solid_box",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "SOLAR_4",
+      "category": "solar",
+      "mass_kg": 20,
+      "com_m": [
+       4.555,
+       1.720125,
+       2.74
+      ],
+      "com_status": "assumption",
+      "inertia_model": "solid_box",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "BATTERY_1",
+      "category": "battery",
+      "mass_kg": 120,
+      "com_m": [
+       3.6,
+       -2.05,
+       0.5
+      ],
+      "com_status": "user_edit",
+      "inertia_model": "solid_box",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "BATTERY_2",
+      "category": "battery",
+      "mass_kg": 120,
+      "com_m": [
+       3.6,
+       2.05,
+       0.5
+      ],
+      "com_status": "user_edit",
+      "inertia_model": "solid_box",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "ELECTRONICS_50",
+      "category": "electronics",
+      "mass_kg": 50,
+      "com_m": [
+       1.73,
+       1.08,
+       0.5
+      ],
+      "com_status": "user_statement+assumption",
+      "inertia_model": "solid_box",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "POD_STBD",
+      "category": "propulsion",
+      "mass_kg": 8.0,
+      "com_m": [
+       0.34,
+       -1.97,
+       -0.44
+      ],
+      "com_status": "assumption",
+      "inertia_model": "point",
+      "inertia_status": "assumption"
+     },
+     {
+      "id": "POD_PORT",
+      "category": "propulsion",
+      "mass_kg": 8.0,
+      "com_m": [
+       0.34,
+       1.97,
+       -0.44
+      ],
+      "com_status": "assumption",
+      "inertia_model": "point",
+      "inertia_status": "assumption"
+     }
+    ],
+    "by_category_kg": {
+     "structure": 290.0,
+     "float": 180.0,
+     "solar": 80.0,
+     "battery": 240.0,
+     "electronics": 50.0,
+     "propulsion": 16.0
+    },
+    "scope_note": "Sum of listed items only: NOT the full operating displacement (host boat, deck-surface mass if separate, propulsion, payload unknown)."
+   },
+   "buoyant_volume_total_m3": 2.4596854352031396,
+   "buoyant_volume_note": "Volume of the six float PROXY surfaces (unverified); not a verified displacement surface.",
+   "level_keel_screening": {
+    "feasible": true,
+    "level_draft_m": 0.2340651933536031,
+    "displaced_volume_m3": 0.8568568568568566,
+    "waterplane_area_m2": 5.041525299021529,
+    "max_buoyant_mass_kg": 2457.2257497679366,
+    "reserve_buoyancy_mass_kg": 1601.2257497679366,
+    "reserve_fraction": 0.6516396590419737,
+    "note": "Heave-only screening for the LISTED SUBTOTAL at zero heel/trim. Not an equilibrium (COM unknown or attitude not solved) and not the true displacement."
+   },
+   "equilibrium": {
+    "feasible": true,
+    "heel_deg": -0.1650763853931947,
+    "trim_deg": 0.1229232725074444,
+    "heel_rad": -0.0028811264424023217,
+    "trim_rad": 0.0021454158325811307,
+    "sign_convention": "heel: right-handed about +X (+Y side up); trim: right-handed about +Y (positive = +X end down)",
+    "com_height_above_waterline_m": 1.0073878987625946,
+    "displaced_volume_m3": 0.8568568568568569,
+    "displaced_mass_kg": 856.0,
+    "centre_of_buoyancy_world_m": [
+     -5.182770100937063e-16,
+     -6.478462626171328e-16,
+     -0.09654722716872
+    ],
+    "centre_of_buoyancy_body_m": [
+     2.908840360697255,
+     0.06626467711150129,
+     -0.46238594744812755
+    ],
+    "centre_of_mass_body_m": [
+     2.9064719626168216,
+     0.06308411214953268,
+     0.6415420560747664
+    ],
+    "per_float_volume_m3": {
+     "FLOAT_NEG_Y_1": 0.1353351239007802,
+     "FLOAT_NEG_Y_2": 0.13793780280297216,
+     "FLOAT_NEG_Y_3": 0.14084713280428607,
+     "FLOAT_POS_Y_1": 0.14483868548914797,
+     "FLOAT_POS_Y_2": 0.1474778680297343,
+     "FLOAT_POS_Y_3": 0.1504202438299361
+    },
+    "residuals": {
+     "Fz_N": 0.0,
+     "Mx_Nm": -5.438340527907925e-12,
+     "My_Nm": 4.35067242232634e-12,
+     "weight_N": 8394.4924,
+     "buoyancy_N": 8394.4924
+    },
+    "residuals_note": "hydrostatic + gravity only; with the boat moored the difference is carried by the line forces (see lines_note)",
+    "waterplane_area_m2": 5.04162025857098,
+    "freeboard": {
+     "float_top_freeboard_min_m": 0.35867479918108297,
+     "draft_max_m": 0.2443246197370983,
+     "per_float": {
+      "FLOAT_NEG_Y_1": {
+       "top_above_waterline_m": 0.3768704117112965,
+       "bottom_below_waterline_m": 0.22666550567440535
+      },
+      "FLOAT_NEG_Y_2": {
+       "top_above_waterline_m": 0.3735019665172549,
+       "bottom_below_waterline_m": 0.22949745240092634
+      },
+      "FLOAT_NEG_Y_3": {
+       "top_above_waterline_m": 0.37002639553470656,
+       "bottom_below_waterline_m": 0.2329730233834747
+      },
+      "FLOAT_POS_Y_1": {
+       "top_above_waterline_m": 0.3655188153576729,
+       "bottom_below_waterline_m": 0.23801710202802895
+      },
+      "FLOAT_POS_Y_2": {
+       "top_above_waterline_m": 0.3621503701636314,
+       "bottom_below_waterline_m": 0.24084904875454993
+      },
+      "FLOAT_POS_Y_3": {
+       "top_above_waterline_m": 0.35867479918108297,
+       "bottom_below_waterline_m": 0.2443246197370983
+      }
+     },
+     "lower_deck_freeboard_min_m": 0.3612117340057316,
+     "frame_footprint_deck_datum_freeboard_min_m": 0.3550973035734706,
+     "observation_deck_centre_height_m": 2.5662191491883397,
+     "definitions": {
+      "float_top_freeboard_min_m": "lowest, over the six floats, of (highest point of the float above the still waterline); <0 means a float is fully submerged",
+      "draft_max_m": "depth of the lowest point of any float below the still waterline",
+      "lower_deck_freeboard_min_m": "lowest height above the waterline of the 4 corners of the 2.1 m rear deck plate (top surface, Z=0 datum)",
+      "frame_footprint_deck_datum_freeboard_min_m": "lowest height above the waterline of the 4 corners of the full 4.95 m x 4.547 m footprint at the deck datum Z=0",
+      "observation_deck_centre_height_m": "height of the observation-deck surface centre above the waterline"
+     }
+    },
+    "R_body_to_world": [
+     [
+      0.9999976985963354,
+      -6.181200991788196e-06,
+      0.0021454052823412875
+     ],
+     [
+      0.0,
+      0.9999958495580825,
+      0.002881122456418567
+     ],
+     [
+      -0.0021454141867582586,
+      -0.0028811158257927875,
+      0.9999935481639697
+     ]
+    ],
+    "rho": 999.0,
+    "g": 9.80665,
+    "mass_kg": 856.0,
+    "tolerance_note": "residual targets: |Fz| < 1e-9 Mg, |Mx|,|My| < 1e-9 Mg*1m",
+    "solver": {
+     "n_evaluations": 12,
+     "newton_converged": true,
+     "residual_relative": 8.296480212588099e-16
+    }
+   },
+   "stability_static": {
+    "C_hydrostatic_NmPerUnit": [
+     [
+      49391.96390340638,
+      -2697.7402451710095,
+      556.8414003525215
+     ],
+     [
+      -2697.7402451710095,
+      183934.44400676124,
+      -43.82130262289139
+     ],
+     [
+      556.8414003525215,
+      -43.82130262289139,
+      77278.1201336643
+     ]
+    ],
+    "GM_transverse_m": 21.91132414471675,
+    "GM_longitudinal_m": 9.205812150555323,
+    "waterplane_area_m2": 5.04162025857098,
+    "eigenvalues_C": [
+     49326.83874888252,
+     77289.14572959532,
+     183988.54356535402
+    ],
+    "statically_stable_here": true,
+    "note": "GM from the analytic restoring matrix (waterplane integrals) about the COM at the solved attitude (about world X / Y axes).",
+    "scope": "STATIC initial stability of the floats-only buoyancy model. It is not wave behaviour, not a capsize limit, and ignores frame/deck buoyancy and flooding."
+   },
+   "flags": [],
+   "bodies": {
+    "exo": {
+     "pose": {
+      "R_world": [
+       [
+        0.9999976985963354,
+        -6.181200991788196e-06,
+        0.0021454052823412875
+       ],
+       [
+        0.0,
+        0.9999958495580825,
+        0.002881122456418567
+       ],
+       [
+        -0.0021454141867582586,
+        -0.0028811158257927875,
+        0.9999935481639697
+       ]
+      ],
+      "com_world": [
+       2.9064719626168216,
+       0.06308411214953268,
+       1.0073878987625946
+      ],
+      "G_body": [
+       2.9064719626168216,
        0.06308411214953268,
        0.6415420560747664
       ]

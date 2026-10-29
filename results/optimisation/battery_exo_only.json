@@ -7,7 +7,8 @@
     "x_m": 0.3,
     "y_stbd_m": 1.3,
     "y_port_m": 1.3,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -54,14 +55,15 @@
    "score_level": 7.968271131866248,
    "score_motion": 7.69357578114526,
    "score": 11.815059022438877,
-   "rank": 38
+   "rank": 44
   },
   {
    "candidate": {
     "x_m": 0.3,
     "y_stbd_m": 0.9,
     "y_port_m": 0.9,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -108,14 +110,15 @@
    "score_level": 7.968271131866247,
    "score_motion": 7.586505390006417,
    "score": 11.761523826869457,
-   "rank": 37
+   "rank": 43
   },
   {
    "candidate": {
     "x_m": 0.3,
     "y_stbd_m": 0.5,
     "y_port_m": 0.5,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -162,14 +165,15 @@
    "score_level": 7.968271131866247,
    "score_motion": 7.51984748154145,
    "score": 11.728194872636973,
-   "rank": 36
+   "rank": 42
   },
   {
    "candidate": {
     "x_m": 0.3,
     "y_stbd_m": 0.2,
     "y_port_m": 0.2,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -216,14 +220,15 @@
    "score_level": 7.968271131866247,
    "score_motion": 7.495139737960443,
    "score": 11.715841000846469,
-   "rank": 35
+   "rank": 41
   },
   {
    "candidate": {
     "x_m": 0.5,
     "y_stbd_m": 1.3,
     "y_port_m": 1.3,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -270,14 +275,15 @@
    "score_level": 7.061242763624553,
    "score_motion": 6.398508512317028,
    "score": 10.260497019783067,
-   "rank": 34
+   "rank": 40
   },
   {
    "candidate": {
     "x_m": 0.5,
     "y_stbd_m": 0.9,
     "y_port_m": 0.9,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -324,14 +330,15 @@
    "score_level": 7.061242763624559,
    "score_motion": 6.312161618041649,
    "score": 10.217323572645384,
-   "rank": 33
+   "rank": 39
   },
   {
    "candidate": {
     "x_m": 0.5,
     "y_stbd_m": 0.5,
     "y_port_m": 0.5,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -378,14 +385,15 @@
    "score_level": 7.061242763624559,
    "score_motion": 6.258258064219303,
    "score": 10.190371795734212,
-   "rank": 32
+   "rank": 38
   },
   {
    "candidate": {
     "x_m": 0.5,
     "y_stbd_m": 0.2,
     "y_port_m": 0.2,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -432,14 +440,15 @@
    "score_level": 7.061242763624559,
    "score_motion": 6.238248267550948,
    "score": 10.180366897400033,
-   "rank": 31
+   "rank": 37
   },
   {
    "candidate": {
     "x_m": 0.7,
     "y_stbd_m": 1.3,
     "y_port_m": 1.3,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -486,14 +495,15 @@
    "score_level": 6.298968891474421,
    "score_motion": 5.708000210138604,
    "score": 9.152968996543724,
-   "rank": 30
+   "rank": 36
   },
   {
    "candidate": {
     "x_m": 0.7,
     "y_stbd_m": 0.9,
     "y_port_m": 0.9,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -540,14 +550,15 @@
    "score_level": 6.298968891474421,
    "score_motion": 5.637184171331941,
    "score": 9.117560977140391,
-   "rank": 29
+   "rank": 35
   },
   {
    "candidate": {
     "x_m": 0.7,
     "y_stbd_m": 0.5,
     "y_port_m": 0.5,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -594,14 +605,15 @@
    "score_level": 6.298968891474421,
    "score_motion": 5.592922876140486,
    "score": 9.095430329544664,
-   "rank": 28
+   "rank": 34
   },
   {
    "candidate": {
     "x_m": 0.7,
     "y_stbd_m": 0.2,
     "y_port_m": 0.2,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -648,14 +660,15 @@
    "score_level": 6.298968891474421,
    "score_motion": 5.576481813196428,
    "score": 9.087209798072635,
-   "rank": 27
+   "rank": 33
   },
   {
    "candidate": {
     "x_m": 0.9,
     "y_stbd_m": 2.05,
     "y_port_m": 2.05,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -702,14 +715,15 @@
    "score_level": 5.610755202119841,
    "score_motion": 6.735343103791562,
    "score": 8.978426754015622,
-   "rank": 26
+   "rank": 32
   },
   {
    "candidate": {
     "x_m": 0.9,
     "y_stbd_m": 1.7,
     "y_port_m": 1.7,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -756,14 +770,15 @@
    "score_level": 5.610755202119837,
    "score_motion": 6.61298983926871,
    "score": 8.917250121754192,
-   "rank": 24
+   "rank": 30
   },
   {
    "candidate": {
     "x_m": 0.9,
     "y_stbd_m": 0.5,
     "y_port_m": 0.5,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -810,14 +825,15 @@
    "score_level": 5.610755202119838,
    "score_motion": 6.378795319722666,
    "score": 8.800152861981172,
-   "rank": 23
+   "rank": 29
   },
   {
    "candidate": {
     "x_m": 0.9,
     "y_stbd_m": 0.2,
     "y_port_m": 0.2,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -864,14 +880,15 @@
    "score_level": 5.610755202119838,
    "score_motion": 6.360814583841179,
    "score": 8.791162494040428,
-   "rank": 22
+   "rank": 28
   },
   {
    "candidate": {
     "x_m": 0.9,
     "y_stbd_m": 2.05,
     "y_port_m": 1.75,
-    "symmetric": false
+    "symmetric": false,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -918,14 +935,15 @@
    "score_level": 5.312461668695429,
    "score_motion": 6.482966829513638,
    "score": 8.553945083452248,
-   "rank": 21
+   "rank": 27
   },
   {
    "candidate": {
     "x_m": 0.9,
     "y_stbd_m": 2.05,
     "y_port_m": 1.45,
-    "symmetric": false
+    "symmetric": false,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -972,14 +990,15 @@
    "score_level": 5.312461668695429,
    "score_motion": 6.462809531221445,
    "score": 8.543866434306151,
-   "rank": 20
+   "rank": 26
   },
   {
    "candidate": {
     "x_m": 0.9,
     "y_stbd_m": 2.05,
     "y_port_m": 1.15,
-    "symmetric": false
+    "symmetric": false,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1026,14 +1045,15 @@
    "score_level": 5.610755202119842,
    "score_motion": 6.642561483494822,
    "score": 8.932035943867252,
-   "rank": 25
+   "rank": 31
   },
   {
    "candidate": {
     "x_m": 1.1,
     "y_stbd_m": 2.05,
     "y_port_m": 2.05,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1080,14 +1100,15 @@
    "score_level": 4.964837537576492,
    "score_motion": 6.3769677646005345,
    "score": 8.15332141987676,
-   "rank": 19
+   "rank": 25
   },
   {
    "candidate": {
     "x_m": 1.1,
     "y_stbd_m": 1.7,
     "y_port_m": 1.7,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1134,14 +1155,15 @@
    "score_level": 4.964837537576487,
    "score_motion": 6.263984743632146,
    "score": 8.096829909392559,
-   "rank": 18
+   "rank": 24
   },
   {
    "candidate": {
     "x_m": 1.1,
     "y_stbd_m": 0.5,
     "y_port_m": 0.5,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1188,14 +1210,15 @@
    "score_level": 4.964837537576489,
    "score_motion": 6.047398375959915,
    "score": 7.988536725556447,
-   "rank": 16
+   "rank": 22
   },
   {
    "candidate": {
     "x_m": 1.1,
     "y_stbd_m": 0.2,
     "y_port_m": 0.2,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1242,14 +1265,15 @@
    "score_level": 4.964837537576489,
    "score_motion": 6.030749539882529,
    "score": 7.980212307517753,
-   "rank": 15
+   "rank": 21
   },
   {
    "candidate": {
     "x_m": 1.1,
     "y_stbd_m": 2.05,
     "y_port_m": 1.75,
-    "symmetric": false
+    "symmetric": false,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1296,14 +1320,15 @@
    "score_level": 4.673656835061205,
    "score_motion": 6.167142420766603,
    "score": 7.757228045444506,
-   "rank": 14
+   "rank": 20
   },
   {
    "candidate": {
     "x_m": 1.1,
     "y_stbd_m": 2.05,
     "y_port_m": 1.45,
-    "symmetric": false
+    "symmetric": false,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1350,14 +1375,15 @@
    "score_level": 4.673656835061204,
    "score_motion": 6.135400719508034,
    "score": 7.7413571948152216,
-   "rank": 13
+   "rank": 19
   },
   {
    "candidate": {
     "x_m": 1.1,
     "y_stbd_m": 2.05,
     "y_port_m": 1.15,
-    "symmetric": false
+    "symmetric": false,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1404,14 +1430,15 @@
    "score_level": 4.964837537576488,
    "score_motion": 6.261431652998501,
    "score": 8.095553364075739,
-   "rank": 17
+   "rank": 23
   },
   {
    "candidate": {
     "x_m": 1.3,
     "y_stbd_m": 2.05,
     "y_port_m": 2.05,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1458,14 +1485,15 @@
    "score_level": 4.431572517674268,
    "score_motion": 5.998730894055615,
    "score": 7.430937964702076,
-   "rank": 12
+   "rank": 18
   },
   {
    "candidate": {
     "x_m": 1.3,
     "y_stbd_m": 1.7,
     "y_port_m": 1.7,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1512,14 +1540,15 @@
    "score_level": 4.431572517674267,
    "score_motion": 5.894717154318924,
    "score": 7.378931094833729,
-   "rank": 11
+   "rank": 17
   },
   {
    "candidate": {
     "x_m": 1.3,
     "y_stbd_m": 0.2,
     "y_port_m": 0.2,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1566,14 +1595,15 @@
    "score_level": 4.431572517674268,
    "score_motion": 5.67951530249807,
    "score": 7.271330168923303,
-   "rank": 10
+   "rank": 16
   },
   {
    "candidate": {
     "x_m": 1.3,
     "y_stbd_m": 2.05,
     "y_port_m": 1.75,
-    "symmetric": false
+    "symmetric": false,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1620,14 +1650,15 @@
    "score_level": 4.193274799750292,
    "score_motion": 5.796767726721358,
    "score": 7.091658663110971,
-   "rank": 9
+   "rank": 15
   },
   {
    "candidate": {
     "x_m": 1.5,
     "y_stbd_m": 2.05,
     "y_port_m": 2.05,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1674,14 +1705,15 @@
    "score_level": 4.027665622682181,
    "score_motion": 5.8105556407758305,
    "score": 6.932943443070096,
-   "rank": 8
+   "rank": 14
   },
   {
    "candidate": {
     "x_m": 1.5,
     "y_stbd_m": 1.7,
     "y_port_m": 1.7,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1728,14 +1760,15 @@
    "score_level": 4.027665622682182,
    "score_motion": 5.7117768803885545,
    "score": 6.88355406287646,
-   "rank": 7
+   "rank": 13
   },
   {
    "candidate": {
     "x_m": 1.5,
     "y_stbd_m": 0.2,
     "y_port_m": 0.2,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1782,14 +1815,15 @@
    "score_level": 4.0276656226821785,
    "score_motion": 5.507188637068743,
    "score": 6.78125994121655,
-   "rank": 6
+   "rank": 12
   },
   {
    "candidate": {
     "x_m": 1.5,
     "y_stbd_m": 2.05,
     "y_port_m": 1.75,
-    "symmetric": false
+    "symmetric": false,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1836,14 +1870,15 @@
    "score_level": 3.7930699201953666,
    "score_motion": 5.656192683008657,
    "score": 6.621166261699695,
-   "rank": 5
+   "rank": 11
   },
   {
    "candidate": {
     "x_m": 1.7,
     "y_stbd_m": 2.05,
     "y_port_m": 2.05,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1890,14 +1925,15 @@
    "score_level": 3.6359918497047663,
    "score_motion": 5.680148183046148,
    "score": 6.476065941227841,
-   "rank": 4
+   "rank": 10
   },
   {
    "candidate": {
     "x_m": 1.7,
     "y_stbd_m": 1.7,
     "y_port_m": 1.7,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1944,14 +1980,15 @@
    "score_level": 3.6359918497047716,
    "score_motion": 5.585505429095158,
    "score": 6.428744564252351,
-   "rank": 3
+   "rank": 9
   },
   {
    "candidate": {
     "x_m": 1.7,
     "y_stbd_m": 0.2,
     "y_port_m": 0.2,
-    "symmetric": true
+    "symmetric": true,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -1998,14 +2035,15 @@
    "score_level": 3.6359918497047716,
    "score_motion": 5.389306177155752,
    "score": 6.3306449382826475,
-   "rank": 2
+   "rank": 8
   },
   {
    "candidate": {
     "x_m": 1.7,
     "y_stbd_m": 2.05,
     "y_port_m": 1.75,
-    "symmetric": false
+    "symmetric": false,
+    "zone": "rear_deck"
    },
    "overrides": {
     "components": {
@@ -2052,41 +2090,395 @@
    "score_level": 3.4044387510989442,
    "score_motion": 5.563493402115521,
    "score": 6.186185452156705,
+   "rank": 7
+  },
+  {
+   "candidate": {
+    "x_m": 2.425,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true,
+    "zone": "float_frame"
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       2.425,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       2.425,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.16780537915460453,
+   "trim_deg": -1.9490438010523743,
+   "draft_m": 0.30959889872967417,
+   "deck_freeboard_min_m": 0.262061576263654,
+   "float_top_freeboard_min_m": 0.3344794121717228,
+   "GM_T_m": 21.564571572189482,
+   "GM_L_m": 9.351268017759683,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.5770327102803727,
+   "flags": [],
+   "roll_amp_deg": 4.180377126737864,
+   "pitch_amp_deg": 0.1321788649090174,
+   "heave_amp_m": 0.03383377840584218,
+   "deck_accel_max_ms2": 1.0911845101914357,
+   "deck_corner_min_clearance_m": 0.23091836786322487,
+   "pose_reuse": {
+    "tier": "approximate",
+    "dheel_deg": 0.008190937585701117,
+    "dtrim_deg": 1.8764976082087443,
+    "dz_m": 0.09133767507930368,
+    "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 2.2846545593615835,
+   "score_motion": 5.403740501838317,
+   "score": 4.986524810280741,
+   "rank": 5
+  },
+  {
+   "candidate": {
+    "x_m": 3.225,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true,
+    "zone": "float_frame"
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       3.225,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       3.225,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.1653367776637479,
+   "trim_deg": -0.5322333505699206,
+   "draft_m": 0.25907075010935376,
+   "deck_freeboard_min_m": 0.33270095176059566,
+   "float_top_freeboard_min_m": 0.3531909259654231,
+   "GM_T_m": 21.875824905072502,
+   "GM_L_m": 9.214002477225396,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.8013317757009335,
+   "flags": [],
+   "roll_amp_deg": 4.434403543926277,
+   "pitch_amp_deg": 0.06360204233310608,
+   "heave_amp_m": 0.03459910757160972,
+   "deck_accel_max_ms2": 1.1465267797569498,
+   "deck_corner_min_clearance_m": 0.29758801432455595,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.00026039227055319955,
+    "dtrim_deg": -0.655156623077365,
+    "dz_m": -0.033006087676980655,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 0.8629069058974164,
+   "score_motion": 5.644532366016334,
+   "score": 3.685173088905583,
+   "rank": 4
+  },
+  {
+   "candidate": {
+    "x_m": 3.425,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true,
+    "zone": "float_frame"
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       3.425,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       3.425,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.16513031476069065,
+   "trim_deg": -0.18255469958832055,
+   "draft_m": 0.24638144655522176,
+   "deck_freeboard_min_m": 0.35029649949664,
+   "float_top_freeboard_min_m": 0.35796929476198913,
+   "GM_T_m": 21.90333865189839,
+   "GM_L_m": 9.204066912736838,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.857406542056074,
+   "flags": [],
+   "roll_amp_deg": 4.421793298759144,
+   "pitch_amp_deg": 0.046625108461845824,
+   "heave_amp_m": 0.03458243694631366,
+   "deck_accel_max_ms2": 1.1426047709035794,
+   "deck_corner_min_clearance_m": 0.316005268924631,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -5.392936749593706e-05,
+    "dtrim_deg": -0.305477972095765,
+    "dz_m": -0.015418482573854586,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 0.5128153291097018,
+   "score_motion": 5.611023178124569,
+   "score": 3.3183269181719863,
+   "rank": 2
+  },
+  {
+   "candidate": {
+    "x_m": 3.625,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true,
+    "zone": "float_frame"
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       3.625,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       3.625,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.16507421803482464,
+   "trim_deg": 0.16655210646269936,
+   "draft_m": 0.24595502697961424,
+   "deck_freeboard_min_m": 0.3618188908426302,
+   "float_top_freeboard_min_m": 0.3580331411099287,
+   "GM_T_m": 21.911082527344153,
+   "GM_L_m": 9.206739561317244,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.913481308411214,
+   "flags": [],
+   "roll_amp_deg": 4.415711765370128,
+   "pitch_amp_deg": 0.03595137685687204,
+   "heave_amp_m": 0.03457787164972645,
+   "deck_accel_max_ms2": 1.14064905313026,
+   "deck_corner_min_clearance_m": 0.3290484385419004,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 2.1673583700736726e-06,
+    "dtrim_deg": 0.04362883395525495,
+    "dz_m": 0.0022061333787770643,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 0.49670054253234863,
+   "score_motion": 5.59231219535726,
+   "score": 3.2928566402109785,
    "rank": 1
+  },
+  {
+   "candidate": {
+    "x_m": 3.825,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true,
+    "zone": "float_frame"
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       3.825,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       3.825,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.1651617921002519,
+   "trim_deg": 0.5157074871200946,
+   "draft_m": 0.2589570940491389,
+   "deck_freeboard_min_m": 0.36671036911340893,
+   "float_top_freeboard_min_m": 0.35293122620252354,
+   "GM_T_m": 21.899244075921533,
+   "GM_L_m": 9.222318194977161,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.9695560747663543,
+   "flags": [],
+   "roll_amp_deg": 4.416023132867095,
+   "pitch_amp_deg": 0.024779187881216285,
+   "heave_amp_m": 0.03458608890847807,
+   "deck_accel_max_ms2": 1.1399417659631743,
+   "deck_corner_min_clearance_m": 0.3340069313192012,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -8.5406707057149e-05,
+    "dtrim_deg": 0.3927842146126502,
+    "dz_m": 0.01989781525391965,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 0.8460310713205984,
+   "score_motion": 5.580744086711485,
+   "score": 3.636403114676341,
+   "rank": 3
+  },
+  {
+   "candidate": {
+    "x_m": 4.625,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true,
+    "zone": "float_frame"
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       4.625,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       4.625,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.16711131386613887,
+   "trim_deg": 1.9246874239486813,
+   "draft_m": 0.3105712425929612,
+   "deck_freeboard_min_m": 0.38705237123018377,
+   "float_top_freeboard_min_m": 0.33296340021493515,
+   "GM_T_m": 21.65395590908179,
+   "GM_L_m": 9.397687484443159,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 3.193855140186915,
+   "flags": [],
+   "roll_amp_deg": 4.48224579641419,
+   "pitch_amp_deg": 0.06982359753845586,
+   "heave_amp_m": 0.03471523214924539,
+   "deck_accel_max_ms2": 1.1542348043449504,
+   "deck_corner_min_clearance_m": 0.351560830363385,
+   "pose_reuse": {
+    "tier": "approximate",
+    "dheel_deg": -0.0020349284729441045,
+    "dtrim_deg": 1.8017641514412366,
+    "dz_m": 0.09194249930694898,
+    "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 2.2589100516809593,
+   "score_motion": 5.706304198297596,
+   "score": 5.1120621508297575,
+   "rank": 6
   }
  ],
  "best": {
   "candidate": {
-   "x_m": 1.7,
+   "x_m": 3.625,
    "y_stbd_m": 2.05,
-   "y_port_m": 1.75,
-   "symmetric": false
+   "y_port_m": 2.05,
+   "symmetric": true,
+   "zone": "float_frame"
   },
   "overrides_to_apply": {
    "components": {
     "BATTERY_1": {
      "com_m": [
-      1.7,
+      3.625,
       -2.05,
       0.5
      ]
     },
     "BATTERY_2": {
      "com_m": [
-      1.7,
-      1.75,
+      3.625,
+      2.05,
       0.5
      ]
     }
    }
   },
-  "score": 6.186185452156705
+  "score": 3.2928566402109785
  },
+ "zones": {
+  "rear_deck": {
+   "best_rank": 7,
+   "n": 38,
+   "x_min_trim_m": 1.7,
+   "trim_deg": -3.289154357178163,
+   "heel_deg": -0.05764219696039068,
+   "deck_freeboard_min_m": 0.2008995500602112,
+   "label": "rear deck plate (x 0-2.1 m)"
+  },
+  "float_frame": {
+   "best_rank": 1,
+   "n": 6,
+   "x_min_trim_m": 3.625,
+   "trim_deg": 0.16655210646269936,
+   "heel_deg": -0.16507421803482464,
+   "deck_freeboard_min_m": 0.3618188908426302,
+   "label": "float-top side frames forward of the deck (x 2.1-4.9 m)"
+  }
+ },
+ "x_zero_trim_m": 3.529583867414857,
  "notes": [
   "Score = |trim| + 2|heel| (deg) + freeboard penalty below 0.15 m + 0.5 x (roll + pitch amplitude (deg) + deck accel (m/s2)) at the reference wave; edit the weights in exo01/optimise.py if your priorities differ.",
-  "Within the rear deck the trim can only be reduced, not removed: the most forward row (x = 1.70 m) is the best for trim; the COM stays aft of the float centroid. Levelling needs mass further forward (cabinet, payload) or the float rows mounted further aft. Asymmetric rows (port battery moved inboard) counter the heel from the port-side cabinet."
+  "Rear deck (x 0-2.1 m): the most forward row is the best for trim, but the COM stays aft of the float centroid - least trim -3.29 deg at x = 1.70 m. Asymmetric rows (port battery moved inboard) counter the heel from the port-side cabinet.",
+  "Float-top side frames (x 2.1-4.9 m, |y| 2.05 m, above the floats, outboard of the hull): least trim +0.17 deg at x = 3.62 m with rear-deck freeboard 0.36 m; the trim crosses zero at x = 3.53 m for the loads of this scenario. Whether the float cradle can carry 120 kg per battery is a structural question outside this model.",
+  "Trim sign: negative = rear deck down. Mass on the rear deck (people at the table) adds stern trim that the batteries can only partly compensate - re-run with the occupants you expect."
  ],
  "hydro_note": "wave columns from the cached BEM of the base pose (exact COM transform; pose within tolerance)",
- "n_candidates": 38,
- "seconds": 11.641984939575195
+ "n_candidates": 44,
+ "seconds": 14.420153379440308
 }
