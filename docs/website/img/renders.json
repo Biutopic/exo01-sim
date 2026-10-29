@@ -1,0 +1,387 @@
+{
+ "01_moored_still_iso": {
+  "note": "EXO-01 + Hydronaute moored (simulator default lines), still water, isometric",
+  "trim_deg": -3.839863141694412,
+  "heel_deg": -0.1758664193253577,
+  "draft_m": 0.3718144079827721,
+  "deck_freeboard_m": 0.17243876476044584,
+  "boat": {
+   "trim_deg": 0.3446480950794809,
+   "heel_deg": -0.0019246612377901583
+  },
+  "lines": [
+   [
+    "LINE_AFT_PORT",
+    88,
+    false
+   ],
+   [
+    "LINE_AFT_STBD",
+    87,
+    false
+   ],
+   [
+    "SPRING_PORT",
+    44,
+    false
+   ],
+   [
+    "SPRING_STBD",
+    43,
+    false
+   ]
+  ],
+  "wave": {
+   "H_m": null,
+   "T_s": 3,
+   "heading_deg": 90,
+   "exo_amp_deg": {
+    "pitch": 0.24894115994990962,
+    "roll": 3.753650058420314,
+    "yaw": 0.6777759038648035
+   },
+   "boat_amp_deg": {
+    "pitch": 0.1201960539691874,
+    "roll": 5.563413204080909,
+    "yaw": 0.22249839604229946
+   }
+  },
+  "label": "Exploratory \u2014 assumed geometry and mass distribution."
+ },
+ "02_moored_still_top": {
+  "note": "same state, top view: the boat berthed between the float rows, four lines",
+  "trim_deg": -3.839863141694412,
+  "heel_deg": -0.1758664193253577,
+  "draft_m": 0.3718144079827721,
+  "deck_freeboard_m": 0.17243876476044584,
+  "boat": {
+   "trim_deg": 0.3446480950794809,
+   "heel_deg": -0.0019246612377901583
+  },
+  "lines": [
+   [
+    "LINE_AFT_PORT",
+    88,
+    false
+   ],
+   [
+    "LINE_AFT_STBD",
+    87,
+    false
+   ],
+   [
+    "SPRING_PORT",
+    44,
+    false
+   ],
+   [
+    "SPRING_STBD",
+    43,
+    false
+   ]
+  ],
+  "wave": {
+   "H_m": null,
+   "T_s": 3,
+   "heading_deg": 90,
+   "exo_amp_deg": {
+    "pitch": 0.24894115994990962,
+    "roll": 3.753650058420314,
+    "yaw": 0.6777759038648035
+   },
+   "boat_amp_deg": {
+    "pitch": 0.1201960539691874,
+    "roll": 5.563413204080909,
+    "yaw": 0.22249839604229946
+   }
+  },
+  "label": "Exploratory \u2014 assumed geometry and mass distribution."
+ },
+ "03_moored_still_side": {
+  "note": "same state, side view: 3.8 deg stern trim of the EXO at the figure's battery position",
+  "trim_deg": -3.839863141694412,
+  "heel_deg": -0.1758664193253577,
+  "draft_m": 0.3718144079827721,
+  "deck_freeboard_m": 0.17243876476044584,
+  "boat": {
+   "trim_deg": 0.3446480950794809,
+   "heel_deg": -0.0019246612377901583
+  },
+  "lines": [
+   [
+    "LINE_AFT_PORT",
+    88,
+    false
+   ],
+   [
+    "LINE_AFT_STBD",
+    87,
+    false
+   ],
+   [
+    "SPRING_PORT",
+    44,
+    false
+   ],
+   [
+    "SPRING_STBD",
+    43,
+    false
+   ]
+  ],
+  "wave": {
+   "H_m": null,
+   "T_s": 3,
+   "heading_deg": 90,
+   "exo_amp_deg": {
+    "pitch": 0.24894115994990962,
+    "roll": 3.753650058420314,
+    "yaw": 0.6777759038648035
+   },
+   "boat_amp_deg": {
+    "pitch": 0.1201960539691874,
+    "roll": 5.563413204080909,
+    "yaw": 0.22249839604229946
+   }
+  },
+  "label": "Exploratory \u2014 assumed geometry and mass distribution."
+ },
+ "04_beam_sea_max_roll": {
+  "note": "beam sea H 0.3 m T 2.5 s, frame at maximum EXO roll (t = 1.85 s, rotation [-4.24, -0.49, -0.94] deg)",
+  "trim_deg": -3.839863141694412,
+  "heel_deg": -0.1758664193253577,
+  "draft_m": 0.3718144079827721,
+  "deck_freeboard_m": 0.17243876476044584,
+  "boat": {
+   "trim_deg": 0.3446480950794809,
+   "heel_deg": -0.0019246612377901583
+  },
+  "lines": [
+   [
+    "LINE_AFT_PORT",
+    88,
+    false
+   ],
+   [
+    "LINE_AFT_STBD",
+    87,
+    false
+   ],
+   [
+    "SPRING_PORT",
+    44,
+    false
+   ],
+   [
+    "SPRING_STBD",
+    43,
+    false
+   ]
+  ],
+  "wave": {
+   "H_m": null,
+   "T_s": 2.5,
+   "heading_deg": 90,
+   "exo_amp_deg": {
+    "pitch": 0.5314432443918605,
+    "roll": 4.301168308184794,
+    "yaw": 1.2051160477465535
+   },
+   "boat_amp_deg": {
+    "pitch": 0.20722361988619073,
+    "roll": 8.18097052642399,
+    "yaw": 0.622720991931109
+   }
+  },
+  "label": "Exploratory \u2014 assumed geometry and mass distribution."
+ },
+ "05_head_sea_max_boat_pitch": {
+  "note": "head sea H 0.3 m T 2.5 s, frame at maximum boat pitch (t = 4.03 s, rotation [-0.01, 2.39, -0.01] deg)",
+  "trim_deg": -3.839863141694412,
+  "heel_deg": -0.1758664193253577,
+  "draft_m": 0.3718144079827721,
+  "deck_freeboard_m": 0.17243876476044584,
+  "boat": {
+   "trim_deg": 0.3446480950794809,
+   "heel_deg": -0.0019246612377901583
+  },
+  "lines": [
+   [
+    "LINE_AFT_PORT",
+    88,
+    false
+   ],
+   [
+    "LINE_AFT_STBD",
+    87,
+    false
+   ],
+   [
+    "SPRING_PORT",
+    44,
+    false
+   ],
+   [
+    "SPRING_STBD",
+    43,
+    false
+   ]
+  ],
+  "wave": {
+   "H_m": null,
+   "T_s": 2.5,
+   "heading_deg": 180,
+   "exo_amp_deg": {
+    "pitch": 4.8971037355133795,
+    "roll": 0.03978712323683571,
+    "yaw": 0.0027778066472652933
+   },
+   "boat_amp_deg": {
+    "pitch": 2.606037608236543,
+    "roll": 0.023677494199071693,
+    "yaw": 0.009125383191411665
+   }
+  },
+  "label": "Exploratory \u2014 assumed geometry and mass distribution."
+ },
+ "06_batteries_forward_iso": {
+  "note": "batteries moved to the float-top side frames (x 3.60 m): the EXO floats level, still water",
+  "trim_deg": 0.1022310648616751,
+  "heel_deg": -0.164752776049824,
+  "draft_m": 0.2408295964454984,
+  "deck_freeboard_m": 0.3636471358635305,
+  "boat": {
+   "trim_deg": 0.3448262554463718,
+   "heel_deg": -0.001940838204504625
+  },
+  "lines": [
+   [
+    "LINE_AFT_PORT",
+    86,
+    false
+   ],
+   [
+    "LINE_AFT_STBD",
+    85,
+    false
+   ],
+   [
+    "SPRING_PORT",
+    52,
+    false
+   ],
+   [
+    "SPRING_STBD",
+    51,
+    false
+   ]
+  ],
+  "wave": {
+   "H_m": null,
+   "T_s": 2.5,
+   "heading_deg": 180,
+   "exo_amp_deg": {
+    "pitch": 3.6856426327661125,
+    "roll": 0.016516337593189278,
+    "yaw": 0.000592214225249047
+   },
+   "boat_amp_deg": {
+    "pitch": 2.5788102435762337,
+    "roll": 0.02220260371420549,
+    "yaw": 0.003340871502413966
+   }
+  },
+  "label": "Exploratory \u2014 assumed geometry and mass distribution."
+ },
+ "07_batteries_forward_side": {
+  "note": "same state, side view (compare with 03)",
+  "trim_deg": 0.1022310648616751,
+  "heel_deg": -0.164752776049824,
+  "draft_m": 0.2408295964454984,
+  "deck_freeboard_m": 0.3636471358635305,
+  "boat": {
+   "trim_deg": 0.3448262554463718,
+   "heel_deg": -0.001940838204504625
+  },
+  "lines": [
+   [
+    "LINE_AFT_PORT",
+    86,
+    false
+   ],
+   [
+    "LINE_AFT_STBD",
+    85,
+    false
+   ],
+   [
+    "SPRING_PORT",
+    52,
+    false
+   ],
+   [
+    "SPRING_STBD",
+    51,
+    false
+   ]
+  ],
+  "wave": {
+   "H_m": null,
+   "T_s": 2.5,
+   "heading_deg": 180,
+   "exo_amp_deg": {
+    "pitch": 3.6856426327661125,
+    "roll": 0.016516337593189278,
+    "yaw": 0.000592214225249047
+   },
+   "boat_amp_deg": {
+    "pitch": 2.5788102435762337,
+    "roll": 0.02220260371420549,
+    "yaw": 0.003340871502413966
+   }
+  },
+  "label": "Exploratory \u2014 assumed geometry and mass distribution."
+ },
+ "08_exo_alone_end": {
+  "note": "EXO-01 alone, end view: the two Flofiz float rows and the open berth between them",
+  "trim_deg": -3.825541409261119,
+  "heel_deg": -0.17599631674030852,
+  "draft_m": 0.37405142092070287,
+  "deck_freeboard_m": 0.17041059412570558,
+  "boat": null,
+  "lines": [],
+  "wave": {
+   "H_m": null,
+   "T_s": 2.5,
+   "heading_deg": 180,
+   "exo_amp_deg": {
+    "pitch": 6.080986868911104,
+    "roll": 0.04754373712574805,
+    "yaw": 0.029583256069397348
+   },
+   "boat_amp_deg": null
+  },
+  "label": "Exploratory \u2014 assumed geometry and mass distribution."
+ },
+ "09_exo_alone_iso": {
+  "note": "EXO-01 alone, isometric",
+  "trim_deg": -3.825541409261119,
+  "heel_deg": -0.17599631674030852,
+  "draft_m": 0.37405142092070287,
+  "deck_freeboard_m": 0.17041059412570558,
+  "boat": null,
+  "lines": [],
+  "wave": {
+   "H_m": null,
+   "T_s": 2.5,
+   "heading_deg": 180,
+   "exo_amp_deg": {
+    "pitch": 6.080986868911104,
+    "roll": 0.04754373712574805,
+    "yaw": 0.029583256069397348
+   },
+   "boat_amp_deg": null
+  },
+  "label": "Exploratory \u2014 assumed geometry and mass distribution."
+ }
+}

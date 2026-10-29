@@ -1,0 +1,278 @@
+[
+ {
+  "id": "01_moored_still_iso",
+  "file_png": "img/01_moored_still_iso.png",
+  "file_web": "img/web/01_moored_still_iso.webp",
+  "caption_fr": "EXO-01 et L'Hydronaute à couple, eau calme (rendu du simulateur).",
+  "caption_en": "EXO-01 and L'Hydronaute alongside, still water (simulator render).",
+  "state": {
+   "note": "EXO-01 + Hydronaute moored (simulator default lines), still water, isometric",
+   "trim_deg": -3.839863141694412,
+   "heel_deg": -0.1758664193253577,
+   "deck_freeboard_m": 0.17243876476044584,
+   "wave": {
+    "H_m": null,
+    "T_s": 3,
+    "heading_deg": 90,
+    "exo_amp_deg": {
+     "pitch": 0.24894115994990962,
+     "roll": 3.753650058420314,
+     "yaw": 0.6777759038648035
+    },
+    "boat_amp_deg": {
+     "pitch": 0.1201960539691874,
+     "roll": 5.563413204080909,
+     "yaw": 0.22249839604229946
+    }
+   }
+  }
+ },
+ {
+  "id": "02_moored_still_top",
+  "file_png": "img/02_moored_still_top.png",
+  "file_web": "img/web/02_moored_still_top.webp",
+  "caption_fr": "Vue de dessus : le bateau accosté entre les deux rangées de flotteurs, quatre aussières.",
+  "caption_en": "Top view: the boat berthed between the two float rows, four lines.",
+  "state": {
+   "note": "same state, top view: the boat berthed between the float rows, four lines",
+   "trim_deg": -3.839863141694412,
+   "heel_deg": -0.1758664193253577,
+   "deck_freeboard_m": 0.17243876476044584,
+   "wave": {
+    "H_m": null,
+    "T_s": 3,
+    "heading_deg": 90,
+    "exo_amp_deg": {
+     "pitch": 0.24894115994990962,
+     "roll": 3.753650058420314,
+     "yaw": 0.6777759038648035
+    },
+    "boat_amp_deg": {
+     "pitch": 0.1201960539691874,
+     "roll": 5.563413204080909,
+     "yaw": 0.22249839604229946
+    }
+   }
+  }
+ },
+ {
+  "id": "03_moored_still_side",
+  "file_png": "img/03_moored_still_side.png",
+  "file_web": "img/web/03_moored_still_side.webp",
+  "caption_fr": "Vue de côté, batteries aux rambardes du pont arrière : assiette −3,8°.",
+  "caption_en": "Side view, batteries at the rear-deck side rails: trim −3.8°.",
+  "state": {
+   "note": "same state, side view: 3.8 deg stern trim of the EXO at the figure's battery position",
+   "trim_deg": -3.839863141694412,
+   "heel_deg": -0.1758664193253577,
+   "deck_freeboard_m": 0.17243876476044584,
+   "wave": {
+    "H_m": null,
+    "T_s": 3,
+    "heading_deg": 90,
+    "exo_amp_deg": {
+     "pitch": 0.24894115994990962,
+     "roll": 3.753650058420314,
+     "yaw": 0.6777759038648035
+    },
+    "boat_amp_deg": {
+     "pitch": 0.1201960539691874,
+     "roll": 5.563413204080909,
+     "yaw": 0.22249839604229946
+    }
+   }
+  }
+ },
+ {
+  "id": "04_beam_sea_max_roll",
+  "file_png": "img/04_beam_sea_max_roll.png",
+  "file_web": "img/web/04_beam_sea_max_roll.webp",
+  "caption_fr": "Houle régulière de travers H 0,3 m, T 2,5 s : instant de roulis maximal (échelle 1:1).",
+  "caption_en": "Regular beam waves H 0.3 m, T 2.5 s: instant of maximum roll (scale 1:1).",
+  "state": {
+   "note": "beam sea H 0.3 m T 2.5 s, frame at maximum EXO roll (t = 1.85 s, rotation [-4.24, -0.49, -0.94] deg)",
+   "trim_deg": -3.839863141694412,
+   "heel_deg": -0.1758664193253577,
+   "deck_freeboard_m": 0.17243876476044584,
+   "wave": {
+    "H_m": null,
+    "T_s": 2.5,
+    "heading_deg": 90,
+    "exo_amp_deg": {
+     "pitch": 0.5314432443918605,
+     "roll": 4.301168308184794,
+     "yaw": 1.2051160477465535
+    },
+    "boat_amp_deg": {
+     "pitch": 0.20722361988619073,
+     "roll": 8.18097052642399,
+     "yaw": 0.622720991931109
+    }
+   }
+  }
+ },
+ {
+  "id": "05_head_sea_max_boat_pitch",
+  "file_png": "img/05_head_sea_max_boat_pitch.png",
+  "file_web": "img/web/05_head_sea_max_boat_pitch.webp",
+  "caption_fr": "Houle de face H 0,3 m, T 2,5 s : instant de tangage maximal du bateau.",
+  "caption_en": "Head waves H 0.3 m, T 2.5 s: instant of maximum boat pitch.",
+  "state": {
+   "note": "head sea H 0.3 m T 2.5 s, frame at maximum boat pitch (t = 4.03 s, rotation [-0.01, 2.39, -0.01] deg)",
+   "trim_deg": -3.839863141694412,
+   "heel_deg": -0.1758664193253577,
+   "deck_freeboard_m": 0.17243876476044584,
+   "wave": {
+    "H_m": null,
+    "T_s": 2.5,
+    "heading_deg": 180,
+    "exo_amp_deg": {
+     "pitch": 4.8971037355133795,
+     "roll": 0.03978712323683571,
+     "yaw": 0.0027778066472652933
+    },
+    "boat_amp_deg": {
+     "pitch": 2.606037608236543,
+     "roll": 0.023677494199071693,
+     "yaw": 0.009125383191411665
+    }
+   }
+  }
+ },
+ {
+  "id": "06_batteries_forward_iso",
+  "file_png": "img/06_batteries_forward_iso.png",
+  "file_web": "img/web/06_batteries_forward_iso.webp",
+  "caption_fr": "Batteries avancées sur les longerons des flotteurs (x 3,60 m) : la plateforme flotte à plat.",
+  "caption_en": "Batteries moved onto the float-top frames (x 3.60 m): the platform floats level.",
+  "state": {
+   "note": "batteries moved to the float-top side frames (x 3.60 m): the EXO floats level, still water",
+   "trim_deg": 0.1022310648616751,
+   "heel_deg": -0.164752776049824,
+   "deck_freeboard_m": 0.3636471358635305,
+   "wave": {
+    "H_m": null,
+    "T_s": 2.5,
+    "heading_deg": 180,
+    "exo_amp_deg": {
+     "pitch": 3.6856426327661125,
+     "roll": 0.016516337593189278,
+     "yaw": 0.000592214225249047
+    },
+    "boat_amp_deg": {
+     "pitch": 2.5788102435762337,
+     "roll": 0.02220260371420549,
+     "yaw": 0.003340871502413966
+    }
+   }
+  }
+ },
+ {
+  "id": "07_batteries_forward_side",
+  "file_png": "img/07_batteries_forward_side.png",
+  "file_web": "img/web/07_batteries_forward_side.webp",
+  "caption_fr": "Vue de côté, batteries avancées : assiette +0,1°, franc-bord pont arrière 0,36 m.",
+  "caption_en": "Side view, batteries forward: trim +0.1°, rear-deck freeboard 0.36 m.",
+  "state": {
+   "note": "same state, side view (compare with 03)",
+   "trim_deg": 0.1022310648616751,
+   "heel_deg": -0.164752776049824,
+   "deck_freeboard_m": 0.3636471358635305,
+   "wave": {
+    "H_m": null,
+    "T_s": 2.5,
+    "heading_deg": 180,
+    "exo_amp_deg": {
+     "pitch": 3.6856426327661125,
+     "roll": 0.016516337593189278,
+     "yaw": 0.000592214225249047
+    },
+    "boat_amp_deg": {
+     "pitch": 2.5788102435762337,
+     "roll": 0.02220260371420549,
+     "yaw": 0.003340871502413966
+    }
+   }
+  }
+ },
+ {
+  "id": "08_exo_alone_end",
+  "file_png": "img/08_exo_alone_end.png",
+  "file_web": "img/web/08_exo_alone_end.webp",
+  "caption_fr": "EXO-01 seul, vue de bout : deux rangées de flotteurs Flofiz et la travée libre pour le bateau.",
+  "caption_en": "EXO-01 alone, end view: two rows of Flofiz floats and the open berth for the boat.",
+  "state": {
+   "note": "EXO-01 alone, end view: the two Flofiz float rows and the open berth between them",
+   "trim_deg": -3.825541409261119,
+   "heel_deg": -0.17599631674030852,
+   "deck_freeboard_m": 0.17041059412570558,
+   "wave": {
+    "H_m": null,
+    "T_s": 2.5,
+    "heading_deg": 180,
+    "exo_amp_deg": {
+     "pitch": 6.080986868911104,
+     "roll": 0.04754373712574805,
+     "yaw": 0.029583256069397348
+    },
+    "boat_amp_deg": null
+   }
+  }
+ },
+ {
+  "id": "09_exo_alone_iso",
+  "file_png": "img/09_exo_alone_iso.png",
+  "file_web": "img/web/09_exo_alone_iso.webp",
+  "caption_fr": "EXO-01 seul, à vide (856 kg listés).",
+  "caption_en": "EXO-01 alone, light (856 kg listed).",
+  "state": {
+   "note": "EXO-01 alone, isometric",
+   "trim_deg": -3.825541409261119,
+   "heel_deg": -0.17599631674030852,
+   "deck_freeboard_m": 0.17041059412570558,
+   "wave": {
+    "H_m": null,
+    "T_s": 2.5,
+    "heading_deg": 180,
+    "exo_amp_deg": {
+     "pitch": 6.080986868911104,
+     "roll": 0.04754373712574805,
+     "yaw": 0.029583256069397348
+    },
+    "boat_amp_deg": null
+   }
+  }
+ },
+ {
+  "id": "10_battery_position_comparison",
+  "file_png": "img/10_battery_position_comparison.png",
+  "file_web": "img/web/10_battery_position_comparison.webp",
+  "caption_fr": "Position des batteries : rambardes du pont arrière (haut) vs longerons des flotteurs (bas).",
+  "caption_en": "Battery position: rear-deck side rails (top) vs float-top frames (bottom).",
+  "state": null
+ },
+ {
+  "id": "11_battery_sweep_trim_vs_x",
+  "file_png": "img/11_battery_sweep_trim_vs_x.png",
+  "file_web": "img/web/11_battery_sweep_trim_vs_x.webp",
+  "caption_fr": "Assiette et amplitudes de roulis/tangage en fonction de la position longitudinale des batteries (bateau amarré, pas d'occupants).",
+  "caption_en": "Trim and roll/pitch amplitudes vs the batteries' longitudinal position (boat moored, no occupants).",
+  "state": null
+ },
+ {
+  "id": "12_scenario_comparison",
+  "file_png": "img/12_scenario_comparison.png",
+  "file_web": "img/web/12_scenario_comparison.webp",
+  "caption_fr": "Comparaison de sept scénarios (EXO-01 seul sauf mention) : assiette, tirant d'eau, franc-bord, réponse en houle.",
+  "caption_en": "Comparison of seven scenarios (EXO-01 alone unless stated): trim, draught, freeboard, wave response.",
+  "state": null
+ },
+ {
+  "id": "13_rao_comparison",
+  "file_png": "img/13_rao_comparison.png",
+  "file_web": "img/web/13_rao_comparison.webp",
+  "caption_fr": "Fonctions de transfert (RAO) pilonnement/roulis/tangage par scénario, houle de travers.",
+  "caption_en": "Heave/roll/pitch transfer functions (RAO) per scenario, beam waves.",
+  "state": null
+ }
+]

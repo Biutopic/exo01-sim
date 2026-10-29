@@ -1,0 +1,187 @@
+<title>EXO-01 en simulation</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* layout: one reading column (66ch) on a paper ground; figures break out to 980px; a thin status band on top */
+:root {
+  --bg: #f4f3ee; --paper: #fbfaf6; --fg: #1c2430; --muted: #5a6473; --rule: #d9d6cc;
+  --accent: #b8731c; --accent-soft: #f3e3c6; --water: #0d2b4e; --link: #1d5a8a;
+  --display: "Newsreader", Georgia, "Times New Roman", serif; --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif; --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0f1720; --paper: #141f2b; --fg: #e6e9ee; --muted: #9aa6b5; --rule: #2a3542; --accent: #e0a24a; --accent-soft: #3a2d14; --water: #0d2b4e; --link: #7fb6e6; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #0f1720; --paper: #141f2b; --fg: #e6e9ee; --muted: #9aa6b5; --rule: #2a3542; --accent: #e0a24a; --accent-soft: #3a2d14; --water: #0d2b4e; --link: #7fb6e6; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); line-height: 1.55; font-size: 16px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 48px; }
+.band { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; justify-content: space-between; max-width: 980px; margin: 0 auto; padding-block: 12px; border-bottom: 1px solid var(--rule); font-size: 12px; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+.band b { color: var(--fg); font-weight: 600; }
+.lang { display: flex; gap: 4px; }
+.lang button { font: inherit; letter-spacing: inherit; text-transform: inherit; background: none; border: 1px solid var(--rule); color: var(--muted); padding: 4px 10px; border-radius: 3px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.lang button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+article { max-width: 66ch; margin: 0 auto; }
+article h1 { font-family: var(--display); font-weight: 500; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; letter-spacing: -.01em; text-wrap: balance; margin: 36px 0 10px; }
+.lede { font-size: 18px; color: var(--muted); margin: 0 0 22px; text-wrap: balance; }
+article h2 { font-family: var(--display); font-weight: 600; font-size: 26px; line-height: 1.2; margin: 44px 0 10px; text-wrap: balance; }
+article h3 { font-size: 17px; font-weight: 600; margin: 28px 0 6px; }
+article p { margin: 0 0 14px; }
+article a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+article blockquote { margin: 0 0 24px; padding: 12px 16px; background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0; }
+article blockquote p { margin: 0; }
+article ol, article ul { padding-left: 22px; margin: 0 0 16px; }
+article li { margin-bottom: 6px; }
+article li::marker { color: var(--accent); font-family: var(--mono); font-size: 13px; }
+article code { font-family: var(--mono); font-size: .9em; background: var(--paper); border: 1px solid var(--rule); padding: 0 4px; border-radius: 3px; }
+article strong { font-weight: 600; }
+figure { margin: 22px calc(50% - min(490px, 50vw - 16px)); max-width: none; width: min(980px, 100vw - 32px); }
+figure img { width: 100%; height: auto; display: block; border-radius: 4px; background: var(--water); }
+figcaption { font-size: 13px; color: var(--muted); margin-top: 8px; max-width: 66ch; }
+.gallery { max-width: 980px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px 22px; }
+.gallery figure { margin: 0; width: auto; min-width: 0; }
+.gallery h2 { grid-column: 1 / -1; font-family: var(--display); font-weight: 600; font-size: 22px; margin: 0 0 4px; }
+.foot { max-width: 980px; margin: 40px auto 0; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--muted); }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+@media (max-width: 1040px) { figure { margin-left: 0; margin-right: 0; width: 100%; } }
+@media (prefers-reduced-motion: no-preference) { .lang button { transition: background .15s, color .15s; } }
+</style>
+<div class="band"><span><b>BIUTOPIC</b> · EXO-01 · exo01-sim v1.1 · 29.10.2026</span><span id="status-fr">Statut : exploratoire — géométrie et masses supposées</span><span id="status-en" hidden>Status: exploratory — assumed geometry and masses</span><span class="lang" role="group" aria-label="Langue / Language"><button id="btn-fr" aria-pressed="true" type="button">FR</button><button id="btn-en" aria-pressed="false" type="button">EN</button></span></div>
+<article id="art-fr" lang="fr">
+<h1>EXO-01 en simulation : flottabilité, assiette, houle, amarrage</h1>
+<p class="lede">Ce que le modèle numérique d'EXO-01 dit de la plateforme avant sa mise à l'eau — et ce qu'il ne peut pas dire.</p>
+<blockquote>
+<p><strong>Statut : exploratoire.</strong> Tous les chiffres ci-dessous sortent d'un modèle construit sur le plan d'assemblage et sur des masses déclarées, pas mesurées. Ils servent à orienter l'intégration et à préparer les essais ; ils ne sont pas des caractéristiques certifiées. Le code, les configurations et les rapports sont publics : <a href="https://github.com/Biutopic/exo01-sim">Biutopic/exo01-sim</a>.</p>
+</blockquote>
+<h2>Pourquoi simuler avant de mettre à l'eau</h2>
+<p>EXO-01 est un exosquelette flottant : deux rangées de flotteurs, une structure aluminium, un pont arrière, une plateforme d'observation, 2 kWc de panneaux, 240 kg de batteries et deux propulseurs électriques, qui vient s'accoupler à un bateau existant — ici <em>L'Hydronaute</em>. Avant la première mise à l'eau (automne 2026), trois questions conditionnent l'intégration : <strong>où placer les masses</strong> (batteries, armoire électrique), <strong>comment attacher le bateau</strong> (aussières), et <strong>comment l'ensemble bouge</strong> dans le clapot et les sillages de l'Erdre. Un modèle numérique répond à ces questions avec des ordres de grandeur avant que la soudure ne les fige.</p>
+<figure><img alt="EXO-01 et L'Hydronaute amarré, eau calme" src="img/01_moored_still_iso.webp" loading="lazy"><figcaption>EXO-01 et L'Hydronaute à couple, eau calme. Rendu de l'outil de simulation (géométrie du plan d'assemblage, coque de L'Hydronaute reconstituée).</figcaption></figure>
+<h2>Méthode</h2>
+<p>Le simulateur (<code>exo01-sim</code>) est un code Python ouvert avec une interface 3D. Il enchaîne cinq calculs, chacun vérifiable séparément :</p>
+<ol>
+<li><strong>Géométrie et masses.</strong> Six flotteurs Flofiz (Ø 0,60 × 1,60 m, nez traîneau) en deux rangées, la structure du plan d'assemblage La Mutine (28/05/2026), et une liste de 18 masses : structure 290 kg, flotteurs 180 kg, batteries 2 × 120 kg, panneaux 80 kg, électronique 50 kg, propulseurs 16 kg — <strong>856 kg à vide</strong>, hors charge utile et hors occupants. Chaque masse porte sa provenance (déclarée / estimée / hypothèse).</li>
+<li><strong>Hydrostatique exacte.</strong> Volume immergé et centre de carène calculés sur les surfaces triangulées des flotteurs, puis équilibre statique (tirant d'eau, assiette, gîte) résolu par Newton. Stabilité initiale (GM) par la même voie. Vérifié contre les formules analytiques des cylindres.</li>
+<li><strong>Hydrodynamique linéaire.</strong> Théorie potentielle (méthode des éléments frontières, <a href="https://capytaine.github.io/">Capytaine 3.0</a>), 6 degrés de liberté pour EXO-01 seul, <strong>12 degrés de liberté couplés</strong> EXO-01 + L'Hydronaute (interaction hydrodynamique entre les deux coques), profondeur finie 3 m, eau douce. Les coefficients sont pré-calculés et mis en cache ; l'interface anime le mouvement reconstruit en houle régulière.</li>
+<li><strong>Amarrage et propulsion.</strong> Quatre aussières modélisées comme des ressorts qui ne travaillent qu'en traction (mou dès qu'elles se détendent), prétension 100 N ; équilibre couplé des deux corps. Propulsion quasi-statique : deux pods RDT POD 5.0 (poussée au point fixe 2 × 62 kgf = 1 216 N), résistance de coque ITTC-57 + facteurs de forme → vitesse d'équilibre et efforts transmis par les aussières, en poussée (pods d'EXO-01) comme en remorquage (moteur du bateau).</li>
+<li><strong>Balayages de conception.</strong> Position des batteries (44 positions sur deux zones), arrangement des aussières (36 combinaisons + presets), chacun évalué avec les solveurs ci-dessus — le tableau complet est rendu, pas seulement un « meilleur » choix.</li>
+</ol>
+<p>Vérification : 84 tests automatisés et 31 contrôles (analytique vs numérique, transformation du point de référence des coefficients hydrodynamiques exacte à 10⁻¹⁵, convergence du maillage ≤ 8 % sur le cas couplé). Les hypothèses sont tenues dans un fichier <code>ASSUMPTIONS.md</code> versionné avec le code.</p>
+<h2>Ce que le modèle dit</h2>
+<h3>1. L'assiette : le pont arrière est trop chargé</h3>
+<p>À vide, avec les batteries aux rambardes du pont arrière (position du plan), EXO-01 flotte <strong>pont arrière enfoncé de 3,8°</strong>, franc-bord du pont arrière <strong>0,17 m</strong>, tirant d'eau 0,37 m. La cause est géométrique : le centre de flottabilité des flotteurs est à x ≈ 2,9 m de l'arrière, le centre de masse à x ≈ 2,3 m.</p>
+<figure><img alt="Position des batteries : avant / après" src="img/10_battery_position_comparison.webp" loading="lazy"><figcaption>Même état, vue de côté : batteries aux rambardes du pont arrière (haut) et avancées sur les longerons des flotteurs (bas).</figcaption></figure>
+<p>Le balayage de position des batteries le montre sans ambiguïté : sur le pont arrière lui-même, le mieux qu'on obtienne est −3,3°. <strong>Avancées sur les longerons des flotteurs, à x ≈ 3,5 m</strong> (entre les montants central et avant, au-dessus des flotteurs, hors de la coque du bateau), les 240 kg de batteries annulent l'assiette : <strong>0°, franc-bord 0,36 m</strong>, et l'amplitude de roulis en houle de travers baisse de 4,7° à 3,8°.</p>
+<figure><img alt="Assiette en fonction de la position des batteries" src="img/11_battery_sweep_trim_vs_x.webp" loading="lazy"><figcaption>Assiette (gauche) et amplitudes de roulis/tangage (droite) en fonction de la position longitudinale des deux batteries ; L'Hydronaute amarré, pas d'occupants.</figcaption></figure>
+<p>C'est nécessaire, pas suffisant. Le pont arrière reste le point faible sous charge : deux personnes de 80 kg à la table arrière ramènent l'assiette à −2,2° même batteries avancées (−6,9° et pont arrière au ras de l'eau dans la position du plan) ; quatre personnes sur le pont arrière laissent 0,09 m de franc-bord (pas d'équilibre statique du tout dans la position du plan). Les conséquences de conception sont listées plus bas.</p>
+<h3>2. La stabilité n'est pas le sujet, l'enfoncement l'est</h3>
+<p>Hauteur métacentrique transversale ≈ 20 m, longitudinale ≈ 9 m : un catamaran large de 4,5 m sur des flotteurs de 0,60 m est extrêmement raide. Le risque n'est pas le chavirement ; c'est la perte de franc-bord et l'immersion d'un flotteur quand la charge est mal répartie — ce que les chiffres d'assiette ci-dessus décrivent.</p>
+<h3>3. En houle, la plateforme suit la surface</h3>
+<p>Périodes propres à vide ≈ 1,3–1,5 s (pilonnement 1,4 s, roulis 1,3 s, tangage 1,5 s). Le clapot et les sillages de l'Erdre ont des périodes plus longues (2–3 s) : la plateforme ne résonne pas, elle <strong>épouse la pente de la vague</strong>. En houle régulière de travers de 0,3 m de hauteur et 2,5 s de période, le roulis d'EXO-01 vaut ≈ 4,3–4,5° (la pente de la vague vaut 5,5°), l'accélération verticale sur le pont ≈ 1,2 m/s² (0,12 g). L'Hydronaute amarré roule davantage (≈ 8°) : sa coque est plus étroite.</p>
+<figure><img alt="Houle de travers, instant de roulis maximal" src="img/04_beam_sea_max_roll.webp" loading="lazy"><figcaption>Houle régulière de travers H 0,3 m, T 2,5 s : instant de roulis maximal d'EXO-01 (mouvement linéaire reconstruit, échelle 1:1).</figcaption></figure>
+<p>Réserve importante : la théorie potentielle n'a pas d'amortissement visqueux. Près des résonances de l'eau piégée entre les flotteurs (T ≈ 1,2–1,6 s), les coefficients sont surestimés ; seul un essai d'extinction en roulis donnera l'amortissement réel.</p>
+<h3>4. Les aussières : les quatre aussières « vers l'avant » tiennent un remorquage, pas une poussée</h3>
+<p>L'arrangement du plan (quatre aussières des montants d'EXO-01 vers l'avant du bateau) équilibre un <strong>remorquage</strong> par le moteur de L'Hydronaute, mais pas une <strong>poussée</strong> par les pods d'EXO-01 : les efforts horizontaux ne peuvent pas se fermer et le modèle ne trouve d'équilibre qu'en faisant reculer le bateau de 0,7 m dans la structure. Le balayage des 36 arrangements donne le meilleur compromis : <strong>montants arrière → taquets milieu + montants avant → taquets de poupe</strong> (deux diagonales longues), 472 N maximum dans une aussière à pleine poussée, aucune aussière molle au repos.</p>
+<figure><img alt="Vue de dessus : L'Hydronaute à couple entre les deux rangées de flotteurs" src="img/02_moored_still_top.webp" loading="lazy"><figcaption>Vue de dessus : le bateau est accosté entre les deux rangées de flotteurs ; l'espace sous les travées reste libre.</figcaption></figure>
+<p>Avec 100 N de prétension, <strong>toutes les aussières se détendent à chaque cycle</strong> en houle de 0,3 m, avec des reprises de tension estimées à 0,9–1,2 kN : prétension et raideur (ou amortisseurs d'aussière) sont à revoir avant les essais.</p>
+<h3>5. Propulsion : ordre de grandeur seulement</h3>
+<p>À 100 % des deux pods, l'ensemble EXO-01 + L'Hydronaute atteindrait ≈ 2,8 m/s (10 km/h), avec 870 N transmis au bateau par les aussières. Ces vitesses sont des <strong>bornes supérieures</strong> : le modèle suppose la poussée au point fixe constante avec la vitesse, ce qui est faux pour un propulseur à hélice ; la courbe poussée–vitesse des pods n'est pas connue.</p>
+<h2>Ce que le modèle ne dit pas</h2>
+<ul>
+<li><strong>Les masses et leurs positions sont déclarées, pas pesées.</strong> Toute l'assiette repose sur le décalage de 0,6 m entre centre de masse et centre de flottabilité.</li>
+<li><strong>La coque de L'Hydronaute est une reconstitution</strong> à partir de la table des couples du constructeur (Renaud 8000), pas un relevé ; sa masse (2,1 ou 3,0 t selon les sources) n'est pas mesurée.</li>
+<li><strong>Pas d'amortissement visqueux, pas de vent, pas de courant, pas de contact</strong> structure–coque, aussières linéaires sans masse.</li>
+<li><strong>Rien sur la structure</strong> : le modèle ne vérifie pas que les longerons des flotteurs portent 120 kg par batterie, ni les efforts dans les montants.</li>
+<li><strong>Rien sur l'énergie</strong> : autonomie et bilan solaire sont traités séparément.</li>
+</ul>
+<h2>Les cinq mesures qui changeraient tout</h2>
+<ol>
+<li>Position réelle des flotteurs sur le châssis (x, hauteur d'axe, écartement) — toute la flottabilité et l'hydrodynamique en dépendent.</li>
+<li>Centre de gravité installé de chaque composant, surtout en hauteur, et masse totale pesée.</li>
+<li>Comptabilité des masses : charge utile, câblage, fluides, surface de pont.</li>
+<li>Pour l'accouplement : masse et coque de L'Hydronaute, position des taquets, matériau/longueur/prétension des aussières ; courbe poussée–vitesse des pods.</li>
+<li>Charges opérationnelles et environnement : occupants, profondeur d'eau, climat de houle, <strong>essai d'extinction</strong> en roulis/pilonnement (amortissement).</li>
+</ol>
+<h2>Ce que cela change pour EXO-01</h2>
+<ul>
+<li><strong>Avancer les batteries</strong> sur les longerons des flotteurs (ou toute masse équivalente ≈ 400 kg·m vers l'avant), sous réserve de la tenue structurelle du cadre.</li>
+<li><strong>Revoir l'amarrage</strong> : diagonales longues, prétension et raideur adaptées, protection contre les à-coups.</li>
+<li><strong>Charger le pont arrière avec mesure</strong> tant que l'assiette n'a pas été corrigée ; prévoir la position des occupants dans les consignes d'exploitation.</li>
+<li><strong>Mesurer avant de calibrer</strong> : pesée, relevé des flotteurs et essai d'extinction à la première mise à l'eau, puis recalage du modèle.</li>
+</ul>
+<p><em>Outil : <a href="https://github.com/Biutopic/exo01-sim">Biutopic/exo01-sim</a> — Python / Capytaine 3.0 / three.js. Rapports complets : <code>results/optimisation</code>, <code>results/comparison</code>, <code>results/verification</code> dans le dépôt.</em></p>
+<section class="gallery"><h2>Autres vues</h2><figure><img src="img/05_head_sea_max_boat_pitch.webp" alt="Houle de face H 0,3 m, T 2,5 s : tangage maximal du bateau." loading="lazy"><figcaption>Houle de face H 0,3 m, T 2,5 s : tangage maximal du bateau.</figcaption></figure><figure><img src="img/06_batteries_forward_iso.webp" alt="Batteries avancées sur les longerons des flotteurs (x 3,60 m)." loading="lazy"><figcaption>Batteries avancées sur les longerons des flotteurs (x 3,60 m).</figcaption></figure><figure><img src="img/08_exo_alone_end.webp" alt="EXO-01 seul, vue de bout : la travée libre pour le bateau." loading="lazy"><figcaption>EXO-01 seul, vue de bout : la travée libre pour le bateau.</figcaption></figure><figure><img src="img/09_exo_alone_iso.webp" alt="EXO-01 seul, à vide (856 kg listés)." loading="lazy"><figcaption>EXO-01 seul, à vide (856 kg listés).</figcaption></figure><figure><img src="img/12_scenario_comparison.webp" alt="Sept scénarios comparés : assiette, tirant d'eau, franc-bord, réponse en houle." loading="lazy"><figcaption>Sept scénarios comparés : assiette, tirant d'eau, franc-bord, réponse en houle.</figcaption></figure><figure><img src="img/13_rao_comparison.webp" alt="Fonctions de transfert pilonnement / roulis / tangage par scénario." loading="lazy"><figcaption>Fonctions de transfert pilonnement / roulis / tangage par scénario.</figcaption></figure></section>
+</article>
+<article id="art-en" lang="en" hidden>
+<h1>EXO-01 in simulation: buoyancy, trim, waves, mooring</h1>
+<p class="lede">What the numerical model of EXO-01 says about the platform before it touches the water — and what it cannot say.</p>
+<blockquote>
+<p><strong>Status: exploratory.</strong> Every number below comes from a model built on the assembly drawing and on declared, not measured, masses. They are there to guide the integration and prepare the trials; they are not certified characteristics. Code, configurations and reports are public: <a href="https://github.com/Biutopic/exo01-sim">Biutopic/exo01-sim</a>.</p>
+</blockquote>
+<h2>Why simulate before launching</h2>
+<p>EXO-01 is a floating exoskeleton: two rows of floats, an aluminium frame, a rear deck, an observation platform, 2 kWp of panels, 240 kg of batteries and two electric pods, which couples to an existing boat — here <em>L'Hydronaute</em>. Before the first launch (autumn 2026), three questions drive the integration: <strong>where to put the masses</strong> (batteries, electrical cabinet), <strong>how to tie the boat in</strong> (mooring lines), and <strong>how the whole thing moves</strong> in the chop and boat wakes of the Erdre. A numerical model answers them with orders of magnitude before welding makes them permanent.</p>
+<figure><img alt="EXO-01 and L'Hydronaute moored, still water" src="img/01_moored_still_iso.webp" loading="lazy"><figcaption>EXO-01 and L'Hydronaute alongside, still water. Render from the simulation tool (assembly-drawing geometry, reconstructed Hydronaute hull).</figcaption></figure>
+<h2>Method</h2>
+<p>The simulator (<code>exo01-sim</code>) is an open Python code with a 3D interface. It chains five calculations, each verifiable on its own:</p>
+<ol>
+<li><strong>Geometry and masses.</strong> Six Flofiz floats (Ø 0.60 × 1.60 m, sled nose) in two rows, the frame of the La Mutine assembly drawing (28 May 2026), and a list of 18 masses: structure 290 kg, floats 180 kg, batteries 2 × 120 kg, panels 80 kg, electronics 50 kg, pods 16 kg — <strong>856 kg light</strong>, without payload or people. Every mass carries its provenance (declared / estimated / assumption).</li>
+<li><strong>Exact hydrostatics.</strong> Immersed volume and centre of buoyancy computed on the triangulated float surfaces, then the static equilibrium (draught, trim, heel) solved by Newton's method. Initial stability (GM) the same way. Checked against the analytic cylinder formulas.</li>
+<li><strong>Linear hydrodynamics.</strong> Potential-flow theory (boundary element method, <a href="https://capytaine.github.io/">Capytaine 3.0</a>), 6 degrees of freedom for EXO-01 alone, <strong>12 coupled degrees of freedom</strong> for EXO-01 + L'Hydronaute (hydrodynamic interaction between the two hulls), finite depth 3 m, fresh water. The coefficients are precomputed and cached; the interface animates the reconstructed motion in regular waves.</li>
+<li><strong>Mooring and propulsion.</strong> Four lines modelled as springs that only work in tension (slack as soon as they unload), 100 N pretension; coupled equilibrium of the two bodies. Quasi-static propulsion: two RDT POD 5.0 pods (bollard thrust 2 × 62 kgf = 1,216 N), ITTC-57 hull resistance + form factors → equilibrium speed and the forces carried by the lines, when pushing (EXO-01 pods) and when towing (the boat's engine).</li>
+<li><strong>Design sweeps.</strong> Battery position (44 positions in two zones), line arrangement (36 combinations + presets), each evaluated with the solvers above — the full table is returned, not just a "best" pick.</li>
+</ol>
+<p>Verification: 84 automated tests and 31 checks (analytic vs numerical, reference-point transform of the hydrodynamic coefficients exact to 10⁻¹⁵, mesh convergence ≤ 8 % on the coupled case). The assumptions live in an <code>ASSUMPTIONS.md</code> versioned with the code.</p>
+<h2>What the model says</h2>
+<h3>1. Trim: the rear deck carries too much</h3>
+<p>Light, with the batteries at the rear-deck side rails (the drawing's position), EXO-01 floats <strong>rear deck down by 3.8°</strong>, rear-deck freeboard <strong>0.17 m</strong>, draught 0.37 m. The cause is geometric: the floats' centre of buoyancy is at x ≈ 2.9 m from the stern, the centre of mass at x ≈ 2.3 m.</p>
+<figure><img alt="Battery position: before / after" src="img/10_battery_position_comparison.webp" loading="lazy"><figcaption>Same state, side view: batteries at the rear-deck side rails (top) and moved forward onto the float-top frames (bottom).</figcaption></figure>
+<p>The battery-position sweep leaves no ambiguity: on the rear deck itself the best achievable is −3.3°. <strong>Moved forward onto the float-top side frames, at x ≈ 3.5 m</strong> (between the mid and forward uprights, above the floats, clear of the boat's hull), the 240 kg of batteries cancel the trim: <strong>0°, freeboard 0.36 m</strong>, and the roll amplitude in beam waves drops from 4.7° to 3.8°.</p>
+<figure><img alt="Trim vs battery position" src="img/11_battery_sweep_trim_vs_x.webp" loading="lazy"><figcaption>Trim (left) and roll/pitch amplitudes (right) against the longitudinal position of both batteries; L'Hydronaute moored, no occupants.</figcaption></figure>
+<p>Necessary, not sufficient. The rear deck stays the weak point under load: two 80 kg people at the rear table bring the trim back to −2.2° even with the batteries forward (−6.9° with the deck edge awash in the drawing's position); four people on the rear deck leave 0.09 m of freeboard (no static equilibrium at all in the drawing's position). The design consequences are listed below.</p>
+<h3>2. Stability is not the issue, sinkage is</h3>
+<p>Transverse metacentric height ≈ 20 m, longitudinal ≈ 9 m: a 4.5 m wide catamaran on 0.60 m floats is extremely stiff. The risk is not capsizing; it is losing freeboard and burying a float when the load is badly distributed — which is what the trim figures above describe.</p>
+<h3>3. In waves, the platform follows the surface</h3>
+<p>Natural periods, light: ≈ 1.3–1.5 s (heave 1.4 s, roll 1.3 s, pitch 1.5 s). The chop and boat wakes of the Erdre have longer periods (2–3 s): the platform does not resonate, it <strong>rides the wave slope</strong>. In regular beam waves of 0.3 m height and 2.5 s period, EXO-01 rolls ≈ 4.3–4.5° (the wave slope is 5.5°), with a vertical deck acceleration ≈ 1.2 m/s² (0.12 g). The moored Hydronaute rolls more (≈ 8°): its hull is narrower.</p>
+<figure><img alt="Beam sea, instant of maximum roll" src="img/04_beam_sea_max_roll.webp" loading="lazy"><figcaption>Regular beam waves H 0.3 m, T 2.5 s: instant of maximum EXO-01 roll (reconstructed linear motion, scale 1:1).</figcaption></figure>
+<p>Important reservation: potential-flow theory has no viscous damping. Near the resonances of the water trapped between the floats (T ≈ 1.2–1.6 s) the coefficients are over-predicted; only a roll decay test will give the real damping.</p>
+<h3>4. Mooring: the four "forward" lines hold a tow, not a push</h3>
+<p>The drawing's arrangement (four lines from EXO-01's uprights to the boat's forward cleats) balances a <strong>tow</strong> by L'Hydronaute's engine, but not a <strong>push</strong> by EXO-01's pods: the horizontal forces cannot close, and the model only finds an equilibrium by sliding the boat 0.7 m back into the structure. The sweep over 36 arrangements gives the best compromise: <strong>aft uprights → midship cleats + forward uprights → stern cleats</strong> (two long diagonals), 472 N maximum in a line at full thrust, no slack line at rest.</p>
+<figure><img alt="Top view: L'Hydronaute berthed between the two float rows" src="img/02_moored_still_top.webp" loading="lazy"><figcaption>Top view: the boat is berthed between the two float rows; the space under the frame bays stays free.</figcaption></figure>
+<p>With 100 N of pretension, <strong>every line goes slack each cycle</strong> in 0.3 m waves, with snatch loads estimated at 0.9–1.2 kN: pretension and stiffness (or line dampers) have to be revisited before the trials.</p>
+<h3>5. Propulsion: order of magnitude only</h3>
+<p>At 100 % of both pods, EXO-01 + L'Hydronaute would reach ≈ 2.8 m/s (10 km/h), with 870 N carried to the boat through the lines. These speeds are <strong>upper bounds</strong>: the model assumes the bollard thrust stays constant with speed, which is false for a propeller; the pods' thrust–speed curve is not known.</p>
+<h2>What the model does not say</h2>
+<ul>
+<li><strong>Masses and positions are declared, not weighed.</strong> The whole trim story rests on the 0.6 m offset between centre of mass and centre of buoyancy.</li>
+<li><strong>L'Hydronaute's hull is a reconstruction</strong> from the builder's station table (Renaud 8000), not a survey; its mass (2.1 or 3.0 t depending on the source) is not measured.</li>
+<li><strong>No viscous damping, no wind, no current, no contact</strong> between frame and hull, massless linear lines.</li>
+<li><strong>Nothing structural</strong>: the model does not check that the float frames carry 120 kg per battery, nor the loads in the uprights.</li>
+<li><strong>Nothing on energy</strong>: range and the solar balance are treated separately.</li>
+</ul>
+<h2>The five measurements that would change everything</h2>
+<ol>
+<li>The floats' real positions on the chassis (x, axis height, spacing) — all buoyancy and hydrodynamics depend on it.</li>
+<li>The installed centre of gravity of every component, height above all, and the weighed total mass.</li>
+<li>Mass accounting: payload, cabling, fluids, deck surface.</li>
+<li>For the coupling: L'Hydronaute's mass and hull, cleat positions, line material/length/pretension; the pods' thrust–speed curve.</li>
+<li>Operational loads and environment: occupants, water depth, wave climate, a <strong>decay test</strong> in roll/heave (damping).</li>
+</ol>
+<h2>What it changes for EXO-01</h2>
+<ul>
+<li><strong>Move the batteries forward</strong> onto the float-top frames (or any equivalent ≈ 400 kg·m forward), subject to the frame's structural capacity.</li>
+<li><strong>Rework the mooring</strong>: long diagonals, matched pretension and stiffness, snatch protection.</li>
+<li><strong>Load the rear deck with care</strong> until the trim is corrected; write occupant positions into the operating instructions.</li>
+<li><strong>Measure before calibrating</strong>: weighing, float survey and decay test at the first launch, then recalibrate the model.</li>
+</ul>
+<p><em>Tool: <a href="https://github.com/Biutopic/exo01-sim">Biutopic/exo01-sim</a> — Python / Capytaine 3.0 / three.js. Full reports: <code>results/optimisation</code>, <code>results/comparison</code>, <code>results/verification</code> in the repository.</em></p>
+<section class="gallery"><h2>More views</h2><figure><img src="img/05_head_sea_max_boat_pitch.webp" alt="Head waves H 0.3 m, T 2.5 s: maximum boat pitch." loading="lazy"><figcaption>Head waves H 0.3 m, T 2.5 s: maximum boat pitch.</figcaption></figure><figure><img src="img/06_batteries_forward_iso.webp" alt="Batteries moved onto the float-top frames (x 3.60 m)." loading="lazy"><figcaption>Batteries moved onto the float-top frames (x 3.60 m).</figcaption></figure><figure><img src="img/08_exo_alone_end.webp" alt="EXO-01 alone, end view: the open berth for the boat." loading="lazy"><figcaption>EXO-01 alone, end view: the open berth for the boat.</figcaption></figure><figure><img src="img/09_exo_alone_iso.webp" alt="EXO-01 alone, light (856 kg listed)." loading="lazy"><figcaption>EXO-01 alone, light (856 kg listed).</figcaption></figure><figure><img src="img/12_scenario_comparison.webp" alt="Seven scenarios compared: trim, draught, freeboard, wave response." loading="lazy"><figcaption>Seven scenarios compared: trim, draught, freeboard, wave response.</figcaption></figure><figure><img src="img/13_rao_comparison.webp" alt="Heave / roll / pitch transfer functions per scenario." loading="lazy"><figcaption>Heave / roll / pitch transfer functions per scenario.</figcaption></figure></section>
+</article>
+<div class="foot">Aperçu de l'article destiné à biutopic.com — rendus et chiffres générés par exo01-sim v1.1 (Biutopic/exo01-sim). / Preview of the article for biutopic.com — renders and figures generated by exo01-sim v1.1.</div>
+<script>
+(function () {
+  const set = (l) => {
+    document.getElementById('art-fr').hidden = l !== 'fr'; document.getElementById('art-en').hidden = l !== 'en';
+    document.getElementById('status-fr').hidden = l !== 'fr'; document.getElementById('status-en').hidden = l !== 'en';
+    document.getElementById('btn-fr').setAttribute('aria-pressed', String(l === 'fr')); document.getElementById('btn-en').setAttribute('aria-pressed', String(l === 'en'));
+    document.documentElement.lang = l; try { localStorage.setItem('exo01-lang', l); } catch (e) {}
+  };
+  document.getElementById('btn-fr').addEventListener('click', () => set('fr')); document.getElementById('btn-en').addEventListener('click', () => set('en'));
+  let l = 'fr'; try { l = localStorage.getItem('exo01-lang') || 'fr'; } catch (e) {}
+  if (l !== 'fr') set(l);
+})();
+</script>

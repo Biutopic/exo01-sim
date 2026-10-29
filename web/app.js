@@ -1033,7 +1033,7 @@ function applyPose(r) {
     $('poseInfo').textContent = r.mode === 'baseline' ? 'baseline: no equilibrium (COM / density unknown) — EXO shown at CAD datum, no waterline' : 'no feasible equilibrium — model shown at CAD datum';
     return;
   }
-  $('label').classList.remove('error');
+  if ($('label').classList.contains('error')) { $('label').classList.remove('error'); $('label').textContent = S.config.result_label; }
   setBodyPose(E, r.bodies.exo.pose, r.equilibrium.centre_of_buoyancy_body_m);
   const ex = staticExag(); const exNote = ex > 1 && S.refPose ? ` · static Δ exaggerated ×${ex} (display only; numbers are true)` : '';
   const bb = r.bodies.boat;
@@ -1124,5 +1124,5 @@ $('viewTop').onclick = () => view('top'); $('viewSide').onclick = () => view('si
   pollJobs();
   $('evaluate').onclick = doEvaluate;
   ['rho', 'depth'].forEach((id) => $(id).addEventListener('change', evaluate));
-  window.__exo = { S, bodies3d, selectComponent, firstOrderPreview, commitHandle, findHandle, evaluate, doEvaluate, writeLines, linesList, setThrust, runWave, autoWave, runOptimise, applyPose, startAnim, stopAnim };
+  window.__exo = { S, bodies3d, selectComponent, firstOrderPreview, commitHandle, findHandle, evaluate, doEvaluate, writeLines, linesList, setThrust, runWave, autoWave, runOptimise, applyPose, startAnim, stopAnim, camera, orbit, scene, renderer, resize, view, placeHandles, renderComponents };
 })();

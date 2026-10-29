@@ -1,0 +1,77 @@
+{
+ "label": "Exploratory — assumed geometry and mass distribution",
+ "version": "exo01-sim v1.1 (29 Oct 2026)",
+ "light_mass_kg": 856,
+ "mass_breakdown_kg": {
+  "structure": 290,
+  "floats": 180,
+  "batteries": 240,
+  "solar": 80,
+  "electronics": 50,
+  "pods": 16
+ },
+ "still_water_light_figure_batteries": {
+  "trim_deg": -3.84,
+  "heel_deg": -0.18,
+  "draught_m": 0.37,
+  "rear_deck_freeboard_m": 0.17,
+  "GM_T_m": 20.8,
+  "GM_L_m": 9.5
+ },
+ "float_centroid_x_m": 2.92,
+ "com_x_m_figure_batteries": 2.3,
+ "batteries_forward": {
+  "zero_trim_x_m": 3.54,
+  "best_x_m": 3.62,
+  "trim_deg": 0.15,
+  "rear_deck_freeboard_m": 0.36,
+  "roll_amp_deg_before_after": [
+   4.7,
+   3.8
+  ]
+ },
+ "occupants": {
+  "two_at_rear_table_trim_deg": {
+   "figure": -6.91,
+   "batteries_x3.7": -2.16
+  },
+  "four_on_rear_deck": {
+   "figure": "no static equilibrium",
+   "batteries_x3.7_freeboard_m": 0.09
+  }
+ },
+ "natural_periods_light_s": {
+  "heave": 1.41,
+  "roll": 1.34,
+  "pitch": 1.52
+ },
+ "beam_wave_H0.3_T2.5": {
+  "exo_roll_amp_deg": 4.3,
+  "boat_roll_amp_deg": 8.2,
+  "deck_vertical_accel_ms2": 1.17,
+  "wave_slope_deg": 5.5
+ },
+ "lines": {
+  "figure_all_forward": "holds a tow, not a push (boat slides 0.73 m into the deck)",
+  "best": "aft uprights -> midship cleats + forward uprights -> stern cleats",
+  "best_push_max_N": 472,
+  "pretension_N": 100,
+  "slack_in_cycle_H0.3": true,
+  "snatch_peaks_N": [
+   925,
+   1230
+  ]
+ },
+ "propulsion_upper_bounds": {
+  "bollard_thrust_N": 1216,
+  "push_with_boat_speed_m_s": 2.79,
+  "lines_force_on_boat_N": 869,
+  "tow_by_boat_engine_speed_m_s": 2.95
+ },
+ "verification": {
+  "tests": 84,
+  "checks": 31,
+  "reference_point_transform_error": "1e-15",
+  "two_body_convergence_pct": 5.6
+ }
+}
