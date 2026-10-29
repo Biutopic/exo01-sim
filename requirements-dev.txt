@@ -1,0 +1,2 @@
+# optional: headless-browser smoke test of the interface (scripts/ui_smoke.py). After installing: playwright install chromium
+playwright>=1.49

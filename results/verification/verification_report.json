@@ -1,0 +1,2162 @@
+{
+ "generated": "2026-10-29 09:59:00",
+ "checks": [
+  {
+   "name": "STEP unit = mm and extent (max side) equals GLB metres",
+   "tolerance": "<= 3 mm",
+   "actual": "unit=mm, max |dx| = 0.000 mm",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "CAD->glTF conversion (x,y,z)->(x,z,-y), applied once",
+   "tolerance": "exact",
+   "actual": "max error 4.4e-16",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "GLB child bounds equal documented CAD bounds (no 2nd axis conversion)",
+   "tolerance": "<= 1e-6 m",
+   "actual": "0.0e+00 m",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Mass accounting: sum of 16 parents counted once",
+   "tolerance": "840 kg exactly",
+   "actual": "840.0 kg; stray child masses: []",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Revision-3 float proxies (scenario floats_glb_capsules: capsules fitted to the GLB) vs GLB tessellated volume",
+   "tolerance": "<= 1.5 %",
+   "actual": "capsules 2.1236 m3 vs GLB 2.1097 m3 (+0.66 %)",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Production floats (Flofiz 1.60 x D0.60 m, component list) vs GLB proxies: volume difference reported",
+   "tolerance": "informational",
+   "actual": "Flofiz 2.4597 m3 vs GLB 2.1097 m3 (+16.59 %): the drawing's proxies are smaller than the real floats",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Analytic buoyancy test body (capsule, 5 waterlines): volume",
+   "tolerance": "<= 1e-3 (default tessellation)",
+   "actual": "5.02e-04",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Analytic buoyancy test body: waterplane area",
+   "tolerance": "<= 1e-3",
+   "actual": "5.40e-04",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Flofiz float surface (both nose directions): closed, outward, volume vs analytic",
+   "tolerance": "<= 2e-4",
+   "actual": "7.38e-05",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Equilibrium residuals [baseline_illustrative]",
+   "tolerance": "|Fz|,|Mx|,|My| <= 1e-9 * M g",
+   "actual": "max 1.1e-15 (Fz 9.1e-12 N, Mx 7.1e-12, My -3.8e-12 N m)",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Equilibrium residuals [battery_relocated]",
+   "tolerance": "|Fz|,|Mx|,|My| <= 1e-9 * M g",
+   "actual": "max 2.1e-15 (Fz -3.6e-12 N, Mx 1.8e-11, My 2.0e-12 N m)",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Equilibrium residuals [occupants_symmetric]",
+   "tolerance": "|Fz|,|Mx|,|My| <= 1e-9 * M g",
+   "actual": "max 2.4e-15 (Fz 2.4e-11 N, Mx -2.2e-12, My -1.5e-11 N m)",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Equilibrium residuals [occupants_asymmetric]",
+   "tolerance": "|Fz|,|Mx|,|My| <= 1e-9 * M g",
+   "actual": "max 3.9e-15 (Fz 1.3e-11 N, Mx -3.0e-11, My -3.9e-11 N m)",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Deliberately symmetric load: heel and port/starboard float volumes",
+   "tolerance": "|heel| <= 1e-10 rad, |dV| <= 1e-12 m3",
+   "actual": "heel -1.1e-18 rad, max dV 2.8e-17 m3",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Equilibrium mesh convergence (fine vs finer)",
+   "tolerance": "|d draft| <= 5e-4 m, |d trim| <= 0.01 deg",
+   "actual": "d draft 7.8e-06 m, d trim 2.7e-04 deg",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "BEM panel-size convergence: default h=0.12 vs h=0.08 (A, B, F on 3 omegas)",
+   "tolerance": "<= 3 %",
+   "actual": "worst relative change 1.50 %",
+   "passed": true,
+   "detail": {
+    "A33": [
+     "0.60%",
+     "0.73%",
+     "0.66%"
+    ],
+    "B33": [
+     "0.40%",
+     "0.36%",
+     "0.52%"
+    ],
+    "A44": [
+     "0.85%",
+     "0.73%",
+     "1.47%"
+    ],
+    "A55": [
+     "0.25%",
+     "0.25%",
+     "0.36%"
+    ],
+    "F3_head0": [
+     "0.28%",
+     "0.37%",
+     "0.08%"
+    ],
+    "F4_beam": [
+     "0.29%",
+     "0.60%",
+     "0.30%"
+    ],
+    "F2_beam": [
+     "0.86%",
+     "0.87%",
+     "1.50%"
+    ],
+    "F5_head0": [
+     "0.48%",
+     "0.64%",
+     "0.86%"
+    ]
+   }
+  },
+  {
+   "name": "Frequency-grid resolution OUTSIDE gap-resonance bands (app default grid vs reference nodes)",
+   "tolerance": "<= 2 % (set at the BEM panel-convergence level)",
+   "actual": "max 1.414 %",
+   "passed": true,
+   "detail": [
+    {
+     "grid": "0.10 + 0.05 in bands (app default)",
+     "n_omega": 79,
+     "max_rel_err_outside_bands": {
+      "surge": 0.0076914705724002354,
+      "sway": 0.00016302710633184082,
+      "heave": 0.014137772694502003,
+      "roll": 0.0006638668380092913,
+      "pitch": 0.004920140802670479,
+      "yaw": 0.0004616587851868509
+     },
+     "max_rel_err_inside_bands": {
+      "surge": 0.0012414245454790977,
+      "sway": 0.012146093297861331,
+      "heave": 0.0016644482873715864,
+      "roll": 0.019248280564500845,
+      "pitch": 0.0009412071845622757,
+      "yaw": 0.010446785038315169
+     }
+    },
+    {
+     "grid": "0.10 only",
+     "n_omega": 56,
+     "max_rel_err_outside_bands": {
+      "surge": 0.014757139345635602,
+      "sway": 0.002297449135715261,
+      "heave": 0.0911739256484646,
+      "roll": 0.019784948208729343,
+      "pitch": 0.008709409964398522,
+      "yaw": 0.002178973866613002
+     },
+     "max_rel_err_inside_bands": {
+      "surge": 0.018082432074876732,
+      "sway": 0.3868812341253411,
+      "heave": 0.025296925826926726,
+      "roll": 0.3245208995240952,
+      "pitch": 0.03666356886700912,
+      "yaw": 0.5565253531904104
+     }
+    },
+    {
+     "grid": "0.20 only",
+     "n_omega": 28,
+     "max_rel_err_outside_bands": {
+      "surge": 0.35041636134828197,
+      "sway": 9.608888625143075,
+      "heave": 1.1001678729519364,
+      "roll": 24.589969541212085,
+      "pitch": 2.006913447912906,
+      "yaw": 25.9931447232455
+     },
+     "max_rel_err_inside_bands": {
+      "surge": 0.596758513729599,
+      "sway": 3.588373098489311,
+      "heave": 0.49533523312989175,
+      "roll": 6.285564236618775,
+      "pitch": 0.8055751814179974,
+      "yaw": 11.006472542146177
+     }
+    }
+   ]
+  },
+  {
+   "name": "Frequency-grid resolution INSIDE gap-resonance bands (app default grid)",
+   "tolerance": "reported, no acceptance: potential-flow resonances are sharp and physically over-predicted; results there are flagged in the UI",
+   "actual": "max 1.9 %",
+   "passed": true,
+   "detail": [
+    {
+     "grid": "0.10 + 0.05 in bands (app default)",
+     "n_omega": 79,
+     "max_rel_err_outside_bands": {
+      "surge": 0.0076914705724002354,
+      "sway": 0.00016302710633184082,
+      "heave": 0.014137772694502003,
+      "roll": 0.0006638668380092913,
+      "pitch": 0.004920140802670479,
+      "yaw": 0.0004616587851868509
+     },
+     "max_rel_err_inside_bands": {
+      "surge": 0.0012414245454790977,
+      "sway": 0.012146093297861331,
+      "heave": 0.0016644482873715864,
+      "roll": 0.019248280564500845,
+      "pitch": 0.0009412071845622757,
+      "yaw": 0.010446785038315169
+     }
+    },
+    {
+     "grid": "0.10 only",
+     "n_omega": 56,
+     "max_rel_err_outside_bands": {
+      "surge": 0.014757139345635602,
+      "sway": 0.002297449135715261,
+      "heave": 0.0911739256484646,
+      "roll": 0.019784948208729343,
+      "pitch": 0.008709409964398522,
+      "yaw": 0.002178973866613002
+     },
+     "max_rel_err_inside_bands": {
+      "surge": 0.018082432074876732,
+      "sway": 0.3868812341253411,
+      "heave": 0.025296925826926726,
+      "roll": 0.3245208995240952,
+      "pitch": 0.03666356886700912,
+      "yaw": 0.5565253531904104
+     }
+    },
+    {
+     "grid": "0.20 only",
+     "n_omega": 28,
+     "max_rel_err_outside_bands": {
+      "surge": 0.35041636134828197,
+      "sway": 9.608888625143075,
+      "heave": 1.1001678729519364,
+      "roll": 24.589969541212085,
+      "pitch": 2.006913447912906,
+      "yaw": 25.9931447232455
+     },
+     "max_rel_err_inside_bands": {
+      "surge": 0.596758513729599,
+      "sway": 3.588373098489311,
+      "heave": 0.49533523312989175,
+      "roll": 6.285564236618775,
+      "pitch": 0.8055751814179974,
+      "yaw": 11.006472542146177
+     }
+    }
+   ]
+  },
+  {
+   "name": "Heading interpolation fallback (30 deg grid) - informational, not used for results",
+   "tolerance": "reported only",
+   "actual": "err/peak by omega: w=1.0: 0.0%, w=2.0: 0.1%, w=3.0: 2.4%, w=4.5: 37.3%, w=6.0: 84.8%",
+   "passed": true,
+   "detail": [
+    {
+     "heading_step_deg": 45.0,
+     "n_headings": 8,
+     "max_err_rel_to_global_peak_by_omega": {
+      "1.0": 0.0003367981875385902,
+      "2.0": 0.009560552281923908,
+      "3.0": 0.15569940479243133,
+      "4.5": 0.8838765219964869,
+      "6.0": 0.9731215670013016
+     },
+     "wavelength_over_body_length": {
+      "1.0": 12.447878624778319,
+      "2.0": 3.1119696561945798,
+      "3.0": 1.3830976249753688,
+      "4.5": 0.6147100555446083,
+      "6.0": 0.3457744062438422
+     }
+    },
+    {
+     "heading_step_deg": 29.999999999999996,
+     "n_headings": 12,
+     "max_err_rel_to_global_peak_by_omega": {
+      "1.0": 7.422636757242923e-05,
+      "2.0": 0.0012607559061175648,
+      "3.0": 0.0241321634922781,
+      "4.5": 0.37302292800942044,
+      "6.0": 0.8480499630645789
+     },
+     "wavelength_over_body_length": {
+      "1.0": 12.447878624778319,
+      "2.0": 3.1119696561945798,
+      "3.0": 1.3830976249753688,
+      "4.5": 0.6147100555446083,
+      "6.0": 0.3457744062438422
+     }
+    }
+   ]
+  },
+  {
+   "name": "Time integration (RK4, fixed coefficients) vs frequency-domain solve",
+   "tolerance": "error decreases ~dt^4; <= 1e-4 at T/64",
+   "actual": "errors ['1.7e-01', '4.9e-03', '2.6e-04', '1.4e-05', '8.3e-07'], observed orders [5.1, 4.2, 4.2, 4.1]",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Boat hull proxy: closed, consistently oriented, volume invariant under subdivision (ruled surface)",
+   "tolerance": "closed; |dV/V| <= 1e-9",
+   "actual": "closed=True, consistent=True, V=22.4888 m3, |dV/V|=6.7e-16",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Boat alone: equilibrium residuals (2100 kg archival, proxy hull)",
+   "tolerance": "<= 1e-9 * M g",
+   "actual": "5.4e-12; draft 0.381 m, GM_T 3.14 m",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "EXO + boat coupled static equilibrium (buoyancy + weight + tension-only lines): residual and force consistency",
+   "tolerance": "residual <= 1e-8 Mg; EXO hydrostatic imbalance == -vertical line force",
+   "actual": "residual 2.9e-15, lines LINE_AFT_PORT 88 N, LINE_AFT_STBD 88 N, SPRING_PORT 43 N, SPRING_STBD 43 N, boat shift 7 mm, EXO hydrostatic Fz -125.6 N vs line Fz 125.6 N",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Line-spring stiffness: symmetric PSD, rigid translation/rotation of both bodies in its null space",
+   "tolerance": "<= 1e-9 (relative)",
+   "actual": "sym=True, min eig/max = -7.1e-17, null-space residual 8.1e-17",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Two-body BEM panel convergence: default (0.20/0.30 m) vs finer (0.15/0.22 m), omegas 1-3 rad/s",
+   "tolerance": "<= 8 % (reported; the 0.18 m hull-float gap is under-resolved by construction)",
+   "actual": "worst relative change 5.6 %",
+   "passed": true,
+   "detail": {
+    "A_exo_heave": [
+     "0.0%",
+     "0.3%",
+     "0.6%"
+    ],
+    "A_boat_heave": [
+     "0.7%",
+     "0.5%",
+     "1.6%"
+    ],
+    "A_couple_heave": [
+     "0.6%",
+     "1.7%",
+     "5.6%"
+    ],
+    "B_boat_roll": [
+     "0.9%",
+     "1.7%",
+     "3.7%"
+    ],
+    "F_boat_heave": [
+     "0.1%",
+     "0.4%",
+     "2.0%"
+    ],
+    "F_exo_roll": [
+     "0.0%",
+     "0.1%",
+     "0.5%"
+    ]
+   }
+  },
+  {
+   "name": "Two-body symmetric configuration: beam seas from +Y vs -Y give even heave / odd sway & roll on both bodies",
+   "tolerance": "<= 5e-3 (lid/clipped panels are not mirror-exact at 0.2-0.3 m)",
+   "actual": "heave 1.1e-03, sway/roll 1.1e-03",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Two-body (12 DOF) RK4 time integration vs frequency-domain amplitudes",
+   "tolerance": "decreasing, <= 1e-4 at T/64",
+   "actual": "errors ['3.6e-03', '2.0e-04', '1.3e-05']",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Propulsion (EXO pods 100 %, default lines): lines carry the boat's resistance",
+   "tolerance": "<= 1e-3 relative",
+   "actual": "line Fx on boat 868.8 N vs R_boat 868.8 N (rel 4.5e-05); U 2.79 m/s, trim -5.11 deg, aft lines slack ['LINE_AFT_PORT', 'LINE_AFT_STBD']",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Propulsion: four-lines-all-forward arrangement cannot carry the push without contact (no physical equilibrium, flagged)",
+   "tolerance": "physical=False: no equilibrium, or one only with the boat slid into the EXO structure (INTERFERENCE)",
+   "actual": "converged=True, physical=False, boat shift dx -851 mm, flags: ['INTERFERENCE: boat transom 0.79 m over the EXO rear deck plate']",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "Propulsion (EXO alone 50 %): equilibrium residual including the thrust/drag wrench",
+   "tolerance": "<= 1e-8 Mg",
+   "actual": "8.4e-13",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "name": "BEM computed about the CAD origin and moved to the COM (exact transform) vs direct solves about two COMs",
+   "tolerance": "<= 1e-9",
+   "actual": "1.4e-15",
+   "passed": true,
+   "detail": null
+  }
+ ],
+ "pytest": {
+  "summary": "84 passed in 96.62s (0:01:36)",
+  "returncode": 0
+ },
+ "buoyancy_tessellation_convergence": [
+  {
+   "n_circ": 16,
+   "n_axial": 4,
+   "n_cap": 4,
+   "triangles": 352,
+   "max_rel_err_volume": 0.016610247874147666,
+   "max_rel_err_waterplane_area": 0.029393252925596358
+  },
+  {
+   "n_circ": 32,
+   "n_axial": 6,
+   "n_cap": 8,
+   "triangles": 1344,
+   "max_rel_err_volume": 0.004283478847865507,
+   "max_rel_err_waterplane_area": 0.008223020889498
+  },
+  {
+   "n_circ": 64,
+   "n_axial": 12,
+   "n_cap": 16,
+   "triangles": 5504,
+   "max_rel_err_volume": 0.0011038925618922502,
+   "max_rel_err_waterplane_area": 0.0023364109741593753
+  },
+  {
+   "n_circ": 96,
+   "n_axial": 12,
+   "n_cap": 24,
+   "triangles": 11328,
+   "max_rel_err_volume": 0.0005015988343737288,
+   "max_rel_err_waterplane_area": 0.000540102454818836
+  },
+  {
+   "n_circ": 192,
+   "n_axial": 24,
+   "n_cap": 48,
+   "triangles": 45696,
+   "max_rel_err_volume": 0.00012912977745094256,
+   "max_rel_err_waterplane_area": 0.00014689433239856164
+  }
+ ],
+ "flofiz_float": {
+  "analytic_volume_m3": 0.40997784129346804,
+  "max_rel_err_volume": 7.383023315787884e-05
+ },
+ "equilibrium_residuals": {
+  "baseline_illustrative": {
+   "residual_relative": 1.0834421647375942e-15,
+   "Fz_N": 9.094947017729282e-12,
+   "Mx_Nm": 7.0698426862803024e-12,
+   "My_Nm": -3.806838369535548e-12,
+   "weight_N": 8394.4924,
+   "buoyancy_N": 8394.492400000008
+  },
+  "battery_relocated": {
+   "residual_relative": 2.137892666636538e-15,
+   "Fz_N": -3.637978807091713e-12,
+   "Mx_Nm": 1.7946523742096152e-11,
+   "My_Nm": 2.0393776979654718e-12,
+   "weight_N": 8394.4924,
+   "buoyancy_N": 8394.492399999996
+  },
+  "occupants_symmetric": {
+   "residual_relative": 2.373335513622037e-15,
+   "Fz_N": 2.3646862246096134e-11,
+   "Mx_Nm": -2.17533621116317e-12,
+   "My_Nm": -1.46835194253514e-11,
+   "weight_N": 9963.5564,
+   "buoyancy_N": 9963.556400000023
+  },
+  "occupants_asymmetric": {
+   "residual_relative": 3.875344926852251e-15,
+   "Fz_N": 1.2732925824820995e-11,
+   "Mx_Nm": -3.045470695628438e-11,
+   "My_Nm": -3.8612217748146274e-11,
+   "weight_N": 9963.5564,
+   "buoyancy_N": 9963.556400000012
+  }
+ },
+ "equilibrium_tessellation_convergence": [
+  {
+   "resolution": {
+    "n_circ": 24,
+    "n_axial": 4,
+    "n_cap": 6
+   },
+   "trim_deg": -3.8312115233692348,
+   "heel_deg": -0.17614822069437625,
+   "draft_max_m": 0.3761487430817908,
+   "lower_deck_freeboard_min_m": 0.16984109837410688,
+   "displaced_volume_m3": 0.8568568568568563
+  },
+  {
+   "resolution": {
+    "n_circ": 48,
+    "n_axial": 8,
+    "n_cap": 12
+   },
+   "trim_deg": -3.8266438262546902,
+   "heel_deg": -0.17603721429037444,
+   "draft_max_m": 0.3744690189408858,
+   "lower_deck_freeboard_min_m": 0.1702977251084199,
+   "displaced_volume_m3": 0.8568568568568575
+  },
+  {
+   "resolution": {
+    "n_circ": 96,
+    "n_axial": 16,
+    "n_cap": 24
+   },
+   "trim_deg": -3.8255414092611195,
+   "heel_deg": -0.17599631674030558,
+   "draft_max_m": 0.374051420920703,
+   "lower_deck_freeboard_min_m": 0.17041059412570558,
+   "displaced_volume_m3": 0.8568568568568581
+  },
+  {
+   "resolution": {
+    "n_circ": 192,
+    "n_axial": 32,
+    "n_cap": 48
+   },
+   "trim_deg": -3.8252668202063687,
+   "heel_deg": -0.17598717136769995,
+   "draft_max_m": 0.374043573600641,
+   "lower_deck_freeboard_min_m": 0.1704387525190929,
+   "displaced_volume_m3": 0.8568568568568558
+  }
+ ],
+ "bem_panel_convergence": {
+  "omegas": [
+   0.8,
+   2.0,
+   3.5
+  ],
+  "rows": [
+   {
+    "panel_size": 0.2,
+    "n_faces": 806,
+    "A33": [
+     3021.991039582068,
+     1563.4500544882678,
+     1259.6882198253843
+    ],
+    "B33": [
+     543.3953620392958,
+     3978.3670626534476,
+     2087.3202097111216
+    ],
+    "A44": [
+     8244.66092973265,
+     10065.03471430427,
+     6823.371761068385
+    ],
+    "A55": [
+     2796.5339657549885,
+     2755.5639834370813,
+     2138.2460805807423
+    ],
+    "F3_head0": [
+     43821.22961639045,
+     32819.731358226796,
+     3218.3827445933744
+    ],
+    "F4_beam": [
+     10627.858560868339,
+     43907.933258505705,
+     65165.76694801968
+    ],
+    "F2_beam": [
+     1005.1515153184299,
+     4134.693569802301,
+     12653.096578197965
+    ],
+    "F5_head0": [
+     22201.092420346384,
+     23414.017828148706,
+     19155.05528839745
+    ],
+    "rel_diff_to_finest": {
+     "A33": [
+      0.017604143234171366,
+      0.020263429998095273,
+      0.018583192832135387
+     ],
+     "B33": [
+      0.013402141453562555,
+      0.013721372206830784,
+      0.017779592784780585
+     ],
+     "A44": [
+      0.022404799494797345,
+      0.02080234248320334,
+      0.028899312058943805
+     ],
+     "A55": [
+      0.015024485759244977,
+      0.014944909467885514,
+      0.01917704520832686
+     ],
+     "F3_head0": [
+      0.002041237345306368,
+      0.00271264507415947,
+      0.013090145943761122
+     ],
+     "F4_beam": [
+      0.004228950291051192,
+      0.00925993666634628,
+      0.013378160494186497
+     ],
+     "F2_beam": [
+      0.02083127682049879,
+      0.021234078411131563,
+      0.035389966792473304
+     ],
+     "F5_head0": [
+      0.0063474793380640104,
+      0.010548078020820362,
+      0.009411633297986999
+     ]
+    }
+   },
+   {
+    "panel_size": 0.15,
+    "n_faces": 1056,
+    "A33": [
+     3021.1327930383954,
+     1563.690990096879,
+     1260.472418550415
+    ],
+    "B33": [
+     543.3153117993312,
+     3974.108711148352,
+     2071.8130303059415
+    ],
+    "A44": [
+     8241.12631280463,
+     10056.448531573498,
+     6874.751847731247
+    ],
+    "A55": [
+     2793.6455845477285,
+     2753.821597409129,
+     2134.415224138842
+    ],
+    "F3_head0": [
+     43820.73948423001,
+     32799.52502026849,
+     3186.7336797313155
+    ],
+    "F4_beam": [
+     10628.555207499541,
+     43918.25393186976,
+     64998.53629357941
+    ],
+    "F2_beam": [
+     1004.4859006040491,
+     4134.141888356922,
+     12627.718046322016
+    ],
+    "F5_head0": [
+     22201.85035691324,
+     23426.319559783264,
+     19149.12355407454
+    ],
+    "rel_diff_to_finest": {
+     "A33": [
+      0.01731514329098216,
+      0.0204206577840067,
+      0.01921729548435147
+     ],
+     "B33": [
+      0.01325285220622785,
+      0.012636308444965216,
+      0.010218275327681381
+     ],
+     "A44": [
+      0.0219664783385507,
+      0.019931526267129573,
+      0.036646938550962904
+     ],
+     "A55": [
+      0.0139761245787704,
+      0.014303143992640655,
+      0.017351099642691548
+     ],
+     "F3_head0": [
+      0.0020523993252107298,
+      0.0033266514813180548,
+      0.003127578317536406
+     ],
+     "F4_beam": [
+      0.004163678388601988,
+      0.009027060650020235,
+      0.010777594262685097
+     ],
+     "F2_beam": [
+      0.02015527891531055,
+      0.021097817795215024,
+      0.03331326745536756
+     ],
+     "F5_head0": [
+      0.006313556431663758,
+      0.010028219699244612,
+      0.009718388195123717
+     ]
+    }
+   },
+   {
+    "panel_size": 0.12,
+    "n_faces": 1527,
+    "A33": [
+     2987.6058125438667,
+     1543.5516465929188,
+     1244.921469197684
+    ],
+    "B33": [
+     538.3448890225043,
+     3938.493556282904,
+     2061.561888884928
+    ],
+    "A44": [
+     8132.3759271173085,
+     9931.912899900331,
+     6729.36189969181
+    ],
+    "A55": [
+     2762.1548950658653,
+     2721.844690327309,
+     2105.6063760850666
+    ],
+    "F3_head0": [
+     43787.910996406776,
+     32788.05344438142,
+     3174.204235853912
+    ],
+    "F4_beam": [
+     10642.500702244304,
+     44053.79721011165,
+     64500.640928912515
+    ],
+    "F2_beam": [
+     993.0858048500808,
+     4084.021735331007,
+     12404.302431899756
+    ],
+    "F5_head0": [
+     22234.941136887956,
+     23511.95427125571,
+     19170.02562652474
+    ],
+    "rel_diff_to_finest": {
+     "A33": [
+      0.006025502185334819,
+      0.007278289965940488,
+      0.006642806500505083
+     ],
+     "B33": [
+      0.003983290046067678,
+      0.003561267581973393,
+      0.0052198076788188
+     ],
+     "A44": [
+      0.008480548811399702,
+      0.007301041808499331,
+      0.014723522568914849
+     ],
+     "A55": [
+      0.002546325660199855,
+      0.00252522874251504,
+      0.003619604048261227
+     ],
+     "F3_head0": [
+      0.0028000158885681525,
+      0.003675236222868139,
+      0.0008164697133191678
+     ],
+     "F4_beam": [
+      0.0028570633389970457,
+      0.0059686576211370745,
+      0.0030349356185046528
+     ],
+     "F2_beam": [
+      0.008577348496817683,
+      0.008718567091107188,
+      0.015031395965019012
+     ],
+     "F5_head0": [
+      0.004832515034691287,
+      0.006409386294553232,
+      0.008637454232919395
+     ]
+    }
+   },
+   {
+    "panel_size": 0.1,
+    "n_faces": 2133,
+    "A33": [
+     2977.589738515088,
+     1537.236558849713,
+     1240.2057449799856
+    ],
+    "B33": [
+     537.1573680630856,
+     3933.0354459550736,
+     2059.938407015916
+    ],
+    "A44": [
+     8093.11090945188,
+     9894.623845674181,
+     6658.031975731637
+    ],
+    "A55": [
+     2758.173719319828,
+     2717.1220136702395,
+     2100.6417185930877
+    ],
+    "F3_head0": [
+     43853.67342416886,
+     32860.090080116126,
+     3173.67167080284
+    ],
+    "F4_beam": [
+     10656.704705103697,
+     44192.12584068747,
+     64476.45664453825
+    ],
+    "F2_beam": [
+     988.0864937622335,
+     4063.2071536617127,
+     12306.349148551784
+    ],
+    "F5_head0": [
+     22284.910980002613,
+     23582.432644674023,
+     19280.805627603164
+    ],
+    "rel_diff_to_finest": {
+     "A33": [
+      0.002652759415046946,
+      0.003157241734738303,
+      0.0028296745250031563
+     ],
+     "B33": [
+      0.0017686294741050546,
+      0.002170495186151866,
+      0.004428196162842735
+     ],
+     "A44": [
+      0.0036113682768057487,
+      0.003519161766998735,
+      0.0039676510933808196
+     ],
+     "A55": [
+      0.0011013259162944156,
+      0.0007857457688056346,
+      0.0012532417295836318
+     ],
+     "F3_head0": [
+      0.0013023812577481753,
+      0.0014862717512983403,
+      0.000984111801949461
+     ],
+     "F4_beam": [
+      0.00152622752138043,
+      0.002847405809745962,
+      0.0026588512607221837
+     ],
+     "F2_beam": [
+      0.003500051150841843,
+      0.0035775427879272126,
+      0.007015978856165006
+     ],
+     "F5_head0": [
+      0.00259601875658666,
+      0.00343104389520299,
+      0.002908555063518725
+     ]
+    }
+   },
+   {
+    "panel_size": 0.08,
+    "n_faces": 2990,
+    "A33": [
+     2969.7118075576136,
+     1532.3984066460039,
+     1236.706268756374
+    ],
+    "B33": [
+     536.2090129984159,
+     3924.5173000473515,
+     2050.8568107559863
+    ],
+    "A44": [
+     8063.988875841153,
+     9859.925173976455,
+     6631.719626106122
+    ],
+    "A55": [
+     2755.1394128814172,
+     2714.9887227689687,
+     2098.0124019018403
+    ],
+    "F3_head0": [
+     43910.86210798987,
+     32909.001799854675,
+     3176.797995202328
+    ],
+    "F4_beam": [
+     10672.994122468941,
+     44318.318077058255,
+     64305.47794343701
+    ],
+    "F2_beam": [
+     984.6402026876515,
+     4048.7226750552513,
+     12220.609609919145
+    ],
+    "F5_head0": [
+     22342.913602792258,
+     23663.623575882437,
+     19337.048497925312
+    ],
+    "rel_diff_to_finest": {
+     "A33": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B33": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "A44": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "A55": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "F3_head0": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "F4_beam": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "F2_beam": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "F5_head0": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   }
+  ]
+ },
+ "frequency_resolution": {
+  "reference": "0.05 rad/s everywhere + 0.025 rad/s inside gap-resonance bands",
+  "heading_deg": 60,
+  "gap_resonance_bands_rad_s": [
+   [
+    3.5500000000000003,
+    4.2
+   ],
+   [
+    4.35,
+    4.95
+   ],
+   [
+    5.1,
+    5.95
+   ]
+  ],
+  "rows": [
+   {
+    "grid": "0.10 + 0.05 in bands (app default)",
+    "n_omega": 79,
+    "max_rel_err_outside_bands": {
+     "surge": 0.0076914705724002354,
+     "sway": 0.00016302710633184082,
+     "heave": 0.014137772694502003,
+     "roll": 0.0006638668380092913,
+     "pitch": 0.004920140802670479,
+     "yaw": 0.0004616587851868509
+    },
+    "max_rel_err_inside_bands": {
+     "surge": 0.0012414245454790977,
+     "sway": 0.012146093297861331,
+     "heave": 0.0016644482873715864,
+     "roll": 0.019248280564500845,
+     "pitch": 0.0009412071845622757,
+     "yaw": 0.010446785038315169
+    }
+   },
+   {
+    "grid": "0.10 only",
+    "n_omega": 56,
+    "max_rel_err_outside_bands": {
+     "surge": 0.014757139345635602,
+     "sway": 0.002297449135715261,
+     "heave": 0.0911739256484646,
+     "roll": 0.019784948208729343,
+     "pitch": 0.008709409964398522,
+     "yaw": 0.002178973866613002
+    },
+    "max_rel_err_inside_bands": {
+     "surge": 0.018082432074876732,
+     "sway": 0.3868812341253411,
+     "heave": 0.025296925826926726,
+     "roll": 0.3245208995240952,
+     "pitch": 0.03666356886700912,
+     "yaw": 0.5565253531904104
+    }
+   },
+   {
+    "grid": "0.20 only",
+    "n_omega": 28,
+    "max_rel_err_outside_bands": {
+     "surge": 0.35041636134828197,
+     "sway": 9.608888625143075,
+     "heave": 1.1001678729519364,
+     "roll": 24.589969541212085,
+     "pitch": 2.006913447912906,
+     "yaw": 25.9931447232455
+    },
+    "max_rel_err_inside_bands": {
+     "surge": 0.596758513729599,
+     "sway": 3.588373098489311,
+     "heave": 0.49533523312989175,
+     "roll": 6.285564236618775,
+     "pitch": 0.8055751814179974,
+     "yaw": 11.006472542146177
+    }
+   }
+  ]
+ },
+ "natural_frequencies_illustrative": {
+  "bodies": {
+   "EXO": {
+    "uncoupled_roots": {
+     "heave": [
+      4.44445110892085,
+      4.485890175501351,
+      5.40425813379974
+     ],
+     "roll": [
+      4.680212320426552,
+      5.443110796897744,
+      5.87907079459388
+     ],
+     "pitch": [
+      4.131210569160021,
+      4.59672369597769,
+      4.669186545160271,
+      4.757996649470159,
+      5.060941122640735
+     ]
+    },
+    "T_uncoupled_s": {
+     "heave": [
+      1.4137145742402364,
+      1.4006551790977289,
+      1.162636045802992
+     ],
+     "roll": [
+      1.3425000570501768,
+      1.1543372056215786,
+      1.0687378204319824
+     ],
+     "pitch": [
+      1.5209065725393698,
+      1.3668833984251905,
+      1.345670224654499,
+      1.3205526968749062,
+      1.2415053158929263
+     ]
+    }
+   }
+  },
+  "coupled_roots": [
+   3.846565737265644,
+   4.679354485273484,
+   5.443235190999192,
+   5.501397921311949,
+   5.879362283860078
+  ],
+  "coupled_labels": [
+   "EXO pitch",
+   "EXO roll",
+   "EXO roll",
+   "EXO heave",
+   "EXO roll"
+  ],
+  "T_coupled_s": [
+   1.633453250599073,
+   1.3427461687191171,
+   1.154310825585732,
+   1.1421070420736261,
+   1.0686848341406134
+  ],
+  "band": [
+   0.5,
+   6.0
+  ],
+  "gap_resonance_bands_rad_s": [
+   [
+    3.525,
+    4.2
+   ],
+   [
+    4.35,
+    4.9750000000000005
+   ],
+   [
+    5.1,
+    5.95
+   ]
+  ],
+  "labels": [
+   "heave",
+   "roll",
+   "pitch"
+  ],
+  "uncoupled_roots": {
+   "heave": [
+    4.44445110892085,
+    4.485890175501351,
+    5.40425813379974
+   ],
+   "roll": [
+    4.680212320426552,
+    5.443110796897744,
+    5.87907079459388
+   ],
+   "pitch": [
+    4.131210569160021,
+    4.59672369597769,
+    4.669186545160271,
+    4.757996649470159,
+    5.060941122640735
+   ]
+  },
+  "omega_diag": [
+   4.44445110892085,
+   4.680212320426552,
+   4.131210569160021
+  ],
+  "T_diag_s": [
+   1.4137145742402364,
+   1.3425000570501768,
+   1.5209065725393698
+  ],
+  "note": "Undamped roots on the computed band (added mass evaluated at the root). Several roots per DOF can occur because potential-flow added mass varies sharply near the resonances of the water trapped between the float rows (and between the boat hull and the floats); those bands are listed. Real viscous damping, absent from the BEM, limits them."
+ },
+ "heading_interpolation": {
+  "note": "informational: the app uses exact headings; interpolation is a fallback only",
+  "rows": [
+   {
+    "heading_step_deg": 45.0,
+    "n_headings": 8,
+    "max_err_rel_to_global_peak_by_omega": {
+     "1.0": 0.0003367981875385902,
+     "2.0": 0.009560552281923908,
+     "3.0": 0.15569940479243133,
+     "4.5": 0.8838765219964869,
+     "6.0": 0.9731215670013016
+    },
+    "wavelength_over_body_length": {
+     "1.0": 12.447878624778319,
+     "2.0": 3.1119696561945798,
+     "3.0": 1.3830976249753688,
+     "4.5": 0.6147100555446083,
+     "6.0": 0.3457744062438422
+    }
+   },
+   {
+    "heading_step_deg": 29.999999999999996,
+    "n_headings": 12,
+    "max_err_rel_to_global_peak_by_omega": {
+     "1.0": 7.422636757242923e-05,
+     "2.0": 0.0012607559061175648,
+     "3.0": 0.0241321634922781,
+     "4.5": 0.37302292800942044,
+     "6.0": 0.8480499630645789
+    },
+    "wavelength_over_body_length": {
+     "1.0": 12.447878624778319,
+     "2.0": 3.1119696561945798,
+     "3.0": 1.3830976249753688,
+     "4.5": 0.6147100555446083,
+     "6.0": 0.3457744062438422
+    }
+   }
+  ]
+ },
+ "time_step_convergence": {
+  "omega": 1.5707963267948966,
+  "period_s": 4.0,
+  "results": [
+   {
+    "steps_per_period": 8,
+    "dt_s": 0.5,
+    "n_periods": 11,
+    "max_rel_amp_error": 0.16662906392716995,
+    "rel_error_by_dof": {
+     "surge": 0.021964846203592014,
+     "sway": 0.001317300600343236,
+     "heave": 0.04432884141563319,
+     "roll": 0.030693424267276052,
+     "pitch": 0.16662906392716995,
+     "yaw": 0.016049807315421803
+    }
+   },
+   {
+    "steps_per_period": 16,
+    "dt_s": 0.25,
+    "n_periods": 11,
+    "max_rel_amp_error": 0.004939080876685607,
+    "rel_error_by_dof": {
+     "surge": 0.0008543381220436056,
+     "sway": 7.24863955541938e-05,
+     "heave": 0.0022811908931473076,
+     "roll": 0.0019991970244702065,
+     "pitch": 0.004939080876685607,
+     "yaw": 0.0003915381526389778
+    }
+   },
+   {
+    "steps_per_period": 32,
+    "dt_s": 0.125,
+    "n_periods": 11,
+    "max_rel_amp_error": 0.0002602041920380819,
+    "rel_error_by_dof": {
+     "surge": 4.2457173657324926e-05,
+     "sway": 7.239013162009935e-06,
+     "heave": 0.0001311420091529998,
+     "roll": 0.00012284729392239788,
+     "pitch": 0.0002602041920380819,
+     "yaw": 1.1359136725521202e-05
+    }
+   },
+   {
+    "steps_per_period": 64,
+    "dt_s": 0.0625,
+    "n_periods": 11,
+    "max_rel_amp_error": 1.4363107669281642e-05,
+    "rel_error_by_dof": {
+     "surge": 2.3113660050501645e-06,
+     "sway": 5.137478798850002e-07,
+     "heave": 7.726690844888429e-06,
+     "roll": 7.476978407651906e-06,
+     "pitch": 1.4363107669281642e-05,
+     "yaw": 3.1503004034615576e-07
+    }
+   },
+   {
+    "steps_per_period": 128,
+    "dt_s": 0.03125,
+    "n_periods": 11,
+    "max_rel_amp_error": 8.311580990535727e-07,
+    "rel_error_by_dof": {
+     "surge": 1.3372405952496557e-07,
+     "sway": 3.361022355376583e-08,
+     "heave": 4.6628573435633465e-07,
+     "roll": 4.5860445720258123e-07,
+     "pitch": 8.311580990535727e-07,
+     "yaw": 7.714714910112528e-09
+    }
+   }
+  ],
+  "reference_amplitudes": {
+   "surge": 0.038663255792732124,
+   "sway": 0.07678463475801516,
+   "heave": 0.12667159889612725,
+   "roll": 0.030659794336531817,
+   "pitch": 0.006497743678415566,
+   "yaw": 0.005428162483395496
+  },
+  "observed_order": [
+   5.076253658684058,
+   4.24652648282168,
+   4.179204368576667,
+   4.1111011950851495
+  ]
+ },
+ "two_body_still_water": {
+  "boat": {
+   "id": "RENAUD8000",
+   "name": "Hydronaute (Renaud 8000) - reference reconstruction v1",
+   "mass": {
+    "total_listed_mass_kg": 2100.0,
+    "n_items": 1,
+    "missing_mass": [],
+    "missing_com": [],
+    "missing_inertia": [],
+    "total_mass_kg": 2100.0,
+    "com_m": [
+     3.6,
+     0.0,
+     0.35
+    ],
+    "inertia_com_kgm2": [
+     [
+      4543.810222837821,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      16152.094563490446,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      17046.23148612865
+     ]
+    ],
+    "by_item": [
+     {
+      "id": "RENAUD8000",
+      "category": "host_boat",
+      "mass_kg": 2100,
+      "com_m": [
+       3.6,
+       0.0,
+       0.35
+      ],
+      "com_status": "assumption",
+      "inertia_model": "shell_box",
+      "inertia_status": "assumption"
+     }
+    ],
+    "by_category_kg": {
+     "host_boat": 2100.0
+    }
+   },
+   "status": {
+    "equilibrium": "solved"
+   },
+   "not_computed": {},
+   "mass_note": "archival_light_weight_unverified (2.1 t on the archived sheet; Fluvial page says 3.0 t; current restored boat not weighed); alternatives [2100, 3000] kg. Not the measured current boat.",
+   "hull_note": "closed gull-wing envelope rebuilt from the package station table (same loft as its build_model.py); NOT a measured hull - no offsets exist. At the package's drawn waterline (z=0) it displaces ~4.9 m3, far more than the 2.1-3.0 t references: the proxy hull form and/or its waterline datum are not consistent.",
+   "placement": {
+    "x_m": 2.2,
+    "y_m": 0.0,
+    "yaw_deg": 0.0,
+    "confirmed": false,
+    "source": "modelling_assumption: boat stern 0.1 m forward of the EXO rear deck plate edge (x = 2.2 m), centred between the float rows; stern/aft cabin under the frame bays, bow 5.15 m beyond the end frame. Vertical position and attitude come from the boat's own flotation, never from this transform."
+   },
+   "buoyant_volume_total_m3": 22.488815324999987,
+   "level_keel_screening": {
+    "feasible": true,
+    "level_draft_m": 0.372635678786038,
+    "displaced_volume_m3": 2.102102102102102,
+    "waterplane_area_m2": 13.863790147473665,
+    "max_buoyant_mass_kg": 22466.326509674986,
+    "reserve_buoyancy_mass_kg": 20366.326509674986,
+    "reserve_fraction": 0.9065267746778429
+   },
+   "proxy_hull_at_drawn_waterline": {
+    "displaced_volume_m3": 4.870629673139497,
+    "equivalent_mass_kg": 4865.759043466358,
+    "note": "mass the proxy hull would need to float at the package's z=0 waterline; compare with the 2.1-3.0 t references -> hull form/datum consistency check"
+   },
+   "equilibrium": {
+    "feasible": true,
+    "heel_deg": -1.7532700658847562e-05,
+    "trim_deg": 0.3446589276625967,
+    "heel_rad": -3.06003353263469e-07,
+    "trim_rad": 0.006015433084105276,
+    "sign_convention": "boat frame: heel right-handed about +X (stern->bow), + = port side up; trim right-handed about +Y (port), + = bow down",
+    "com_height_above_waterline_m": 0.5059972917933916,
+    "displaced_volume_m3": 2.1149185135678463,
+    "displaced_mass_kg": 2112.8035950542785,
+    "centre_of_buoyancy_body_m": [
+     3.586283684718455,
+     1.781748960534106e-07,
+     -0.27960079133129334
+    ],
+    "centre_of_mass_body_m": [
+     3.6,
+     0.0,
+     0.35
+    ],
+    "residuals": {
+     "Fz_N": 125.56037543903949,
+     "Mx_Nm": -0.0003001235125262547,
+     "My_Nm": 362.6614298987766,
+     "weight_N": 20593.965,
+     "buoyancy_N": 20719.52537543904
+    },
+    "waterplane_area_m2": 13.914746027465963,
+    "draft_hull_proxy_m": 0.381205262829887,
+    "draft_note": "hull proxy only (keel excluded, +~0.22 m); catalogue draft 0.75 m incl. keel",
+    "deck_edge_freeboard_min_m": 0.9131306062895947,
+    "deck_edge_freeboards_m": [
+     0.9558399113698699,
+     0.9558407314440189,
+     0.9287705798447262,
+     0.9287714917182204,
+     0.9131306062895947,
+     0.9131314018839185
+    ],
+    "deck_edge_points_m": [
+     [
+      0.3,
+      1.34,
+      0.78
+     ],
+     [
+      0.3,
+      -1.34,
+      0.78
+     ],
+     [
+      4.8,
+      1.49,
+      0.78
+     ],
+     [
+      4.8,
+      -1.49,
+      0.78
+     ],
+     [
+      7.4,
+      1.3,
+      0.78
+     ],
+     [
+      7.4,
+      -1.3,
+      0.78
+     ]
+    ],
+    "waterline_z_in_boat_frame_m": null,
+    "solver": {
+     "n_evaluations": 4,
+     "newton_converged": true,
+     "residual_relative": 2.8527692895416483e-15
+    }
+   },
+   "stability_static": {
+    "C_hydrostatic_NmPerUnit": [
+     [
+      136320.58708611882,
+      -2.15366504773916,
+      512.908914733338
+     ],
+     [
+      -2.15366504773916,
+      65621.69736891561,
+      -27.744413286508674
+     ],
+     [
+      512.908914733338,
+      -27.744413286508674,
+      549472.4739559871
+     ]
+    ],
+    "GM_transverse_m": 3.1671428847836296,
+    "GM_longitudinal_m": 26.519549265705322,
+    "waterplane_area_m2": 13.914746027465963,
+    "eigenvalues_C": [
+     65621.69571420058,
+     136319.95039798462,
+     549473.1122988362
+    ],
+    "statically_stable_here": true,
+    "note": "GM from the analytic restoring matrix (waterplane integrals) about the COM at the solved attitude (about world X / Y axes)."
+   },
+   "flags": [],
+   "pose": {
+    "R_world": [
+     [
+      0.9999819073369629,
+      -1.6496618239290076e-08,
+      0.006015396805655479
+     ],
+     [
+      1.465562148152981e-08,
+      0.999999999999953,
+      3.0609151423717594e-07
+     ],
+     [
+      -0.006015396805660247,
+      -3.059978168479055e-07,
+      0.9999819073369162
+     ]
+    ],
+    "com_world": [
+     5.806682661714496,
+     -3.3309314190618193e-07,
+     0.5059972917933916
+    ],
+    "G_body": [
+     3.6,
+     0.0,
+     0.35
+    ],
+    "yaw_rad": 1.4655886645548397e-08
+   }
+  },
+  "clearances": {
+   "vertical_clearance_m": {
+    "exo_header_underside": 0.38286301158361136,
+    "exo_observation_deck_underside": 0.4586865939288587,
+    "exo_panel_underside": 0.829458491711411
+   },
+   "lateral_clearance_to_float_inner_face_m": {
+    "port": 0.18000035815925775,
+    "starboard": 0.17999961839188772,
+    "note": "boat topsides at the station half-beam vs the float proxy inner face, over the overlapping x-range"
+   },
+   "transom_to_rear_deck_plate_m": 0.06341861662925208,
+   "relative_levels_m": {
+    "exo_deck_datum_above_wl": 0.3192818324337575,
+    "boat_deck_above_wl": 0.9558403214069444
+   },
+   "flags": []
+  },
+  "lines": [
+   {
+    "id": "LINE_AFT_PORT",
+    "a_world": [
+     2.1459157996093787,
+     2.2499999986454577,
+     0.319281827880715
+    ],
+    "b_world": [
+     2.509449274619459,
+     1.2999997562844274,
+     0.9758395617565209
+    ],
+    "length_m": 1.210671345101987,
+    "unstretched_length_m": 1.2019085633159337,
+    "nominal_length_m": 1.2119085633159337,
+    "unit": [
+     0.300274287056374,
+     -0.7846887978347271,
+     0.5423088078627131
+    ],
+    "tension_N": 87.62781786053387,
+    "slack": false,
+    "pretension_N": 87.62781786053387,
+    "stiffness_N_per_m": 10000.0,
+    "vertical_component_N": 47.52133743955708,
+    "nominal_pretension_N": 100.0
+   },
+   {
+    "id": "LINE_AFT_STBD",
+    "a_world": [
+     2.1459157989878404,
+     -2.2500000013545423,
+     0.3192818369868001
+    ],
+    "b_world": [
+     2.5094493175106667,
+     -1.3000002437154505,
+     0.9758403573508446
+    ],
+    "length_m": 1.2106714043317215,
+    "unstretched_length_m": 1.2019085706452612,
+    "nominal_length_m": 1.2119085706452613,
+    "unit": [
+     0.3002743083070449,
+     0.7846883590708761,
+     0.542309430961127
+    ],
+    "tension_N": 87.62833686460247,
+    "slack": false,
+    "pretension_N": 87.62833686460247,
+    "stiffness_N_per_m": 10000.0,
+    "vertical_component_N": 47.52167350111252,
+    "nominal_pretension_N": 100.0
+   },
+   {
+    "id": "SPRING_PORT",
+    "a_world": [
+     4.98930013755614,
+     2.2499999986454577,
+     0.5133578612260452
+    ],
+    "b_world": [
+     4.2094185162674655,
+     1.3499997811989817,
+     0.9656133718870076
+    ],
+    "length_m": 1.2738723568516443,
+    "unstretched_length_m": 1.269574408269837,
+    "nominal_length_m": 1.279574408269837,
+    "unit": [
+     -0.6122133172087505,
+     -0.7065073769799138,
+     0.35502419707003047
+    ],
+    "tension_N": 42.9794858180732,
+    "slack": false,
+    "pretension_N": 42.9794858180732,
+    "stiffness_N_per_m": 10000.0,
+    "vertical_component_N": 15.2587574430442,
+    "nominal_pretension_N": 100.0
+   },
+   {
+    "id": "SPRING_STBD",
+    "a_world": [
+     4.9893001369346015,
+     -2.2500000013545423,
+     0.5133578703321302
+    ],
+    "b_world": [
+     4.209418560808334,
+     -1.3500002188008915,
+     0.965614198081113
+    ],
+    "length_m": 1.2738723120339828,
+    "unstretched_length_m": 1.2695744137282332,
+    "nominal_length_m": 1.2795744137282332,
+    "unit": [
+     -0.6122133032949243,
+     0.7065070604420529,
+     0.3550248509812325
+    ],
+    "tension_N": 42.97898305749559,
+    "slack": false,
+    "pretension_N": 42.97898305749559,
+    "stiffness_N_per_m": 10000.0,
+    "vertical_component_N": 15.258607055312288,
+    "nominal_pretension_N": 100.0
+   }
+  ]
+ },
+ "two_body_panel_convergence": {
+  "omegas": [
+   1.0,
+   2.0,
+   3.0
+  ],
+  "rows": [
+   {
+    "panels": [
+     0.25,
+     0.35
+    ],
+    "n_faces": 1513,
+    "A_exo_heave": [
+     2879.4545075525666,
+     2016.351069045964,
+     849.8100755108543
+    ],
+    "A_boat_heave": [
+     20191.11859752621,
+     14534.119705576204,
+     9936.908154062512
+    ],
+    "A_couple_heave": [
+     3402.0558413014073,
+     881.5629102759882,
+     -841.5773566554234
+    ],
+    "B_boat_roll": [
+     12.391189527433056,
+     843.0003825595923,
+     4100.265503463231
+    ],
+    "F_boat_heave": [
+     110808.78223372986,
+     83778.39156416642,
+     79997.95304456672
+    ],
+    "F_exo_roll": [
+     15938.918249846643,
+     42715.72776461194,
+     49533.51800230135
+    ],
+    "rel_diff_to_finest": {
+     "A_exo_heave": [
+      0.0004007268460559654,
+      0.003686459676765952,
+      0.021267180093296645
+     ],
+     "A_boat_heave": [
+      0.007371115672988093,
+      0.004991467961536378,
+      0.027216573036505598
+     ],
+     "A_couple_heave": [
+      0.006857150724919103,
+      0.02247692129086476,
+      0.09958789802262791
+     ],
+     "B_boat_roll": [
+      0.011777662345459738,
+      0.029531544186945924,
+      0.06262748370177151
+     ],
+     "F_boat_heave": [
+      0.0011687237531781136,
+      0.006825042701916306,
+      0.029454427062194144
+     ],
+     "F_exo_roll": [
+      0.0004477169011866122,
+      0.0018553918712532758,
+      0.008749279237780572
+     ]
+    }
+   },
+   {
+    "panels": [
+     0.2,
+     0.3
+    ],
+    "n_faces": 1699,
+    "A_exo_heave": [
+     2877.9201845959915,
+     2018.4335073449824,
+     862.7356708793794
+    ],
+    "A_boat_heave": [
+     20173.734248519308,
+     14537.193604037953,
+     10055.416641097057
+    ],
+    "A_couple_heave": [
+     3397.575893626728,
+     886.3132691084804,
+     -808.1349963686027
+    ],
+    "B_boat_roll": [
+     12.36161861519959,
+     833.1113209663627,
+     4001.9502198076193
+    ],
+    "F_boat_heave": [
+     110825.6751064963,
+     83530.53055362286,
+     79272.62794740814
+    ],
+    "F_exo_roll": [
+     15939.245506824876,
+     42740.97945388253,
+     49329.812323975595
+    ],
+    "rel_diff_to_finest": {
+     "A_exo_heave": [
+      0.00013233863455797135,
+      0.0026574913061035987,
+      0.0063806721916284115
+     ],
+     "A_boat_heave": [
+      0.006503779325586656,
+      0.005204018964969581,
+      0.015615067784130687
+     ],
+     "A_couple_heave": [
+      0.005531285553523446,
+      0.01720947487634039,
+      0.05589278864035774
+     ],
+     "B_boat_roll": [
+      0.009363108973746703,
+      0.01745432445695627,
+      0.03714803062924554
+     ],
+     "F_boat_heave": [
+      0.0010164512588446417,
+      0.003846319097112527,
+      0.020120574083315468
+     ],
+     "F_exo_roll": [
+      0.00042719414960301627,
+      0.0012653319844013744,
+      0.0046008164498518855
+     ]
+    }
+   },
+   {
+    "panels": [
+     0.15,
+     0.22
+    ],
+    "n_faces": 2437,
+    "A_exo_heave": [
+     2878.301095032755,
+     2023.8117695276924,
+     868.2758544787141
+    ],
+    "A_boat_heave": [
+     20043.37655049525,
+     14461.933428207434,
+     10214.923361801284
+    ],
+    "A_couple_heave": [
+     3378.886308600965,
+     901.8333474439632,
+     -765.3570561924327
+    ],
+    "B_boat_roll": [
+     12.246949096215793,
+     818.8193818046991,
+     3858.6104409604923
+    ],
+    "F_boat_heave": [
+     110938.43862208798,
+     83210.47650874742,
+     77709.07671246886
+    ],
+    "F_exo_roll": [
+     15946.057569327726,
+     42795.1295000155,
+     49103.89431923985
+    ],
+    "rel_diff_to_finest": {
+     "A_exo_heave": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "A_boat_heave": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "A_couple_heave": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "B_boat_roll": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "F_boat_heave": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "F_exo_roll": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   }
+  ]
+ },
+ "two_body_time_step": {
+  "omega": 2.0,
+  "period_s": 3.141592653589793,
+  "results": [
+   {
+    "steps_per_period": 16,
+    "dt_s": 0.19634954084936207,
+    "n_periods": 110159,
+    "max_rel_amp_error": 0.0036175461879784567,
+    "rel_error_by_dof": {
+     "EXO_surge": 0.0027387618171702084,
+     "EXO_sway": 1.2252351603013307e-05,
+     "EXO_heave": 0.002003128996486068,
+     "EXO_roll": 0.001344272162799065,
+     "EXO_pitch": 0.0003741798470097999,
+     "EXO_yaw": 0.0006185093457689296,
+     "BOAT_surge": 0.0004080437243376557,
+     "BOAT_sway": 9.34250680413523e-06,
+     "BOAT_heave": 0.0009874783572156323,
+     "BOAT_roll": 0.0008759542572058234,
+     "BOAT_pitch": 0.0036175461879784567,
+     "BOAT_yaw": 0.0001769802746403468
+    }
+   },
+   {
+    "steps_per_period": 32,
+    "dt_s": 0.09817477042468103,
+    "n_periods": 110159,
+    "max_rel_amp_error": 0.0001968037883417997,
+    "rel_error_by_dof": {
+     "EXO_surge": 0.0001968037883417997,
+     "EXO_sway": 2.71925129193306e-06,
+     "EXO_heave": 0.00010090731631976098,
+     "EXO_roll": 8.213625844198515e-05,
+     "EXO_pitch": 2.3172995462206522e-05,
+     "EXO_yaw": 4.11130314919589e-05,
+     "BOAT_surge": 3.0542289455768877e-05,
+     "BOAT_sway": 2.542146577157316e-06,
+     "BOAT_heave": 5.650371946890156e-05,
+     "BOAT_roll": 5.650930054704792e-05,
+     "BOAT_pitch": 0.0001362280698706049,
+     "BOAT_yaw": 9.117274664546462e-06
+    }
+   },
+   {
+    "steps_per_period": 64,
+    "dt_s": 0.04908738521234052,
+    "n_periods": 110159,
+    "max_rel_amp_error": 1.280797578887666e-05,
+    "rel_error_by_dof": {
+     "EXO_surge": 1.280797578887666e-05,
+     "EXO_sway": 2.1426376860780651e-07,
+     "EXO_heave": 5.5516833891325585e-06,
+     "EXO_roll": 5.0042814281035155e-06,
+     "EXO_pitch": 1.5180062825310336e-06,
+     "EXO_yaw": 2.611489126687717e-06,
+     "BOAT_surge": 2.032613689082439e-06,
+     "BOAT_sway": 2.1093016558149673e-07,
+     "BOAT_heave": 3.350557615422076e-06,
+     "BOAT_roll": 3.540836896109049e-06,
+     "BOAT_pitch": 5.992512280417548e-06,
+     "BOAT_yaw": 5.233980350240624e-07
+    }
+   }
+  ],
+  "reference_amplitudes": {
+   "EXO_surge": 0.006978407605353293,
+   "EXO_sway": 0.07997149206714044,
+   "EXO_heave": 0.07533839760060902,
+   "EXO_roll": 0.04814863888678048,
+   "EXO_pitch": 0.011704661879247971,
+   "EXO_yaw": 0.011476143619459507,
+   "BOAT_surge": 0.010846818768997188,
+   "BOAT_sway": 0.09938946701948538,
+   "BOAT_heave": 0.09080112854395374,
+   "BOAT_roll": 0.05620251857422248,
+   "BOAT_pitch": 0.0016581034176800123,
+   "BOAT_yaw": 0.005048340845867506
+  }
+ },
+ "two_body_example_wave": {
+  "H": 0.3,
+  "T": 2.5,
+  "heading_deg": 90,
+  "bodies": {
+   "EXO": {
+    "amplitude": {
+     "surge": 0.01687940787108218,
+     "sway": 0.044997915242884205,
+     "heave": 0.047835901139416805,
+     "roll": 0.07541578235601597,
+     "pitch": 0.004659153849178119,
+     "yaw": 0.011858376051903822
+    },
+    "amplitude_deg": {
+     "roll": 4.321006037676895,
+     "pitch": 0.2669498516600384,
+     "yaw": 0.679434899653097
+    }
+   },
+   "BOAT": {
+    "amplitude": {
+     "surge": 0.009068877288968219,
+     "sway": 0.12500116181589016,
+     "heave": 0.10743950174088272,
+     "roll": 0.17395649649985373,
+     "pitch": 0.00679806814723688,
+     "yaw": 0.007148023462159116
+    },
+    "amplitude_deg": {
+     "roll": 9.966973068323895,
+     "pitch": 0.3895006136789923,
+     "yaw": 0.4095515762422081
+    }
+   }
+  },
+  "lines": [
+   {
+    "id": "LINE_AFT_PORT",
+    "pretension_N": 87.62781786053387,
+    "dynamic_tension_amp_N": 335.0310104316923,
+    "tension_mean_N": 87.62781786053387,
+    "tension_amp_N": 335.0310104316923,
+    "min_N": 0.0,
+    "max_N": 422.6588282922262,
+    "slack_in_cycle": true,
+    "slack_at_rest": false,
+    "relative_stretch_amp_m": 0.03350310104316923,
+    "transverse_rel_motion_amp_m": 0.08569299700597222,
+    "goes_slack": true
+   },
+   {
+    "id": "LINE_AFT_STBD",
+    "pretension_N": 87.62833686460247,
+    "dynamic_tension_amp_N": 221.51475797047067,
+    "tension_mean_N": 87.62833686460247,
+    "tension_amp_N": 221.51475797047067,
+    "min_N": 0.0,
+    "max_N": 309.14309483507316,
+    "slack_in_cycle": true,
+    "slack_at_rest": false,
+    "relative_stretch_amp_m": 0.022151475797047068,
+    "transverse_rel_motion_amp_m": 0.12499633044072907,
+    "goes_slack": true
+   },
+   {
+    "id": "SPRING_PORT",
+    "pretension_N": 42.9794858180732,
+    "dynamic_tension_amp_N": 228.90978574002276,
+    "tension_mean_N": 42.9794858180732,
+    "tension_amp_N": 228.90978574002276,
+    "min_N": 0.0,
+    "max_N": 271.88927155809597,
+    "slack_in_cycle": true,
+    "slack_at_rest": false,
+    "relative_stretch_amp_m": 0.022890978574002276,
+    "transverse_rel_motion_amp_m": 0.1041356383679183,
+    "goes_slack": true
+   },
+   {
+    "id": "SPRING_STBD",
+    "pretension_N": 42.97898305749559,
+    "dynamic_tension_amp_N": 118.17261132683278,
+    "tension_mean_N": 42.97898305749559,
+    "tension_amp_N": 118.17261132683278,
+    "min_N": 0.0,
+    "max_N": 161.15159438432838,
+    "slack_in_cycle": true,
+    "slack_at_rest": false,
+    "relative_stretch_amp_m": 0.011817261132683278,
+    "transverse_rel_motion_amp_m": 0.1535939695195188,
+    "goes_slack": true
+   }
+  ],
+  "flags": [
+   [
+    "warn",
+    "line LINE_AFT_PORT: dynamic tension amplitude 335 N exceeds the pretension 88 N -> the line would go slack and snatch (nonlinear, not modelled)"
+   ],
+   [
+    "warn",
+    "line LINE_AFT_STBD: dynamic tension amplitude 222 N exceeds the pretension 88 N -> the line would go slack and snatch (nonlinear, not modelled)"
+   ],
+   [
+    "warn",
+    "line SPRING_PORT: dynamic tension amplitude 229 N exceeds the pretension 43 N -> the line would go slack and snatch (nonlinear, not modelled)"
+   ],
+   [
+    "warn",
+    "line SPRING_STBD: dynamic tension amplitude 118 N exceeds the pretension 43 N -> the line would go slack and snatch (nonlinear, not modelled)"
+   ],
+   [
+    "warn",
+    "relative motion at hull_vs_float_port_x3.4: 0.12 m of a 0.18 m clearance"
+   ],
+   [
+    "warn",
+    "relative motion at hull_vs_float_starboard_x3.4: 0.12 m of a 0.18 m clearance"
+   ],
+   [
+    "info",
+    "two-body result: the 0.19 m gap between the boat hull and the floats is under-resolved by the BEM panels and its viscous dissipation is not modelled; treat gap-resonance periods as indicative only"
+   ]
+  ]
+ },
+ "propulsion_push_100": {
+  "speed_m_s": 2.7895934182610116,
+  "thrust_horizontal_N": 1211.1263841506604,
+  "R_exo_N": 342.3518702326786,
+  "R_boat_N": 868.7745142366557,
+  "line_force_on_boat_x_N": 868.8135592989412,
+  "lines": [
+   [
+    "LINE_AFT_PORT",
+    0.0,
+    true
+   ],
+   [
+    "LINE_AFT_STBD",
+    0.0,
+    true
+   ],
+   [
+    "SPRING_PORT",
+    644.3391010036104,
+    false
+   ],
+   [
+    "SPRING_STBD",
+    642.4620492015864,
+    false
+   ]
+  ],
+  "trim_deg": -5.110857651517834,
+  "net_external": {
+   "Fx_N": 0.03904504115291729,
+   "Fy_N": 0.0,
+   "note": "net in-plane external force on the two-body system (must be ~0 for a steady state)"
+  }
+ },
+ "reference_point_transform_max_rel_err": 1.407038639330076e-15,
+ "all_checks_passed": true,
+ "seconds": 824.3317902088165
+}

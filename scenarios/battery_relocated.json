@@ -1,0 +1,28 @@
+{
+ "schema": "exo01_scenario_v1",
+ "name": "battery_relocated",
+ "title": "Batteries moved aft on the rear deck (x 1.425 -> 0.60 m), still at the side rails",
+ "base": "illustrative",
+ "overrides": {
+  "components": {
+   "BATTERY_1": {
+    "com_m": [
+     0.6,
+     -2.05,
+     0.5
+    ]
+   },
+   "BATTERY_2": {
+    "com_m": [
+     0.6,
+     2.05,
+     0.5
+    ]
+   }
+  },
+  "host_boat": {
+   "included": false
+  }
+ },
+ "notes": "ILLUSTRATIVE scenario on the exploratory configuration; masses/positions are examples, not data. Footprint x 0.325-0.875 m stays on the 2.1 m deck; cleat/pod bracket clearance not checked."
+}

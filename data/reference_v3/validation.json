@@ -1,0 +1,16 @@
+{
+  "invalid_shapes": [],
+  "solid_count": 190,
+  "total_listed_mass_kg": 840,
+  "component_count": 16,
+  "mesh_count": 190,
+  "vertex_count": 38664,
+  "triangle_count": 12888,
+  "glb_bytes": 1066400,
+  "frame_length_mm": 4950,
+  "frame_width_mm": 4547,
+  "frame_height_above_deck_mm": 2700,
+  "unresolved_dimension_difference_mm": 30,
+  "mass_positions_confirmed": false,
+  "centre_of_gravity_computed": false
+}

@@ -1,0 +1,1466 @@
+{
+ "schema": "exo01_config_v1",
+ "name": "illustrative",
+ "title": "EXO-01 illustrative (EXO-only) - assumed geometry and mass distribution",
+ "mode": "exploratory",
+ "result_label": "Exploratory \u2014 assumed geometry and mass distribution.",
+ "reference_revision": "v3",
+ "provenance_key": {
+  "user_reported": "value supplied by the user (2026-10-28 mass list / annotation)",
+  "drawing_dimension": "dimension transcribed from La Mutine sheet 1/3 (raster)",
+  "modelling_assumption": "assumed to run a calculation; NOT measured",
+  "missing_input": "unknown - kept null in the baseline configuration",
+  "illustrative": "example value for demonstration only"
+ },
+ "drawing_dimensions": {
+  "frame_length_m": 4.95,
+  "drawing_overall_length_m": 4.98,
+  "unresolved_length_difference_m": 0.03,
+  "frame_width_m": 4.547,
+  "frame_height_above_deck_m": 2.7,
+  "top_frame_z_m": 2.7,
+  "observation_surface_z_m": 2.2,
+  "observation_drop_below_top_frame_m": 0.5,
+  "lower_deck_top_z_m": 0.0,
+  "section_lengths_m": [
+   2.1,
+   1.425,
+   1.425
+  ],
+  "clearances_m": {
+   "clear_height_end_view": 2.1,
+   "ladder_width": 0.6,
+   "end_view_dimension_3200": 3.2,
+   "top_view_dimension_3353": 3.353
+  },
+  "source": "drawing_dimension (30 mm and 3200/3353 inconsistencies preserved, not resolved)"
+ },
+ "environment": {
+  "rho_kg_m3": 999.0,
+  "g_m_s2": 9.80665,
+  "water_depth_m": 3.0,
+  "note": "ILLUSTRATIVE: fresh water (river Erdre, ~999 kg/m3 at 15 degC) and an ASSUMED 3.0 m depth (typical Erdre channel near Nantes is 2-4 m; measure at the berth - finite depth changes added mass and wavelength for T > ~2 s). Blank depth = infinite."
+ },
+ "components": [
+  {
+   "id": "EXO_REAR_150",
+   "name": "Rear deck section",
+   "category": "structure",
+   "mass_kg": 150,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    1.05,
+    0.0,
+    0.38
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "shell_box",
+    "dims_m": [
+     2.1,
+     4.547,
+     0.76
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": null,
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "inferred_from_drawing",
+   "com_note": "ASSUMED COM at centre of the deck/rail envelope (deck plate Z=0, rails to ~0.76 m); inertia: thin-walled box"
+  },
+  {
+   "id": "EXO_MIDDLE_70",
+   "name": "Middle frame / upper observation deck",
+   "category": "structure",
+   "mass_kg": 70,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    2.8125,
+    0.0,
+    1.35
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "shell_box",
+    "dims_m": [
+     1.425,
+     4.547,
+     2.7
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": null,
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "inferred_from_drawing",
+   "com_note": "ASSUMED COM at mid-height of the 2.7 m bay envelope; inertia: thin-walled box"
+  },
+  {
+   "id": "EXO_END_70",
+   "name": "End frame section",
+   "category": "structure",
+   "mass_kg": 70,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    4.2375,
+    0.0,
+    1.35
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "shell_box",
+    "dims_m": [
+     1.425,
+     4.547,
+     2.7
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": null,
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "inferred_from_drawing",
+   "com_note": "ASSUMED COM at mid-height of the 2.7 m bay envelope; inertia: thin-walled box"
+  },
+  {
+   "id": "FLOAT_NEG_Y_1",
+   "name": "Float \u2212Y / section 1",
+   "category": "float",
+   "mass_kg": 30,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    1.45,
+    -1.97,
+    -0.3
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "cylinder_shell_x",
+    "dims_m": [
+     1.6,
+     0.3
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    1.3,
+    -1.97,
+    -0.29
+   ],
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "inferred_from_drawing",
+   "com_note": "ASSUMED at the centre of the float's cylindrical body (uniform shell)"
+  },
+  {
+   "id": "FLOAT_NEG_Y_2",
+   "name": "Float \u2212Y / section 2",
+   "category": "float",
+   "mass_kg": 30,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    2.77,
+    -1.97,
+    -0.3
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "cylinder_shell_x",
+    "dims_m": [
+     1.6,
+     0.3
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    2.8125,
+    -1.97,
+    -0.29
+   ],
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "inferred_from_drawing",
+   "com_note": "ASSUMED at the centre of the float's cylindrical body (uniform shell)"
+  },
+  {
+   "id": "FLOAT_NEG_Y_3",
+   "name": "Float \u2212Y / section 3",
+   "category": "float",
+   "mass_kg": 30,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    4.39,
+    -1.97,
+    -0.3
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "cylinder_shell_x",
+    "dims_m": [
+     1.6,
+     0.3
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    4.3125,
+    -1.97,
+    -0.29
+   ],
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "inferred_from_drawing",
+   "com_note": "ASSUMED at the centre of the float's cylindrical body (uniform shell)"
+  },
+  {
+   "id": "FLOAT_POS_Y_1",
+   "name": "Float +Y / section 1",
+   "category": "float",
+   "mass_kg": 30,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    1.45,
+    1.97,
+    -0.3
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "cylinder_shell_x",
+    "dims_m": [
+     1.6,
+     0.3
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    1.3,
+    1.97,
+    -0.29
+   ],
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "inferred_from_drawing",
+   "com_note": "ASSUMED at the centre of the float's cylindrical body (uniform shell)"
+  },
+  {
+   "id": "FLOAT_POS_Y_2",
+   "name": "Float +Y / section 2",
+   "category": "float",
+   "mass_kg": 30,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    2.77,
+    1.97,
+    -0.3
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "cylinder_shell_x",
+    "dims_m": [
+     1.6,
+     0.3
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    2.8125,
+    1.97,
+    -0.29
+   ],
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "inferred_from_drawing",
+   "com_note": "ASSUMED at the centre of the float's cylindrical body (uniform shell)"
+  },
+  {
+   "id": "FLOAT_POS_Y_3",
+   "name": "Float +Y / section 3",
+   "category": "float",
+   "mass_kg": 30,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    4.39,
+    1.97,
+    -0.3
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "cylinder_shell_x",
+    "dims_m": [
+     1.6,
+     0.3
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    4.3125,
+    1.97,
+    -0.29
+   ],
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "inferred_from_drawing",
+   "com_note": "ASSUMED at the centre of the float's cylindrical body (uniform shell)"
+  },
+  {
+   "id": "SOLAR_1",
+   "name": "Solar panel 1",
+   "category": "solar",
+   "mass_kg": 20,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    4.555,
+    -1.720125,
+    2.74
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "solid_box",
+    "dims_m": [
+     2.06,
+     1.10675,
+     0.04
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    4.555,
+    -1.720125,
+    2.74
+   ],
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "layout_from_user_exact_position_provisional",
+   "com_note": "ASSUMED at the preview anchor (panel centre); horizontal, tilt not confirmed"
+  },
+  {
+   "id": "SOLAR_2",
+   "name": "Solar panel 2",
+   "category": "solar",
+   "mass_kg": 20,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    4.555,
+    -0.573375,
+    2.74
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "solid_box",
+    "dims_m": [
+     2.06,
+     1.10675,
+     0.04
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    4.555,
+    -0.573375,
+    2.74
+   ],
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "layout_from_user_exact_position_provisional",
+   "com_note": "ASSUMED at the preview anchor (panel centre); horizontal, tilt not confirmed"
+  },
+  {
+   "id": "SOLAR_3",
+   "name": "Solar panel 3",
+   "category": "solar",
+   "mass_kg": 20,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    4.555,
+    0.573375,
+    2.74
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "solid_box",
+    "dims_m": [
+     2.06,
+     1.10675,
+     0.04
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    4.555,
+    0.573375,
+    2.74
+   ],
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "layout_from_user_exact_position_provisional",
+   "com_note": "ASSUMED at the preview anchor (panel centre); horizontal, tilt not confirmed"
+  },
+  {
+   "id": "SOLAR_4",
+   "name": "Solar panel 4",
+   "category": "solar",
+   "mass_kg": 20,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    4.555,
+    1.720125,
+    2.74
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "solid_box",
+    "dims_m": [
+     2.06,
+     1.10675,
+     0.04
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    4.555,
+    1.720125,
+    2.74
+   ],
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "layout_from_user_exact_position_provisional",
+   "com_note": "ASSUMED at the preview anchor (panel centre); horizontal, tilt not confirmed"
+  },
+  {
+   "id": "BATTERY_1",
+   "name": "Battery 1",
+   "category": "battery",
+   "mass_kg": 120,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    1.425,
+    -2.05,
+    0.5
+   ],
+   "com_source": "user_statement+assumption",
+   "inertia": {
+    "model": "solid_box",
+    "dims_m": [
+     0.55,
+     0.3,
+     1.0
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    0.76,
+    -1.05,
+    0.25
+   ],
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "provisional_not_confirmed",
+   "com_note": "Elven 28/10/2026: two Dyness PowerBrick Plus standing upright, one strapped to each side rail, mirrored; footprint x 1.15-1.70 m, |y| 1.90-2.20 m, 1.0 m tall (drawn size, not a datasheet); COM ASSUMED at mid-height"
+  },
+  {
+   "id": "BATTERY_2",
+   "name": "Battery 2",
+   "category": "battery",
+   "mass_kg": 120,
+   "mass_source": "user_reported",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    1.425,
+    2.05,
+    0.5
+   ],
+   "com_source": "user_statement+assumption",
+   "inertia": {
+    "model": "solid_box",
+    "dims_m": [
+     0.55,
+     0.3,
+     1.0
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    0.76,
+    1.05,
+    0.25
+   ],
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "provisional_not_confirmed",
+   "com_note": "Elven 28/10/2026: two Dyness PowerBrick Plus standing upright, one strapped to each side rail, mirrored; footprint x 1.15-1.70 m, |y| 1.90-2.20 m, 1.0 m tall (drawn size, not a datasheet); COM ASSUMED at mid-height"
+  },
+  {
+   "id": "ELECTRONICS_50",
+   "name": "Electronics and miscellaneous equipment",
+   "category": "electronics",
+   "mass_kg": 50,
+   "mass_source": "user_estimate",
+   "mass_note": "Count this parent once; child meshes have no additional mass",
+   "com_m": [
+    1.73,
+    1.08,
+    0.5
+   ],
+   "com_source": "user_statement+assumption",
+   "inertia": {
+    "model": "solid_box",
+    "dims_m": [
+     0.46,
+     0.92,
+     1.0
+    ],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    1.6,
+    -0.95,
+    0.95
+   ],
+   "geometry_status": "raster_reconstruction_proxy",
+   "location_status": "provisional_not_confirmed",
+   "com_note": "Elven 28/10/2026: electrical cabinet on the port side of the rear deck, back against the frame, opening aft; footprint x 1.50-1.96 m, y 0.62-1.54 m, 1.0 m tall; COM ASSUMED at mid-height"
+  },
+  {
+   "id": "POD_STBD",
+   "name": "RDT POD 5.0 rim drive (starboard)",
+   "category": "propulsion",
+   "mass_kg": 8.0,
+   "mass_source": "assumption",
+   "mass_note": "ASSUMED 8 kg: 5 kg motor (datasheet, in air) + 3 kg bracket/shaft/cable; NOT in the 840 kg register",
+   "com_m": [
+    0.34,
+    -1.97,
+    -0.44
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "point",
+    "dims_m": [],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    0.34,
+    -1.97,
+    -0.44
+   ],
+   "geometry_status": "user_statement",
+   "location_status": "user_statement",
+   "register": false,
+   "location_note": "Elven 28/10/2026: two POD 5.0 at the back, behind each float row; hub 0.44 m below the deck datum ASSUMED",
+   "com_note": "at the pod hub (Elven 28/10: aft of each float row; depth ASSUMED)"
+  },
+  {
+   "id": "POD_PORT",
+   "name": "RDT POD 5.0 rim drive (port)",
+   "category": "propulsion",
+   "mass_kg": 8.0,
+   "mass_source": "assumption",
+   "mass_note": "ASSUMED 8 kg: 5 kg motor (datasheet, in air) + 3 kg bracket/shaft/cable; NOT in the 840 kg register",
+   "com_m": [
+    0.34,
+    1.97,
+    -0.44
+   ],
+   "com_source": "assumption",
+   "inertia": {
+    "model": "point",
+    "dims_m": [],
+    "source": "assumption"
+   },
+   "preview_anchor_m": [
+    0.34,
+    1.97,
+    -0.44
+   ],
+   "geometry_status": "user_statement",
+   "location_status": "user_statement",
+   "register": false,
+   "location_note": "Elven 28/10/2026: two POD 5.0 at the back, behind each float row; hub 0.44 m below the deck datum ASSUMED",
+   "com_note": "at the pod hub (Elven 28/10: aft of each float row; depth ASSUMED)"
+  }
+ ],
+ "buoyant_surfaces": [
+  {
+   "id": "FLOAT_NEG_Y_1",
+   "component_id": "FLOAT_NEG_Y_1",
+   "type": "flofiz_x",
+   "flat_end_x_m": 2.1,
+   "nose_dir": -1,
+   "y_m": -1.97,
+   "z_axis_m": -0.3,
+   "diameter_m": 0.6,
+   "body_length_m": 1.3,
+   "nose_length_m": 0.3,
+   "x_span_m": [
+    0.5,
+    2.1
+   ],
+   "centre_m": [
+    1.45,
+    -1.97,
+    -0.3
+   ],
+   "length_m": 1.6,
+   "radius_m": 0.3,
+   "source": "Flofiz 1.60 m x D0.60 m float (component list 2026-09-12; dimensions 'approximate' per flofiz.com); y from the GLB proxies (+-1.97 m); x placed end to end from the rear float's drawn position (GLB proxies are 1.6/1.425/1.575 m long, the real floats 1.60 m each); top at Z=0 as drawn. NOT a measured displacement surface: installed positions, fill and the top channel are unverified.",
+   "verified": false
+  },
+  {
+   "id": "FLOAT_NEG_Y_2",
+   "component_id": "FLOAT_NEG_Y_2",
+   "type": "flofiz_x",
+   "flat_end_x_m": 2.12,
+   "nose_dir": 1,
+   "y_m": -1.97,
+   "z_axis_m": -0.3,
+   "diameter_m": 0.6,
+   "body_length_m": 1.3,
+   "nose_length_m": 0.3,
+   "x_span_m": [
+    2.12,
+    3.72
+   ],
+   "centre_m": [
+    2.77,
+    -1.97,
+    -0.3
+   ],
+   "length_m": 1.6,
+   "radius_m": 0.3,
+   "source": "Flofiz 1.60 m x D0.60 m float (component list 2026-09-12; dimensions 'approximate' per flofiz.com); y from the GLB proxies (+-1.97 m); x placed end to end from the rear float's drawn position (GLB proxies are 1.6/1.425/1.575 m long, the real floats 1.60 m each); top at Z=0 as drawn. NOT a measured displacement surface: installed positions, fill and the top channel are unverified.",
+   "verified": false
+  },
+  {
+   "id": "FLOAT_NEG_Y_3",
+   "component_id": "FLOAT_NEG_Y_3",
+   "type": "flofiz_x",
+   "flat_end_x_m": 3.74,
+   "nose_dir": 1,
+   "y_m": -1.97,
+   "z_axis_m": -0.3,
+   "diameter_m": 0.6,
+   "body_length_m": 1.3,
+   "nose_length_m": 0.3,
+   "x_span_m": [
+    3.74,
+    5.34
+   ],
+   "centre_m": [
+    4.39,
+    -1.97,
+    -0.3
+   ],
+   "length_m": 1.6,
+   "radius_m": 0.3,
+   "source": "Flofiz 1.60 m x D0.60 m float (component list 2026-09-12; dimensions 'approximate' per flofiz.com); y from the GLB proxies (+-1.97 m); x placed end to end from the rear float's drawn position (GLB proxies are 1.6/1.425/1.575 m long, the real floats 1.60 m each); top at Z=0 as drawn. NOT a measured displacement surface: installed positions, fill and the top channel are unverified.",
+   "verified": false
+  },
+  {
+   "id": "FLOAT_POS_Y_1",
+   "component_id": "FLOAT_POS_Y_1",
+   "type": "flofiz_x",
+   "flat_end_x_m": 2.1,
+   "nose_dir": -1,
+   "y_m": 1.97,
+   "z_axis_m": -0.3,
+   "diameter_m": 0.6,
+   "body_length_m": 1.3,
+   "nose_length_m": 0.3,
+   "x_span_m": [
+    0.5,
+    2.1
+   ],
+   "centre_m": [
+    1.45,
+    1.97,
+    -0.3
+   ],
+   "length_m": 1.6,
+   "radius_m": 0.3,
+   "source": "Flofiz 1.60 m x D0.60 m float (component list 2026-09-12; dimensions 'approximate' per flofiz.com); y from the GLB proxies (+-1.97 m); x placed end to end from the rear float's drawn position (GLB proxies are 1.6/1.425/1.575 m long, the real floats 1.60 m each); top at Z=0 as drawn. NOT a measured displacement surface: installed positions, fill and the top channel are unverified.",
+   "verified": false
+  },
+  {
+   "id": "FLOAT_POS_Y_2",
+   "component_id": "FLOAT_POS_Y_2",
+   "type": "flofiz_x",
+   "flat_end_x_m": 2.12,
+   "nose_dir": 1,
+   "y_m": 1.97,
+   "z_axis_m": -0.3,
+   "diameter_m": 0.6,
+   "body_length_m": 1.3,
+   "nose_length_m": 0.3,
+   "x_span_m": [
+    2.12,
+    3.72
+   ],
+   "centre_m": [
+    2.77,
+    1.97,
+    -0.3
+   ],
+   "length_m": 1.6,
+   "radius_m": 0.3,
+   "source": "Flofiz 1.60 m x D0.60 m float (component list 2026-09-12; dimensions 'approximate' per flofiz.com); y from the GLB proxies (+-1.97 m); x placed end to end from the rear float's drawn position (GLB proxies are 1.6/1.425/1.575 m long, the real floats 1.60 m each); top at Z=0 as drawn. NOT a measured displacement surface: installed positions, fill and the top channel are unverified.",
+   "verified": false
+  },
+  {
+   "id": "FLOAT_POS_Y_3",
+   "component_id": "FLOAT_POS_Y_3",
+   "type": "flofiz_x",
+   "flat_end_x_m": 3.74,
+   "nose_dir": 1,
+   "y_m": 1.97,
+   "z_axis_m": -0.3,
+   "diameter_m": 0.6,
+   "body_length_m": 1.3,
+   "nose_length_m": 0.3,
+   "x_span_m": [
+    3.74,
+    5.34
+   ],
+   "centre_m": [
+    4.39,
+    1.97,
+    -0.3
+   ],
+   "length_m": 1.6,
+   "radius_m": 0.3,
+   "source": "Flofiz 1.60 m x D0.60 m float (component list 2026-09-12; dimensions 'approximate' per flofiz.com); y from the GLB proxies (+-1.97 m); x placed end to end from the rear float's drawn position (GLB proxies are 1.6/1.425/1.575 m long, the real floats 1.60 m each); top at Z=0 as drawn. NOT a measured displacement surface: installed positions, fill and the top channel are unverified.",
+   "verified": false
+  }
+ ],
+ "people": [],
+ "standing_surfaces": {
+  "lower_deck": {
+   "z_m": 0.0,
+   "x_range_m": [
+    0.0,
+    2.1
+   ],
+   "y_range_m": [
+    -2.2735,
+    2.2735
+   ],
+   "source": "GLB deck_plate_proxy bounds (rear deck plate, top at Z=0)"
+  },
+  "observation_deck": {
+   "z_m": 2.2,
+   "x_range_m": [
+    2.1,
+    3.525
+   ],
+   "y_range_m": [
+    -2.2485,
+    2.2485
+   ],
+   "source": "GLB upper_observation_deck_proxy bounds; Z=2.200 m (user: ~0.5 m below top frame)"
+  }
+ },
+ "freeboard_points": {
+  "lower_deck_corners": [
+   [
+    0.0,
+    -2.2735,
+    0.0
+   ],
+   [
+    0.0,
+    2.2735,
+    0.0
+   ],
+   [
+    2.1,
+    -2.2735,
+    0.0
+   ],
+   [
+    2.1,
+    2.2735,
+    0.0
+   ]
+  ],
+  "frame_footprint_corners_deck_datum": [
+   [
+    0.0,
+    -2.2735,
+    0.0
+   ],
+   [
+    0.0,
+    2.2735,
+    0.0
+   ],
+   [
+    4.95,
+    -2.2735,
+    0.0
+   ],
+   [
+    4.95,
+    2.2735,
+    0.0
+   ]
+  ],
+  "observation_deck_centre": [
+   2.8125,
+   0.0,
+   2.2
+  ]
+ },
+ "deck_acceleration_points": {
+  "observation_deck_centre": [
+   2.8125,
+   0.0,
+   2.2
+  ],
+  "observation_deck_corner_aft_port": [
+   2.1,
+   -2.2485,
+   2.2
+  ],
+  "observation_deck_corner_aft_stbd": [
+   2.1,
+   2.2485,
+   2.2
+  ],
+  "observation_deck_corner_fwd_port": [
+   3.525,
+   -2.2485,
+   2.2
+  ],
+  "observation_deck_corner_fwd_stbd": [
+   3.525,
+   2.2485,
+   2.2
+  ]
+ },
+ "host_boat": {
+  "included": true,
+  "id": "RENAUD8000",
+  "name": "Hydronaute (Renaud 8000) - reference reconstruction v1",
+  "reference_package": "data/renaud8000_v1",
+  "frame": "boat CAD: X stern -> bow, Y to port, Z up; Z = 0 is the package's illustrative catalogue waterline (not an equilibrium)",
+  "mass_kg": 2100,
+  "mass_source": "archival_light_weight_unverified (2.1 t on the archived sheet; Fluvial page says 3.0 t; current restored boat not weighed)",
+  "mass_alternatives_kg": [
+   2100,
+   3000
+  ],
+  "com_m": [
+   3.6,
+   0.0,
+   0.35
+  ],
+  "com_source": "assumption",
+  "inertia": {
+   "model": "shell_box",
+   "dims_m": [
+    8.0,
+    2.98,
+    2.3
+   ],
+   "source": "assumption"
+  },
+  "buoyant_surface": {
+   "id": "RENAUD8000_HULL_PROXY",
+   "type": "renaud8000_hull_proxy",
+   "stations_mm": [
+    [
+     0,
+     1340,
+     0
+    ],
+    [
+     250,
+     1480,
+     0
+    ],
+    [
+     1200,
+     1490,
+     0
+    ],
+    [
+     2800,
+     1490,
+     0
+    ],
+    [
+     4800,
+     1490,
+     0
+    ],
+    [
+     6200,
+     1490,
+     20
+    ],
+    [
+     6900,
+     1450,
+     100
+    ],
+    [
+     7400,
+     1300,
+     220
+    ],
+    [
+     7750,
+     930,
+     370
+    ],
+    [
+     7950,
+     430,
+     550
+    ],
+    [
+     8000,
+     60,
+     670
+    ]
+   ],
+   "topside_top_mm": 780,
+   "keel_excluded": true,
+   "verified": false,
+   "source": "closed gull-wing envelope rebuilt from the package station table (same loft as its build_model.py); NOT a measured hull - no offsets exist. At the package's drawn waterline (z=0) it displaces ~4.9 m3, far more than the 2.1-3.0 t references: the proxy hull form and/or its waterline datum are not consistent."
+  },
+  "placement_in_exo_frame": {
+   "x_m": 2.2,
+   "y_m": 0.0,
+   "yaw_deg": 0.0,
+   "confirmed": false,
+   "source": "modelling_assumption: boat stern 0.1 m forward of the EXO rear deck plate edge (x = 2.2 m), centred between the float rows; stern/aft cabin under the frame bays, bow 5.15 m beyond the end frame. Vertical position and attitude come from the boat's own flotation, never from this transform."
+  },
+  "standing_surfaces": {
+   "boat_aft_deck": {
+    "z_m": 0.78,
+    "x_range_m": [
+     0.05,
+     0.45
+    ],
+    "y_range_m": [
+     -1.3,
+     1.3
+    ],
+    "source": "package deck level 0.78 m; aft deck strip"
+   },
+   "boat_forward_terrace": {
+    "z_m": 0.49,
+    "x_range_m": [
+     6.3,
+     7.7
+    ],
+    "y_range_m": [
+     -1.2,
+     1.2
+    ],
+    "source": "package front well floor 0.49 m"
+   },
+   "boat_roof": {
+    "z_m": 2.28,
+    "x_range_m": [
+     3.4,
+     6.2
+    ],
+    "y_range_m": [
+     -1.1,
+     1.1
+    ],
+    "source": "package roof level (stepped roof); walking on it is an assumption"
+   }
+  },
+  "people": [],
+  "lines": [
+   {
+    "id": "LINE_AFT_PORT",
+    "exo_point_m": [
+     2.1,
+     2.25,
+     0.0
+    ],
+    "boat_point_m": [
+     0.3,
+     1.3,
+     0.8
+    ]
+   },
+   {
+    "id": "LINE_AFT_STBD",
+    "exo_point_m": [
+     2.1,
+     -2.25,
+     0.0
+    ],
+    "boat_point_m": [
+     0.3,
+     -1.3,
+     0.8
+    ]
+   },
+   {
+    "id": "SPRING_PORT",
+    "exo_point_m": [
+     4.95,
+     2.25,
+     0.0
+    ],
+    "boat_point_m": [
+     2.0,
+     1.35,
+     0.8
+    ]
+   },
+   {
+    "id": "SPRING_STBD",
+    "exo_point_m": [
+     4.95,
+     -2.25,
+     0.0
+    ],
+    "boat_point_m": [
+     2.0,
+     -1.35,
+     0.8
+    ]
+   }
+  ],
+  "line_presets": [
+   {
+    "id": "simulator_default",
+    "title": "Aft breasts + backward springs (v0.3 default)",
+    "note": "EXO aft posts -> stern cleats, EXO forward posts -> midship cleats aft of them: balanced at rest, the springs can carry a forward push",
+    "lines": [
+     {
+      "id": "LINE_AFT_PORT",
+      "exo_point_m": [
+       2.1,
+       2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       0.3,
+       1.3,
+       0.8
+      ]
+     },
+     {
+      "id": "LINE_AFT_STBD",
+      "exo_point_m": [
+       2.1,
+       -2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       0.3,
+       -1.3,
+       0.8
+      ]
+     },
+     {
+      "id": "SPRING_PORT",
+      "exo_point_m": [
+       4.95,
+       2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       2.0,
+       1.35,
+       0.8
+      ]
+     },
+     {
+      "id": "SPRING_STBD",
+      "exo_point_m": [
+       4.95,
+       -2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       2.0,
+       -1.35,
+       0.8
+      ]
+     }
+    ]
+   },
+   {
+    "id": "figure_all_forward",
+    "title": "Four lines all running forward (anatomy figure, 28/10)",
+    "note": "EXO x 2.18 and 4.87 -> boat cleats forward of each (stern x 0.30, midship x 4.30): holds the boat against a tow or braking only; cannot transmit a forward push from the pods (all lines go slack)",
+    "lines": [
+     {
+      "id": "AFT_PORT",
+      "exo_point_m": [
+       2.18,
+       2.19,
+       0.11
+      ],
+      "boat_point_m": [
+       0.3,
+       1.3,
+       0.83
+      ]
+     },
+     {
+      "id": "AFT_STBD",
+      "exo_point_m": [
+       2.18,
+       -2.19,
+       0.11
+      ],
+      "boat_point_m": [
+       0.3,
+       -1.3,
+       0.83
+      ]
+     },
+     {
+      "id": "FWD_PORT",
+      "exo_point_m": [
+       4.87,
+       2.19,
+       0.11
+      ],
+      "boat_point_m": [
+       4.3,
+       1.35,
+       0.8
+      ]
+     },
+     {
+      "id": "FWD_STBD",
+      "exo_point_m": [
+       4.87,
+       -2.19,
+       0.11
+      ],
+      "boat_point_m": [
+       4.3,
+       -1.35,
+       0.8
+      ]
+     }
+    ]
+   },
+   {
+    "id": "push_springs_long",
+    "title": "Long push springs + forward breasts",
+    "note": "EXO forward posts -> stern cleats (long, mostly longitudinal: carry the pods' push efficiently) and EXO aft posts -> midship cleats forward (carry a tow/brake and restrain yaw)",
+    "lines": [
+     {
+      "id": "PUSH_PORT",
+      "exo_point_m": [
+       4.95,
+       2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       0.3,
+       1.3,
+       0.8
+      ]
+     },
+     {
+      "id": "PUSH_STBD",
+      "exo_point_m": [
+       4.95,
+       -2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       0.3,
+       -1.3,
+       0.8
+      ]
+     },
+     {
+      "id": "TOW_PORT",
+      "exo_point_m": [
+       2.1,
+       2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       4.3,
+       1.35,
+       0.8
+      ]
+     },
+     {
+      "id": "TOW_STBD",
+      "exo_point_m": [
+       2.1,
+       -2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       4.3,
+       -1.35,
+       0.8
+      ]
+     }
+    ]
+   },
+   {
+    "id": "six_lines",
+    "title": "Six lines: breasts + push springs + tow springs",
+    "note": "breasts at the stern cleats from the aft posts, long push springs from the forward posts to the stern cleats, tow springs from the aft posts to the midship cleats",
+    "lines": [
+     {
+      "id": "BREAST_PORT",
+      "exo_point_m": [
+       2.1,
+       2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       0.3,
+       1.3,
+       0.8
+      ]
+     },
+     {
+      "id": "BREAST_STBD",
+      "exo_point_m": [
+       2.1,
+       -2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       0.3,
+       -1.3,
+       0.8
+      ]
+     },
+     {
+      "id": "PUSH_PORT",
+      "exo_point_m": [
+       4.95,
+       2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       0.3,
+       1.3,
+       0.8
+      ]
+     },
+     {
+      "id": "PUSH_STBD",
+      "exo_point_m": [
+       4.95,
+       -2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       0.3,
+       -1.3,
+       0.8
+      ]
+     },
+     {
+      "id": "TOW_PORT",
+      "exo_point_m": [
+       2.1,
+       2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       4.3,
+       1.35,
+       0.8
+      ]
+     },
+     {
+      "id": "TOW_STBD",
+      "exo_point_m": [
+       2.1,
+       -2.25,
+       0.0
+      ],
+      "boat_point_m": [
+       4.3,
+       -1.35,
+       0.8
+      ]
+     }
+    ]
+   }
+  ],
+  "lines_note": "assumed arrangement: two aft breast lines (EXO aft posts -> stern cleats, pulling the boat slightly aft) and two springs (EXO forward posts -> midship cleats aft of them, pulling the boat forward) so that the horizontal line forces can balance; attachment points are not measured",
+  "line_defaults": {
+   "pretension_N": 100.0,
+   "stiffness_N_per_m": 10000.0,
+   "source": "modelling_assumption: 'slightly tense' lines = linear springs about a small pretension. A bare taut 10-12 mm polyester line of 1-2 m is ~5-10x stiffer and goes slack in compression (nonlinear, not modelled); the response flags when the dynamic tension amplitude exceeds the pretension."
+  },
+  "clearance_reference": {
+   "exo_header_underside_z_m": 2.1,
+   "exo_observation_deck_underside_z_m": 2.176,
+   "exo_panel_underside_z_m": 2.72,
+   "exo_float_inner_face_y_m": 1.67,
+   "exo_rear_deck_plate_x_range_m": [
+    0.0,
+    2.1
+   ],
+   "boat_cabin_stations_mm": [
+    [
+     460,
+     1320,
+     1780
+    ],
+    [
+     650,
+     1340,
+     1910
+    ],
+    [
+     2600,
+     1340,
+     1910
+    ],
+    [
+     2950,
+     1340,
+     1910
+    ],
+    [
+     3320,
+     1340,
+     2280
+    ],
+    [
+     5800,
+     1310,
+     2280
+    ],
+    [
+     6240,
+     1250,
+     2180
+    ]
+   ],
+   "boat_half_beam_m": 1.49,
+   "boat_deck_z_m": 0.78
+  },
+  "notes": [
+   "The boat and the EXO are two separate floating bodies; each has its own still-water equilibrium.",
+   "Still water: coupled equilibrium of both bodies with tension-only line springs (L0 = L_nominal - T0/k): the boat shifts/yaws from the nominal berth until the line forces balance; equilibrium tensions (possibly slack) feed the wave model.",
+   "Wave response: both bodies in one Capytaine problem (hydrodynamic interaction included), 12 DOF, lines as linear springs."
+  ],
+  "com_note": "ASSUMED: 45% of the length from the stern (engine aft), on the centreline, 0.35 m above the package datum (~0.9 m above the hull bottom; cabin raises the light-ship COM)"
+ },
+ "propulsion": {
+  "units": {
+   "EXO_PODS": {
+    "title": "2 x Rim Drive Technology POD 5.0 (EXO, aft of each float row)",
+    "body": "EXO",
+    "bollard_thrust_N": 1216.0,
+    "thrust_source": "component list 2026-09-12: 62 kgf each (5 kW, 48 V, 106 A); 5 kg in air (geo-matching.com)",
+    "thrust_points_m": [
+     [
+      0.34,
+      -1.97,
+      -0.44
+     ],
+     [
+      0.34,
+      1.97,
+      -0.44
+     ]
+    ],
+    "direction_body": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "position_source": "Elven 28/10/2026 (anatomy figure): just aft of the rear floats, in line with each row; hub depth 0.44 m ASSUMED"
+   },
+   "BOAT_ENGINE": {
+    "title": "Hydronaute inboard (Volvo 19 CV, archival)",
+    "body": "BOAT",
+    "bollard_thrust_N": 1500.0,
+    "thrust_source": "19 CV from the archival sheet; bollard thrust UNKNOWN - 1500 N is an ORDER-OF-MAGNITUDE assumption for a ~14 kW inboard, not a datasheet value",
+    "thrust_points_m": [
+     [
+      0.5,
+      0.0,
+      -0.45
+     ]
+    ],
+    "direction_body": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "position_source": "ASSUMED propeller 0.5 m forward of the transom, 0.45 m below the package datum"
+   }
+  },
+  "thrust_model": {
+   "type": "constant_bollard",
+   "note": "thrust = fraction x bollard thrust, independent of speed (optimistic at speed: a rim drive's thrust falls with advance speed)"
+  },
+  "resistance": {
+   "nu_m2_s": 1.14e-06,
+   "rho_note": "water density from environment",
+   "exo": {
+    "form_factor_k": 0.3,
+    "pressure_drag_cd": 0.15,
+    "note": "per float row: ITTC-57 friction on the wetted area x (1+k) + Cd x submerged frontal area of one float for the nose/flat-end junctions and gaps (ASSUMED coefficients; the flat-to-flat junction of the rear and middle floats and the nose-to-flat junction of the middle and end floats are not resolved)"
+   },
+   "boat": {
+    "form_factor_k": 0.25,
+    "appendage_factor": 1.15,
+    "residuary_c_at_fr02": 0.0015,
+    "residuary_exponent": 4.0,
+    "note": "ITTC-57 friction on the proxy hull's wetted area x (1+k) x appendages (keel, rudder, propeller) + residuary C_R = c (Fr/0.2)^n on the wetted area (ASSUMED; the proxy hull is not the real hull)"
+   },
+   "drag_points": "EXO: resultant at the centroid of the submerged float volume (world); boat: at its centre of buoyancy"
+  },
+  "label": "QUASI-STATIC: steady state, thrust = total resistance, no wave-added resistance, wind or current; line loads are what the arrangement must carry to push/tow the other body"
+ },
+ "visual_overrides": {
+  "hidden_subparts": [
+   "walkway_-1",
+   "walkway_1",
+   "base_crossmember_end",
+   "EXO_END_70/longeron_-1_2675",
+   "EXO_END_70/longeron_1_2675"
+  ],
+  "reason": "User corrections 2026-10-28: (1) the two longitudinal walkway plates drawn in the middle and end bays do not exist; (2) the two transverse base members crossing the gap between the float rows at deck level (x = 3.5 m and 4.95 m) do not exist either - they are the only members that intersect the berthed Hydronaute; (3) 18:21: the top side rails of the end (panel) bay do not exist. Names may be qualified by section (SECTION/name) when the same name occurs in several sections. The space between the float rows is open so the boat can be berthed inside the frame.",
+  "mass_effect": "none - section masses are user-reported totals, never derived from the visual envelopes",
+  "buoyancy_effect": "none - only the six floats are buoyant surfaces"
+ },
+ "host_boat_berth": {
+  "clear_width_between_float_proxies_m": 3.34,
+  "note": "2 x 1.67 m (inner faces of the D 0.60 m Flofiz floats at y = +-1.97 m; 3.3616 m with the D 0.58 m GLB proxies). Close to the 3353 mm top-view dimension of the drawing: HYPOTHESIS that this dimension is the clear berth width - not confirmed.",
+  "status": "hypothesis"
+ },
+ "pending_loads": {
+  "observation_deck_surface_mass_kg": null,
+  "included_in_middle_section": "unconfirmed",
+  "people": null,
+  "host_boat": null,
+  "propulsion_payload_other": null
+ },
+ "missing_inputs": [
+  "float displacement geometry (cross-section, length, end shape, installed position, buoyant volume)",
+  "installed centre of mass of every component (esp. vertical) and installed battery/electronics positions",
+  "confirmation of mass accounting (do 150/70 kg section masses exclude floats and equipment?)",
+  "observation-deck surface mass (included in the 70 kg middle section or not)",
+  "complete operating displacement: host boat, people, payload, propulsion and other unlisted loads",
+  "host boat mass, buoyancy, COM and connection to the EXO structure",
+  "occupant count, masses, postures and positions on the lower/observation deck",
+  "component inertia data; structural mass distribution",
+  "float-to-frame connection stiffness (rigid-connection is assumed)",
+  "viscous damping (roll/heave/pitch); water depth and wave climate at the site",
+  "resolution of the 4.980 m (drawing) vs 4.950 m (section chain) overall-length discrepancy",
+  "Hydronaute (host boat) berth: clear width/length required inside the frame, docking position, connection stiffness"
+ ],
+ "rigid_connection_assumption": "the six floats and the frame move as ONE rigid body (no joint compliance)",
+ "host_boat_note": "Host boat included as a SECOND BODY with assumed mass distribution and a proxy hull; set host_boat.included=false for the EXO-only case (the built-in scenarios cover both)."
+}

@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "component_counts": {
+    "structure": 3,
+    "float": 6,
+    "solar": 4,
+    "battery": 2,
+    "electronics": 1
+  },
+  "total_listed_mass_kg": 840,
+  "glb_mass_metadata_matches_json": true,
+  "mass_double_counting_check": "passed",
+  "STEP_readback_valid": true,
+  "STEP_solid_count": 190,
+  "GLB_and_STEP_bounds_match_within_mm": 3,
+  "model_bounds_cad_m": {
+    "minimum": [
+      0.0,
+      -2.2765,
+      -0.58
+    ],
+    "maximum": [
+      5.585,
+      2.2765,
+      2.7635
+    ]
+  },
+  "centre_of_gravity_deliberately_unknown": true,
+  "wave_and_hydrostatic_results_absent": true,
+  "observation_deck_clear_of_solar_panels": true,
+  "observation_surface_z_m": 2.200000047683716,
+  "observation_drop_below_top_frame_m": 0.5,
+  "solar_side_overhang_m": 0,
+  "solar_front_only_overhang_verified": true,
+  "solar_layout": "four panels in one transverse row",
+  "observation_deck_mass_coverage_and_occupant_load_unknown": true,
+  "engineering_validation": "Not performed; geometry and mass-register integrity only."
+}

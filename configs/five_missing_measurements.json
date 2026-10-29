@@ -1,0 +1,27 @@
+[
+ {
+  "rank": 1,
+  "item": "Float installed positions and section (Flofiz 1.60 x D0.60 m per the component list: x of each float on the frame, height of the float axis under the deck datum, lateral spacing, moulded channel, fill)",
+  "why": "Buoyancy, draft, waterplane inertia and hydrodynamics all come from this one surface. Roll stiffness scales with the square of the lateral spacing, and the drawing gives 3200 mm (end view) and 3353 mm (top view) clearances that do not both match the proxy spacing."
+ },
+ {
+  "rank": 2,
+  "item": "Installed centre of mass of every component, especially vertical (structure sections, batteries, electronics, panels), and inertia distribution",
+  "why": "Heel/trim at rest come from the horizontal offset COM-COB; KG enters every restoring term; inertia sets natural periods."
+ },
+ {
+  "rank": 3,
+  "item": "Mass accounting and total operating displacement (do section masses exclude floats/equipment? deck-surface mass? propulsion, payload, cabling, fluids)",
+  "why": "The 840 kg is a listed subtotal. Draft scales directly with displacement; double counting or omissions shift every result."
+ },
+ {
+  "rank": 4,
+  "item": "Host boat (if attached): mass, buoyancy geometry, COM, cleat positions and the connection to the EXO frame (line material/length/pretension); the pods' thrust-vs-speed curve for the push/tow cases",
+  "why": "The combined vessel is a different floating body; the EXO-only results here say nothing about it."
+ },
+ {
+  "rank": 5,
+  "item": "Operational loads and environment: occupants (number, mass, posture, positions), water depth, wave climate, and measured roll/heave/pitch damping (decay test)",
+  "why": "People on the observation deck at ~2.2 m move the COM and load the structure; response near resonance is governed by damping that linear potential theory does not provide."
+ }
+]

@@ -1,0 +1,3344 @@
+{
+ "target": "battery",
+ "label": "Exploratory \u2014 assumed geometry and mass distribution.",
+ "rows": [
+  {
+   "candidate": {
+    "x_m": 0.3,
+    "y_stbd_m": 1.3,
+    "y_port_m": 1.3,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.3,
+       -1.3,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.3,
+       1.3,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.2122801604063245,
+   "trim_deg": -6.553365981327478,
+   "draft_m": 0.4570230045959539,
+   "deck_freeboard_min_m": 0.04688907219420868,
+   "float_top_freeboard_min_m": 0.2877826495975857,
+   "GM_T_m": 17.300167236008967,
+   "GM_L_m": 5.965467327042387,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 1.981238317757009,
+   "flags": [],
+   "line_min_N": 37.21451123248176,
+   "line_max_N": 86.18800475906019,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 5.8625072445420985,
+   "pitch_amp_deg": 3.229508759956107,
+   "heave_amp_m": 0.02649820664747537,
+   "deck_accel_max_ms2": 1.6175439056564247,
+   "deck_corner_min_clearance_m": -0.09507869089885274,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.036413741080966816,
+     "dtrim_deg": -2.713502839633066,
+     "dz_m": -0.12414417355256557,
+     "dx_m": 0.03803114022130272,
+     "dy_m": -0.00040758728225906427,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -0.00020837183389694482,
+     "dtrim_deg": 0.0012169068529512374,
+     "dz_m": 0.00014084385433882352,
+     "dx_m": 0.0007036341835719995,
+     "dy_m": 0.00011228656709805728,
+     "dyaw_deg": -0.009091908412769542
+    },
+    "tier": "approximate",
+    "dz_m": -0.12414417355256557,
+    "dheel_deg": -0.036413741080966816,
+    "dtrim_deg": -2.713502839633066,
+    "boat_dx_m": 0.0007036341835719995,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 7.983307992684571,
+   "boat_pitch_amp_deg": 0.2064442126214099,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 514.1735305749153,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.065461916569691,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 8.00903558019804,
+   "score_motion": 10.70955991015463,
+   "score": 13.363815535275354,
+   "rank": 38
+  },
+  {
+   "candidate": {
+    "x_m": 0.3,
+    "y_stbd_m": 0.9,
+    "y_port_m": 0.9,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.3,
+       -0.9,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.3,
+       0.9,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.2122801604063279,
+   "trim_deg": -6.553365981327478,
+   "draft_m": 0.4570230045959539,
+   "deck_freeboard_min_m": 0.04688907219420868,
+   "float_top_freeboard_min_m": 0.2877826495975857,
+   "GM_T_m": 17.300167236008992,
+   "GM_L_m": 5.965467327042417,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 1.981238317757009,
+   "flags": [],
+   "line_min_N": 37.21451123247954,
+   "line_max_N": 86.18800475906019,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 5.642128917283594,
+   "pitch_amp_deg": 3.1926825287994296,
+   "heave_amp_m": 0.027323854259397005,
+   "deck_accel_max_ms2": 1.5684197391924877,
+   "deck_corner_min_clearance_m": -0.08581454706315841,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.036413741080970195,
+     "dtrim_deg": -2.713502839633066,
+     "dz_m": -0.12414417355256546,
+     "dx_m": 0.03803114022130272,
+     "dy_m": -0.0004075872822591059,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -0.00020837183389614504,
+     "dtrim_deg": 0.0012169068529510885,
+     "dz_m": 0.0001408438543387125,
+     "dx_m": 0.0007036341835719995,
+     "dy_m": 0.00011228656709837473,
+     "dyaw_deg": -0.00909190841277535
+    },
+    "tier": "approximate",
+    "dz_m": -0.12414417355256546,
+    "dheel_deg": -0.036413741080970195,
+    "dtrim_deg": -2.713502839633066,
+    "boat_dx_m": 0.0007036341835719995,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 7.961671434312712,
+   "boat_pitch_amp_deg": 0.20751506178693283,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 491.038008731121,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.0747246885961356,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 8.009035580198047,
+   "score_motion": 10.40323118527551,
+   "score": 13.210651172835803,
+   "rank": 37
+  },
+  {
+   "candidate": {
+    "x_m": 0.3,
+    "y_stbd_m": 0.5,
+    "y_port_m": 0.5,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.3,
+       -0.5,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.3,
+       0.5,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.2122801604063279,
+   "trim_deg": -6.553365981327478,
+   "draft_m": 0.4570230045959539,
+   "deck_freeboard_min_m": 0.04688907219420868,
+   "float_top_freeboard_min_m": 0.2877826495975857,
+   "GM_T_m": 17.300167236008992,
+   "GM_L_m": 5.965467327042417,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 1.981238317757009,
+   "flags": [],
+   "line_min_N": 37.21451123247954,
+   "line_max_N": 86.18800475906019,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 5.5782316123378655,
+   "pitch_amp_deg": 3.1741345474765894,
+   "heave_amp_m": 0.027433070166652813,
+   "deck_accel_max_ms2": 1.551212605475151,
+   "deck_corner_min_clearance_m": -0.08317972715874766,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.036413741080970195,
+     "dtrim_deg": -2.713502839633066,
+     "dz_m": -0.12414417355256546,
+     "dx_m": 0.03803114022130272,
+     "dy_m": -0.0004075872822591059,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -0.00020837183389614504,
+     "dtrim_deg": 0.0012169068529510885,
+     "dz_m": 0.0001408438543387125,
+     "dx_m": 0.0007036341835719995,
+     "dy_m": 0.00011228656709837473,
+     "dyaw_deg": -0.00909190841277535
+    },
+    "tier": "approximate",
+    "dz_m": -0.12414417355256546,
+    "dheel_deg": -0.036413741080970195,
+    "dtrim_deg": -2.713502839633066,
+    "boat_dx_m": 0.0007036341835719995,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 7.985102040865698,
+   "boat_pitch_amp_deg": 0.2067351444305348,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 489.8959744727066,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT"
+   ],
+   "min_relative_clearance_m": 0.0742752195000808,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 8.009035580198047,
+   "score_motion": 10.303578765289606,
+   "score": 13.160824962842849,
+   "rank": 36
+  },
+  {
+   "candidate": {
+    "x_m": 0.3,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.3,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.3,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.2122801604063279,
+   "trim_deg": -6.553365981327478,
+   "draft_m": 0.4570230045959539,
+   "deck_freeboard_min_m": 0.04688907219420868,
+   "float_top_freeboard_min_m": 0.2877826495975857,
+   "GM_T_m": 17.300167236008992,
+   "GM_L_m": 5.965467327042417,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 1.981238317757009,
+   "flags": [],
+   "line_min_N": 37.21451123247954,
+   "line_max_N": 86.18800475906019,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 5.554495665610373,
+   "pitch_amp_deg": 3.1672622123314484,
+   "heave_amp_m": 0.027474602623216268,
+   "deck_accel_max_ms2": 1.544824732931758,
+   "deck_corner_min_clearance_m": -0.08220212061491813,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.036413741080970195,
+     "dtrim_deg": -2.713502839633066,
+     "dz_m": -0.12414417355256546,
+     "dx_m": 0.03803114022130272,
+     "dy_m": -0.0004075872822591059,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -0.00020837183389614504,
+     "dtrim_deg": 0.0012169068529510885,
+     "dz_m": 0.0001408438543387125,
+     "dx_m": 0.0007036341835719995,
+     "dy_m": 0.00011228656709837473,
+     "dyaw_deg": -0.00909190841277535
+    },
+    "tier": "approximate",
+    "dz_m": -0.12414417355256546,
+    "dheel_deg": -0.036413741080970195,
+    "dtrim_deg": -2.713502839633066,
+    "boat_dx_m": 0.0007036341835719995,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 7.993803229659774,
+   "boat_pitch_amp_deg": 0.2064496014727161,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 489.45661697537304,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT"
+   ],
+   "min_relative_clearance_m": 0.07409686688120228,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 8.009035580198047,
+   "score_motion": 10.26658261087358,
+   "score": 13.142326885634837,
+   "rank": 35
+  },
+  {
+   "candidate": {
+    "x_m": 0.5,
+    "y_stbd_m": 1.3,
+    "y_port_m": 1.3,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.5,
+       -1.3,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.5,
+       1.3,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.19958660554525567,
+   "trim_deg": -5.9256848067741315,
+   "draft_m": 0.438585497035084,
+   "deck_freeboard_min_m": 0.07468157318327961,
+   "float_top_freeboard_min_m": 0.29264041652598516,
+   "GM_T_m": 18.386890864906395,
+   "GM_L_m": 7.381774031445749,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.037313084112149,
+   "flags": [],
+   "line_min_N": 38.66816296107301,
+   "line_max_N": 87.0300079024,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 5.217775709706599,
+   "pitch_amp_deg": 1.9935631778762182,
+   "heave_amp_m": 0.03455459231223949,
+   "deck_accel_max_ms2": 1.5142752943674411,
+   "deck_corner_min_clearance_m": -0.05095504483241309,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.02372018621989802,
+     "dtrim_deg": -2.08582166507972,
+     "dz_m": -0.09684262982600245,
+     "dx_m": 0.02898940229000946,
+     "dy_m": -0.000265508430497316,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -0.00012817410684942164,
+     "dtrim_deg": 0.0006933428915609309,
+     "dz_m": 8.787604575777319e-05,
+     "dx_m": 0.0006601734020863503,
+     "dy_m": 8.410379123702065e-05,
+     "dyaw_deg": -0.006405443149124698
+    },
+    "tier": "approximate",
+    "dz_m": -0.09684262982600245,
+    "dheel_deg": -0.02372018621989802,
+    "dtrim_deg": -2.08582166507972,
+    "boat_dx_m": 0.0006601734020863503,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.026243913370292,
+   "boat_pitch_amp_deg": 0.08157013549956327,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 455.0421541407312,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.06761302029260739,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 7.078042286031847,
+   "score_motion": 8.72561418195026,
+   "score": 11.440849377006977,
+   "rank": 34
+  },
+  {
+   "candidate": {
+    "x_m": 0.5,
+    "y_stbd_m": 0.9,
+    "y_port_m": 0.9,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.5,
+       -0.9,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.5,
+       0.9,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.199586605545256,
+   "trim_deg": -5.9256848067741315,
+   "draft_m": 0.43858549703508387,
+   "deck_freeboard_min_m": 0.07468157318327973,
+   "float_top_freeboard_min_m": 0.29264041652598527,
+   "GM_T_m": 18.386890864906402,
+   "GM_L_m": 7.381774031445751,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.037313084112149,
+   "flags": [],
+   "line_min_N": 38.66816296107744,
+   "line_max_N": 87.0300079024,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 5.131014423184794,
+   "pitch_amp_deg": 1.975393784485031,
+   "heave_amp_m": 0.03477438703342941,
+   "deck_accel_max_ms2": 1.489511252686429,
+   "deck_corner_min_clearance_m": -0.04648869731760372,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.02372018621989832,
+     "dtrim_deg": -2.08582166507972,
+     "dz_m": -0.09684262982600234,
+     "dx_m": 0.02898940229000946,
+     "dy_m": -0.000265508430497316,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -0.00012817410684938125,
+     "dtrim_deg": 0.0006933428915606825,
+     "dz_m": 8.787604575777319e-05,
+     "dx_m": 0.0006601734020854622,
+     "dy_m": 8.410379123675806e-05,
+     "dyaw_deg": -0.006405443149121995
+    },
+    "tier": "approximate",
+    "dz_m": -0.09684262982600234,
+    "dheel_deg": -0.02372018621989832,
+    "dtrim_deg": -2.08582166507972,
+    "boat_dx_m": 0.0006601734020854622,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.057179195700325,
+   "boat_pitch_amp_deg": 0.0824302748522768,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 452.66289523361945,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.0665712366667045,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 7.078042286031847,
+   "score_motion": 8.595919460356255,
+   "score": 11.376002016209974,
+   "rank": 33
+  },
+  {
+   "candidate": {
+    "x_m": 0.5,
+    "y_stbd_m": 0.5,
+    "y_port_m": 0.5,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.5,
+       -0.5,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.5,
+       0.5,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.199586605545256,
+   "trim_deg": -5.9256848067741315,
+   "draft_m": 0.43858549703508387,
+   "deck_freeboard_min_m": 0.07468157318327973,
+   "float_top_freeboard_min_m": 0.29264041652598527,
+   "GM_T_m": 18.386890864906402,
+   "GM_L_m": 7.381774031445751,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.037313084112149,
+   "flags": [],
+   "line_min_N": 38.66816296107744,
+   "line_max_N": 87.0300079024,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 5.076769301408653,
+   "pitch_amp_deg": 1.9640429119781833,
+   "heave_amp_m": 0.03490940701684452,
+   "deck_accel_max_ms2": 1.474075210955517,
+   "deck_corner_min_clearance_m": -0.04371112661591789,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.02372018621989832,
+     "dtrim_deg": -2.08582166507972,
+     "dz_m": -0.09684262982600234,
+     "dx_m": 0.02898940229000946,
+     "dy_m": -0.000265508430497316,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -0.00012817410684938125,
+     "dtrim_deg": 0.0006933428915606825,
+     "dz_m": 8.787604575777319e-05,
+     "dx_m": 0.0006601734020854622,
+     "dy_m": 8.410379123675806e-05,
+     "dyaw_deg": -0.006405443149121995
+    },
+    "tier": "approximate",
+    "dz_m": -0.09684262982600234,
+    "dheel_deg": -0.02372018621989832,
+    "dtrim_deg": -2.08582166507972,
+    "boat_dx_m": 0.0006601734020854622,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.076584789730079,
+   "boat_pitch_amp_deg": 0.08296910616993886,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 451.07448592470064,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.06588831040644322,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 7.078042286031847,
+   "score_motion": 8.514887424342353,
+   "score": 11.335485998203023,
+   "rank": 32
+  },
+  {
+   "candidate": {
+    "x_m": 0.5,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.5,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.5,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.199586605545256,
+   "trim_deg": -5.9256848067741315,
+   "draft_m": 0.43858549703508387,
+   "deck_freeboard_min_m": 0.07468157318327973,
+   "float_top_freeboard_min_m": 0.29264041652598527,
+   "GM_T_m": 18.386890864906402,
+   "GM_L_m": 7.381774031445751,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.037313084112149,
+   "flags": [],
+   "line_min_N": 38.66816296107744,
+   "line_max_N": 87.0300079024,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 5.056615951220185,
+   "pitch_amp_deg": 1.9598279507379353,
+   "heave_amp_m": 0.034959096269846265,
+   "deck_accel_max_ms2": 1.4683501140385211,
+   "deck_corner_min_clearance_m": -0.042682232838126125,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.02372018621989832,
+     "dtrim_deg": -2.08582166507972,
+     "dz_m": -0.09684262982600234,
+     "dx_m": 0.02898940229000946,
+     "dy_m": -0.000265508430497316,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -0.00012817410684938125,
+     "dtrim_deg": 0.0006933428915606825,
+     "dz_m": 8.787604575777319e-05,
+     "dx_m": 0.0006601734020854622,
+     "dy_m": 8.410379123675806e-05,
+     "dyaw_deg": -0.006405443149121995
+    },
+    "tier": "approximate",
+    "dz_m": -0.09684262982600234,
+    "dheel_deg": -0.02372018621989832,
+    "dtrim_deg": -2.08582166507972,
+    "boat_dx_m": 0.0006601734020854622,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.083812417338727,
+   "boat_pitch_amp_deg": 0.08316946218849382,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 450.4631979020604,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.06562864132563408,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 7.078042286031847,
+   "score_motion": 8.484794015996641,
+   "score": 11.320439294030168,
+   "rank": 31
+  },
+  {
+   "candidate": {
+    "x_m": 0.7,
+    "y_stbd_m": 1.3,
+    "y_port_m": 1.3,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.7,
+       -1.3,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.7,
+       1.3,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.19061460755152593,
+   "trim_deg": -5.405625548892768,
+   "draft_m": 0.42259828336302385,
+   "deck_freeboard_min_m": 0.0984666357561278,
+   "float_top_freeboard_min_m": 0.2974112217733075,
+   "GM_T_m": 19.24057290538864,
+   "GM_L_m": 8.446281238024708,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.0933878504672894,
+   "flags": [],
+   "line_min_N": 39.80818095156158,
+   "line_max_N": 87.47221138460048,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.801274842953134,
+   "pitch_amp_deg": 1.0497180361264267,
+   "heave_amp_m": 0.04701380685032218,
+   "deck_accel_max_ms2": 1.3471983611321934,
+   "deck_corner_min_clearance_m": 0.014754934543808385,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.014748188226168224,
+     "dtrim_deg": -1.5657624071983562,
+     "dz_m": -0.07340489473595535,
+     "dx_m": 0.02162151549522351,
+     "dy_m": -0.0001650829988987107,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -6.644465488180818e-05,
+     "dtrim_deg": 0.00038842469100359,
+     "dz_m": 5.4869919621947094e-05,
+     "dx_m": 0.0005646060888704341,
+     "dy_m": 5.638897631994404e-05,
+     "dyaw_deg": -0.0044240694063697635
+    },
+    "tier": "approximate",
+    "dz_m": -0.07340489473595535,
+    "dheel_deg": -0.014748188226168224,
+    "dtrim_deg": -1.5657624071983562,
+    "boat_dx_m": 0.0005646060888704341,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.116963519413385,
+   "boat_pitch_amp_deg": 0.15936805244663205,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 483.3830923345178,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.05783363145901513,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 6.302188406434542,
+   "score_motion": 7.198191240211754,
+   "score": 9.90128402654042,
+   "rank": 30
+  },
+  {
+   "candidate": {
+    "x_m": 0.7,
+    "y_stbd_m": 0.9,
+    "y_port_m": 0.9,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.7,
+       -0.9,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.7,
+       0.9,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.1906146075515257,
+   "trim_deg": -5.405625548892768,
+   "draft_m": 0.42259828336302385,
+   "deck_freeboard_min_m": 0.0984666357561278,
+   "float_top_freeboard_min_m": 0.2974112217733075,
+   "GM_T_m": 19.240572905388635,
+   "GM_L_m": 8.446281238024705,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.0933878504672894,
+   "flags": [],
+   "line_min_N": 39.80818095156824,
+   "line_max_N": 87.47221138459827,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.7259096621972665,
+   "pitch_amp_deg": 1.0432097490878622,
+   "heave_amp_m": 0.04710791058880483,
+   "deck_accel_max_ms2": 1.3264466393491015,
+   "deck_corner_min_clearance_m": 0.017901441139251614,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.014748188226168026,
+     "dtrim_deg": -1.5657624071983562,
+     "dz_m": -0.07340489473595535,
+     "dx_m": 0.02162151549522351,
+     "dy_m": -0.0001650829988987107,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -6.644465488200231e-05,
+     "dtrim_deg": 0.0003884246910037391,
+     "dz_m": 5.4869919622002605e-05,
+     "dx_m": 0.0005646060888695459,
+     "dy_m": 5.638897631989612e-05,
+     "dyaw_deg": -0.004424069406371548
+    },
+    "tier": "approximate",
+    "dz_m": -0.07340489473595535,
+    "dheel_deg": -0.014748188226168026,
+    "dtrim_deg": -1.5657624071983562,
+    "boat_dx_m": 0.0005646060888695459,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.14331258549988,
+   "boat_pitch_amp_deg": 0.15961680077014406,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 481.39186297502425,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.05667691453218644,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 6.302188406434541,
+   "score_motion": 7.09556605063423,
+   "score": 9.849971431751657,
+   "rank": 29
+  },
+  {
+   "candidate": {
+    "x_m": 0.7,
+    "y_stbd_m": 0.5,
+    "y_port_m": 0.5,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.7,
+       -0.5,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.7,
+       0.5,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.1906146075515257,
+   "trim_deg": -5.405625548892768,
+   "draft_m": 0.42259828336302385,
+   "deck_freeboard_min_m": 0.0984666357561278,
+   "float_top_freeboard_min_m": 0.2974112217733075,
+   "GM_T_m": 19.240572905388635,
+   "GM_L_m": 8.446281238024705,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.0933878504672894,
+   "flags": [],
+   "line_min_N": 39.80818095156824,
+   "line_max_N": 87.47221138459827,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.678760426561216,
+   "pitch_amp_deg": 1.0391330402129055,
+   "heave_amp_m": 0.0471654040546021,
+   "deck_accel_max_ms2": 1.3135006150367543,
+   "deck_corner_min_clearance_m": 0.01985877676067295,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.014748188226168026,
+     "dtrim_deg": -1.5657624071983562,
+     "dz_m": -0.07340489473595535,
+     "dx_m": 0.02162151549522351,
+     "dy_m": -0.0001650829988987107,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -6.644465488200231e-05,
+     "dtrim_deg": 0.0003884246910037391,
+     "dz_m": 5.4869919622002605e-05,
+     "dx_m": 0.0005646060888695459,
+     "dy_m": 5.638897631989612e-05,
+     "dyaw_deg": -0.004424069406371548
+    },
+    "tier": "approximate",
+    "dz_m": -0.07340489473595535,
+    "dheel_deg": -0.014748188226168026,
+    "dtrim_deg": -1.5657624071983562,
+    "boat_dx_m": 0.0005646060888695459,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.159913708648622,
+   "boat_pitch_amp_deg": 0.15977169321705928,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 480.0440423754295,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.05593680210486714,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 6.302188406434541,
+   "score_motion": 7.031394081810876,
+   "score": 9.817885447339979,
+   "rank": 28
+  },
+  {
+   "candidate": {
+    "x_m": 0.7,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.7,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.7,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.1906146075515257,
+   "trim_deg": -5.405625548892768,
+   "draft_m": 0.42259828336302385,
+   "deck_freeboard_min_m": 0.0984666357561278,
+   "float_top_freeboard_min_m": 0.2974112217733075,
+   "GM_T_m": 19.240572905388635,
+   "GM_L_m": 8.446281238024705,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.0933878504672894,
+   "flags": [],
+   "line_min_N": 39.80818095156824,
+   "line_max_N": 87.47221138459827,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.66123709675462,
+   "pitch_amp_deg": 1.0376170993041305,
+   "heave_amp_m": 0.047186499220678316,
+   "deck_accel_max_ms2": 1.3086967532687814,
+   "deck_corner_min_clearance_m": 0.020584018333139026,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.014748188226168026,
+     "dtrim_deg": -1.5657624071983562,
+     "dz_m": -0.07340489473595535,
+     "dx_m": 0.02162151549522351,
+     "dy_m": -0.0001650829988987107,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -6.644465488200231e-05,
+     "dtrim_deg": 0.0003884246910037391,
+     "dz_m": 5.4869919622002605e-05,
+     "dx_m": 0.0005646060888695459,
+     "dy_m": 5.638897631989612e-05,
+     "dyaw_deg": -0.004424069406371548
+    },
+    "tier": "approximate",
+    "dz_m": -0.07340489473595535,
+    "dheel_deg": -0.014748188226168026,
+    "dtrim_deg": -1.5657624071983562,
+    "boat_dx_m": 0.0005646060888695459,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.166111600176526,
+   "boat_pitch_amp_deg": 0.159829130717866,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 479.5216128452635,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.05565865551314847,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 6.302188406434541,
+   "score_motion": 7.007550949327532,
+   "score": 9.805963881098307,
+   "rank": 27
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.18498902216449323,
+   "trim_deg": -4.940138460881724,
+   "draft_m": 0.4078620151389276,
+   "deck_freeboard_min_m": 0.12014455410964797,
+   "float_top_freeboard_min_m": 0.3020688101122665,
+   "GM_T_m": 19.822034572058598,
+   "GM_L_m": 8.977118518671315,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "line_min_N": 40.77286482109699,
+   "line_max_N": 87.65808290198684,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.740402952494096,
+   "pitch_amp_deg": 0.7593566333231536,
+   "heave_amp_m": 0.04934160383249077,
+   "deck_accel_max_ms2": 1.3034089405169778,
+   "deck_corner_min_clearance_m": 0.047534581612265536,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.009122602839135541,
+     "dtrim_deg": -1.100275319187311,
+     "dz_m": -0.05194382925378038,
+     "dx_m": 0.01510788025961185,
+     "dy_m": -0.00010211384075504981,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -3.589371591966937e-05,
+     "dtrim_deg": 0.00022235011758415016,
+     "dz_m": 3.4391537614086864e-05,
+     "dx_m": 0.000422086429705093,
+     "dy_m": 3.754904050260561e-05,
+     "dyaw_deg": -0.002960181603464495
+    },
+    "tier": "approximate",
+    "dz_m": -0.05194382925378038,
+    "dheel_deg": -0.009122602839135541,
+    "dtrim_deg": -1.100275319187311,
+    "boat_dx_m": 0.000422086429705093,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.096374770170758,
+   "boat_pitch_amp_deg": 0.1849104632896859,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 503.9926024416455,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.054488300113635854,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 5.60867096411423,
+   "score_motion": 6.803168526334227,
+   "score": 9.010255227281345,
+   "rank": 26
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 1.7,
+    "y_port_m": 1.7,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -1.7,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       1.7,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.18498902216449298,
+   "trim_deg": -4.940138460881724,
+   "draft_m": 0.4078620151389276,
+   "deck_freeboard_min_m": 0.12014455410964797,
+   "float_top_freeboard_min_m": 0.3020688101122665,
+   "GM_T_m": 19.822034572058595,
+   "GM_L_m": 8.977118518671306,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "line_min_N": 40.772864821099205,
+   "line_max_N": 87.65808290198906,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.6326669645818646,
+   "pitch_amp_deg": 0.7548555031925407,
+   "heave_amp_m": 0.04944731403495886,
+   "deck_accel_max_ms2": 1.2740214641756962,
+   "deck_corner_min_clearance_m": 0.051262216462465135,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.009122602839135267,
+     "dtrim_deg": -1.100275319187311,
+     "dz_m": -0.05194382925378038,
+     "dx_m": 0.01510788025961185,
+     "dy_m": -0.00010211384075504981,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -3.589371591931296e-05,
+     "dtrim_deg": 0.00022235011758454774,
+     "dz_m": 3.4391537614142376e-05,
+     "dx_m": 0.000422086429705093,
+     "dy_m": 3.754904050259043e-05,
+     "dyaw_deg": -0.0029601816034643584
+    },
+    "tier": "approximate",
+    "dz_m": -0.05194382925378038,
+    "dheel_deg": -0.009122602839135267,
+    "dtrim_deg": -1.100275319187311,
+    "boat_dx_m": 0.000422086429705093,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.133487411724191,
+   "boat_pitch_amp_deg": 0.18500627022631208,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 501.8174247684444,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.05272288491700661,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 5.608670964114229,
+   "score_motion": 6.661543931950102,
+   "score": 8.93944293008928,
+   "rank": 25
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 0.5,
+    "y_port_m": 0.5,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -0.5,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       0.5,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.18498902216449223,
+   "trim_deg": -4.940138460881724,
+   "draft_m": 0.4078620151389275,
+   "deck_freeboard_min_m": 0.12014455410964797,
+   "float_top_freeboard_min_m": 0.30206881011226655,
+   "GM_T_m": 19.822034572058595,
+   "GM_L_m": 8.977118518671308,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "line_min_N": 40.772864821099205,
+   "line_max_N": 87.65808290198906,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.425919527203085,
+   "pitch_amp_deg": 0.7461564704966921,
+   "heave_amp_m": 0.04963725634381394,
+   "deck_accel_max_ms2": 1.218014586650447,
+   "deck_corner_min_clearance_m": 0.05814155071263864,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.009122602839134547,
+     "dtrim_deg": -1.100275319187311,
+     "dz_m": -0.05194382925378038,
+     "dx_m": 0.01510788025961185,
+     "dy_m": -0.00010211384075503593,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -3.5893715919492326e-05,
+     "dtrim_deg": 0.00022235011758469682,
+     "dz_m": 3.4391537614142376e-05,
+     "dx_m": 0.000422086429705093,
+     "dy_m": 3.7549040502441464e-05,
+     "dyaw_deg": -0.0029601816034569724
+    },
+    "tier": "approximate",
+    "dz_m": -0.05194382925378038,
+    "dheel_deg": -0.009122602839134547,
+    "dtrim_deg": -1.100275319187311,
+    "boat_dx_m": 0.000422086429705093,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.205838868262573,
+   "boat_pitch_amp_deg": 0.1851942620656498,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 496.47492607923226,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.04917788406982787,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 5.6086709641142285,
+   "score_motion": 6.390090584350224,
+   "score": 8.803716256289341,
+   "rank": 24
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.18498902216449223,
+   "trim_deg": -4.940138460881724,
+   "draft_m": 0.4078620151389275,
+   "deck_freeboard_min_m": 0.12014455410964797,
+   "float_top_freeboard_min_m": 0.30206881011226655,
+   "GM_T_m": 19.822034572058595,
+   "GM_L_m": 8.977118518671308,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "line_min_N": 40.772864821099205,
+   "line_max_N": 87.65808290198906,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.410003962641365,
+   "pitch_amp_deg": 0.7454850302054383,
+   "heave_amp_m": 0.049651159814678394,
+   "deck_accel_max_ms2": 1.2137278608083195,
+   "deck_corner_min_clearance_m": 0.05865509718048679,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.009122602839134547,
+     "dtrim_deg": -1.100275319187311,
+     "dz_m": -0.05194382925378038,
+     "dx_m": 0.01510788025961185,
+     "dy_m": -0.00010211384075503593,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -3.5893715919492326e-05,
+     "dtrim_deg": 0.00022235011758469682,
+     "dz_m": 3.4391537614142376e-05,
+     "dx_m": 0.000422086429705093,
+     "dy_m": 3.7549040502441464e-05,
+     "dyaw_deg": -0.0029601816034569724
+    },
+    "tier": "approximate",
+    "dz_m": -0.05194382925378038,
+    "dheel_deg": -0.009122602839134547,
+    "dtrim_deg": -1.100275319187311,
+    "boat_dx_m": 0.000422086429705093,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.211509465101411,
+   "boat_pitch_amp_deg": 0.1852091311637307,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 495.9876832404053,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.04889751043583984,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 5.6086709641142285,
+   "score_motion": 6.369216853655123,
+   "score": 8.793279390941791,
+   "rank": 23
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.75,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       1.75,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.06164318790148857,
+   "trim_deg": -4.937828664685832,
+   "draft_m": 0.40359285223292607,
+   "deck_freeboard_min_m": 0.12510164328970685,
+   "float_top_freeboard_min_m": 0.3062906139060954,
+   "GM_T_m": 19.825882405130432,
+   "GM_L_m": 8.991195457754722,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "line_min_N": 40.999377389578925,
+   "line_max_N": 87.55932880817996,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.670368127626921,
+   "pitch_amp_deg": 0.5171685282584276,
+   "heave_amp_m": 0.050735352941376294,
+   "deck_accel_max_ms2": 1.263866866076661,
+   "deck_corner_min_clearance_m": 0.05423182398101803,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.1142232314238691,
+     "dtrim_deg": -1.0979655229914203,
+     "dz_m": -0.051862907977498485,
+     "dx_m": 0.01509050144608004,
+     "dy_m": 0.001278671977716292,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 0.0012596735388625748,
+     "dtrim_deg": 0.0002168656874718785,
+     "dz_m": 3.389321240909737e-05,
+     "dx_m": 0.0004234932299569394,
+     "dy_m": 9.246449530206488e-06,
+     "dyaw_deg": 0.005044780720957361
+    },
+    "tier": "approximate",
+    "dz_m": -0.051862907977498485,
+    "dheel_deg": 0.1142232314238691,
+    "dtrim_deg": -1.0979655229914203,
+    "boat_dx_m": 0.0004234932299569394,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.12208102805715,
+   "boat_pitch_amp_deg": 0.19868990417802448,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 498.5726657343912,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.05460389150781768,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 5.310098607591741,
+   "score_motion": 6.4514035219620105,
+   "score": 8.535800368572747,
+   "rank": 21
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.45,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       1.45,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": 0.06164290531202532,
+   "trim_deg": -4.9378286645449405,
+   "draft_m": 0.4035928416011575,
+   "deck_freeboard_min_m": 0.12510165541807605,
+   "float_top_freeboard_min_m": 0.3062906245379794,
+   "GM_T_m": 19.8258824993772,
+   "GM_L_m": 8.991195474093923,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "line_min_N": 41.000060294320576,
+   "line_max_N": 87.56003243483246,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.620543679213638,
+   "pitch_amp_deg": 0.37097782063067103,
+   "heave_amp_m": 0.05269733235208334,
+   "deck_accel_max_ms2": 1.2308642802986223,
+   "deck_corner_min_clearance_m": 0.04138260397872008,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.23750932463738297,
+     "dtrim_deg": -1.097965522850529,
+     "dz_m": -0.051862907020673754,
+     "dx_m": 0.015090501453272953,
+     "dy_m": 0.0026590843668426976,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 0.002554927730672416,
+     "dtrim_deg": 0.000216917379251522,
+     "dz_m": 3.38964949413989e-05,
+     "dx_m": 0.00042349332320723576,
+     "dy_m": -1.8921075167731635e-05,
+     "dyaw_deg": 0.013039931205812575
+    },
+    "tier": "approximate",
+    "dz_m": -0.051862907020673754,
+    "dheel_deg": 0.23750932463738297,
+    "dtrim_deg": -1.097965522850529,
+    "boat_dx_m": 0.00042349332320723576,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.1403797239899,
+   "boat_pitch_amp_deg": 0.21316158014789752,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 493.3088430174703,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.05340170658615723,
+   "min_relative_clearance_at": "hull_vs_float_starboard_x3.4",
+   "score_level": 5.31009792098823,
+   "score_motion": 6.222385780142931,
+   "score": 8.421290811059695,
+   "rank": 20
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.15,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       1.15,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": 0.18498873927493414,
+   "trim_deg": -4.940138460502614,
+   "draft_m": 0.407862002593822,
+   "deck_freeboard_min_m": 0.12014456816281205,
+   "float_top_freeboard_min_m": 0.30206882265867685,
+   "GM_T_m": 19.82203485380757,
+   "GM_L_m": 8.977118566115342,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "line_min_N": 40.7735762823469,
+   "line_max_N": 87.65884914843758,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.590171793544533,
+   "pitch_amp_deg": 0.41821456823450315,
+   "heave_amp_m": 0.05521450965563335,
+   "deck_accel_max_ms2": 1.226587979800956,
+   "deck_corner_min_clearance_m": 0.027082508053487872,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.3608551586002919,
+     "dtrim_deg": -1.1002753188082017,
+     "dz_m": -0.0519438263839298,
+     "dx_m": 0.015107880281861608,
+     "dy_m": 0.004039870182862587,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 0.003850502179699422,
+     "dtrim_deg": 0.00022250522302757732,
+     "dz_m": 3.440138729438047e-05,
+     "dx_m": 0.0004220867089141933,
+     "dy_m": -4.722342250713279e-05,
+     "dyaw_deg": 0.021044894906455152
+    },
+    "tier": "approximate",
+    "dz_m": -0.0519438263839298,
+    "dheel_deg": 0.3608551586002919,
+    "dtrim_deg": -1.1002753188082017,
+    "boat_dx_m": 0.0004220867089141933,
+    "note": "APPROXIMATE PREVIEW: BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.151705666648756,
+   "boat_pitch_amp_deg": 0.22849037820218832,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 488.15264734578614,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.05088182158850921,
+   "min_relative_clearance_at": "hull_vs_float_starboard_x3.4",
+   "score_level": 5.608670257424362,
+   "score_motion": 6.234974341579992,
+   "score": 8.726157428214357,
+   "rank": 22
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.180836539439251,
+   "trim_deg": -4.50515181694247,
+   "draft_m": 0.39379436029160975,
+   "deck_freeboard_min_m": 0.14066168955921943,
+   "float_top_freeboard_min_m": 0.3066757700842455,
+   "GM_T_m": 20.27118468711535,
+   "GM_L_m": 9.271629985066253,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "line_min_N": 41.665161761130776,
+   "line_max_N": 87.74163393545197,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.537072385636819,
+   "pitch_amp_deg": 0.628490130910766,
+   "heave_amp_m": 0.04999175561900366,
+   "deck_accel_max_ms2": 1.2333711499615077,
+   "deck_corner_min_clearance_m": 0.07878521371062952,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.004970120113893285,
+     "dtrim_deg": -0.6652886752480577,
+     "dz_m": -0.03158636645531987,
+     "dx_m": 0.009085518644277535,
+     "dy_m": -5.563323645224605e-05,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -1.7311199409113958e-05,
+     "dtrim_deg": 0.00011260365106987205,
+     "dz_m": 1.9026343028860637e-05,
+     "dx_m": 0.00026588812281369556,
+     "dy_m": 2.1994746069890552e-05,
+     "dyaw_deg": -0.001727223208921676
+    },
+    "tier": "near",
+    "dz_m": -0.03158636645531987,
+    "dheel_deg": -0.004970120113893285,
+    "dtrim_deg": -0.6652886752480577,
+    "boat_dx_m": 0.00026588812281369556,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.135736942401895,
+   "boat_pitch_amp_deg": 0.19709985980986225,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 519.8447386783319,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.04900845986684635,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 4.960208000228777,
+   "score_motion": 6.398933666509093,
+   "score": 8.159674833483322,
+   "rank": 19
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 1.7,
+    "y_port_m": 1.7,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -1.7,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       1.7,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.180836539439251,
+   "trim_deg": -4.50515181694247,
+   "draft_m": 0.39379436029160975,
+   "deck_freeboard_min_m": 0.14066168955921943,
+   "float_top_freeboard_min_m": 0.3066757700842455,
+   "GM_T_m": 20.27118468711535,
+   "GM_L_m": 9.271629985066255,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "line_min_N": 41.66516176112411,
+   "line_max_N": 87.74163393545642,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.437156544318852,
+   "pitch_amp_deg": 0.6263018691767422,
+   "heave_amp_m": 0.05007313834997227,
+   "deck_accel_max_ms2": 1.2063833115834937,
+   "deck_corner_min_clearance_m": 0.08154641148462557,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.004970120113893285,
+     "dtrim_deg": -0.6652886752480577,
+     "dz_m": -0.03158636645531987,
+     "dx_m": 0.009085518644277535,
+     "dy_m": -5.563323645224605e-05,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -1.7311199409265763e-05,
+     "dtrim_deg": 0.00011260365107002114,
+     "dz_m": 1.9026343028860637e-05,
+     "dx_m": 0.00026588812281369556,
+     "dy_m": 2.199474606945297e-05,
+     "dyaw_deg": -0.0017272232089217893
+    },
+    "tier": "near",
+    "dz_m": -0.03158636645531987,
+    "dheel_deg": -0.004970120113893285,
+    "dtrim_deg": -0.6652886752480577,
+    "boat_dx_m": 0.00026588812281369556,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.170281261026876,
+   "boat_pitch_amp_deg": 0.19708290135714168,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 517.8137350213937,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.047224333985183914,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 4.960208000228777,
+   "score_motion": 6.269841725079088,
+   "score": 8.09512886276832,
+   "rank": 18
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 0.5,
+    "y_port_m": 0.5,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -0.5,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       0.5,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.18083653943925046,
+   "trim_deg": -4.50515181694247,
+   "draft_m": 0.39379436029160975,
+   "deck_freeboard_min_m": 0.14066168955921943,
+   "float_top_freeboard_min_m": 0.3066757700842455,
+   "GM_T_m": 20.271184687115355,
+   "GM_L_m": 9.271629985066257,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "line_min_N": 41.665161761130776,
+   "line_max_N": 87.7416339354542,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.245166173417754,
+   "pitch_amp_deg": 0.6220846332898112,
+   "heave_amp_m": 0.05021928049126078,
+   "deck_accel_max_ms2": 1.1548985422114642,
+   "deck_corner_min_clearance_m": 0.08646080868132139,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.004970120113892763,
+     "dtrim_deg": -0.6652886752480577,
+     "dz_m": -0.03158636645531987,
+     "dx_m": 0.009085518644277535,
+     "dy_m": -5.563323645223217e-05,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -1.7311199409091437e-05,
+     "dtrim_deg": 0.00011260365106957388,
+     "dz_m": 1.902634302897166e-05,
+     "dx_m": 0.00026588812281369556,
+     "dy_m": 2.1994746069889794e-05,
+     "dyaw_deg": -0.001727223208921634
+    },
+    "tier": "near",
+    "dz_m": -0.03158636645531987,
+    "dheel_deg": -0.004970120113892763,
+    "dtrim_deg": -0.6652886752480577,
+    "boat_dx_m": 0.00026588812281369556,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.237997785122683,
+   "boat_pitch_amp_deg": 0.19706255441547652,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 512.7275981938662,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.04369341558976725,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 4.960208000228776,
+   "score_motion": 6.022149348919029,
+   "score": 7.9712826746882905,
+   "rank": 17
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.18083653943925046,
+   "trim_deg": -4.50515181694247,
+   "draft_m": 0.39379436029160975,
+   "deck_freeboard_min_m": 0.14066168955921943,
+   "float_top_freeboard_min_m": 0.3066757700842455,
+   "GM_T_m": 20.271184687115355,
+   "GM_L_m": 9.271629985066257,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "line_min_N": 41.665161761130776,
+   "line_max_N": 87.7416339354542,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.230371282238917,
+   "pitch_amp_deg": 0.6217606921670202,
+   "heave_amp_m": 0.050229967843324196,
+   "deck_accel_max_ms2": 1.15095500174022,
+   "deck_corner_min_clearance_m": 0.0868168281370224,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.004970120113892763,
+     "dtrim_deg": -0.6652886752480577,
+     "dz_m": -0.03158636645531987,
+     "dx_m": 0.009085518644277535,
+     "dy_m": -5.563323645223217e-05,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -1.7311199409091437e-05,
+     "dtrim_deg": 0.00011260365106957388,
+     "dz_m": 1.902634302897166e-05,
+     "dx_m": 0.00026588812281369556,
+     "dy_m": 2.1994746069889794e-05,
+     "dyaw_deg": -0.001727223208921634
+    },
+    "tier": "near",
+    "dz_m": -0.03158636645531987,
+    "dheel_deg": -0.004970120113892763,
+    "dtrim_deg": -0.6652886752480577,
+    "boat_dx_m": 0.00026588812281369556,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.243327396755364,
+   "boat_pitch_amp_deg": 0.19706186355687225,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 512.2581506590654,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.043416612510308705,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 4.960208000228776,
+   "score_motion": 6.003086976146157,
+   "score": 7.9617514883018545,
+   "rank": 16
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.75,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       1.75,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.060264650709271346,
+   "trim_deg": -4.50338278782093,
+   "draft_m": 0.38962973263441325,
+   "deck_freeboard_min_m": 0.1454917477854587,
+   "float_top_freeboard_min_m": 0.31080448838360564,
+   "GM_T_m": 20.270817644014755,
+   "GM_L_m": 9.281259217004202,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "line_min_N": 41.88485096449534,
+   "line_max_N": 87.6399717961962,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.47536457080428,
+   "pitch_amp_deg": 0.4848898387468773,
+   "heave_amp_m": 0.05093640153635658,
+   "deck_accel_max_ms2": 1.2029328341984273,
+   "deck_corner_min_clearance_m": 0.07483580778926198,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.11560176861608634,
+     "dtrim_deg": -0.6635196461265176,
+     "dz_m": -0.031525808667486444,
+     "dx_m": 0.009074550061165088,
+     "dy_m": 0.0012941069408670888,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 0.0012657720433646756,
+     "dtrim_deg": 0.00010823128025805103,
+     "dz_m": 1.8630128094498932e-05,
+     "dx_m": 0.00026693931578503083,
+     "dy_m": 4.071456492338554e-06,
+     "dyaw_deg": 0.005454687234536097
+    },
+    "tier": "near",
+    "dz_m": -0.031525808667486444,
+    "dheel_deg": 0.11560176861608634,
+    "dtrim_deg": -0.6635196461265176,
+    "boat_dx_m": 0.00026693931578503083,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.158025496400157,
+   "boat_pitch_amp_deg": 0.20681650902664714,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 516.2150256133525,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.04934601740546399,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 4.6689946113848855,
+   "score_motion": 6.163187243749585,
+   "score": 7.750588233259678,
+   "rank": 14
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.45,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       1.45,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": 0.060264391583417246,
+   "trim_deg": -4.503382788326433,
+   "draft_m": 0.38962972283982866,
+   "deck_freeboard_min_m": 0.14549175894380784,
+   "float_top_freeboard_min_m": 0.31080449819205486,
+   "GM_T_m": 20.270817739139922,
+   "GM_L_m": 9.281259238484164,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "line_min_N": 41.88546522260417,
+   "line_max_N": 87.64061136599999,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.429227266904885,
+   "pitch_amp_deg": 0.4055682974609404,
+   "heave_amp_m": 0.05229374848320211,
+   "deck_accel_max_ms2": 1.1773832617883133,
+   "deck_corner_min_clearance_m": 0.06535324217022347,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.2361308109087749,
+     "dtrim_deg": -0.6635196466320207,
+     "dz_m": -0.031525807759518965,
+     "dx_m": 0.009074550076042076,
+     "dy_m": 0.0026436496664026497,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 0.0025486604276683737,
+     "dtrim_deg": 0.00010828254848869415,
+     "dz_m": 1.8633382008415023e-05,
+     "dx_m": 0.0002669393565222222,
+     "dy_m": -1.3750890091683934e-05,
+     "dyaw_deg": 0.01262963411242424
+    },
+    "tier": "near",
+    "dz_m": -0.031525807759518965,
+    "dheel_deg": 0.2361308109087749,
+    "dtrim_deg": -0.6635196466320207,
+    "boat_dx_m": 0.0002669393565222222,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.174735281572556,
+   "boat_pitch_amp_deg": 0.21699703649257943,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 512.63651964675,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.04826999241624433,
+   "min_relative_clearance_at": "hull_vs_float_starboard_x3.4",
+   "score_level": 4.668993982055189,
+   "score_motion": 6.0121788261541385,
+   "score": 7.675083395132258,
+   "rank": 13
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.15,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       1.15,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": 0.18083628003611557,
+   "trim_deg": -4.505151818476673,
+   "draft_m": 0.39379434866210183,
+   "deck_freeboard_min_m": 0.14066170254448573,
+   "float_top_freeboard_min_m": 0.3066757817557436,
+   "GM_T_m": 20.271184971776893,
+   "GM_L_m": 9.271630049358116,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "line_min_N": 41.66580476451243,
+   "line_max_N": 87.74233517957697,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.398082073751054,
+   "pitch_amp_deg": 0.42141542315348207,
+   "heave_amp_m": 0.054055679596416176,
+   "deck_accel_max_ms2": 1.1706204341431925,
+   "deck_corner_min_clearance_m": 0.05492447611542721,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.35670269936147325,
+     "dtrim_deg": -0.6652886767822611,
+     "dz_m": -0.0315863637313466,
+     "dx_m": 0.009085518689190497,
+     "dy_m": 0.003993389841431522,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 0.0038317497023455005,
+     "dtrim_deg": 0.00011275747523862378,
+     "dz_m": 1.9036106137848563e-05,
+     "dx_m": 0.00026588824477347117,
+     "dy_m": -3.1673970825528116e-05,
+     "dyaw_deg": 0.01981154539190161
+    },
+    "tier": "near",
+    "dz_m": -0.0315863637313466,
+    "dheel_deg": 0.35670269936147325,
+    "dtrim_deg": -0.6652886767822611,
+    "boat_dx_m": 0.00026588824477347117,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.186156690276825,
+   "boat_pitch_amp_deg": 0.22776300611101566,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 509.0702597078464,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.04577936668497529,
+   "min_relative_clearance_at": "hull_vs_float_starboard_x3.4",
+   "score_level": 4.960207353104046,
+   "score_motion": 5.9901179310477275,
+   "score": 7.95526631862791,
+   "rank": 15
+  },
+  {
+   "candidate": {
+    "x_m": 1.3,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.3,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.3,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.1775771110677421,
+   "trim_deg": -4.0908388898505805,
+   "draft_m": 0.38016685916677784,
+   "deck_freeboard_min_m": 0.1603998307575054,
+   "float_top_freeboard_min_m": 0.31125464314527584,
+   "GM_T_m": 20.637144708495285,
+   "GM_L_m": 9.43530903908246,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2616121495327097,
+   "flags": [],
+   "line_min_N": 42.516552932490015,
+   "line_max_N": 87.76388207543118,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.381471480979928,
+   "pitch_amp_deg": 0.5593566111861168,
+   "heave_amp_m": 0.050001994777765756,
+   "deck_accel_max_ms2": 1.1818883422692565,
+   "deck_corner_min_clearance_m": 0.1026383972515388,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.0017106917423844207,
+     "dtrim_deg": -0.2509757481561685,
+     "dz_m": -0.01197334077547485,
+     "dx_m": 0.0034088540006109724,
+     "dy_m": -1.9148751077904813e-05,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -5.281492639393268e-06,
+     "dtrim_deg": 3.586300957812173e-05,
+     "dz_m": 6.648760999594661e-06,
+     "dx_m": 0.00010350042577567109,
+     "dy_m": 8.12440109066294e-06,
+     "dyaw_deg": -0.0006334122085051531
+    },
+    "tier": "near",
+    "dz_m": -0.01197334077547485,
+    "dheel_deg": -0.0017106917423844207,
+    "dtrim_deg": -0.2509757481561685,
+    "boat_dx_m": 0.00010350042577567109,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.165627301191435,
+   "boat_pitch_amp_deg": 0.2041375267926674,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 535.9013834377972,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.04423327167178587,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 4.4459931119860645,
+   "score_motion": 6.122716434435302,
+   "score": 7.507351329203715,
+   "rank": 12
+  },
+  {
+   "candidate": {
+    "x_m": 1.3,
+    "y_stbd_m": 1.7,
+    "y_port_m": 1.7,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.3,
+       -1.7,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.3,
+       1.7,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17757711106773963,
+   "trim_deg": -4.0908388898505805,
+   "draft_m": 0.38016685916677784,
+   "deck_freeboard_min_m": 0.16039983075750552,
+   "float_top_freeboard_min_m": 0.3112546431452759,
+   "GM_T_m": 20.637144708495295,
+   "GM_L_m": 9.435309039082474,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2616121495327097,
+   "flags": [],
+   "line_min_N": 42.516552932490015,
+   "line_max_N": 87.76388207542895,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.287446777606915,
+   "pitch_amp_deg": 0.558294182700088,
+   "heave_amp_m": 0.05006939140368082,
+   "deck_accel_max_ms2": 1.1566609964901153,
+   "deck_corner_min_clearance_m": 0.10423637126625634,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.001710691742381936,
+     "dtrim_deg": -0.2509757481561685,
+     "dz_m": -0.01197334077547485,
+     "dx_m": 0.0034088540006109724,
+     "dy_m": -1.9148751077877058e-05,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -5.281492639753178e-06,
+     "dtrim_deg": 3.5863009578022334e-05,
+     "dz_m": 6.648760999594661e-06,
+     "dx_m": 0.00010350042577567109,
+     "dy_m": 8.124401090563627e-06,
+     "dyaw_deg": -0.0006334122085025021
+    },
+    "tier": "near",
+    "dz_m": -0.01197334077547485,
+    "dheel_deg": -0.001710691742381936,
+    "dtrim_deg": -0.2509757481561685,
+    "boat_dx_m": 0.00010350042577567109,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.198312976648598,
+   "boat_pitch_amp_deg": 0.20406852875385054,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 533.9794063624508,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.04246048188692972,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 4.44599311198606,
+   "score_motion": 6.002401956797119,
+   "score": 7.447194090384619,
+   "rank": 11
+  },
+  {
+   "candidate": {
+    "x_m": 1.3,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.3,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.3,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17757711106774068,
+   "trim_deg": -4.09083888985058,
+   "draft_m": 0.3801668591667777,
+   "deck_freeboard_min_m": 0.16039983075750552,
+   "float_top_freeboard_min_m": 0.31125464314527596,
+   "GM_T_m": 20.637144708495292,
+   "GM_L_m": 9.435309039082464,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2616121495327097,
+   "flags": [],
+   "line_min_N": 42.51655293249223,
+   "line_max_N": 87.76388207542895,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.09262620881093,
+   "pitch_amp_deg": 0.5561288215535405,
+   "heave_amp_m": 0.050199152159259554,
+   "deck_accel_max_ms2": 1.1048058096782791,
+   "deck_corner_min_clearance_m": 0.10653915638530552,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": -0.0017106917423830043,
+     "dtrim_deg": -0.2509757481561677,
+     "dz_m": -0.011973340775474739,
+     "dx_m": 0.0034088540006109724,
+     "dy_m": -1.9148751077890935e-05,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": -5.281492639355608e-06,
+     "dtrim_deg": 3.586300957812173e-05,
+     "dz_m": 6.648760999594661e-06,
+     "dx_m": 0.00010350042577567109,
+     "dy_m": 8.124401090643316e-06,
+     "dyaw_deg": -0.0006334122085050009
+    },
+    "tier": "near",
+    "dz_m": -0.011973340775474739,
+    "dheel_deg": -0.0017106917423830043,
+    "dtrim_deg": -0.2509757481561677,
+    "boat_dx_m": 0.00010350042577567109,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.267731800160474,
+   "boat_pitch_amp_deg": 0.20394515509322983,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 528.6264135302105,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.038710932495124944,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 4.445993111986061,
+   "score_motion": 5.75356084004275,
+   "score": 7.322773532007436,
+   "rank": 10
+  },
+  {
+   "candidate": {
+    "x_m": 1.3,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.75,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.3,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.3,
+       1.75,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.05918141167752479,
+   "trim_deg": -4.089426825035521,
+   "draft_m": 0.37608286217496256,
+   "deck_freeboard_min_m": 0.1651326550933312,
+   "float_top_freeboard_min_m": 0.31531029409955613,
+   "GM_T_m": 20.634108564685913,
+   "GM_L_m": 9.442606984845574,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2616121495327097,
+   "flags": [],
+   "line_min_N": 42.730013053498,
+   "line_max_N": 87.65910264551869,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.325466984424698,
+   "pitch_amp_deg": 0.4687707809225371,
+   "heave_amp_m": 0.05070666236650347,
+   "deck_accel_max_ms2": 1.157031566196271,
+   "deck_corner_min_clearance_m": 0.09550958429219995,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.1166850076478329,
+     "dtrim_deg": -0.2495636833411089,
+     "dz_m": -0.011926480572426623,
+     "dx_m": 0.0034017020381629237,
+     "dy_m": 0.0013062355702469011,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 0.0012697133639315047,
+     "dtrim_deg": 3.2089853798424895e-05,
+     "dz_m": 6.307948922534834e-06,
+     "dx_m": 0.00010437209975933115,
+     "dy_m": -5.422938950714966e-07,
+     "dyaw_deg": 0.005818595030221963
+    },
+    "tier": "near",
+    "dz_m": -0.011926480572426623,
+    "dheel_deg": 0.1166850076478329,
+    "dtrim_deg": -0.2495636833411089,
+    "boat_dx_m": 0.00010437209975933115,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.186006936907805,
+   "boat_pitch_amp_deg": 0.21169949189288867,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 533.3915098749335,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.0446988016023257,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 4.207789648390571,
+   "score_motion": 5.951269331543506,
+   "score": 7.183424314162323,
+   "rank": 9
+  },
+  {
+   "candidate": {
+    "x_m": 1.5,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.5,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.5,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17493726785430638,
+   "trim_deg": -3.6917204410911073,
+   "draft_m": 0.366852009262879,
+   "deck_freeboard_min_m": 0.17957184947171678,
+   "float_top_freeboard_min_m": 0.3158185013151269,
+   "GM_T_m": 20.94264325572697,
+   "GM_L_m": 9.517833626655413,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.31768691588785,
+   "flags": [],
+   "line_min_N": 43.34134527002709,
+   "line_max_N": 87.74141957567538,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.257985886581402,
+   "pitch_amp_deg": 0.5178245581747093,
+   "heave_amp_m": 0.049750798584459334,
+   "deck_accel_max_ms2": 1.1419555844069067,
+   "deck_corner_min_clearance_m": 0.12200838901765132,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.0009291514714366442,
+     "dtrim_deg": 0.14814270060325582,
+     "dz_m": 0.007097477642263428,
+     "dx_m": -0.0020009744135540686,
+     "dy_m": 1.0400548138445043e-05,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 2.533590324158961e-06,
+     "dtrim_deg": -1.7828768726449906e-05,
+     "dz_m": -3.6602942641850156e-06,
+     "dx_m": -6.268861582192642e-05,
+     "dy_m": -4.723530527008055e-06,
+     "dyaw_deg": 0.0003652342120940702
+    },
+    "tier": "near",
+    "dz_m": 0.007097477642263428,
+    "dheel_deg": 0.0009291514714366442,
+    "dtrim_deg": 0.14814270060325582,
+    "boat_dx_m": -6.268861582192642e-05,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.189161660590552,
+   "boat_pitch_amp_deg": 0.20872857774068887,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 552.0624590020328,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.03999932121650232,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 4.04159497679972,
+   "score_motion": 5.917766029163017,
+   "score": 7.000477991381229,
+   "rank": 8
+  },
+  {
+   "candidate": {
+    "x_m": 1.5,
+    "y_stbd_m": 1.7,
+    "y_port_m": 1.7,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.5,
+       -1.7,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.5,
+       1.7,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.174937267854306,
+   "trim_deg": -3.6917204410911086,
+   "draft_m": 0.366852009262879,
+   "deck_freeboard_min_m": 0.17957184947171678,
+   "float_top_freeboard_min_m": 0.315818501315127,
+   "GM_T_m": 20.94264325572697,
+   "GM_L_m": 9.517833626655394,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.31768691588785,
+   "flags": [],
+   "line_min_N": 43.34134527002709,
+   "line_max_N": 87.74141957567538,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.1685899145395044,
+   "pitch_amp_deg": 0.517362298140137,
+   "heave_amp_m": 0.04980910495000111,
+   "deck_accel_max_ms2": 1.1180880973853133,
+   "deck_corner_min_clearance_m": 0.12340145177263595,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.0009291514714370168,
+     "dtrim_deg": 0.14814270060325505,
+     "dz_m": 0.007097477642263428,
+     "dx_m": -0.0020009744135540686,
+     "dy_m": 1.040054813845892e-05,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 2.533590323918245e-06,
+     "dtrim_deg": -1.78287687277917e-05,
+     "dz_m": -3.660294264296038e-06,
+     "dx_m": -6.268861582192642e-05,
+     "dy_m": -4.723530526978565e-06,
+     "dyaw_deg": 0.00036523421209240227
+    },
+    "tier": "near",
+    "dz_m": 0.007097477642263428,
+    "dheel_deg": 0.0009291514714370168,
+    "dtrim_deg": 0.14814270060325505,
+    "boat_dx_m": -6.268861582192642e-05,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.220408227481208,
+   "boat_pitch_amp_deg": 0.20863294200645446,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 550.240447636565,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.038250336490385756,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 4.041594976799721,
+   "score_motion": 5.804040310064955,
+   "score": 6.943615131832198,
+   "rank": 7
+  },
+  {
+   "candidate": {
+    "x_m": 1.5,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.5,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.5,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17493726785430638,
+   "trim_deg": -3.6917204410911073,
+   "draft_m": 0.366852009262879,
+   "deck_freeboard_min_m": 0.17957184947171678,
+   "float_top_freeboard_min_m": 0.3158185013151269,
+   "GM_T_m": 20.942643255726974,
+   "GM_L_m": 9.51783362665541,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.31768691588785,
+   "flags": [],
+   "line_min_N": 43.34134527002709,
+   "line_max_N": 87.74141957567761,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 3.9831794597024115,
+   "pitch_amp_deg": 0.516480053527238,
+   "heave_amp_m": 0.04992120508317049,
+   "deck_accel_max_ms2": 1.0689960520488893,
+   "deck_corner_min_clearance_m": 0.1253437540957692,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.0009291514714366442,
+     "dtrim_deg": 0.14814270060325582,
+     "dz_m": 0.007097477642263428,
+     "dx_m": -0.0020009744135540686,
+     "dy_m": 1.0400548138445043e-05,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 2.5335903243655106e-06,
+     "dtrim_deg": -1.7828768726748082e-05,
+     "dz_m": -3.6602942642405267e-06,
+     "dx_m": -6.268861582192642e-05,
+     "dy_m": -4.723530527000249e-06,
+     "dyaw_deg": 0.00036523421209435286
+    },
+    "tier": "near",
+    "dz_m": 0.007097477642263428,
+    "dheel_deg": 0.0009291514714366442,
+    "dtrim_deg": 0.14814270060325582,
+    "boat_dx_m": -6.268861582192642e-05,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.286986728724846,
+   "boat_pitch_amp_deg": 0.20845788638636606,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 545.0766174658586,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.034573408088781094,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 4.04159497679972,
+   "score_motion": 5.568655565278538,
+   "score": 6.825922759438989,
+   "rank": 6
+  },
+  {
+   "candidate": {
+    "x_m": 1.5,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.75,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.5,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.5,
+       1.75,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.05830310246681763,
+   "trim_deg": -3.690565795209984,
+   "draft_m": 0.3628326060721768,
+   "deck_freeboard_min_m": 0.18422713702060067,
+   "float_top_freeboard_min_m": 0.31981502121750593,
+   "GM_T_m": 20.937997437048395,
+   "GM_L_m": 9.523646252941496,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.31768691588785,
+   "flags": [],
+   "line_min_N": 43.54908358290777,
+   "line_max_N": 87.633384630732,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.206078523003799,
+   "pitch_amp_deg": 0.4583324443474895,
+   "heave_amp_m": 0.05030716491969221,
+   "deck_accel_max_ms2": 1.1208770560644843,
+   "deck_corner_min_clearance_m": 0.11581322104197288,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.1175633168589254,
+     "dtrim_deg": 0.14929734648437942,
+     "dz_m": 0.007134331327514065,
+     "dx_m": -0.0020056874580176576,
+     "dy_m": 0.0013160696814224979,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 0.0012722757856693503,
+     "dtrim_deg": -2.1244857860518677e-05,
+     "dz_m": -3.967901784529548e-06,
+     "dx_m": -6.193254425124195e-05,
+     "dy_m": -4.825921404399985e-06,
+     "dyaw_deg": 0.0061510431433047874
+    },
+    "tier": "near",
+    "dz_m": 0.007134331327514065,
+    "dheel_deg": 0.1175633168589254,
+    "dtrim_deg": 0.14929734648437942,
+    "boat_dx_m": -6.193254425124195e-05,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.20836927044064,
+   "boat_pitch_amp_deg": 0.21499028747848625,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 550.319950811821,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.04054986284507056,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 3.8071720001436193,
+   "score_motion": 5.785288023415774,
+   "score": 6.699816011851507,
+   "rank": 5
+  },
+  {
+   "candidate": {
+    "x_m": 1.7,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.7,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.7,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.1727646469268651,
+   "trim_deg": -3.304274755580055,
+   "draft_m": 0.3537670415914913,
+   "deck_freeboard_min_m": 0.19831526096706276,
+   "float_top_freeboard_min_m": 0.32037670768614596,
+   "GM_T_m": 21.201009747200537,
+   "GM_L_m": 9.548072895717938,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.37376168224299,
+   "flags": [],
+   "line_min_N": 44.14740892765501,
+   "line_max_N": 87.68266407299885,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.15781878162694,
+   "pitch_amp_deg": 0.49031043434313637,
+   "heave_amp_m": 0.049373515411360855,
+   "deck_accel_max_ms2": 1.110026069014599,
+   "deck_corner_min_clearance_m": 0.14130339601291544,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.0031017723988779468,
+     "dtrim_deg": 0.5355883861143084,
+     "dz_m": 0.02575768709554882,
+     "dx_m": -0.007192680712005295,
+     "dy_m": 3.472006036313313e-05,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 7.34346763971291e-06,
+     "dtrim_deg": -5.3742381658844964e-05,
+     "dz_m": -1.2392289179097293e-05,
+     "dx_m": -0.00023178175202343,
+     "dy_m": -1.68813155362311e-05,
+     "dyaw_deg": 0.0012940718284002286
+    },
+    "tier": "near",
+    "dz_m": 0.02575768709554882,
+    "dheel_deg": 0.0031017723988779468,
+    "dtrim_deg": 0.5355883861143084,
+    "boat_dx_m": -0.00023178175202343,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.207893127991312,
+   "boat_pitch_amp_deg": 0.2119214784669358,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 568.2542610053397,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.03620827255934919,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 3.649804049433785,
+   "score_motion": 5.758155284984675,
+   "score": 6.528881691926123,
+   "rank": 4
+  },
+  {
+   "candidate": {
+    "x_m": 1.7,
+    "y_stbd_m": 1.7,
+    "y_port_m": 1.7,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.7,
+       -1.7,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.7,
+       1.7,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17276464692686527,
+   "trim_deg": -3.304274755580056,
+   "draft_m": 0.3537670415914914,
+   "deck_freeboard_min_m": 0.19831526096706265,
+   "float_top_freeboard_min_m": 0.3203767076861459,
+   "GM_T_m": 21.201009747200537,
+   "GM_L_m": 9.548072895717945,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.37376168224299,
+   "flags": [],
+   "line_min_N": 44.14740892765501,
+   "line_max_N": 87.68266407299885,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.072162275860686,
+   "pitch_amp_deg": 0.4901876140053399,
+   "heave_amp_m": 0.04942545597150338,
+   "deck_accel_max_ms2": 1.0872430041821544,
+   "deck_corner_min_clearance_m": 0.1425311284118413,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.003101772398877773,
+     "dtrim_deg": 0.5355883861143076,
+     "dz_m": 0.02575768709554871,
+     "dx_m": -0.007192680712005295,
+     "dy_m": 3.472006036313313e-05,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 7.343467639851128e-06,
+     "dtrim_deg": -5.374238165894436e-05,
+     "dz_m": -1.2392289179097293e-05,
+     "dx_m": -0.00023178175202343,
+     "dy_m": -1.6881315536382995e-05,
+     "dyaw_deg": 0.0012940718284020223
+    },
+    "tier": "near",
+    "dz_m": 0.02575768709554871,
+    "dheel_deg": 0.003101772398877773,
+    "dtrim_deg": 0.5355883861143076,
+    "boat_dx_m": -0.00023178175202343,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.237969727042051,
+   "boat_pitch_amp_deg": 0.21181172620586802,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 566.5346041255613,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.03448776224676206,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 3.6498040494337864,
+   "score_motion": 5.64959289404818,
+   "score": 6.474600496457876,
+   "rank": 3
+  },
+  {
+   "candidate": {
+    "x_m": 1.7,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.7,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.7,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17276464692686527,
+   "trim_deg": -3.304274755580056,
+   "draft_m": 0.3537670415914914,
+   "deck_freeboard_min_m": 0.19831526096706265,
+   "float_top_freeboard_min_m": 0.3203767076861459,
+   "GM_T_m": 21.201009747200537,
+   "GM_L_m": 9.548072895717945,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.37376168224299,
+   "flags": [],
+   "line_min_N": 44.14740892765501,
+   "line_max_N": 87.68266407299885,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 3.894366689408175,
+   "pitch_amp_deg": 0.4900427408533381,
+   "heave_amp_m": 0.0495251244983345,
+   "deck_accel_max_ms2": 1.0403572474394003,
+   "deck_corner_min_clearance_m": 0.14417992078011238,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.003101772398877773,
+     "dtrim_deg": 0.5355883861143076,
+     "dz_m": 0.02575768709554871,
+     "dx_m": -0.007192680712005295,
+     "dy_m": 3.472006036313313e-05,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 7.343467639851128e-06,
+     "dtrim_deg": -5.374238165894436e-05,
+     "dz_m": -1.2392289179097293e-05,
+     "dx_m": -0.00023178175202343,
+     "dy_m": -1.6881315536382995e-05,
+     "dyaw_deg": 0.0012940718284020223
+    },
+    "tier": "near",
+    "dz_m": 0.02575768709554871,
+    "dheel_deg": 0.003101772398877773,
+    "dtrim_deg": 0.5355883861143076,
+    "boat_dx_m": -0.00023178175202343,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.302202721263734,
+   "boat_pitch_amp_deg": 0.21160986732809192,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 561.5730632717912,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.030886513404874028,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 3.6498040494337864,
+   "score_motion": 5.424766677700914,
+   "score": 6.3621873882842435,
+   "rank": 2
+  },
+  {
+   "candidate": {
+    "x_m": 1.7,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.75,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.7,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.7,
+       1.75,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.05758062668449421,
+   "trim_deg": -3.303318642372458,
+   "draft_m": 0.349800606135492,
+   "deck_freeboard_min_m": 0.20290714459513692,
+   "float_top_freeboard_min_m": 0.3243244843709598,
+   "GM_T_m": 21.194705141122714,
+   "GM_L_m": 9.552507459165176,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.37376168224299,
+   "flags": [],
+   "line_min_N": 44.34973101085093,
+   "line_max_N": 87.5710444581257,
+   "slack_lines": [],
+   "coupled_converged": true,
+   "roll_amp_deg": 4.109220791445075,
+   "pitch_amp_deg": 0.4503938046521617,
+   "heave_amp_m": 0.049835193942163125,
+   "deck_accel_max_ms2": 1.0917536893935222,
+   "deck_corner_min_clearance_m": 0.1357003402488694,
+   "pose_reuse": {
+    "EXO": {
+     "dheel_deg": 0.11828579264124885,
+     "dtrim_deg": 0.5365444993219054,
+     "dz_m": 0.025786672394843668,
+     "dx_m": -0.00719575575267406,
+     "dy_m": 0.0013241589857696696,
+     "dyaw_deg": 0.0
+    },
+    "BOAT": {
+     "dheel_deg": 0.0012738383376721316,
+     "dtrim_deg": -5.68323920007252e-05,
+     "dz_m": -1.267001630383957e-05,
+     "dx_m": -0.00023111099360972887,
+     "dy_m": -8.872888914055122e-06,
+     "dyaw_deg": 0.006460272627093998
+    },
+    "tier": "near",
+    "dz_m": 0.025786672394843668,
+    "dheel_deg": 0.11828579264124885,
+    "dtrim_deg": 0.5365444993219054,
+    "boat_dx_m": -0.00023111099360972887,
+    "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+   },
+   "hydro_cache": "hit",
+   "boat_roll_amp_deg": 8.226291952203486,
+   "boat_pitch_amp_deg": 0.21734510238694413,
+   "line_min_dyn_N": 0.0,
+   "line_max_dyn_N": 567.0742231127612,
+   "lines_slack_in_cycle": [
+    "LINE_AFT_PORT",
+    "LINE_AFT_STBD",
+    "SPRING_PORT",
+    "SPRING_STBD"
+   ],
+   "min_relative_clearance_m": 0.03682509668400408,
+   "min_relative_clearance_at": "hull_vs_float_port_x3.4",
+   "score_level": 3.4184798957414464,
+   "score_motion": 5.65136828549076,
+   "score": 6.244164038486826,
+   "rank": 1
+  }
+ ],
+ "best": {
+  "candidate": {
+   "x_m": 1.7,
+   "y_stbd_m": 2.05,
+   "y_port_m": 1.75,
+   "symmetric": false
+  },
+  "overrides_to_apply": {
+   "components": {
+    "BATTERY_1": {
+     "com_m": [
+      1.7,
+      -2.05,
+      0.5
+     ]
+    },
+    "BATTERY_2": {
+     "com_m": [
+      1.7,
+      1.75,
+      0.5
+     ]
+    }
+   }
+  },
+  "score": 6.244164038486826
+ },
+ "notes": [
+  "Score = |trim| + 2|heel| (deg) + freeboard penalty below 0.15 m + 0.5 x (roll + pitch amplitude (deg) + deck accel (m/s2)) at the reference wave; edit the weights in exo01/optimise.py if your priorities differ.",
+  "Within the rear deck the trim can only be reduced, not removed: the most forward row (x = 1.70 m) is the best for trim; the COM stays aft of the float centroid. Levelling needs mass further forward (cabinet, payload) or the float rows mounted further aft. Asymmetric rows (port battery moved inboard) counter the heel from the port-side cabinet."
+ ],
+ "hydro_note": "wave columns from the cached BEM of the base pose (exact COM transform; pose within tolerance)",
+ "n_candidates": 38,
+ "seconds": 21.244219064712524
+}

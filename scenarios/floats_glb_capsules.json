@@ -1,0 +1,86 @@
+{
+ "schema": "exo01_scenario_v1",
+ "name": "floats_glb_capsules",
+ "title": "Float proxies of revision 3 (capsules D 0.58 m fitted to the GLB) instead of the Flofiz shape",
+ "base": "illustrative",
+ "overrides": {
+  "buoyant_surfaces": {
+   "FLOAT_NEG_Y_1": {
+    "type": "capsule_x",
+    "centre_m": [
+     1.3,
+     -1.97,
+     -0.29
+    ],
+    "length_m": 1.6,
+    "radius_m": 0.29,
+    "source": "revision-3 GLB float proxy as a capsule (v0.1-v0.3 model)",
+    "verified": false
+   },
+   "FLOAT_NEG_Y_2": {
+    "type": "capsule_x",
+    "centre_m": [
+     2.8125,
+     -1.97,
+     -0.29
+    ],
+    "length_m": 1.425,
+    "radius_m": 0.29,
+    "source": "revision-3 GLB float proxy as a capsule (v0.1-v0.3 model)",
+    "verified": false
+   },
+   "FLOAT_NEG_Y_3": {
+    "type": "capsule_x",
+    "centre_m": [
+     4.3125,
+     -1.97,
+     -0.29
+    ],
+    "length_m": 1.575,
+    "radius_m": 0.29,
+    "source": "revision-3 GLB float proxy as a capsule (v0.1-v0.3 model)",
+    "verified": false
+   },
+   "FLOAT_POS_Y_1": {
+    "type": "capsule_x",
+    "centre_m": [
+     1.3,
+     1.97,
+     -0.29
+    ],
+    "length_m": 1.6,
+    "radius_m": 0.29,
+    "source": "revision-3 GLB float proxy as a capsule (v0.1-v0.3 model)",
+    "verified": false
+   },
+   "FLOAT_POS_Y_2": {
+    "type": "capsule_x",
+    "centre_m": [
+     2.8125,
+     1.97,
+     -0.29
+    ],
+    "length_m": 1.425,
+    "radius_m": 0.29,
+    "source": "revision-3 GLB float proxy as a capsule (v0.1-v0.3 model)",
+    "verified": false
+   },
+   "FLOAT_POS_Y_3": {
+    "type": "capsule_x",
+    "centre_m": [
+     4.3125,
+     1.97,
+     -0.29
+    ],
+    "length_m": 1.575,
+    "radius_m": 0.29,
+    "source": "revision-3 GLB float proxy as a capsule (v0.1-v0.3 model)",
+    "verified": false
+   }
+  },
+  "host_boat": {
+   "included": false
+  }
+ },
+ "notes": "ILLUSTRATIVE scenario on the exploratory configuration; masses/positions are examples, not data. Sensitivity of draft/trim/stability to the float geometry assumption."
+}

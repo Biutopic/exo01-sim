@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EXO-01 exploratory flotation / stability / wave response</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/app.css">
+<script type="importmap">
+{ "imports": { "three": "/static/vendor/three/build/three.module.js", "three/addons/": "/static/vendor/three/addons/" } }
+</script>
+</head>
+<body>
+<header>
+  <div class="title">EXO-01 <span class="sub">exploratory flotation · static stability · linear wave response</span></div>
+  <div id="banner" class="banner">loading…</div>
+  <div id="pipeline"><span class="chip" id="pipStill">① still water</span><span class="chip" id="pipBem">② BEM</span><span class="chip" id="pipWave">③ waves</span></div>
+  <div class="hdr-right"><span id="version"></span></div>
+</header>
+<div id="gprog" class="idle"><div class="gbar"><i id="gprogFill"></i></div><span id="gprogText">ready</span></div>
+
+<main>
+  <!-- ===================================================== left: inputs -->
+  <aside id="left">
+    <details class="sec" open>
+      <summary><h2>Configuration</h2></summary>
+      <div class="row"><label>Base</label>
+        <select id="base"><option value="illustrative">illustrative (assumed geometry &amp; masses)</option><option value="baseline">baseline (unknowns null)</option></select></div>
+      <div class="row"><label>Scenario</label><select id="scenario"></select><button id="loadScenario">load</button></div>
+      <div class="row"><label>Save as</label><input id="saveName" placeholder="my_scenario"><button id="saveScenario">save</button></div>
+      <div class="row small" id="scenarioNotes"></div>
+    </details>
+
+    <details class="sec">
+      <summary><h2>Environment</h2></summary>
+      <div class="row"><label>ρ water [kg/m³]</label><input id="rho" type="number" step="1"></div>
+      <div class="row"><label>Water depth [m]</label><input id="depth" type="number" step="0.5" placeholder="blank = infinite"></div>
+      <div class="row small">g = 9.80665 m/s². Illustrative: fresh water, depth 3 m ASSUMED (Erdre 2–4 m, measure at the berth; finite depth makes the BEM ~2.5× slower, blank = infinite). Baseline keeps ρ and depth null.</div>
+    </details>
+
+    <details class="sec" open>
+      <summary><h2>Components <span class="hint">(edit mass / COM; drag batteries &amp; electronics in 3D)</span></h2></summary>
+      <table id="components" class="edit"></table>
+      <div class="row"><label>hide members (visual only)</label><input id="hidden" type="text" style="width:220px" placeholder="walkway_-1, walkway_1, midrail_1"></div>
+      <div class="row small">GLB sub-part names, comma-separated (see results/ui/members_to_identify.png). No mass or buoyancy effect: section masses are declared totals.</div>
+    </details>
+
+    <details class="sec" id="boatSection" open>
+      <summary><h2>Hydronaute (Renaud 8000) <span class="hint">— second floating body, moored with lines</span></h2></summary>
+      <div class="row"><label>include boat</label><input id="boatIncluded" type="checkbox" checked></div>
+      <div class="row"><label>boat mass [kg]</label><input id="boatMass" type="number" step="10"><span class="small">2100 archival / 3000 published — not weighed</span></div>
+      <div class="row"><label>boat COM x,y,z [m]</label><input id="boatCx" type="number" step="0.05"><input id="boatCy" type="number" step="0.05"><input id="boatCz" type="number" step="0.05"></div>
+      <div class="row"><label>berth x, y [m], yaw [°]</label><input id="boatX" type="number" step="0.05"><input id="boatY" type="number" step="0.05"><input id="boatYaw" type="number" step="1"></div>
+      <div class="row"><label>lines: pretension [N]</label><input id="lineT0" type="number" step="10"><label style="min-width:auto">k [N/m]</label><input id="lineK" type="number" step="500"></div>
+      <div id="boatNote" class="row small"></div>
+    </details>
+
+    <details class="sec" id="linesSection" open>
+      <summary><h2>Mooring lines <span class="hint">(edit end points; drag the end spheres in 3D)</span></h2></summary>
+      <div class="row"><label>preset</label><select id="linePreset"></select><button id="applyPreset">apply</button><button id="addLine">+ line</button></div>
+      <table id="lines" class="edit"></table>
+      <div class="row small">EXO end in the EXO CAD frame (x rear→front, y port, z up, deck datum 0); boat end in the boat frame (x stern→bow, z = catalogue waterline). k / T₀ blank = line defaults above. Tension = coupled still-water result; red in 3D = slack.</div>
+      <div id="linesNote" class="row small"></div>
+    </details>
+
+    <details class="sec" id="propSection" open>
+      <summary><h2>Propulsion <span class="hint">(quasi-static: thrust = resistance at the steady speed)</span></h2></summary>
+      <div class="row"><label>motor</label><button id="thr0" class="thr on">off</button><button id="thr20" class="thr">20 %</button><button id="thr50" class="thr">50 %</button><button id="thr100" class="thr">100 %</button><input id="thrCustom" type="number" step="5" min="0" max="100" value="0" style="width:60px"><span class="small">% of bollard thrust</span></div>
+      <div class="row"><label>unit</label><select id="thrUnit"><option value="EXO_PODS">EXO rim-drive pods (2 × POD 5.0)</option><option value="BOAT_ENGINE">Hydronaute engine (Volvo)</option></select></div>
+      <div id="propNote" class="row small">Off = identical to the moored case. The steady speed and the force split between the hulls come from assumed resistance coefficients (editable in the config); line loads are the physical content, the speed is indicative.</div>
+    </details>
+
+    <details class="sec" open>
+      <summary><h2>People <span class="hint">(illustrative loads; body COM above the surface; drag in 3D)</span></h2></summary>
+      <table id="people" class="edit"></table>
+      <div class="row"><button id="addPerson">+ add person</button><span class="small">surfaces: EXO lower deck (Z=0) · observation deck (Z=2.2) · boat aft deck / forward terrace / roof</span></div>
+    </details>
+
+    <details class="sec" open>
+      <summary><h2>Regular wave</h2></summary>
+      <div class="row"><label>Height H [m] (crest-to-trough)</label><input id="H" type="number" step="0.05" value="0.3"></div>
+      <div class="row"><label>Period T [s]</label><input id="T" type="number" step="0.1" value="3.0"></div>
+      <div class="row"><label>Heading β [deg]</label><input id="heading" type="number" step="15" value="90"></div>
+      <div class="row small">Amplitude A = H/2. β = direction the waves travel <b>toward</b>, CCW from +X (0° = along +X toward the framed/panel end, 90° = toward +Y, beam seas).</div>
+    </details>
+
+    <details class="sec">
+      <summary><h2>Viscous damping <span class="hint">(explicit assumption — not from the BEM)</span></h2></summary>
+      <div class="row small"><b>EXO</b></div>
+      <div class="row"><label>ζ heave / roll / pitch</label><input id="zHeave" type="number" step="0.01" value="0.05" style="width:56px"><input id="zRoll" type="number" step="0.01" value="0.05" style="width:56px"><input id="zPitch" type="number" step="0.01" value="0.05" style="width:56px"></div>
+      <div class="row"><label>surge/sway [N·s/m], yaw [N·m·s/rad]</label><input id="bSurge" type="number" step="100" value="0" style="width:56px"><input id="bSway" type="number" step="100" value="0" style="width:56px"><input id="bYaw" type="number" step="100" value="0" style="width:56px"></div>
+      <div class="row small" id="boatDampHdr"><b>Hydronaute</b> (hull with keel and skeg: more roll damping than the floats — still an assumption)</div>
+      <div class="row boatDamp"><label>ζ heave / roll / pitch</label><input id="zHeaveB" type="number" step="0.01" value="0.05" style="width:56px"><input id="zRollB" type="number" step="0.01" value="0.10" style="width:56px"><input id="zPitchB" type="number" step="0.01" value="0.10" style="width:56px"></div>
+      <div class="row boatDamp"><label>surge/sway [N·s/m], yaw [N·m·s/rad]</label><input id="bSurgeB" type="number" step="100" value="0" style="width:56px"><input id="bSwayB" type="number" step="100" value="0" style="width:56px"><input id="bYawB" type="number" step="100" value="0" style="width:56px"></div>
+      <div class="row small">ζ = fraction of critical damping at the natural frequency (added-mass included). Zero = radiation damping only. Surge/sway/yaw have no restoring: without damping they drift at ω→0 (linear model; the lines add stiffness between the bodies only).</div>
+    </details>
+
+    <details class="sec">
+      <summary><h2>BEM settings (Capytaine)</h2></summary>
+      <div class="row"><label>ω range [rad/s]</label><input id="omMin" type="number" step="0.1" value="0.5"><input id="omMax" type="number" step="0.1" value="6.0"></div>
+      <div class="row"><label>ω step</label><input id="omStep" type="number" step="0.05" value="0.15"><span class="small">0.15 verified ≤ 0.5 % RAO error outside gap bands (0.10: ≤ 0.1 %)</span></div>
+      <div class="row"><label>refine gap bands</label><input id="refine" type="checkbox" checked><span class="small">extra ω at 0.05 rad/s where coefficients are resonant</span></div>
+      <div class="row small">Excitation is solved at the exact wave heading (no heading interpolation); a new heading costs one short diffraction run.</div>
+      <div class="row"><label>panel size [m]</label><input id="panel" type="number" step="0.02" value="0.12"><span class="small">EXO alone</span></div>
+      <div class="row"><label>two-body panels EXO / boat [m]</label><input id="panelExo2" type="number" step="0.02" value="0.20"><input id="panelBoat2" type="number" step="0.05" value="0.30"></div>
+      <div class="row"><label>two-body ω max</label><input id="omMax2" type="number" step="0.5" value="5.0"><span class="small">12 DOF; several minutes</span></div>
+      <div class="row"><label>internal lid</label><input id="lid" type="checkbox" checked></div>
+    </details>
+
+    <section class="actions" id="actions">
+      <button id="evaluate" class="primary">1 · Still water</button>
+      <button id="hydro" class="primary">2 · Compute BEM</button>
+      <button id="wave" class="primary">3 · Wave response</button>
+      <button id="compare">Compare scenarios</button>
+      <button id="export">Export results</button>
+      <div id="status" class="small"></div>
+    </section>
+  </aside>
+
+  <!-- ===================================================== centre: 3D -->
+  <div id="centre">
+    <div id="busy"></div>
+    <div id="viewer"></div>
+    <div id="overlay">
+      <div id="label" class="label"></div>
+      <div id="poseInfo" class="small"></div>
+    </div>
+    <div id="jobs"></div>
+    <div id="anim">
+      <button id="play">▶</button>
+      <label>speed <input id="speed" type="range" min="0.1" max="2" step="0.1" value="1"></label>
+      <span id="tdisp">t = 0.00 s</span>
+      <label>exaggeration ×<span id="exagVal">1</span> (waves + static Δ) <input id="exag" type="range" min="1" max="10" step="0.5" value="1"></label>
+      <button id="setRef" title="take the current still-water pose as the reference for the static-Δ exaggeration">ref pose</button>
+      <label><input id="autoWave" type="checkbox" checked> live wave motion</label>
+      <label><input id="showWater" type="checkbox" checked> water</label>
+      <label><input id="previewWave" type="checkbox" checked> incident-wave preview</label>
+      <label><input id="showMarkers" type="checkbox" checked> COM/COB</label>
+      <button id="viewTop">top</button><button id="viewSide">side</button><button id="viewEnd">end</button><button id="viewIso">iso</button>
+      <span id="animNote" class="small"></span>
+    </div>
+  </div>
+
+  <!-- ===================================================== right: results -->
+  <aside id="right">
+    <nav><button data-tab="still" class="on">Still water</button><button data-tab="waves">Waves</button><button data-tab="compare">Compare</button><button data-tab="optimise">Optimise</button><button data-tab="notes">Inputs &amp; limits</button></nav>
+    <div id="tab-still" class="tab on"></div>
+    <div id="tab-waves" class="tab">
+      <div id="waveResults"></div>
+      <div class="row"><button id="snatch">Line snatch check (tension-only lines, time domain, ~3 s)</button><span id="snatchStatus" class="small"></span></div>
+      <div id="snatchOut"></div>
+      <canvas id="raoPlot" width="520" height="260"></canvas>
+      <canvas id="rollDampPlot" width="520" height="220"></canvas>
+      <canvas id="tsPlot" width="520" height="220"></canvas>
+      <div id="irregular"></div>
+    </div>
+    <div id="tab-compare" class="tab"><div id="compareOut"></div><canvas id="comparePlot" width="520" height="300"></canvas></div>
+    <div id="tab-optimise" class="tab">
+      <div class="row"><button id="optBattery" class="primary">Optimise battery position</button><button id="optLines" class="primary">Optimise line arrangement</button></div>
+      <div class="small">Sweeps run on the backend with the same solvers as the still-water and wave results (hydrodynamic coefficients frozen at the current pose where stated). Scores rank candidates against each other for the current wave; they are not absolute predictions.</div>
+      <div id="optStatus" class="small"></div>
+      <div id="optOut"></div>
+    </div>
+    <div id="tab-notes" class="tab"></div>
+  </aside>
+</main>
+<script type="module" src="/static/app.js"></script>
+</body>
+</html>

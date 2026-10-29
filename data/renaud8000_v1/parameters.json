@@ -1,0 +1,138 @@
+{
+  "model_id": "RENAUD8000_REFERENCE",
+  "revision": "v1",
+  "date": "2026-10-28",
+  "units": {
+    "geometry": "mm",
+    "mass": "kg"
+  },
+  "length_mm": 8000,
+  "beam_mm": 2980,
+  "catalogue_draft_reference_mm": 750,
+  "catalogue_air_draft_reference_mm": 2300,
+  "coordinate_system": "Right-handed CAD: X from stern toward bow; Y to port; Z up. Origin X=0 at nominal stern plane, Y=0 centreline, Z=0 an illustrative catalogue waterline, not an equilibrium calculation.",
+  "archival_light_mass_kg": 2100,
+  "current_measured_mass_kg": null,
+  "published_alternative_mass_kg": 3000,
+  "mass_default_basis": "Unverified archival light-weight reference; current restored vessel may differ.",
+  "actual_centre_of_mass_m": null,
+  "actual_inertia_tensor_kg_m2": null,
+  "hull_stations_mm": [
+    [
+      0,
+      1340,
+      0
+    ],
+    [
+      250,
+      1480,
+      0
+    ],
+    [
+      1200,
+      1490,
+      0
+    ],
+    [
+      2800,
+      1490,
+      0
+    ],
+    [
+      4800,
+      1490,
+      0
+    ],
+    [
+      6200,
+      1490,
+      20
+    ],
+    [
+      6900,
+      1450,
+      100
+    ],
+    [
+      7400,
+      1300,
+      220
+    ],
+    [
+      7750,
+      930,
+      370
+    ],
+    [
+      7950,
+      430,
+      550
+    ],
+    [
+      8000,
+      60,
+      670
+    ]
+  ],
+  "hull_shape_status": "Approximate gull-wing visual envelope reconstructed from archival afloat/ashore photos and model references; no measured offsets.",
+  "paint_break_z_mm": -120,
+  "topside_top_z_mm": 780,
+  "keel_bottom_z_mm": -750,
+  "cabin_stations_mm": [
+    [
+      460,
+      1320,
+      1780
+    ],
+    [
+      650,
+      1340,
+      1910
+    ],
+    [
+      2600,
+      1340,
+      1910
+    ],
+    [
+      2950,
+      1340,
+      1910
+    ],
+    [
+      3320,
+      1340,
+      2280
+    ],
+    [
+      5800,
+      1310,
+      2280
+    ],
+    [
+      6240,
+      1250,
+      2180
+    ]
+  ],
+  "cabin_base_z_mm": 780,
+  "cabin_wall_proxy_mm": 35,
+  "front_well_floor_z_mm": 490,
+  "interior_saloon_floor_z_mm": 280,
+  "interior_aft_floor_z_mm": -20,
+  "water_tank_capacity_actual_l": null,
+  "fuel_tank_capacity_actual_l": null,
+  "archival_water_capacity_l": 350,
+  "archival_fuel_capacity_l": 64,
+  "engine_reported_power_cv": 20,
+  "engine_reported_basis": "User prior conversation 2025; current engine identity, installed mass and position unconfirmed.",
+  "notes": [
+    "Outer shape, cabin heights and window proportions are fitted reference geometry, not surveyed construction dimensions.",
+    "Archived sheet visible in the user dossier reads 8 m, 2.98 m, 0.75 m draft, 2.30 m air draft, light weight 2.1 T, water 350 litres and fuel 64 litres. These historical model values do not establish the current restored boat loading.",
+    "Fluvial model page separately reports 3000 kg, 0.8 m draft, 2.2 m air draft, 575 L water and 150 L fuel. Those differing conditions are not resolved or averaged.",
+    "Boat mass is assigned once to a parent as a provisional 2100 kg reference. No invented hull, roof, furniture, engine or tank mass breakdown is added.",
+    "Interior geometry follows the recovered generic layout and restored-interior photos; exact current interior measurements are unknown.",
+    "No EXO frame, external batteries, solar panels or external floats are included. The EXO remains a separate model; attachment geometry and shared-load accounting remain unresolved.",
+    "No current displacement, equilibrium, centre of gravity, inertia, capacity, wave response or structural strength is calculated."
+  ]
+}

@@ -1,0 +1,13 @@
+# EXO-01 exploratory simulation - Python 3.11, 3.12 or 3.13 (Windows / macOS / Linux, binary wheels only).
+# Capytaine 3.0.0 is the one hard pin: exo01/hydro.py is written against its 3.0 API (not 2.x).
+# The exact set the project was built and verified with is in requirements-lock-py313.txt.
+# (cadquery is NOT needed: it is only used by the reference packages' own build scripts, which are not run here.)
+capytaine==3.0.0
+numpy>=2.1,<3
+scipy>=1.14
+xarray>=2024.6
+pandas>=2.2,<3
+rich>=13
+flask>=3.1
+matplotlib>=3.8
+pytest>=8

@@ -1,0 +1,182 @@
+{
+  "revision": "v3",
+  "source_drawing": "assemblage-la-mutine.webp",
+  "source_drawing_title": "ASSEMBLAGE HYDRONAUTE",
+  "source_drawing_author": "La Mutine",
+  "source_drawing_date": "2026-05-28",
+  "source_drawing_sheet": "1/3",
+  "geometry_unit": "mm",
+  "mass_unit": "kg",
+  "section_lengths_mm": [
+    2100,
+    1425,
+    1425
+  ],
+  "drawing_overall_length_mm": 4980,
+  "frame_width_mm": 4547,
+  "frame_height_above_deck_mm": 2700,
+  "drawing_clear_height_mm": 2100,
+  "drawing_ladder_width_mm": 600,
+  "drawing_other_clearances_mm": [
+    3200,
+    3353
+  ],
+  "float_count": 6,
+  "float_count_status": "confirmed_by_user",
+  "float_diameter_proxy_mm": 580,
+  "float_centerline_y_proxy_mm": 1970,
+  "float_spans_proxy_mm": [
+    [
+      500,
+      2100
+    ],
+    [
+      2100,
+      3525
+    ],
+    [
+      3525,
+      5100
+    ]
+  ],
+  "frame_profile_proxy_mm": 50,
+  "rear_module_mass_kg": 150,
+  "other_module_mass_kg": 70,
+  "float_mass_each_kg": 30,
+  "battery_mass_each_kg": 120,
+  "battery_proxy_size_mm": [
+    650,
+    440,
+    460
+  ],
+  "battery_preview_centres_mm": [
+    [
+      760,
+      -1050,
+      250
+    ],
+    [
+      760,
+      1050,
+      250
+    ]
+  ],
+  "solar_mass_each_kg": 20,
+  "solar_count": 4,
+  "solar_proxy_size_mm": [
+    2060,
+    1106.75,
+    40
+  ],
+  "solar_preview_centres_mm": [
+    [
+      4555,
+      -1720.125,
+      2740
+    ],
+    [
+      4555,
+      -573.375,
+      2740
+    ],
+    [
+      4555,
+      573.375,
+      2740
+    ],
+    [
+      4555,
+      1720.125,
+      2740
+    ]
+  ],
+  "electronics_mass_kg": 50,
+  "electronics_proxy_size_mm": [
+    650,
+    450,
+    300
+  ],
+  "electronics_preview_centre_mm": [
+    1600,
+    -950,
+    950
+  ],
+  "equipment_positions_confirmed": false,
+  "float_geometry_confirmed": false,
+  "section_mass_mapping_confirmed": false,
+  "notes": [
+    "Revision 3 follows the user correction: the rest/observation platform is approximately 500 mm below the top frame. The four solar panels remain in a single transverse row on the end bay, with overhang only at the front (+X framed end); there is no lateral overhang.",
+    "The four proxy panel widths are fitted to the 4547 mm frame width with three 40 mm preview gaps: each panel is 2060 x 1106.75 mm in this model. Those are fitted preview envelopes, not measured product dimensions. The front overhang remains a provisional 635 mm. Panels are horizontal because no tilt angle was supplied.",
+    "The approximate 500 mm platform drop is modelled relative to the nominal 2700 mm top-frame level: walking surface Z=2200 mm. The ladder lands at this level. Adjacent proxy headers are aligned beneath the 24 mm deck while retaining the drawing’s nominal 2100 mm underside clearance; member sizes are not engineered.",
+    "The six float meshes, locations and masses are retained unchanged from revision 2 at the user’s request. Keeping the current shape does not validate it as a measured buoyancy surface.",
+    "The upper deck surface thickness and material are provisional. Its added mass is unknown; inclusion in the 70 kg section weight is unconfirmed. People on the upper deck are additional loads, with mass and body centre-of-mass positions to be supplied.",
+    "All listed masses are treated as additive: the 150/70/70 kg EXO section weights are assumed to exclude the separately listed floats, batteries, solar panels and electronics. Confirm this to avoid double counting.",
+    "Model follows the 2100 + 1425 + 1425 = 4950 mm dimension chain. The separate 4980 mm dimension is retained as an unresolved 30 mm discrepancy; no silent stretch is applied.",
+    "Width 4547 mm and deck-to-top-frame height 2700 mm are taken from dimension labels. Other clearances are recorded but cannot all be reconciled from this raster sheet.",
+    "Three EXO sections are assumed: the 2100 mm rear deck is assigned 150 kg; the two 1425 mm frame bays are each assigned 70 kg. This mapping needs confirmation.",
+    "Six separate 30 kg floats were confirmed by the user. Float cross-section, end shape, position and volume remain visual proxies.",
+    "Batteries and electronics are shown in proposed preview positions only. Their actual installed positions, dimensions and individual centres of mass were not supplied.",
+    "Tube wall thicknesses, exact member profiles, joints and fasteners are not specified. Beam solids represent visual envelopes, not actual material volumes.",
+    "Masses are user-assigned assembly properties, never calculated from these proxy solid volumes.",
+    "The host boat, people, payload, propulsion and other unlisted equipment have no confirmed masses and are not included in the 840 kg subtotal.",
+    "No waterline, flotation equilibrium, stability, wave response, structural strength or total centre of gravity has been calculated."
+  ],
+  "source_annotation": "source_annotation.jpeg",
+  "roof_layout": {
+    "source": "User annotation IMG_0297.jpeg and subsequent clarification, 2026-10-28",
+    "observation_area": {
+      "function": "Upper rest and observation deck, reached by ladder",
+      "function_confirmed_by_user": true,
+      "module_id": "EXO_MIDDLE_70",
+      "x_span_m": [
+        2.1,
+        3.525
+      ],
+      "y_span_m": [
+        -2.2485,
+        2.2485
+      ],
+      "surface_top_z_m": 2.2,
+      "surface_thickness_m_preview": 0.024,
+      "surface_mass_kg": null,
+      "included_in_70kg_section": "unconfirmed",
+      "occupant_load_kg": null,
+      "structural_capacity_validated": false,
+      "drop_below_top_frame_m": 0.5,
+      "elevation_basis": "User: approximately 50 cm down; interpreted relative to nominal top-frame level",
+      "elevation_status": "user_approximate",
+      "ladder_landing_z_m": 2.2
+    },
+    "solar_array": {
+      "arrangement": "Four panels side by side in one transverse row on the remaining end bay",
+      "arrangement_basis": "User confirms four-panel row; no left/right overhang, front overhang only",
+      "long_axis": "X, longitudinal",
+      "preview_panel_dimensions_m": [
+        2.06,
+        1.10675,
+        0.04
+      ],
+      "preview_gap_m": 0.04,
+      "preview_end_overhang_m": 0.635,
+      "preview_side_overhang_each_m": 0,
+      "overhang_measured": false,
+      "preview_tilt_degrees": 0,
+      "tilt_confirmed": false,
+      "observation_area_clear": true,
+      "lateral_fit": "Outer panel edges flush with frame width; width fitted for preview",
+      "lateral_overhang_status": "zero_as_confirmed_by_user",
+      "front_direction_in_model": "+X, framed end beyond solar bay",
+      "front_direction_basis": "Interpretation of front as the existing overhanging end of the panel row",
+      "dimensions_measured": false
+    }
+  },
+  "observation_deck_drop_below_top_frame_mm": 500,
+  "observation_deck_thickness_proxy_mm": 24,
+  "revision_history": [
+    {
+      "revision": "v3",
+      "date": "2026-10-28",
+      "user_correction": "Observation platform about 50 cm down; solar panels overhang at front only, not left/right; retain current float shapes."
+    }
+  ]
+}

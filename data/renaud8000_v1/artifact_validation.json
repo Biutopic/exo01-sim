@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "CAD_STEP_reimport_valid": true,
+  "STEP_solids": 137,
+  "GLB_meshes": 134,
+  "GLB_STEP_bounds_match_within_mm": 3,
+  "bounds_CAD_m": {
+    "minimum": [
+      -0.008550558956307255,
+      -1.5075,
+      -0.75
+    ],
+    "maximum": [
+      8.017342367532182,
+      1.5075,
+      2.344
+    ]
+  },
+  "mass_bearing_parents": 1,
+  "reference_mass_kg": 2100,
+  "current_measured_mass_kg": null,
+  "alternative_weight_is_not_added": true,
+  "unknown_subsystem_masses_not_zeroed": true,
+  "EXO_excluded": true,
+  "closed_hull_proxy_topology_valid": true,
+  "hull_proxy_is_measured_or_hydro_validated": false,
+  "viewer_metadata_matches_JSON": true,
+  "engineering_validation": "Not performed; reference geometry and data integrity only."
+}

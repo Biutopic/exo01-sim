@@ -1,0 +1,2092 @@
+{
+ "target": "battery",
+ "label": "Exploratory \u2014 assumed geometry and mass distribution.",
+ "rows": [
+  {
+   "candidate": {
+    "x_m": 0.3,
+    "y_stbd_m": 1.3,
+    "y_port_m": 1.3,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.3,
+       -1.3,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.3,
+       1.3,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.21100543125067478,
+   "trim_deg": -6.505979602201794,
+   "draft_m": 0.4586501899663906,
+   "deck_freeboard_min_m": 0.04597193328368954,
+   "float_top_freeboard_min_m": 0.28513338272994593,
+   "GM_T_m": 17.240509932151816,
+   "GM_L_m": 6.191400740290617,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 1.981238317757009,
+   "flags": [],
+   "roll_amp_deg": 5.086879784843548,
+   "pitch_amp_deg": 1.2871502308482665,
+   "heave_amp_m": 0.023820428015186912,
+   "deck_accel_max_ms2": 1.3195457654534453,
+   "deck_corner_min_clearance_m": -0.029555053934745043,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.017171567023220223,
+    "dtrim_deg": -0.8743477885542561,
+    "dz_m": -0.038586515657426435,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 7.968271131866248,
+   "score_motion": 7.69357578114526,
+   "score": 11.815059022438877,
+   "rank": 38
+  },
+  {
+   "candidate": {
+    "x_m": 0.3,
+    "y_stbd_m": 0.9,
+    "y_port_m": 0.9,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.3,
+       -0.9,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.3,
+       0.9,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.21100543125067533,
+   "trim_deg": -6.505979602201793,
+   "draft_m": 0.4586501899663905,
+   "deck_freeboard_min_m": 0.04597193328368965,
+   "float_top_freeboard_min_m": 0.285133382729946,
+   "GM_T_m": 17.240509932151816,
+   "GM_L_m": 6.191400740290612,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 1.981238317757009,
+   "flags": [],
+   "roll_amp_deg": 5.012086803972802,
+   "pitch_amp_deg": 1.2700877247106521,
+   "heave_amp_m": 0.024001270488084255,
+   "deck_accel_max_ms2": 1.3043308613229632,
+   "deck_corner_min_clearance_m": -0.025672614229542187,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.017171567023220844,
+    "dtrim_deg": -0.8743477885542545,
+    "dz_m": -0.038586515657426324,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 7.968271131866247,
+   "score_motion": 7.586505390006417,
+   "score": 11.761523826869457,
+   "rank": 37
+  },
+  {
+   "candidate": {
+    "x_m": 0.3,
+    "y_stbd_m": 0.5,
+    "y_port_m": 0.5,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.3,
+       -0.5,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.3,
+       0.5,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.21100543125067533,
+   "trim_deg": -6.505979602201793,
+   "draft_m": 0.4586501899663905,
+   "deck_freeboard_min_m": 0.04597193328368965,
+   "float_top_freeboard_min_m": 0.285133382729946,
+   "GM_T_m": 17.240509932151816,
+   "GM_L_m": 6.191400740290612,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 1.981238317757009,
+   "flags": [],
+   "roll_amp_deg": 4.965459137881944,
+   "pitch_amp_deg": 1.2595470359335939,
+   "heave_amp_m": 0.024113222470296597,
+   "deck_accel_max_ms2": 1.2948413077259116,
+   "deck_corner_min_clearance_m": -0.023264049803534623,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.017171567023220844,
+    "dtrim_deg": -0.8743477885542545,
+    "dz_m": -0.038586515657426324,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 7.968271131866247,
+   "score_motion": 7.51984748154145,
+   "score": 11.728194872636973,
+   "rank": 36
+  },
+  {
+   "candidate": {
+    "x_m": 0.3,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.3,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.3,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.21100543125067533,
+   "trim_deg": -6.505979602201793,
+   "draft_m": 0.4586501899663905,
+   "deck_freeboard_min_m": 0.04597193328368965,
+   "float_top_freeboard_min_m": 0.285133382729946,
+   "GM_T_m": 17.240509932151816,
+   "GM_L_m": 6.191400740290612,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 1.981238317757009,
+   "flags": [],
+   "roll_amp_deg": 4.948163055432485,
+   "pitch_amp_deg": 1.25565628388971,
+   "heave_amp_m": 0.024154595795245187,
+   "deck_accel_max_ms2": 1.291320398638247,
+   "deck_corner_min_clearance_m": -0.022373081907214626,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.017171567023220844,
+    "dtrim_deg": -0.8743477885542545,
+    "dz_m": -0.038586515657426324,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 7.968271131866247,
+   "score_motion": 7.495139737960443,
+   "score": 11.715841000846469,
+   "rank": 35
+  },
+  {
+   "candidate": {
+    "x_m": 0.5,
+    "y_stbd_m": 1.3,
+    "y_port_m": 1.3,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.5,
+       -1.3,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.5,
+       1.3,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.19857531300336184,
+   "trim_deg": -5.895705514913514,
+   "draft_m": 0.44055316494486196,
+   "deck_freeboard_min_m": 0.07316133772956845,
+   "float_top_freeboard_min_m": 0.2900219585074794,
+   "GM_T_m": 18.29177946647631,
+   "GM_L_m": 7.583190541165512,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.037313084112149,
+   "flags": [],
+   "roll_amp_deg": 4.6278538294586875,
+   "pitch_amp_deg": 0.5471879505541688,
+   "heave_amp_m": 0.033245892179717636,
+   "deck_accel_max_ms2": 1.2234667323041724,
+   "deck_corner_min_clearance_m": 0.014259459486512992,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.004741448775907334,
+    "dtrim_deg": -0.26407370126597657,
+    "dz_m": -0.011878094365432967,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 7.061242763624553,
+   "score_motion": 6.398508512317028,
+   "score": 10.260497019783067,
+   "rank": 34
+  },
+  {
+   "candidate": {
+    "x_m": 0.5,
+    "y_stbd_m": 0.9,
+    "y_port_m": 0.9,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.5,
+       -0.9,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.5,
+       0.9,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.19857531300336226,
+   "trim_deg": -5.895705514913517,
+   "draft_m": 0.4405531649448621,
+   "deck_freeboard_min_m": 0.07316133772956823,
+   "float_top_freeboard_min_m": 0.29002195850747936,
+   "GM_T_m": 18.2917794664763,
+   "GM_L_m": 7.583190541165504,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.037313084112149,
+   "flags": [],
+   "roll_amp_deg": 4.565130320449061,
+   "pitch_amp_deg": 0.5382114080736222,
+   "heave_amp_m": 0.03329354399010896,
+   "deck_accel_max_ms2": 1.2088198895189655,
+   "deck_corner_min_clearance_m": 0.017109219324883677,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.004741448775907756,
+    "dtrim_deg": -0.2640737012659782,
+    "dz_m": -0.011878094365433078,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 7.061242763624559,
+   "score_motion": 6.312161618041649,
+   "score": 10.217323572645384,
+   "rank": 33
+  },
+  {
+   "candidate": {
+    "x_m": 0.5,
+    "y_stbd_m": 0.5,
+    "y_port_m": 0.5,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.5,
+       -0.5,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.5,
+       0.5,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.19857531300336226,
+   "trim_deg": -5.895705514913517,
+   "draft_m": 0.4405531649448621,
+   "deck_freeboard_min_m": 0.07316133772956823,
+   "float_top_freeboard_min_m": 0.29002195850747936,
+   "GM_T_m": 18.2917794664763,
+   "GM_L_m": 7.583190541165504,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.037313084112149,
+   "flags": [],
+   "roll_amp_deg": 4.525971833967433,
+   "pitch_amp_deg": 0.5326109097586036,
+   "heave_amp_m": 0.03332267744263459,
+   "deck_accel_max_ms2": 1.1996753204932669,
+   "deck_corner_min_clearance_m": 0.01887959051369382,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.004741448775907756,
+    "dtrim_deg": -0.2640737012659782,
+    "dz_m": -0.011878094365433078,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 7.061242763624559,
+   "score_motion": 6.258258064219303,
+   "score": 10.190371795734212,
+   "rank": 32
+  },
+  {
+   "candidate": {
+    "x_m": 0.5,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.5,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.5,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.19857531300336226,
+   "trim_deg": -5.895705514913517,
+   "draft_m": 0.4405531649448621,
+   "deck_freeboard_min_m": 0.07316133772956823,
+   "float_top_freeboard_min_m": 0.29002195850747936,
+   "GM_T_m": 18.2917794664763,
+   "GM_L_m": 7.583190541165504,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.037313084112149,
+   "flags": [],
+   "roll_amp_deg": 4.511435234089178,
+   "pitch_amp_deg": 0.5305325460533424,
+   "heave_amp_m": 0.033333370244745766,
+   "deck_accel_max_ms2": 1.196280487408428,
+   "deck_corner_min_clearance_m": 0.019534977820774915,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.004741448775907756,
+    "dtrim_deg": -0.2640737012659782,
+    "dz_m": -0.011878094365433078,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 7.061242763624559,
+   "score_motion": 6.238248267550948,
+   "score": 10.180366897400033,
+   "rank": 31
+  },
+  {
+   "candidate": {
+    "x_m": 0.7,
+    "y_stbd_m": 1.3,
+    "y_port_m": 1.3,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.7,
+       -1.3,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.7,
+       1.3,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.19026369573124335,
+   "trim_deg": -5.384645028672521,
+   "draft_m": 0.4247587011195023,
+   "deck_freeboard_min_m": 0.09662035286605863,
+   "float_top_freeboard_min_m": 0.29479755712153344,
+   "GM_T_m": 19.080122846008543,
+   "GM_L_m": 8.52499309402868,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.0933878504672894,
+   "flags": [],
+   "roll_amp_deg": 4.321011520754497,
+   "pitch_amp_deg": 0.24271723692301195,
+   "heave_amp_m": 0.03546092374037241,
+   "deck_accel_max_ms2": 1.1442714524610946,
+   "deck_corner_min_clearance_m": 0.05525288413522152,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.0035701684962111623,
+    "dtrim_deg": 0.24698678497501678,
+    "dz_m": 0.011259479946215012,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 6.298968891474421,
+   "score_motion": 5.708000210138604,
+   "score": 9.152968996543724,
+   "rank": 30
+  },
+  {
+   "candidate": {
+    "x_m": 0.7,
+    "y_stbd_m": 0.9,
+    "y_port_m": 0.9,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.7,
+       -0.9,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.7,
+       0.9,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.19026369573124324,
+   "trim_deg": -5.384645028672521,
+   "draft_m": 0.4247587011195022,
+   "deck_freeboard_min_m": 0.09662035286605863,
+   "float_top_freeboard_min_m": 0.29479755712153344,
+   "GM_T_m": 19.080122846008546,
+   "GM_L_m": 8.524993094028686,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.0933878504672894,
+   "flags": [],
+   "roll_amp_deg": 4.265850851048604,
+   "pitch_amp_deg": 0.2396657357682696,
+   "heave_amp_m": 0.03548148363486116,
+   "deck_accel_max_ms2": 1.131667584515067,
+   "deck_corner_min_clearance_m": 0.05703673080712822,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.0035701684962112616,
+    "dtrim_deg": 0.24698678497501678,
+    "dz_m": 0.011259479946215012,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 6.298968891474421,
+   "score_motion": 5.637184171331941,
+   "score": 9.117560977140391,
+   "rank": 29
+  },
+  {
+   "candidate": {
+    "x_m": 0.7,
+    "y_stbd_m": 0.5,
+    "y_port_m": 0.5,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.7,
+       -0.5,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.7,
+       0.5,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.19026369573124324,
+   "trim_deg": -5.384645028672521,
+   "draft_m": 0.4247587011195022,
+   "deck_freeboard_min_m": 0.09662035286605863,
+   "float_top_freeboard_min_m": 0.29479755712153344,
+   "GM_T_m": 19.080122846008546,
+   "GM_L_m": 8.524993094028686,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.0933878504672894,
+   "flags": [],
+   "roll_amp_deg": 4.231375229014425,
+   "pitch_amp_deg": 0.23775842307598946,
+   "heave_amp_m": 0.03549390353119591,
+   "deck_accel_max_ms2": 1.123789224050071,
+   "deck_corner_min_clearance_m": 0.05811796753011442,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.0035701684962112616,
+    "dtrim_deg": 0.24698678497501678,
+    "dz_m": 0.011259479946215012,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 6.298968891474421,
+   "score_motion": 5.592922876140486,
+   "score": 9.095430329544664,
+   "rank": 28
+  },
+  {
+   "candidate": {
+    "x_m": 0.7,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.7,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.7,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.19026369573124324,
+   "trim_deg": -5.384645028672521,
+   "draft_m": 0.4247587011195022,
+   "deck_freeboard_min_m": 0.09662035286605863,
+   "float_top_freeboard_min_m": 0.29479755712153344,
+   "GM_T_m": 19.080122846008546,
+   "GM_L_m": 8.524993094028686,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.0933878504672894,
+   "flags": [],
+   "roll_amp_deg": 4.218569330674579,
+   "pitch_amp_deg": 0.23704988460212664,
+   "heave_amp_m": 0.03549843115874367,
+   "deck_accel_max_ms2": 1.1208625979197226,
+   "deck_corner_min_clearance_m": 0.05851250496063803,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.0035701684962112616,
+    "dtrim_deg": 0.24698678497501678,
+    "dz_m": 0.011259479946215012,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 6.298968891474421,
+   "score_motion": 5.576481813196428,
+   "score": 9.087209798072635,
+   "rank": 27
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.1848845066244492,
+   "trim_deg": -4.922798388533779,
+   "draft_m": 0.4100827082137063,
+   "deck_freeboard_min_m": 0.11818121996628361,
+   "float_top_freeboard_min_m": 0.29947175847189866,
+   "GM_T_m": 19.625884119503358,
+   "GM_L_m": 8.991366500626185,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "roll_amp_deg": 4.969741355386264,
+   "pitch_amp_deg": 0.47511431778049934,
+   "heave_amp_m": 0.03229379805858994,
+   "deck_accel_max_ms2": 1.2904874306247984,
+   "deck_corner_min_clearance_m": 0.052308788711063786,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.007714552196290384,
+    "dtrim_deg": -0.8496332563933695,
+    "dz_m": -0.006664640295800828,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 5.610755202119841,
+   "score_motion": 6.735343103791562,
+   "score": 8.978426754015622,
+   "rank": 26
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 1.7,
+    "y_port_m": 1.7,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -1.7,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       1.7,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.1848845066244486,
+   "trim_deg": -4.922798388533777,
+   "draft_m": 0.4100827082137063,
+   "deck_freeboard_min_m": 0.11818121996628372,
+   "float_top_freeboard_min_m": 0.29947175847189866,
+   "GM_T_m": 19.62588411950335,
+   "GM_L_m": 8.991366500626167,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "roll_amp_deg": 4.875055868890686,
+   "pitch_amp_deg": 0.4692786019237804,
+   "heave_amp_m": 0.03233993849173377,
+   "deck_accel_max_ms2": 1.2686553684542443,
+   "deck_corner_min_clearance_m": 0.05655063255309648,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.007714552196289787,
+    "dtrim_deg": -0.8496332563933687,
+    "dz_m": -0.006664640295800828,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 5.610755202119837,
+   "score_motion": 6.61298983926871,
+   "score": 8.917250121754192,
+   "rank": 24
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 0.5,
+    "y_port_m": 0.5,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -0.5,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       0.5,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.1848845066244493,
+   "trim_deg": -4.922798388533777,
+   "draft_m": 0.4100827082137062,
+   "deck_freeboard_min_m": 0.11818121996628372,
+   "float_top_freeboard_min_m": 0.29947175847189866,
+   "GM_T_m": 19.62588411950336,
+   "GM_L_m": 8.99136650062618,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "roll_amp_deg": 4.693708859617667,
+   "pitch_amp_deg": 0.4582615540933389,
+   "heave_amp_m": 0.03242153981050581,
+   "deck_accel_max_ms2": 1.2268249060116614,
+   "deck_corner_min_clearance_m": 0.06461293416531391,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.007714552196290508,
+    "dtrim_deg": -0.849633256393368,
+    "dz_m": -0.006664640295800717,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 5.610755202119838,
+   "score_motion": 6.378795319722666,
+   "score": 8.800152861981172,
+   "rank": 23
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.1848845066244493,
+   "trim_deg": -4.922798388533777,
+   "draft_m": 0.4100827082137062,
+   "deck_freeboard_min_m": 0.11818121996628372,
+   "float_top_freeboard_min_m": 0.29947175847189866,
+   "GM_T_m": 19.62588411950336,
+   "GM_L_m": 8.99136650062618,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "roll_amp_deg": 4.679779392803539,
+   "pitch_amp_deg": 0.4574243558977171,
+   "heave_amp_m": 0.03242743607815929,
+   "deck_accel_max_ms2": 1.2236108351399229,
+   "deck_corner_min_clearance_m": 0.06522855993866511,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.007714552196290508,
+    "dtrim_deg": -0.849633256393368,
+    "dz_m": -0.006664640295800717,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 5.610755202119838,
+   "score_motion": 6.360814583841179,
+   "score": 8.791162494040428,
+   "rank": 22
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.75,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       1.75,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.06160921552616675,
+   "trim_deg": -4.920573427821585,
+   "draft_m": 0.4058172142908355,
+   "deck_freeboard_min_m": 0.12313301901784901,
+   "float_top_freeboard_min_m": 0.30369172309033043,
+   "GM_T_m": 19.628549644309526,
+   "GM_L_m": 9.004493720782275,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "roll_amp_deg": 4.923172979773555,
+   "pitch_amp_deg": 0.29056872511390075,
+   "heave_amp_m": 0.032238558171187,
+   "deck_accel_max_ms2": 1.2692251246261819,
+   "deck_corner_min_clearance_m": 0.07062867597847122,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.11556073890199207,
+    "dtrim_deg": -0.8474082956811766,
+    "dz_m": -0.006586348015118704,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 5.312461668695429,
+   "score_motion": 6.482966829513638,
+   "score": 8.553945083452248,
+   "rank": 21
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.45,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       1.45,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": 0.061609215526167056,
+   "trim_deg": -4.920573427821585,
+   "draft_m": 0.4058172142908355,
+   "deck_freeboard_min_m": 0.12313301901784901,
+   "float_top_freeboard_min_m": 0.3036917230903304,
+   "GM_T_m": 19.628549644309526,
+   "GM_L_m": 9.004493720782266,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "roll_amp_deg": 4.893814515398191,
+   "pitch_amp_deg": 0.2898035647074908,
+   "heave_amp_m": 0.03315311326658305,
+   "deck_accel_max_ms2": 1.2791914511157632,
+   "deck_corner_min_clearance_m": 0.060544190266505774,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.23877916995432585,
+    "dtrim_deg": -0.8474082956811766,
+    "dz_m": -0.006586348015118704,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 5.312461668695429,
+   "score_motion": 6.462809531221445,
+   "score": 8.543866434306151,
+   "rank": 20
+  },
+  {
+   "candidate": {
+    "x_m": 0.9,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.15,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       0.9,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       0.9,
+       1.15,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": 0.18488450662444939,
+   "trim_deg": -4.922798388533779,
+   "draft_m": 0.4100827082137064,
+   "deck_freeboard_min_m": 0.1181812199662835,
+   "float_top_freeboard_min_m": 0.29947175847189855,
+   "GM_T_m": 19.625884119503336,
+   "GM_L_m": 8.99136650062616,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.1494626168224293,
+   "flags": [],
+   "roll_amp_deg": 4.881318570270618,
+   "pitch_amp_deg": 0.468297766876483,
+   "heave_amp_m": 0.0349925917886618,
+   "deck_accel_max_ms2": 1.2929451463477213,
+   "deck_corner_min_clearance_m": 0.044606037418732813,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.36205446105260825,
+    "dtrim_deg": -0.8496332563933695,
+    "dz_m": -0.006664640295800939,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 5.610755202119842,
+   "score_motion": 6.642561483494822,
+   "score": 8.932035943867252,
+   "rank": 25
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.18085650716345522,
+   "trim_deg": -4.489624220049043,
+   "draft_m": 0.3960348449314133,
+   "deck_freeboard_min_m": 0.13864996967994614,
+   "float_top_freeboard_min_m": 0.3040968144942977,
+   "GM_T_m": 20.0532226458844,
+   "GM_L_m": 9.249439704207498,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "roll_amp_deg": 4.791994692214459,
+   "pitch_amp_deg": 0.33728204313384563,
+   "heave_amp_m": 0.03303553251883673,
+   "deck_accel_max_ms2": 1.2476910292522292,
+   "deck_corner_min_clearance_m": 0.08249436533450846,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.0036865527352963777,
+    "dtrim_deg": -0.416459087908634,
+    "dz_m": 0.013649320032829038,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.964837537576492,
+   "score_motion": 6.3769677646005345,
+   "score": 8.15332141987676,
+   "rank": 19
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 1.7,
+    "y_port_m": 1.7,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -1.7,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       1.7,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.18085650716345314,
+   "trim_deg": -4.489624220049043,
+   "draft_m": 0.39603484493141317,
+   "deck_freeboard_min_m": 0.13864996967994625,
+   "float_top_freeboard_min_m": 0.3040968144942978,
+   "GM_T_m": 20.053222645884397,
+   "GM_L_m": 9.249439704207488,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "roll_amp_deg": 4.703364903678276,
+   "pitch_amp_deg": 0.33323452409606813,
+   "heave_amp_m": 0.03306891669710281,
+   "deck_accel_max_ms2": 1.2273853158578023,
+   "deck_corner_min_clearance_m": 0.08626043708603992,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.0036865527352943155,
+    "dtrim_deg": -0.416459087908634,
+    "dz_m": 0.013649320032829038,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.964837537576487,
+   "score_motion": 6.263984743632146,
+   "score": 8.096829909392559,
+   "rank": 18
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 0.5,
+    "y_port_m": 0.5,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -0.5,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       0.5,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.18085650716345444,
+   "trim_deg": -4.489624220049043,
+   "draft_m": 0.3960348449314133,
+   "deck_freeboard_min_m": 0.13864996967994625,
+   "float_top_freeboard_min_m": 0.30409681449429776,
+   "GM_T_m": 20.053222645884397,
+   "GM_L_m": 9.24943970420749,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "roll_amp_deg": 4.5334028890143685,
+   "pitch_amp_deg": 0.32556525464341546,
+   "heave_amp_m": 0.0331273370785895,
+   "deck_accel_max_ms2": 1.1884302323021307,
+   "deck_corner_min_clearance_m": 0.09338371202276183,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.0036865527352956074,
+    "dtrim_deg": -0.416459087908634,
+    "dz_m": 0.013649320032829038,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.964837537576489,
+   "score_motion": 6.047398375959915,
+   "score": 7.988536725556447,
+   "rank": 16
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.18085650716345444,
+   "trim_deg": -4.489624220049043,
+   "draft_m": 0.3960348449314133,
+   "deck_freeboard_min_m": 0.13864996967994625,
+   "float_top_freeboard_min_m": 0.30409681449429776,
+   "GM_T_m": 20.053222645884397,
+   "GM_L_m": 9.24943970420749,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "roll_amp_deg": 4.520334732675411,
+   "pitch_amp_deg": 0.3249808751092699,
+   "heave_amp_m": 0.03313151674513164,
+   "deck_accel_max_ms2": 1.1854339320978484,
+   "deck_corner_min_clearance_m": 0.093925189974185,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.0036865527352956074,
+    "dtrim_deg": -0.416459087908634,
+    "dz_m": 0.013649320032829038,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.964837537576489,
+   "score_motion": 6.030749539882529,
+   "score": 7.980212307517753,
+   "rank": 15
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.75,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       1.75,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.060271925566296895,
+   "trim_deg": -4.48790512317099,
+   "draft_m": 0.39187037206417474,
+   "deck_freeboard_min_m": 0.1434792139242378,
+   "float_top_freeboard_min_m": 0.30822646130213494,
+   "GM_T_m": 20.051911859339,
+   "GM_L_m": 9.258342123009943,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "roll_amp_deg": 4.748781315360044,
+   "pitch_amp_deg": 0.19335327003008745,
+   "heave_amp_m": 0.03271006378378072,
+   "deck_accel_max_ms2": 1.2250078353764717,
+   "deck_corner_min_clearance_m": 0.09712928036991332,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.11689802886186192,
+    "dtrim_deg": -0.41473999103058107,
+    "dz_m": 0.013708459882378121,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.673656835061205,
+   "score_motion": 6.167142420766603,
+   "score": 7.757228045444506,
+   "rank": 14
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.45,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       1.45,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": 0.060271925566296736,
+   "trim_deg": -4.48790512317099,
+   "draft_m": 0.39187037206417463,
+   "deck_freeboard_min_m": 0.1434792139242379,
+   "float_top_freeboard_min_m": 0.30822646130213505,
+   "GM_T_m": 20.051911859339,
+   "GM_L_m": 9.258342123009943,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "roll_amp_deg": 4.719065489488037,
+   "pitch_amp_deg": 0.18600638586870563,
+   "heave_amp_m": 0.033095841542613864,
+   "deck_accel_max_ms2": 1.2303288441512912,
+   "deck_corner_min_clearance_m": 0.0894474413826248,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.23744187999445554,
+    "dtrim_deg": -0.4147399910305803,
+    "dz_m": 0.013708459882378232,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.673656835061204,
+   "score_motion": 6.135400719508034,
+   "score": 7.7413571948152216,
+   "rank": 13
+  },
+  {
+   "candidate": {
+    "x_m": 1.1,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.15,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.1,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.1,
+       1.15,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": 0.1808565071634535,
+   "trim_deg": -4.489624220049043,
+   "draft_m": 0.3960348449314134,
+   "deck_freeboard_min_m": 0.13864996967994614,
+   "float_top_freeboard_min_m": 0.3040968144942977,
+   "GM_T_m": 20.053222645884407,
+   "GM_L_m": 9.249439704207493,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2055373831775698,
+   "flags": [],
+   "roll_amp_deg": 4.702484470650212,
+   "pitch_amp_deg": 0.3204135673052947,
+   "heave_amp_m": 0.034175769787552046,
+   "deck_accel_max_ms2": 1.238533615042994,
+   "deck_corner_min_clearance_m": 0.07724405488021918,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.3580264615916123,
+    "dtrim_deg": -0.416459087908634,
+    "dz_m": 0.013649320032828927,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.964837537576488,
+   "score_motion": 6.261431652998501,
+   "score": 8.095553364075739,
+   "rank": 17
+  },
+  {
+   "candidate": {
+    "x_m": 1.3,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.3,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.3,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17767273409312084,
+   "trim_deg": -4.076227049488026,
+   "draft_m": 0.38240859661192683,
+   "deck_freeboard_min_m": 0.15837196792381758,
+   "float_top_freeboard_min_m": 0.3086931122691224,
+   "GM_T_m": 20.4031444557647,
+   "GM_L_m": 9.38838301422066,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2616121495327097,
+   "flags": [],
+   "roll_amp_deg": 4.588203091843941,
+   "pitch_amp_deg": 0.21222552637325948,
+   "heave_amp_m": 0.03484249761880643,
+   "deck_accel_max_ms2": 1.1983022758384143,
+   "deck_corner_min_clearance_m": 0.11080801362622683,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.0016764173528151986,
+    "dtrim_deg": -0.2506856402269078,
+    "dz_m": -0.011974379724713935,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.431572517674268,
+   "score_motion": 5.998730894055615,
+   "score": 7.430937964702076,
+   "rank": 12
+  },
+  {
+   "candidate": {
+    "x_m": 1.3,
+    "y_stbd_m": 1.7,
+    "y_port_m": 1.7,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.3,
+       -1.7,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.3,
+       1.7,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17767273409311968,
+   "trim_deg": -4.076227049488028,
+   "draft_m": 0.38240859661192683,
+   "deck_freeboard_min_m": 0.15837196792381747,
+   "float_top_freeboard_min_m": 0.3086931122691224,
+   "GM_T_m": 20.403144455764682,
+   "GM_L_m": 9.388383014220638,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2616121495327097,
+   "flags": [],
+   "roll_amp_deg": 4.505616195113511,
+   "pitch_amp_deg": 0.20946867651282533,
+   "heave_amp_m": 0.03487454608633972,
+   "deck_accel_max_ms2": 1.179632282692587,
+   "deck_corner_min_clearance_m": 0.11385120734555282,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.0016764173528140307,
+    "dtrim_deg": -0.2506856402269094,
+    "dz_m": -0.011974379724714046,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.431572517674267,
+   "score_motion": 5.894717154318924,
+   "score": 7.378931094833729,
+   "rank": 11
+  },
+  {
+   "candidate": {
+    "x_m": 1.3,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.3,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.3,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17767273409312087,
+   "trim_deg": -4.076227049488026,
+   "draft_m": 0.38240859661192683,
+   "deck_freeboard_min_m": 0.15837196792381758,
+   "float_top_freeboard_min_m": 0.3086931122691223,
+   "GM_T_m": 20.4031444557647,
+   "GM_L_m": 9.38838301422066,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2616121495327097,
+   "flags": [],
+   "roll_amp_deg": 4.3347652415427165,
+   "pitch_amp_deg": 0.2037575757924701,
+   "heave_amp_m": 0.03493541913762688,
+   "deck_accel_max_ms2": 1.1409924851628834,
+   "deck_corner_min_clearance_m": 0.11986857544987614,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": -0.0016764173528152236,
+    "dtrim_deg": -0.2506856402269078,
+    "dz_m": -0.011974379724713935,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.431572517674268,
+   "score_motion": 5.67951530249807,
+   "score": 7.271330168923303,
+   "rank": 10
+  },
+  {
+   "candidate": {
+    "x_m": 1.3,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.75,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.3,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.3,
+       1.75,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.05921347556480019,
+   "trim_deg": -4.074847848620692,
+   "draft_m": 0.37832269360328796,
+   "deck_freeboard_min_m": 0.16310656273029656,
+   "float_top_freeboard_min_m": 0.3127513870041805,
+   "GM_T_m": 20.399495146878216,
+   "GM_L_m": 9.395111448645567,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.2616121495327097,
+   "flags": [],
+   "roll_amp_deg": 4.54726441660837,
+   "pitch_amp_deg": 0.07051743810513159,
+   "heave_amp_m": 0.034535185816935945,
+   "deck_accel_max_ms2": 1.1789858720078559,
+   "deck_corner_min_clearance_m": 0.1211710173783554,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.11678284117550546,
+    "dtrim_deg": -0.24930643935957295,
+    "dz_m": -0.011928350109320363,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.193274799750292,
+   "score_motion": 5.796767726721358,
+   "score": 7.091658663110971,
+   "rank": 9
+  },
+  {
+   "candidate": {
+    "x_m": 1.5,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.5,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.5,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17508447225050686,
+   "trim_deg": -3.6774966781811678,
+   "draft_m": 0.3690847719453353,
+   "deck_freeboard_min_m": 0.1775460537126704,
+   "float_top_freeboard_min_m": 0.3132732496816856,
+   "GM_T_m": 20.69613707927511,
+   "GM_L_m": 9.452772772831484,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.31768691588785,
+   "flags": [],
+   "roll_amp_deg": 4.479416241858833,
+   "pitch_amp_deg": 0.163065243762039,
+   "heave_amp_m": 0.03490597732445796,
+   "deck_accel_max_ms2": 1.1680741551549587,
+   "deck_corner_min_clearance_m": 0.1355119237859667,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.0009118444897987595,
+    "dtrim_deg": 0.14804473107995073,
+    "dz_m": 0.007100532860487951,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.027665622682181,
+   "score_motion": 5.8105556407758305,
+   "score": 6.932943443070096,
+   "rank": 8
+  },
+  {
+   "candidate": {
+    "x_m": 1.5,
+    "y_stbd_m": 1.7,
+    "y_port_m": 1.7,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.5,
+       -1.7,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.5,
+       1.7,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17508447225050722,
+   "trim_deg": -3.6774966781811673,
+   "draft_m": 0.3690847719453353,
+   "deck_freeboard_min_m": 0.1775460537126704,
+   "float_top_freeboard_min_m": 0.31327324968168546,
+   "GM_T_m": 20.696137079275108,
+   "GM_L_m": 9.452772772831482,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.31768691588785,
+   "flags": [],
+   "roll_amp_deg": 4.400383580945726,
+   "pitch_amp_deg": 0.16111768671145849,
+   "heave_amp_m": 0.034933533261109664,
+   "deck_accel_max_ms2": 1.15027561273137,
+   "deck_corner_min_clearance_m": 0.13816115128820775,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.0009118444897984365,
+    "dtrim_deg": 0.14804473107995153,
+    "dz_m": 0.007100532860487951,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.027665622682182,
+   "score_motion": 5.7117768803885545,
+   "score": 6.88355406287646,
+   "rank": 7
+  },
+  {
+   "candidate": {
+    "x_m": 1.5,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.5,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.5,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17508447225050638,
+   "trim_deg": -3.677496678181166,
+   "draft_m": 0.3690847719453352,
+   "deck_freeboard_min_m": 0.1775460537126704,
+   "float_top_freeboard_min_m": 0.3132732496816856,
+   "GM_T_m": 20.69613707927512,
+   "GM_L_m": 9.45277277283148,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.31768691588785,
+   "flags": [],
+   "roll_amp_deg": 4.236716710180652,
+   "pitch_amp_deg": 0.1570711923134126,
+   "heave_amp_m": 0.034985694611797936,
+   "deck_accel_max_ms2": 1.1134007345746777,
+   "deck_corner_min_clearance_m": 0.1432579992808315,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.0009118444897992813,
+    "dtrim_deg": 0.14804473107995234,
+    "dz_m": 0.007100532860488062,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 4.0276656226821785,
+   "score_motion": 5.507188637068743,
+   "score": 6.78125994121655,
+   "rank": 6
+  },
+  {
+   "candidate": {
+    "x_m": 1.5,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.75,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.5,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.5,
+       1.75,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.05835260930229975,
+   "trim_deg": -3.6763647015907672,
+   "draft_m": 0.36506208969190057,
+   "deck_freeboard_min_m": 0.1822048170096202,
+   "float_top_freeboard_min_m": 0.3172735475100208,
+   "GM_T_m": 20.690845298962234,
+   "GM_L_m": 9.45813059997295,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.31768691588785,
+   "flags": [],
+   "roll_amp_deg": 4.440914065193611,
+   "pitch_amp_deg": 0.06429082858888233,
+   "heave_amp_m": 0.03452274742225173,
+   "deck_accel_max_ms2": 1.1509877892261628,
+   "deck_corner_min_clearance_m": 0.14136451061910682,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.11764370743800591,
+    "dtrim_deg": 0.14917670767035116,
+    "dz_m": 0.007136919755224014,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 3.7930699201953666,
+   "score_motion": 5.656192683008657,
+   "score": 6.621166261699695,
+   "rank": 5
+  },
+  {
+   "candidate": {
+    "x_m": 1.7,
+    "y_stbd_m": 2.05,
+    "y_port_m": 2.05,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.7,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.7,
+       2.05,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17294888368577307,
+   "trim_deg": -3.29009408233322,
+   "draft_m": 0.3559844971456245,
+   "deck_freeboard_min_m": 0.19630302650079956,
+   "float_top_freeboard_min_m": 0.31784657362373736,
+   "GM_T_m": 20.9441292009426,
+   "GM_L_m": 9.469087618319017,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.37376168224299,
+   "flags": [],
+   "roll_amp_deg": 4.3909307645760265,
+   "pitch_amp_deg": 0.1436347565973194,
+   "heave_amp_m": 0.03470728019794414,
+   "deck_accel_max_ms2": 1.1455826618728022,
+   "deck_corner_min_clearance_m": 0.15786440736959506,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.0030474330545325317,
+    "dtrim_deg": 0.5354473269278989,
+    "dz_m": 0.02577575986678282,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 3.6359918497047663,
+   "score_motion": 5.680148183046148,
+   "score": 6.476065941227841,
+   "rank": 4
+  },
+  {
+   "candidate": {
+    "x_m": 1.7,
+    "y_stbd_m": 1.7,
+    "y_port_m": 1.7,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.7,
+       -1.7,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.7,
+       1.7,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17294888368577574,
+   "trim_deg": -3.29009408233322,
+   "draft_m": 0.35598449714562463,
+   "deck_freeboard_min_m": 0.19630302650079945,
+   "float_top_freeboard_min_m": 0.3178465736237373,
+   "GM_T_m": 20.9441292009426,
+   "GM_L_m": 9.469087618319016,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.37376168224299,
+   "flags": [],
+   "roll_amp_deg": 4.31475596175239,
+   "pitch_amp_deg": 0.14228644737326265,
+   "heave_amp_m": 0.034731692853144015,
+   "deck_accel_max_ms2": 1.1284630199695058,
+   "deck_corner_min_clearance_m": 0.16020032941827111,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.0030474330545299227,
+    "dtrim_deg": 0.5354473269278989,
+    "dz_m": 0.02577575986678282,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 3.6359918497047716,
+   "score_motion": 5.585505429095158,
+   "score": 6.428744564252351,
+   "rank": 3
+  },
+  {
+   "candidate": {
+    "x_m": 1.7,
+    "y_stbd_m": 0.2,
+    "y_port_m": 0.2,
+    "symmetric": true
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.7,
+       -0.2,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.7,
+       0.2,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.17294888368577574,
+   "trim_deg": -3.29009408233322,
+   "draft_m": 0.35598449714562463,
+   "deck_freeboard_min_m": 0.19630302650079945,
+   "float_top_freeboard_min_m": 0.3178465736237373,
+   "GM_T_m": 20.9441292009426,
+   "GM_L_m": 9.469087618319016,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.37376168224299,
+   "flags": [],
+   "roll_amp_deg": 4.156867524176481,
+   "pitch_amp_deg": 0.1394775216899942,
+   "heave_amp_m": 0.03477778773999178,
+   "deck_accel_max_ms2": 1.0929611312892762,
+   "deck_corner_min_clearance_m": 0.1645677356819953,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.0030474330545299227,
+    "dtrim_deg": 0.5354473269278989,
+    "dz_m": 0.02577575986678282,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 3.6359918497047716,
+   "score_motion": 5.389306177155752,
+   "score": 6.3306449382826475,
+   "rank": 2
+  },
+  {
+   "candidate": {
+    "x_m": 1.7,
+    "y_stbd_m": 2.05,
+    "y_port_m": 1.75,
+    "symmetric": false
+   },
+   "overrides": {
+    "components": {
+     "BATTERY_1": {
+      "com_m": [
+       1.7,
+       -2.05,
+       0.5
+      ]
+     },
+     "BATTERY_2": {
+      "com_m": [
+       1.7,
+       1.75,
+       0.5
+      ]
+     }
+    }
+   },
+   "feasible": true,
+   "heel_deg": -0.05764219696039068,
+   "trim_deg": -3.289154357178163,
+   "draft_m": 0.3520138437709148,
+   "deck_freeboard_min_m": 0.2008995500602112,
+   "float_top_freeboard_min_m": 0.3217989320144676,
+   "GM_T_m": 20.93733859832644,
+   "GM_L_m": 9.473288377205519,
+   "com_z_m": 0.6415420560747664,
+   "com_x_m": 2.37376168224299,
+   "flags": [],
+   "roll_amp_deg": 4.354196017051935,
+   "pitch_amp_deg": 0.07885459213664202,
+   "heave_amp_m": 0.03428200904539876,
+   "deck_accel_max_ms2": 1.1304427929269436,
+   "deck_corner_min_clearance_m": 0.16160446954925084,
+   "pose_reuse": {
+    "tier": "near",
+    "dheel_deg": 0.11835411977991493,
+    "dtrim_deg": 0.536387052082956,
+    "dz_m": 0.02580446063330688,
+    "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+   },
+   "hydro_cache": "hit",
+   "score_level": 3.4044387510989442,
+   "score_motion": 5.563493402115521,
+   "score": 6.186185452156705,
+   "rank": 1
+  }
+ ],
+ "best": {
+  "candidate": {
+   "x_m": 1.7,
+   "y_stbd_m": 2.05,
+   "y_port_m": 1.75,
+   "symmetric": false
+  },
+  "overrides_to_apply": {
+   "components": {
+    "BATTERY_1": {
+     "com_m": [
+      1.7,
+      -2.05,
+      0.5
+     ]
+    },
+    "BATTERY_2": {
+     "com_m": [
+      1.7,
+      1.75,
+      0.5
+     ]
+    }
+   }
+  },
+  "score": 6.186185452156705
+ },
+ "notes": [
+  "Score = |trim| + 2|heel| (deg) + freeboard penalty below 0.15 m + 0.5 x (roll + pitch amplitude (deg) + deck accel (m/s2)) at the reference wave; edit the weights in exo01/optimise.py if your priorities differ.",
+  "Within the rear deck the trim can only be reduced, not removed: the most forward row (x = 1.70 m) is the best for trim; the COM stays aft of the float centroid. Levelling needs mass further forward (cabinet, payload) or the float rows mounted further aft. Asymmetric rows (port battery moved inboard) counter the heel from the port-side cabinet."
+ ],
+ "hydro_note": "wave columns from the cached BEM of the base pose (exact COM transform; pose within tolerance)",
+ "n_candidates": 38,
+ "seconds": 11.641984939575195
+}

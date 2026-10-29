@@ -1,0 +1,8 @@
+{
+ "schema": "exo01_scenario_v1",
+ "name": "with_hydronaute",
+ "title": "EXO + Hydronaute (Renaud 8000, 2.1 t archival, proxy hull) moored with 4 soft lines",
+ "base": "illustrative",
+ "overrides": {},
+ "notes": "ILLUSTRATIVE scenario on the exploratory configuration; masses/positions are examples, not data. Boat placement, mass, COM and hull are assumptions; two-body response with line springs."
+}

@@ -1,0 +1,12 @@
+{
+ "schema": "exo01_scenario_v1",
+ "name": "baseline_illustrative",
+ "title": "Illustrative baseline (EXO-only, no occupants)",
+ "base": "illustrative",
+ "overrides": {
+  "host_boat": {
+   "included": false
+  }
+ },
+ "notes": "ILLUSTRATIVE scenario on the exploratory configuration; masses/positions are examples, not data."
+}

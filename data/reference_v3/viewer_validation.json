@@ -1,0 +1,17 @@
+{
+  "revision": "v3",
+  "status": "passed",
+  "js_syntax": "passed",
+  "initial_geometry_draws": 190,
+  "solar_metadata_selection": "20 kg, layout from user sketch",
+  "observation_deck_remains_when_panels_hidden": true,
+  "view_controls": "passed",
+  "finite_camera_matrices": true,
+  "real_browser_webgl_render": "not available; control logic checked with mocked WebGL interface",
+  "current_revision_checks": {
+    "inline_script_syntax": "passed",
+    "geometry_and_metadata": "checked independently in artifact_validation.json",
+    "float_mesh_and_placement_comparison_to_v2": "identical",
+    "interaction_logic": "unchanged from revision 2; prior mocked DOM/WebGL check retained"
+  }
+}

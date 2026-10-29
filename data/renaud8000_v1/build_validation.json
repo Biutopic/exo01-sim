@@ -1,0 +1,9 @@
+{
+  "valid_CAD_parts": 134,
+  "vertices": 57462,
+  "triangles": 19154,
+  "glb_bytes": 1479160,
+  "mass_assigned_once_kg": 2100,
+  "mass_assignment_basis": "Unverified archival light-weight reference",
+  "current_measured_mass_kg": null
+}

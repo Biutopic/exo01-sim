@@ -1,0 +1,303 @@
+{
+  "schema": "boat_reference_mass_manifest_v1",
+  "model_id": "RENAUD8000_REFERENCE",
+  "revision": "v1",
+  "created_date": "2026-10-28",
+  "status": "PRELIMINARY_REFERENCE_NOT_VALIDATED_FOR_SIMULATION",
+  "coordinate_system": "Right-handed CAD: X from stern toward bow; Y to port; Z up. Origin X=0 at nominal stern plane, Y=0 centreline, Z=0 an illustrative catalogue waterline, not an equilibrium calculation.",
+  "units": {
+    "STEP": "mm",
+    "GLB": "m",
+    "mass": "kg"
+  },
+  "glb_transform": "Root quaternion (-sqrt(0.5),0,0,sqrt(0.5)): (x,y,z) CAD -> (x,z,-y) glTF.",
+  "dimensions": {
+    "length_m": 8,
+    "beam_m": 2.98,
+    "archival_draft_reference_m": 0.75,
+    "archival_air_draft_reference_m": 2.3,
+    "basis": "Archival sheet; dimensions are not current-vessel survey measurements. Small roof/hardware envelopes extend above the nominal cabin reference."
+  },
+  "boat_reference": {
+    "component_id": "RENAUD8000_BOAT_REFERENCE",
+    "name": "Renaud 8000 whole-boat reference",
+    "mass_kg": 2100,
+    "mass_status": "historical_model_light_mass_unverified_for_current_vessel",
+    "mass_source": "ARCHIVE",
+    "mass_counting_rule": "Count only this parent. Visual subsystem masses are null and are not additions.",
+    "mass_is_measured_for_current_vessel": false,
+    "current_measured_mass_kg": null,
+    "centre_of_mass_m": null,
+    "inertia_tensor_kg_m2": null,
+    "baseline_scope": "Historical light weight; exact inclusions and current restoration changes unresolved."
+  },
+  "visual_subsystems": [
+    {
+      "id": "HULL",
+      "name": "Hull and keel envelope",
+      "note": "Unmeasured gull-wing hull proxy; do not use it as validated displacement geometry.",
+      "mass_kg": null,
+      "mass_scope": "Part of unallocated boat reference; do not add to parent",
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null
+    },
+    {
+      "id": "DECK",
+      "name": "Deck and forward terrace",
+      "note": "Deck levels, bulwark and dimensions reconstructed from photographs.",
+      "mass_kg": null,
+      "mass_scope": "Part of unallocated boat reference; do not add to parent",
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null
+    },
+    {
+      "id": "CABIN",
+      "name": "Cabin walls and window surrounds",
+      "note": "Stepped profile reconstructed from archival boat photographs.",
+      "mass_kg": null,
+      "mass_scope": "Part of unallocated boat reference; do not add to parent",
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null
+    },
+    {
+      "id": "ROOF",
+      "name": "Stepped roof and sliding hatch",
+      "note": "Roof profile and hatch are approximate. Component mass is unknown.",
+      "mass_kg": null,
+      "mass_scope": "Part of unallocated boat reference; do not add to parent",
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null
+    },
+    {
+      "id": "GLAZING",
+      "name": "Windows and glazed front door",
+      "note": "Window layout fitted to model photographs; not a dimensional survey.",
+      "mass_kg": null,
+      "mass_scope": "Part of unallocated boat reference; do not add to parent",
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null
+    },
+    {
+      "id": "INTERIOR",
+      "name": "Interior layout reference",
+      "note": "Approximate berth, galley, saloon and partition layout. Current refit details may differ.",
+      "mass_kg": null,
+      "mass_scope": "Part of unallocated boat reference; do not add to parent",
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null
+    },
+    {
+      "id": "HARDWARE",
+      "name": "Rails, cleats and trim",
+      "note": "Visual hardware proxies; exact inventory and weights unknown.",
+      "mass_kg": null,
+      "mass_scope": "Part of unallocated boat reference; do not add to parent",
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null
+    }
+  ],
+  "mass_reference_alternatives": [
+    {
+      "id": "ARCHIVAL_LIGHT_2100",
+      "mass_kg": 2100,
+      "basis": "Archival sheet explicitly labels light weight 2.1 T",
+      "source": "ARCHIVE",
+      "currently_measured": false
+    },
+    {
+      "id": "PUBLISHED_MODEL_3000",
+      "mass_kg": 3000,
+      "basis": "Published model page labels weight 3000 kg, loading definition unspecified",
+      "source": "FLUVIAL",
+      "currently_measured": false
+    }
+  ],
+  "uncertain_component_register": [
+    {
+      "id": "hull_laminate",
+      "mass_kg": null,
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null,
+      "included_in_reference_mass": "unresolved_do_not_add_automatically"
+    },
+    {
+      "id": "cabin_structure",
+      "mass_kg": null,
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null,
+      "included_in_reference_mass": "unresolved_do_not_add_automatically"
+    },
+    {
+      "id": "roof",
+      "mass_kg": null,
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null,
+      "included_in_reference_mass": "unresolved_do_not_add_automatically"
+    },
+    {
+      "id": "interior_fitout",
+      "mass_kg": null,
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null,
+      "included_in_reference_mass": "unresolved_do_not_add_automatically"
+    },
+    {
+      "id": "engine_and_drive",
+      "mass_kg": null,
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null,
+      "included_in_reference_mass": "unresolved_do_not_add_automatically"
+    },
+    {
+      "id": "fuel_tank_dry",
+      "mass_kg": null,
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null,
+      "included_in_reference_mass": "unresolved_do_not_add_automatically"
+    },
+    {
+      "id": "water_tank_dry",
+      "mass_kg": null,
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null,
+      "included_in_reference_mass": "unresolved_do_not_add_automatically"
+    },
+    {
+      "id": "existing_electrics",
+      "mass_kg": null,
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null,
+      "included_in_reference_mass": "unresolved_do_not_add_automatically"
+    },
+    {
+      "id": "ballast_if_any",
+      "mass_kg": null,
+      "centre_of_mass_m": null,
+      "inertia_tensor_kg_m2": null,
+      "included_in_reference_mass": "unresolved_do_not_add_automatically"
+    }
+  ],
+  "variable_loads": {
+    "people_mass_kg": null,
+    "payload_mass_kg": null,
+    "freshwater_fill_l": null,
+    "fuel_fill_l": null,
+    "installed_water_capacity_l": null,
+    "installed_fuel_capacity_l": null,
+    "unknown_is_not_zero": true
+  },
+  "capacity_reference_alternatives": {
+    "freshwater_l": [
+      {
+        "value": 350,
+        "source": "ARCHIVE"
+      },
+      {
+        "value": 350,
+        "source": "CANALOUS"
+      },
+      {
+        "value": 575,
+        "source": "FLUVIAL"
+      },
+      {
+        "value": 500,
+        "source": "ANJOUAN"
+      }
+    ],
+    "fuel_l": [
+      {
+        "value": 64,
+        "source": "ARCHIVE"
+      },
+      {
+        "value": 150,
+        "source": "FLUVIAL"
+      },
+      {
+        "value": 140,
+        "source": "ANJOUAN"
+      }
+    ],
+    "adopted_actual_capacity": null
+  },
+  "engine": {
+    "power_cv_previously_reported_by_user": 20,
+    "mass_kg": null,
+    "current_type_confirmed": false,
+    "position_confirmed": false,
+    "geometry_modelled": false
+  },
+  "exo_integration": {
+    "exo_included": false,
+    "exo_reference_revision": "v3",
+    "attachment_transform": null,
+    "connection_model": null,
+    "combined_operating_mass_kg": null,
+    "reason": "Separate asset; connection positions and overlapping mass scopes must be resolved before combining."
+  },
+  "engineering_status": {
+    "hull_offsets_measured": false,
+    "buoyancy_geometry_validated": false,
+    "hydrostatics_computed": false,
+    "wave_response_computed": false,
+    "structural_analysis_computed": false,
+    "actual_CG_m": null,
+    "actual_inertia_tensor_kg_m2": null,
+    "current_vessel_mass_kg": null
+  },
+  "sources": [
+    {
+      "id": "ARCHIVE",
+      "kind": "user_document_embedded_archival_sheet",
+      "file": "sources/archived_plans_and_boat.png",
+      "parent_library_file_id": "libfile_98cea55c8804819182ceeab4f191e835",
+      "page": 7,
+      "description": "Archival pre-restoration photos, plan and technical-specification sheet from BIUTOPIC Erdre municipal proposal v19."
+    },
+    {
+      "id": "PLAN",
+      "kind": "user_uploaded_plan",
+      "file": "sources/reference_interior_plan.png",
+      "library_file_id": "libfile_a03ed803a45481918f394812eea48e6e",
+      "description": "Generic Renaud 8000 interior plan; not a measured as-built refit."
+    },
+    {
+      "id": "INTERIOR_PHOTO",
+      "kind": "user_document_photo",
+      "file": "sources/restored_interior_reference.png",
+      "parent_library_file_id": "libfile_98cea55c8804819182ceeab4f191e835",
+      "description": "Restored interior reference from the user dossier."
+    },
+    {
+      "id": "FLUVIAL",
+      "url": "https://www.fluvialnet.com/fiches-bateaux/renaud-8000/163",
+      "accessed": "2026-10-28",
+      "kind": "published_model_reference",
+      "description": "Different model-level weight and capacities; retained as unresolved alternatives."
+    },
+    {
+      "id": "CANALOUS",
+      "url": "https://www.lescanalous.com/bateau/renaud-8000/",
+      "accessed": "2026-10-28",
+      "kind": "fleet_operator_reference",
+      "description": "8 x 3 m, interior layout and exterior reference photographs."
+    },
+    {
+      "id": "ANJOUAN",
+      "url": "https://occasions.bateau.fr/bateau/renaud-8000-anjouan/",
+      "accessed": "2026-10-28",
+      "kind": "different_vessel_operator_listing",
+      "description": "7.99 x 2.96 m, 0.8 m draft, 2.2 m air draft; different installed tanks/engine, not adopted as this vessel measurements."
+    }
+  ],
+  "assumptions": [
+    "Outer shape, cabin heights and window proportions are fitted reference geometry, not surveyed construction dimensions.",
+    "Archived sheet visible in the user dossier reads 8 m, 2.98 m, 0.75 m draft, 2.30 m air draft, light weight 2.1 T, water 350 litres and fuel 64 litres. These historical model values do not establish the current restored boat loading.",
+    "Fluvial model page separately reports 3000 kg, 0.8 m draft, 2.2 m air draft, 575 L water and 150 L fuel. Those differing conditions are not resolved or averaged.",
+    "Boat mass is assigned once to a parent as a provisional 2100 kg reference. No invented hull, roof, furniture, engine or tank mass breakdown is added.",
+    "Interior geometry follows the recovered generic layout and restored-interior photos; exact current interior measurements are unknown.",
+    "No EXO frame, external batteries, solar panels or external floats are included. The EXO remains a separate model; attachment geometry and shared-load accounting remain unresolved.",
+    "No current displacement, equilibrium, centre of gravity, inertia, capacity, wave response or structural strength is calculated."
+  ]
+}

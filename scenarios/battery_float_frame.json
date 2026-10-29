@@ -1,0 +1,28 @@
+{
+ "schema": "exo01_scenario_v1",
+ "name": "battery_float_frame",
+ "title": "Batteries moved forward onto the float-top side frames (x 1.425 -> 3.60 m, above the floats, between the mid and end uprights)",
+ "base": "illustrative",
+ "overrides": {
+  "components": {
+   "BATTERY_1": {
+    "com_m": [
+     3.6,
+     -2.05,
+     0.5
+    ]
+   },
+   "BATTERY_2": {
+    "com_m": [
+     3.6,
+     2.05,
+     0.5
+    ]
+   }
+  },
+  "host_boat": {
+   "included": false
+  }
+ },
+ "notes": "ILLUSTRATIVE scenario on the exploratory configuration; masses/positions are examples, not data. User proposal (29/10): both batteries forward, beside the boat. The sweep (exo01/optimise.py, float_frame zone) puts the zero-trim position of the empty EXO at x ~3.5 m; whether the float cradle carries 120 kg per battery is a structural question outside this model."
+}
