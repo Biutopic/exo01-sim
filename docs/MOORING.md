@@ -132,3 +132,27 @@ platform for a crew of 1–2 on the rear deck. Options if passenger carriage is 
 (third float row aft, longer/larger floats, or a higher deck), or restrict the lower deck and carry people on the upper
 deck. In every case the registration file needs the measured light-ship weight, the inclining test and the float survey
 before any of these numbers is quoted as a characteristic.
+
+## 7. Final comparison: ropes + knees vs tubes vs hybrid (30 Oct) — `results/mooring/final_comparison.md`
+
+Twelve candidates at the settings the study converged on (ropes k 10 kN/m, T0 400 N, EXO eyes raised to cleat level
+z 0.3; fenders k 50 kN/m), plus tubes (bilateral struts) with an elastomer cartridge in series modelled as a lower
+stiffness (50–200 kN/m; no damping element exists in the model). Script `scripts/run_mooring_final.py`; the score is an
+explicit, editable weighting (worst element peak, slack fraction, transom overlap, boat roll, static shift) behind a hard
+gate (push and tow must close).
+
+| rank | arrangement | worst peak [N] | slack | boat roll H 0.5 [°] | note |
+|---|---|---|---|---|---|
+| 1 | four rigid tubes, pinned (aft posts → stern cleats, fwd posts → midship cleats) | 1261 | — | 4.3 | time-domain diverged in the 0.5 m case (nan), peak quoted from the 0.3 m cases; no quick release; fatigue at the pins |
+| 2 | same with elastomer cartridges (100 kN/m) | 1379 | — | 8.2 | cartridges give back most of the roll benefit and do not lower the peak (no damping in the model) |
+| 3 | six-line sketch + stern knees/fenders, eyes at cleat level | 1157 | 0.11 (0.3 m beam), 0 at 0.5 m | 9.4 | best rope arrangement; quick release; fenders 400–1160 N |
+| 4 | fenders + diagonals, eyes at deck level (study best) | 1261 | 0.33 | 9.7 | |
+| 5–6 | two tubes aft (100 kN/m) + crossed/diagonal ropes | 1817–1996 | 0.32–0.37 | 9.6–10.9 | tubes carry the pitch difference alone |
+| 7 | fenders + diagonals, eyes at cleat level | 4196 | 0.47 | 10.1 | raising the eyes helps the six-line plan, not the diagonals (snatch in the 0.5 m case) |
+| 8–12 | two tubes aft + two tow ropes only (any cartridge) | 3553–9190 | 0.7–0.9 | 10–10.5 | rejected: without stern ropes the two short tubes are the only stiff path for yaw and pitch difference |
+
+Reading: a rigid four-tube coupling is the quietest for the boat's roll (the EXO's floats stabilise it) and has no slack
+by construction, at the price of ~1.2–1.4 kN alternating in each tube and no quick release. The six-line sketch with stern
+knees and eyes at cleat height is within 10 % on peak load, keeps rope's quick release, and is the arrangement to build
+first. Shock absorbers: the model only sees stiffness, so it cannot credit energy absorption; a rubber snubber on the
+ropes is justified to hold T0 ≈ 400 N over trim changes, cartridges on tubes are not justified by these numbers.

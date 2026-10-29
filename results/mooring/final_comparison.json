@@ -1,0 +1,1047 @@
+{
+ "label": "Exploratory \u2014 assumed geometry and mass distribution; line/fender/tube properties are assumptions; no damping in elements.",
+ "waves": [
+  {
+   "id": "beam_03_25",
+   "H_m": 0.3,
+   "T_s": 2.5,
+   "heading_deg": 90
+  },
+  {
+   "id": "head_03_25",
+   "H_m": 0.3,
+   "T_s": 2.5,
+   "heading_deg": 180
+  },
+  {
+   "id": "beam_05_30",
+   "H_m": 0.5,
+   "T_s": 3.0,
+   "heading_deg": 90
+  }
+ ],
+ "damping": {
+  "EXO": {
+   "zeta": {
+    "heave": 0.05,
+    "roll": 0.05,
+    "pitch": 0.05
+   },
+   "absolute": {
+    "surge": 0,
+    "sway": 0,
+    "yaw": 0
+   }
+  },
+  "BOAT": {
+   "zeta": {
+    "heave": 0.05,
+    "roll": 0.1,
+    "pitch": 0.1
+   },
+   "absolute": {
+    "surge": 0,
+    "sway": 0,
+    "yaw": 0
+   }
+  }
+ },
+ "rows": [
+  {
+   "id": "A_fenders_diagonals_deck",
+   "title": "Study best: 2 stern fenders + diagonals, eyes at deck level (reference)",
+   "n_elements": 6,
+   "moored": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": 2.00455118174544,
+    "yaw_deg": -0.005655768217655002,
+    "line_max_N": 390.97819480643284,
+    "slack": [],
+    "fender_max_N": 45.05236210334204,
+    "strut_max_N": null,
+    "transom_gap_m": 0.05845845652987025
+   },
+   "push": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -3.008183691187568,
+    "yaw_deg": 0.014193618936616486,
+    "line_max_N": 434.82524633303046,
+    "slack": [],
+    "fender_max_N": 354.2806683280754,
+    "strut_max_N": null,
+    "transom_gap_m": 0.04761952023574123
+   },
+   "tow": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": 8.602938690066885,
+    "yaw_deg": -0.0003759099006070877,
+    "line_max_N": 470.98406356222534,
+    "slack": [
+     "FENDER_PORT",
+     "FENDER_STBD"
+    ],
+    "fender_max_N": -0.0,
+    "strut_max_N": null,
+    "transom_gap_m": 0.06746850536179005
+   },
+   "waves": {
+    "beam_03_25": {
+     "exo_roll_deg": 4.363126125178184,
+     "boat_roll_deg": 9.012051057020814,
+     "boat_pitch_deg": 0.12921213103608145,
+     "transom_gap_min_m": 0.046662018231557384,
+     "line_peak_N": 1261.4301370491355,
+     "slack_frac": 0.3178294573643411,
+     "fender_peak_N": 1140.59198379574,
+     "fender_free_frac": 0.6434108527131783,
+     "strut_peak_N": null
+    },
+    "head_03_25": {
+     "exo_roll_deg": 0.017244762563888204,
+     "boat_roll_deg": 0.10483331843715639,
+     "boat_pitch_deg": 3.0448605607108665,
+     "transom_gap_min_m": 0.01967246062729283,
+     "line_peak_N": 684.181828553081,
+     "slack_frac": 0.0,
+     "fender_peak_N": 589.6284928419828,
+     "fender_free_frac": 0.5813953488372093,
+     "strut_peak_N": null
+    },
+    "beam_05_30": {
+     "exo_roll_deg": 6.335312599139049,
+     "boat_roll_deg": 9.718496865333234,
+     "boat_pitch_deg": 0.08013939543545755,
+     "transom_gap_min_m": 0.045091869025048636,
+     "line_peak_N": 1161.5972227833815,
+     "slack_frac": 0.32558139534883723,
+     "fender_peak_N": 690.8711895704564,
+     "fender_free_frac": 0.6744186046511628,
+     "strut_peak_N": null
+    }
+   },
+   "score": {
+    "score": 2.97,
+    "peak_N": 1261,
+    "slack": 0.33,
+    "gap_min_m": 0.02,
+    "boat_roll_deg": 9.7,
+    "dx_mm": 9
+   }
+  },
+  {
+   "id": "A2_fenders_diagonals_cleat",
+   "title": "Same, eyes raised to cleat level (+0.3 m)",
+   "n_elements": 6,
+   "moored": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": 0.8993889443928648,
+    "yaw_deg": -0.0017289983822023204,
+    "line_max_N": 397.6050376388329,
+    "slack": [],
+    "fender_max_N": 30.48615676339364,
+    "strut_max_N": null,
+    "transom_gap_m": 0.05853660390034232
+   },
+   "push": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -4.55170628941994,
+    "yaw_deg": 0.019342839207633043,
+    "line_max_N": 445.5136027159234,
+    "slack": [],
+    "fender_max_N": 365.623791340302,
+    "strut_max_N": null,
+    "transom_gap_m": 0.04707061038418603
+   },
+   "tow": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": 8.65994058720739,
+    "yaw_deg": 0.0003310978022743149,
+    "line_max_N": 483.5448831804712,
+    "slack": [
+     "FENDER_PORT",
+     "FENDER_STBD"
+    ],
+    "fender_max_N": -0.0,
+    "strut_max_N": null,
+    "transom_gap_m": 0.06899187668414042
+   },
+   "waves": {
+    "beam_03_25": {
+     "exo_roll_deg": 4.175755365950536,
+     "boat_roll_deg": 9.264047183497183,
+     "boat_pitch_deg": 0.15573778646794367,
+     "transom_gap_min_m": 0.04239537236790185,
+     "line_peak_N": 1033.0220876271933,
+     "slack_frac": 0.13178294573643412,
+     "fender_peak_N": 1030.0058538187097,
+     "fender_free_frac": 0.6511627906976745,
+     "strut_peak_N": null
+    },
+    "head_03_25": {
+     "exo_roll_deg": 0.0023636238882136203,
+     "boat_roll_deg": 0.13694413814596565,
+     "boat_pitch_deg": 2.9916198487461694,
+     "transom_gap_min_m": 0.011723672385706214,
+     "line_peak_N": 638.5046241958081,
+     "slack_frac": 0.0,
+     "fender_peak_N": 532.3216942922045,
+     "fender_free_frac": 0.5891472868217055,
+     "strut_peak_N": null
+    },
+    "beam_05_30": {
+     "exo_roll_deg": 6.127391218696603,
+     "boat_roll_deg": 10.088584761897117,
+     "boat_pitch_deg": 0.12852088685810872,
+     "transom_gap_min_m": 0.03818166198490473,
+     "line_peak_N": 4196.176545498953,
+     "slack_frac": 0.4728682170542636,
+     "fender_peak_N": 1497.4193170847639,
+     "fender_free_frac": 0.8837209302325582,
+     "strut_peak_N": null
+    }
+   },
+   "score": {
+    "score": 6.237,
+    "peak_N": 4196,
+    "slack": 0.47,
+    "gap_min_m": 0.012,
+    "boat_roll_deg": 10.1,
+    "dx_mm": 9
+   }
+  },
+  {
+   "id": "B_six_lines_knees",
+   "title": "Elven's six-line sketch + stern knees/fenders, eyes at cleat level",
+   "n_elements": 8,
+   "moored": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": 0.7296519277222911,
+    "yaw_deg": -0.004743759350729851,
+    "line_max_N": 395.632722399375,
+    "slack": [],
+    "fender_max_N": 67.82705836158657,
+    "strut_max_N": null,
+    "transom_gap_m": 0.058572979306258155
+   },
+   "push": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -4.717061114334861,
+    "yaw_deg": 0.010804916220258979,
+    "line_max_N": 440.4461952973637,
+    "slack": [],
+    "fender_max_N": 401.10916242468363,
+    "strut_max_N": null,
+    "transom_gap_m": 0.04718818873886077
+   },
+   "tow": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": 6.686820649527003,
+    "yaw_deg": 0.000617117004464498,
+    "line_max_N": 461.1436784219869,
+    "slack": [
+     "FENDER_PORT",
+     "FENDER_STBD"
+    ],
+    "fender_max_N": -0.0,
+    "strut_max_N": null,
+    "transom_gap_m": 0.06705803183255155
+   },
+   "waves": {
+    "beam_03_25": {
+     "exo_roll_deg": 4.282816576363639,
+     "boat_roll_deg": 8.804839851942113,
+     "boat_pitch_deg": 0.17506471898080525,
+     "transom_gap_min_m": 0.04899703756415531,
+     "line_peak_N": 1156.5416326742018,
+     "slack_frac": 0.10852713178294573,
+     "fender_peak_N": 1156.1725158459674,
+     "fender_free_frac": 0.627906976744186,
+     "strut_peak_N": null
+    },
+    "head_03_25": {
+     "exo_roll_deg": 0.029199721025414505,
+     "boat_roll_deg": 0.055564287265907224,
+     "boat_pitch_deg": 3.0847520350874666,
+     "transom_gap_min_m": 0.0149347794924349,
+     "line_peak_N": 646.835819284548,
+     "slack_frac": 0.0,
+     "fender_peak_N": 433.5006422743107,
+     "fender_free_frac": 0.4108527131782946,
+     "strut_peak_N": null
+    },
+    "beam_05_30": {
+     "exo_roll_deg": 6.215086834732857,
+     "boat_roll_deg": 9.43362329370032,
+     "boat_pitch_deg": 0.11962739330643844,
+     "transom_gap_min_m": 0.04821212127553042,
+     "line_peak_N": 908.2314643941869,
+     "slack_frac": 0.0,
+     "fender_peak_N": 548.8840166397238,
+     "fender_free_frac": 0.5271317829457365,
+     "strut_peak_N": null
+    }
+   },
+   "score": {
+    "score": 2.384,
+    "peak_N": 1157,
+    "slack": 0.11,
+    "gap_min_m": 0.015,
+    "boat_roll_deg": 9.4,
+    "dx_mm": 7
+   }
+  },
+  {
+   "id": "C_four_tubes_rigid",
+   "title": "Four rigid tubes (study limit case, k 1 MN/m)",
+   "n_elements": 4,
+   "moored": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": 0.0,
+    "yaw_deg": 0.0,
+    "line_max_N": null,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 0.0,
+    "transom_gap_m": 0.059724156956038055
+   },
+   "push": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -5.024814249850501,
+    "yaw_deg": 0.0006567272573210569,
+    "line_max_N": null,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 581.0055898365363,
+    "transom_gap_m": 0.05697165801553172
+   },
+   "tow": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": 2.193422590693311,
+    "yaw_deg": -0.00033261020556839526,
+    "line_max_N": null,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 254.60936591215068,
+    "transom_gap_m": 0.06077084173188663
+   },
+   "waves": {
+    "beam_03_25": {
+     "exo_roll_deg": 4.266264423821451,
+     "boat_roll_deg": 2.3109240695982525,
+     "boat_pitch_deg": 0.35028053418756916,
+     "transom_gap_min_m": 0.0310435300194406,
+     "line_peak_N": null,
+     "slack_frac": null,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 1176.4797288622565
+    },
+    "head_03_25": {
+     "exo_roll_deg": 0.04186212562857612,
+     "boat_roll_deg": 0.016435829396191984,
+     "boat_pitch_deg": 1.3192998203063269,
+     "transom_gap_min_m": 0.014988765744555564,
+     "line_peak_N": null,
+     "slack_frac": null,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 1260.8933065898498
+    },
+    "beam_05_30": {
+     "exo_roll_deg": 6.02678183475818,
+     "boat_roll_deg": 4.298675688036558,
+     "boat_pitch_deg": 0.43385018672102355,
+     "transom_gap_min_m": 0.027938699171843898,
+     "line_peak_N": null,
+     "slack_frac": null,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": NaN
+    }
+   },
+   "score": {
+    "score": 1.741,
+    "peak_N": 1261,
+    "slack": 0.0,
+    "gap_min_m": 0.015,
+    "boat_roll_deg": 4.3,
+    "dx_mm": 5
+   }
+  },
+  {
+   "id": "D_four_tubes_cartridge",
+   "title": "Four tubes with elastomer cartridges (k 100 kN/m)",
+   "n_elements": 4,
+   "moored": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": 0.0,
+    "yaw_deg": 0.0,
+    "line_max_N": null,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 0.0,
+    "transom_gap_m": 0.059724156956038055
+   },
+   "push": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -10.46736230448772,
+    "yaw_deg": 0.00017482972624918903,
+    "line_max_N": null,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 554.2770199518765,
+    "transom_gap_m": 0.05106623747117345
+   },
+   "tow": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": 4.5187470948735635,
+    "yaw_deg": -8.88558397097686e-05,
+    "line_max_N": null,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 240.416225009632,
+    "transom_gap_m": 0.0633425119807427
+   },
+   "waves": {
+    "beam_03_25": {
+     "exo_roll_deg": 4.440071761487535,
+     "boat_roll_deg": 5.722133657265004,
+     "boat_pitch_deg": 0.3347017147099614,
+     "transom_gap_min_m": 0.02137197800776077,
+     "line_peak_N": null,
+     "slack_frac": null,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 1126.5599321698794
+    },
+    "head_03_25": {
+     "exo_roll_deg": 0.027335009597953586,
+     "boat_roll_deg": 0.04115285584007079,
+     "boat_pitch_deg": 1.9257335046190416,
+     "transom_gap_min_m": 0.013635742532625075,
+     "line_peak_N": null,
+     "slack_frac": null,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 1378.990828624671
+    },
+    "beam_05_30": {
+     "exo_roll_deg": 6.188378343512095,
+     "boat_roll_deg": 8.165039946216053,
+     "boat_pitch_deg": 0.3452788267811413,
+     "transom_gap_min_m": 0.022266421431992207,
+     "line_peak_N": null,
+     "slack_frac": null,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 1027.8180913689594
+    }
+   },
+   "score": {
+    "score": 2.3,
+    "peak_N": 1379,
+    "slack": 0.0,
+    "gap_min_m": 0.014,
+    "boat_roll_deg": 8.2,
+    "dx_mm": 10
+   }
+  },
+  {
+   "id": "E_hybrid_tubes_rigid_ropes10k",
+   "title": "Hybrid: 2 tubes aft (rigid) + 2 ropes fwd posts->midship (k 10k, T0 400)",
+   "n_elements": 4,
+   "moored": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -0.3104128618837753,
+    "yaw_deg": -0.002107695753692468,
+    "line_max_N": 400.001065359683,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 356.5078181679837,
+    "transom_gap_m": 0.05939186566251431
+   },
+   "push": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -2.6224901482153866,
+    "yaw_deg": -0.053656114645400564,
+    "line_max_N": 600.5247541483217,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 1679.336378925811,
+    "transom_gap_m": 0.052303262785789784
+   },
+   "tow": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -1.3460296651505637,
+    "yaw_deg": -0.004343038252209621,
+    "line_max_N": 396.08937047789004,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 165.59493441942186,
+    "transom_gap_m": 0.060205108452005884
+   },
+   "waves": {
+    "beam_03_25": {
+     "exo_roll_deg": 3.942545392389773,
+     "boat_roll_deg": 9.665054245595881,
+     "boat_pitch_deg": 0.2771460422053091,
+     "transom_gap_min_m": 0.053738503115299895,
+     "line_peak_N": 1157.145076808841,
+     "slack_frac": 0.3333333333333333,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 5273.788890273523
+    },
+    "head_03_25": {
+     "exo_roll_deg": 0.07921476906920831,
+     "boat_roll_deg": 0.0313908198265158,
+     "boat_pitch_deg": 3.2008416066711107,
+     "transom_gap_min_m": 0.03187452402837135,
+     "line_peak_N": 587.1918133912035,
+     "slack_frac": 0.14728682170542637,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 1270.842635188174
+    },
+    "beam_05_30": {
+     "exo_roll_deg": 5.8340920497215505,
+     "boat_roll_deg": 10.500168022077322,
+     "boat_pitch_deg": 0.20488013743288913,
+     "transom_gap_min_m": 0.051429629219273174,
+     "line_peak_N": 1120.4909627025118,
+     "slack_frac": 0.9069767441860465,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 9190.453399809729
+    }
+   },
+   "score": {
+    "score": 12.081,
+    "peak_N": 9190,
+    "slack": 0.91,
+    "gap_min_m": 0.032,
+    "boat_roll_deg": 10.5,
+    "dx_mm": 3
+   }
+  },
+  {
+   "id": "E_hybrid_tubes_200k_ropes10k",
+   "title": "Hybrid: 2 tubes aft (200k) + 2 ropes fwd posts->midship (k 10k, T0 400)",
+   "n_elements": 4,
+   "moored": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -1.6340440420018796,
+    "yaw_deg": -0.008287772119204145,
+    "line_max_N": 390.4826635036152,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 353.6732995249814,
+    "transom_gap_m": 0.05806751520458153
+   },
+   "push": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -1.003592683312872,
+    "yaw_deg": 0.010438724542805847,
+    "line_max_N": 375.6404264132884,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 775.3823739144683,
+    "transom_gap_m": 0.0538249793982879
+   },
+   "tow": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -1.964685562456166,
+    "yaw_deg": -0.005826718269573624,
+    "line_max_N": 390.88763484033564,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 161.3438450772997,
+    "transom_gap_m": 0.059587235458276044
+   },
+   "waves": {
+    "beam_03_25": {
+     "exo_roll_deg": 4.074186669139764,
+     "boat_roll_deg": 9.654885099361435,
+     "boat_pitch_deg": 0.2881784019092967,
+     "transom_gap_min_m": 0.05031627141715398,
+     "line_peak_N": 848.3427299786084,
+     "slack_frac": 0.8914728682170543,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 4257.852661968386
+    },
+    "head_03_25": {
+     "exo_roll_deg": 0.04494869321237132,
+     "boat_roll_deg": 0.06080273425700452,
+     "boat_pitch_deg": 3.210462607789087,
+     "transom_gap_min_m": 0.03092943729519558,
+     "line_peak_N": 436.4382434294023,
+     "slack_frac": 0.13178294573643412,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 657.3660949363069
+    },
+    "beam_05_30": {
+     "exo_roll_deg": 6.110312516320245,
+     "boat_roll_deg": 10.176459909491665,
+     "boat_pitch_deg": 0.23612502054500337,
+     "transom_gap_min_m": 0.04962708320833008,
+     "line_peak_N": 1547.7334574197755,
+     "slack_frac": 0.8217054263565892,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 5213.626723976706
+    }
+   },
+   "score": {
+    "score": 8.034,
+    "peak_N": 5214,
+    "slack": 0.89,
+    "gap_min_m": 0.031,
+    "boat_roll_deg": 10.2,
+    "dx_mm": 2
+   }
+  },
+  {
+   "id": "E_hybrid_tubes_100k_ropes10k",
+   "title": "Hybrid: 2 tubes aft (100k) + 2 ropes fwd posts->midship (k 10k, T0 400)",
+   "n_elements": 4,
+   "moored": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -3.2456055760634452,
+    "yaw_deg": -0.03362170340059402,
+    "line_max_N": 384.1496600048866,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 370.36711006318,
+    "transom_gap_m": 0.05645689234629758
+   },
+   "push": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -4.525339363937851,
+    "yaw_deg": 0.009869884362275446,
+    "line_max_N": 342.56277514101095,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 738.5704678353477,
+    "transom_gap_m": 0.05027966048361332
+   },
+   "tow": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -2.690347988315886,
+    "yaw_deg": -0.007971308212611456,
+    "line_max_N": 384.8104265605534,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 156.45340521276972,
+    "transom_gap_m": 0.0588625280147177
+   },
+   "waves": {
+    "beam_03_25": {
+     "exo_roll_deg": 4.113754807655038,
+     "boat_roll_deg": 9.62075813503959,
+     "boat_pitch_deg": 0.29646538283434043,
+     "transom_gap_min_m": 0.04725910194977433,
+     "line_peak_N": 1954.2080565520093,
+     "slack_frac": 0.8294573643410853,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 4917.0097844874135
+    },
+    "head_03_25": {
+     "exo_roll_deg": 0.015690379772908034,
+     "boat_roll_deg": 0.15425902709037403,
+     "boat_pitch_deg": 3.2023423399460875,
+     "transom_gap_min_m": 0.03025265354014216,
+     "line_peak_N": 473.5393968935475,
+     "slack_frac": 0.15503875968992248,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 748.3666051268989
+    },
+    "beam_05_30": {
+     "exo_roll_deg": 6.154949172017518,
+     "boat_roll_deg": 10.122331129695079,
+     "boat_pitch_deg": 0.24025771535777854,
+     "transom_gap_min_m": 0.04704497461836476,
+     "line_peak_N": 711.9773529201656,
+     "slack_frac": 0.8449612403100775,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 2702.2274710510274
+    }
+   },
+   "score": {
+    "score": 7.664,
+    "peak_N": 4917,
+    "slack": 0.84,
+    "gap_min_m": 0.03,
+    "boat_roll_deg": 10.1,
+    "dx_mm": 5
+   }
+  },
+  {
+   "id": "E_hybrid_tubes_50k_ropes10k",
+   "title": "Hybrid: 2 tubes aft (50k) + 2 ropes fwd posts->midship (k 10k, T0 400)",
+   "n_elements": 4,
+   "moored": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -5.975781463446317,
+    "yaw_deg": 0.04093924848323105,
+    "line_max_N": 356.0409389756769,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 331.54454062603867,
+    "transom_gap_m": 0.053717836276578
+   },
+   "push": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -10.887207379746675,
+    "yaw_deg": 0.009659672368139556,
+    "line_max_N": 286.6556350867766,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 686.6638192176478,
+    "transom_gap_m": 0.04387534462086817
+   },
+   "tow": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -4.003163124906329,
+    "yaw_deg": -0.013609865097220002,
+    "line_max_N": 373.9201441977613,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 148.0198913911268,
+    "transom_gap_m": 0.05755155144226887
+   },
+   "waves": {
+    "beam_03_25": {
+     "exo_roll_deg": 4.113352312005944,
+     "boat_roll_deg": 9.615402959797622,
+     "boat_pitch_deg": 0.26557423459717094,
+     "transom_gap_min_m": 0.0451691480577469,
+     "line_peak_N": 1359.0360181416438,
+     "slack_frac": 0.875968992248062,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 2966.6158673961913
+    },
+    "head_03_25": {
+     "exo_roll_deg": 0.06618270347643032,
+     "boat_roll_deg": 0.08982637833282672,
+     "boat_pitch_deg": 3.1886654094123155,
+     "transom_gap_min_m": 0.028968764365856377,
+     "line_peak_N": 558.6626632703928,
+     "slack_frac": 0.1937984496124031,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 710.4013499686396
+    },
+    "beam_05_30": {
+     "exo_roll_deg": 6.159477333554157,
+     "boat_roll_deg": 10.09648273062568,
+     "boat_pitch_deg": 0.23227056994375436,
+     "transom_gap_min_m": 0.04566292928264175,
+     "line_peak_N": 1559.0646612462745,
+     "slack_frac": 0.8449612403100775,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 3552.7900273709415
+    }
+   },
+   "score": {
+    "score": 6.423,
+    "peak_N": 3553,
+    "slack": 0.88,
+    "gap_min_m": 0.029,
+    "boat_roll_deg": 10.1,
+    "dx_mm": 11
+   }
+  },
+  {
+   "id": "E_hybrid_tubes_100k_snubber2k",
+   "title": "Hybrid: 2 tubes aft (100k) + 2 ropes with snubber (k 2k, T0 400)",
+   "n_elements": 4,
+   "moored": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -3.3498801131098244,
+    "yaw_deg": 0.003458144815642988,
+    "line_max_N": 395.8296328877315,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 345.91576331472476,
+    "transom_gap_m": 0.0563474272761777
+   },
+   "push": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -4.942274289800182,
+    "yaw_deg": 0.00562640274835733,
+    "line_max_N": 387.8830124448358,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 772.5498858461632,
+    "transom_gap_m": 0.04988885816227695
+   },
+   "tow": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -3.14949854061189,
+    "yaw_deg": -0.031174834524597798,
+    "line_max_N": 406.3439234776483,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 203.83725145602384,
+    "transom_gap_m": 0.058402161558890775
+   },
+   "waves": {
+    "beam_03_25": {
+     "exo_roll_deg": 4.148212885413069,
+     "boat_roll_deg": 9.651797150745512,
+     "boat_pitch_deg": 0.2984345083137261,
+     "transom_gap_min_m": 0.05117407507843311,
+     "line_peak_N": 876.9976361757222,
+     "slack_frac": 0.6821705426356589,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 5777.285367897811
+    },
+    "head_03_25": {
+     "exo_roll_deg": 0.04117789904296415,
+     "boat_roll_deg": 0.0031904879648505823,
+     "boat_pitch_deg": 3.229523232143658,
+     "transom_gap_min_m": 0.029580455536041328,
+     "line_peak_N": 672.4521869667375,
+     "slack_frac": 0.3798449612403101,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 3577.7585791029855
+    },
+    "beam_05_30": {
+     "exo_roll_deg": 6.184523039400182,
+     "boat_roll_deg": 10.10104754874886,
+     "boat_pitch_deg": 0.25187829927092786,
+     "transom_gap_min_m": 0.05182347428379015,
+     "line_peak_N": 638.4668225984882,
+     "slack_frac": 0.6976744186046512,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 2657.7181875175047
+    }
+   },
+   "score": {
+    "score": 8.232,
+    "peak_N": 5777,
+    "slack": 0.7,
+    "gap_min_m": 0.03,
+    "boat_roll_deg": 10.1,
+    "dx_mm": 5
+   }
+  },
+  {
+   "id": "F_hybrid_tubes_100k_crossed",
+   "title": "Hybrid: 2 tubes aft (100k) + crossed stern ropes + tow ropes (k 10k, T0 400)",
+   "n_elements": 6,
+   "moored": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -3.7089725137353247,
+    "yaw_deg": -0.0023773986341038334,
+    "line_max_N": 390.80283966561603,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 357.0569904532306,
+    "transom_gap_m": 0.05630216434760671
+   },
+   "push": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -4.9005484350116495,
+    "yaw_deg": -0.0024413939979816917,
+    "line_max_N": 399.55860840483746,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 775.2043849055312,
+    "transom_gap_m": 0.05025119109560805
+   },
+   "tow": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": -3.309841204813231,
+    "yaw_deg": -0.0027572760461187203,
+    "line_max_N": 385.7207448199773,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 192.24495093483895,
+    "transom_gap_m": 0.05852154578385971
+   },
+   "waves": {
+    "beam_03_25": {
+     "exo_roll_deg": 4.182243252412792,
+     "boat_roll_deg": 9.027632358283576,
+     "boat_pitch_deg": 0.21678712452871762,
+     "transom_gap_min_m": 0.05144225623272033,
+     "line_peak_N": 1534.9294490573361,
+     "slack_frac": 0.3178294573643411,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 1816.7894220843361
+    },
+    "head_03_25": {
+     "exo_roll_deg": 0.035634992605103694,
+     "boat_roll_deg": 0.0059252081409626265,
+     "boat_pitch_deg": 3.1485786585974638,
+     "transom_gap_min_m": 0.031865989605824256,
+     "line_peak_N": 569.3166288644092,
+     "slack_frac": 0.14728682170542637,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 740.6702237396368
+    },
+    "beam_05_30": {
+     "exo_roll_deg": 6.119420789043464,
+     "boat_roll_deg": 9.564599207492321,
+     "boat_pitch_deg": 0.1428900713994545,
+     "transom_gap_min_m": 0.05239578248351657,
+     "line_peak_N": 1057.101650578156,
+     "slack_frac": 0.05426356589147287,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 1371.0198624513503
+    }
+   },
+   "score": {
+    "score": 3.458,
+    "peak_N": 1817,
+    "slack": 0.32,
+    "gap_min_m": 0.032,
+    "boat_roll_deg": 9.6,
+    "dx_mm": 5
+   }
+  },
+  {
+   "id": "G_hybrid_tubes_100k_diagonals",
+   "title": "Hybrid: 2 tubes aft (100k) + diagonals (aft->mid, fwd->stern), k 10k T0 400",
+   "n_elements": 6,
+   "moored": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": 0.9825874380621411,
+    "yaw_deg": -0.0013260491422540251,
+    "line_max_N": 398.45886220203573,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 30.589312238143982,
+    "transom_gap_m": 0.058660401403772156
+   },
+   "push": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": 0.033839891563020114,
+    "yaw_deg": 0.0034385333107506337,
+    "line_max_N": 414.34037429887826,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 430.7779223995278,
+    "transom_gap_m": 0.0522819569833608
+   },
+   "tow": {
+    "converged": true,
+    "physical": true,
+    "dx_mm": 1.3118433390261943,
+    "yaw_deg": -0.0026379579064677804,
+    "line_max_N": 409.92235566773337,
+    "slack": [],
+    "fender_max_N": null,
+    "strut_max_N": 140.6886451842504,
+    "transom_gap_m": 0.0610831437572279
+   },
+   "waves": {
+    "beam_03_25": {
+     "exo_roll_deg": 4.12364066065803,
+     "boat_roll_deg": 9.420097145038568,
+     "boat_pitch_deg": 0.13709686544265082,
+     "transom_gap_min_m": 0.05340283099613932,
+     "line_peak_N": 1986.830121019909,
+     "slack_frac": 0.37209302325581395,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 1996.1758078095581
+    },
+    "head_03_25": {
+     "exo_roll_deg": 0.02930172413869334,
+     "boat_roll_deg": 0.029877680852152186,
+     "boat_pitch_deg": 2.962696925214911,
+     "transom_gap_min_m": 0.03177564036483217,
+     "line_peak_N": 1024.3553459821665,
+     "slack_frac": 0.0,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 503.9439607548379
+    },
+    "beam_05_30": {
+     "exo_roll_deg": 5.561557124744102,
+     "boat_roll_deg": 10.947584873014815,
+     "boat_pitch_deg": 0.11931483774065996,
+     "transom_gap_min_m": 0.04338040339330253,
+     "line_peak_N": 1372.7972211833305,
+     "slack_frac": 0.10077519379844961,
+     "fender_peak_N": null,
+     "fender_free_frac": null,
+     "strut_peak_N": 1008.3201666975239
+    }
+   },
+   "score": {
+    "score": 3.848,
+    "peak_N": 1996,
+    "slack": 0.37,
+    "gap_min_m": 0.032,
+    "boat_roll_deg": 10.9,
+    "dx_mm": 1
+   }
+  }
+ ],
+ "ranking": [
+  "C_four_tubes_rigid",
+  "D_four_tubes_cartridge",
+  "B_six_lines_knees",
+  "A_fenders_diagonals_deck",
+  "F_hybrid_tubes_100k_crossed",
+  "G_hybrid_tubes_100k_diagonals",
+  "A2_fenders_diagonals_cleat",
+  "E_hybrid_tubes_50k_ropes10k",
+  "E_hybrid_tubes_100k_ropes10k",
+  "E_hybrid_tubes_200k_ropes10k",
+  "E_hybrid_tubes_100k_snubber2k",
+  "E_hybrid_tubes_rigid_ropes10k"
+ ],
+ "seconds": 77.79382920265198
+}

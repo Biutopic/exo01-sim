@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.1 (30 Oct 2026)
+
+* `scripts/run_mooring_final.py`: final comparison of 12 arrangements (ropes + knees, four tubes rigid / with
+  cartridges, two-tube hybrids) at the converged settings → `results/mooring/final_comparison.{md,json}`, read in
+  `docs/MOORING.md` §7. Sketches `results/mooring/sketch_six_lines*.png`, `sketch_hybrid_tubes_ropes.png`.
+
 ## v1.2 (29 Oct 2026)
 
 Mooring elements and the mooring study
