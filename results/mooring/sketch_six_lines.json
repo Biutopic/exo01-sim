@@ -1,0 +1,378 @@
+{
+ "six-line sketch deck level z0 k10k T0200": {
+  "moored": {
+   "ok": false,
+   "dx": -332,
+   "lmax": 21.443404686984913,
+   "slack": [
+    "L12_AF",
+    "L12_AF",
+    "L34_MI",
+    "L34_MI"
+   ],
+   "vert_N": 8,
+   "boat_trim": 0.38,
+   "boat_heel": 0.0
+  },
+  "push": {
+   "ok": false,
+   "dx": -949,
+   "lmax": 842.2192295360497,
+   "slack": [
+    "L12_AF",
+    "L12_AF"
+   ],
+   "vert_N": 956,
+   "boat_trim": 0.16,
+   "boat_heel": -0.01
+  },
+  "tow": {
+   "ok": true,
+   "dx": -7,
+   "lmax": 167.00241149617324,
+   "slack": [],
+   "vert_N": 197,
+   "boat_trim": 0.26,
+   "boat_heel": -0.0
+  },
+  "beam03": {
+   "peak": 1184,
+   "slack_frac": 1.0,
+   "fender_peak": 0,
+   "boat_roll": 9.5,
+   "exo_roll": 4.3
+  },
+  "head03": {
+   "peak": 1291,
+   "slack_frac": 0.89,
+   "fender_peak": 0,
+   "boat_roll": 0.0,
+   "exo_roll": 0.0
+  }
+ },
+ "six-line sketch deck level z0 k10k T0400": {
+  "moored": {
+   "ok": false,
+   "dx": -357,
+   "lmax": 213.4346185819158,
+   "slack": [
+    "L12_AF",
+    "L12_AF",
+    "L34_MI",
+    "L34_MI"
+   ],
+   "vert_N": 78,
+   "boat_trim": 0.36,
+   "boat_heel": 0.0
+  },
+  "push": {
+   "ok": false,
+   "dx": -910,
+   "lmax": 853.5783839162159,
+   "slack": [
+    "L12_AF",
+    "L12_AF"
+   ],
+   "vert_N": 1020,
+   "boat_trim": 0.14,
+   "boat_heel": -0.01
+  },
+  "tow": {
+   "ok": true,
+   "dx": -32,
+   "lmax": 330.8345462690765,
+   "slack": [],
+   "vert_N": 340,
+   "boat_trim": 0.21,
+   "boat_heel": -0.0
+  },
+  "beam03": {
+   "peak": 771,
+   "slack_frac": 1.0,
+   "fender_peak": 0,
+   "boat_roll": 9.2,
+   "exo_roll": 4.3
+  },
+  "head03": {
+   "peak": 605,
+   "slack_frac": 1.0,
+   "fender_peak": 0,
+   "boat_roll": 0.0,
+   "exo_roll": 0.0
+  }
+ },
+ "six-line sketch deck level z0 + fenders k10k T0200": {
+  "moored": {
+   "ok": true,
+   "dx": -3,
+   "lmax": 184.73256646935886,
+   "slack": [],
+   "vert_N": 258,
+   "boat_trim": 0.32,
+   "boat_heel": 0.01
+  },
+  "push": {
+   "ok": true,
+   "dx": -9,
+   "lmax": 201.48821829002017,
+   "slack": [],
+   "vert_N": 284,
+   "boat_trim": 0.43,
+   "boat_heel": 0.03
+  },
+  "tow": {
+   "ok": true,
+   "dx": 0,
+   "lmax": 210.73640361599644,
+   "slack": [],
+   "vert_N": 237,
+   "boat_trim": 0.26,
+   "boat_heel": 0.01
+  },
+  "beam03": {
+   "peak": 729,
+   "slack_frac": 0.43,
+   "fender_peak": 890,
+   "boat_roll": 8.3,
+   "exo_roll": 4.3
+  },
+  "head03": {
+   "peak": 688,
+   "slack_frac": 0.44,
+   "fender_peak": 689,
+   "boat_roll": 0.0,
+   "exo_roll": 0.0
+  }
+ },
+ "six-line sketch deck level z0 + fenders k10k T0400": {
+  "moored": {
+   "ok": true,
+   "dx": -6,
+   "lmax": 369.8888549488766,
+   "slack": [],
+   "vert_N": 514,
+   "boat_trim": 0.27,
+   "boat_heel": 0.03
+  },
+  "push": {
+   "ok": true,
+   "dx": -12,
+   "lmax": 386.01939572180834,
+   "slack": [],
+   "vert_N": 543,
+   "boat_trim": 0.37,
+   "boat_heel": 0.05
+  },
+  "tow": {
+   "ok": true,
+   "dx": -3,
+   "lmax": 375.4250135928139,
+   "slack": [],
+   "vert_N": 491,
+   "boat_trim": 0.2,
+   "boat_heel": 0.02
+  },
+  "beam03": {
+   "peak": 829,
+   "slack_frac": 0.36,
+   "fender_peak": 849,
+   "boat_roll": 9.0,
+   "exo_roll": 4.1
+  },
+  "head03": {
+   "peak": 787,
+   "slack_frac": 0.3,
+   "fender_peak": 663,
+   "boat_roll": 0.7,
+   "exo_roll": 0.2
+  }
+ },
+ "six-line sketch level with cleats z0.3 k10k T0200": {
+  "moored": {
+   "ok": false,
+   "dx": -302,
+   "lmax": 6.877122087418641,
+   "slack": [
+    "L12_AF",
+    "L12_AF",
+    "L34_MI",
+    "L34_MI"
+   ],
+   "vert_N": 1,
+   "boat_trim": 0.38,
+   "boat_heel": 0.0
+  },
+  "push": {
+   "ok": false,
+   "dx": -922,
+   "lmax": 816.6670136496168,
+   "slack": [
+    "L12_AF",
+    "L12_AF"
+   ],
+   "vert_N": 560,
+   "boat_trim": 0.29,
+   "boat_heel": -0.01
+  },
+  "tow": {
+   "ok": true,
+   "dx": -9,
+   "lmax": 178.80238825155547,
+   "slack": [],
+   "vert_N": 134,
+   "boat_trim": 0.28,
+   "boat_heel": -0.0
+  },
+  "beam03": {
+   "peak": 805,
+   "slack_frac": 1.0,
+   "fender_peak": 0,
+   "boat_roll": 9.4,
+   "exo_roll": 4.3
+  },
+  "head03": {
+   "peak": 513,
+   "slack_frac": 1.0,
+   "fender_peak": 0,
+   "boat_roll": 0.1,
+   "exo_roll": 0.1
+  }
+ },
+ "six-line sketch level with cleats z0.3 k10k T0400": {
+  "moored": {
+   "ok": false,
+   "dx": -376,
+   "lmax": 196.21557219751116,
+   "slack": [
+    "L12_AF",
+    "L12_AF",
+    "L34_MI",
+    "L34_MI"
+   ],
+   "vert_N": 40,
+   "boat_trim": 0.37,
+   "boat_heel": 0.0
+  },
+  "push": {
+   "ok": false,
+   "dx": -884,
+   "lmax": 831.423068999746,
+   "slack": [
+    "L12_AF",
+    "L12_AF"
+   ],
+   "vert_N": 600,
+   "boat_trim": 0.28,
+   "boat_heel": -0.01
+  },
+  "tow": {
+   "ok": true,
+   "dx": -34,
+   "lmax": 349.19352442922326,
+   "slack": [],
+   "vert_N": 223,
+   "boat_trim": 0.24,
+   "boat_heel": -0.0
+  },
+  "beam03": {
+   "peak": 591,
+   "slack_frac": 1.0,
+   "fender_peak": 0,
+   "boat_roll": 9.2,
+   "exo_roll": 4.3
+  },
+  "head03": {
+   "peak": 371,
+   "slack_frac": 1.0,
+   "fender_peak": 0,
+   "boat_roll": 0.0,
+   "exo_roll": 0.0
+  }
+ },
+ "six-line sketch level with cleats z0.3 + fenders k10k T0200": {
+  "moored": {
+   "ok": true,
+   "dx": -4,
+   "lmax": 193.41243920666608,
+   "slack": [],
+   "vert_N": 171,
+   "boat_trim": 0.35,
+   "boat_heel": 0.01
+  },
+  "push": {
+   "ok": true,
+   "dx": -11,
+   "lmax": 202.4387661056437,
+   "slack": [],
+   "vert_N": 180,
+   "boat_trim": 0.46,
+   "boat_heel": 0.04
+  },
+  "tow": {
+   "ok": true,
+   "dx": -1,
+   "lmax": 198.52174488908858,
+   "slack": [],
+   "vert_N": 164,
+   "boat_trim": 0.28,
+   "boat_heel": 0.01
+  },
+  "beam03": {
+   "peak": 628,
+   "slack_frac": 0.34,
+   "fender_peak": 631,
+   "boat_roll": 9.3,
+   "exo_roll": 4.1
+  },
+  "head03": {
+   "peak": 610,
+   "slack_frac": 0.37,
+   "fender_peak": 566,
+   "boat_roll": 0.0,
+   "exo_roll": 0.0
+  }
+ },
+ "six-line sketch level with cleats z0.3 + fenders k10k T0400": {
+  "moored": {
+   "ok": true,
+   "dx": -9,
+   "lmax": 386.9766532302066,
+   "slack": [],
+   "vert_N": 339,
+   "boat_trim": 0.31,
+   "boat_heel": 0.03
+  },
+  "push": {
+   "ok": true,
+   "dx": -15,
+   "lmax": 395.62582252331333,
+   "slack": [],
+   "vert_N": 354,
+   "boat_trim": 0.43,
+   "boat_heel": 0.05
+  },
+  "tow": {
+   "ok": true,
+   "dx": -6,
+   "lmax": 382.1616224820179,
+   "slack": [],
+   "vert_N": 328,
+   "boat_trim": 0.24,
+   "boat_heel": 0.02
+  },
+  "beam03": {
+   "peak": 809,
+   "slack_frac": 0.0,
+   "fender_peak": 848,
+   "boat_roll": 9.5,
+   "exo_roll": 4.7
+  },
+  "head03": {
+   "peak": 752,
+   "slack_frac": 0.0,
+   "fender_peak": 678,
+   "boat_roll": 0.2,
+   "exo_roll": 0.0
+  }
+ }
+}
