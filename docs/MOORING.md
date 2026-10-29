@@ -1,24 +1,27 @@
 # EXO-01 ↔ L'Hydronaute coupling: what the study says (v1.2, 29 Oct 2026)
 
 **Exploratory — assumed geometry and mass distribution; line and fender properties are assumptions, not measurements.**
-Source: `scripts/run_mooring_study.py` → `results/mooring/` (121 configurations: 7 arrangements × 4 line stiffnesses ×
-5 pretensions; moored / push 100 % / tow 100 %; three regular waves with the linear 12-DOF model and the tension-only
-time-domain check). Element model: ASSUMPTIONS §5e.
+Source: `scripts/run_mooring_study.py` → `results/mooring/` (121 configurations = 6 line arrangements × 4 line stiffnesses ×
+5 pretensions + the rigid-strut case, which has no line to vary; moored / push 100 % / tow 100 %; three regular waves with
+the linear 12-DOF model, then the separate tension-only time-domain check). Element model: ASSUMPTIONS §5e. Damping: potential-flow
+radiation damping plus an assumed 5 % of critical in heave/roll/pitch (10 % for the boat's roll/pitch); lines, fenders and struts
+are undamped springs. Occupants in the coupled cases: none (light EXO + light boat).
 
 ## 1. The short version
 
 | question | answer from the model | confidence |
 |---|---|---|
-| Which arrangement closes the force loop in push *and* tow? | Only the ones with **stern fenders (push bars) + lines that run from the EXO aft/forward posts to boat cleats on both sides**: `fenders_crossed_lines` or `fenders_diagonals`. Lines alone need k ≥ 10 kN/m and still let the boat slide 20–45 mm into the gap under push; the drawing's four forward lines never push. | high (statics) |
+| Which arrangement closes the force loop in push *and* tow? | Correctly oriented tensioned lines can (`best_diagonals`, `six_lines`: lines from the forward posts to the stern cleats), but only with k ≥ 10 kN/m and with the boat sliding 20–45 mm into the 60 mm gap under push (120–230 mm = contact with 2 kN/m lines). **Stern fenders add a compression path** that closes the push loop at any line stiffness with 1–20 mm of travel (`fenders_crossed_lines`, `fenders_diagonals`). The drawing's four forward lines never push. | high (statics) |
 | Where must it be rigid? | **Longitudinally, at the transom** (the push goes through fenders in compression, never through rope in tension). **Not vertically**: let heave/pitch/roll of the two hulls stay free — a rigid vertical coupling carries ≈ 1.1–1.3 kN cyclic per strut in 0.3 m waves, continuously. Sway and yaw: restrained by crossed lines or diagonals in tension. | high |
-| Shock absorbers? | **Yes on the lines, no on the fenders.** Line peaks scale with rope stiffness: 2 kN/m → 0.5–1.3 kN, 10 kN/m → 0.6–1.5 kN, 50 kN/m → 1.5–3 kN, 200 kN/m → 3–5 kN in the same 0.3 m waves. But *very* soft lines (2 kN/m) with fenders let the boat accelerate into the fenders: fender impacts 2–5 kN. Sweet spot: **lines ≈ 10 kN/m (elastic snubber or nylon) with firm fenders (≈ 50 kN/m)**. | medium (5 % damping, linear hydro, frozen coefficients) |
+| Shock absorbers? | **Not demonstrated — what is shown is the effect of compliance (stiffness), not of damping**: the elements are undamped springs. Line peaks scale with rope stiffness: 2 kN/m → 0.5–1.3 kN, 10 kN/m → 0.6–1.5 kN, 50 kN/m → 1.5–3 kN, 200 kN/m → 3–5 kN in the same 0.3 m waves; but very soft lines (2 kN/m) with fenders let the boat accelerate into the fenders (fender peaks 2–5 kN). The results support investigating compliant connections around **≈ 10 kN/m lines with firm (≈ 50 kN/m) fenders**; selecting an actual snubber/damper needs a model with damping, available stroke and peak reaction (next step). | medium–low |
 | Pretension? | **200–400 N** per line with 10 kN/m lines: slack fraction 20–30 % of the cycle in 0.3 m beam waves, peaks ≈ 0.7–1.3 kN. No-slack needs ≈ 800 N (then the static load alone is 0.8 kN, no benefit). Below 100 N every line snatches every cycle. | medium |
-| Fender at the back? | **Yes: two push fenders/knees at the quarters (y ≈ ±0.9 m) at transom height**, stroke ≥ 50 mm (the gap breathes ± 0.02–0.05 m in 0.3 m waves, ± 0.14 m with crossed lines in 0.5 m waves), capacity ≥ 3 kN each (static push 0.3–0.6 kN each at full thrust, wave impacts 0.4–1.4 kN with 10 kN/m lines, up to 1.7 kN in 0.5 m waves). | medium |
+| Fender at the back? | **A promising option: two push fenders/knees at the quarters (y ≈ ±0.9 m) at transom height**, stroke ≥ 50 mm (the linear relative motion at the transom is ± 0.02–0.05 m in 0.3 m waves, ± 0.14 m with crossed lines in 0.5 m waves), capacity ≥ 3 kN each (static push 0.3–0.6 kN each at full thrust, time-domain peaks 0.4–1.4 kN with 10 kN/m lines, up to 1.7 kN in 0.5 m waves). | medium |
 | Hardware sizing | Lines: working load 1–1.5 kN, snatch peaks up to 2–4.5 kN with stiff rope in 0.5 m waves → 12 mm polyester/nylon with snubbers (MBL ≥ 2 t), cleats/posts and their frame attachment ≥ 5 kN. Fenders ≥ 3 kN. Rigid-coupling option: 4 struts ≥ 2 kN cyclic + fatigue. | medium |
 
-Design consequence for EXO-01: build **two push knees with fenders on the rear deck edge** (x ≈ 2.1 m, y ≈ ±0.9 m, at the
-transom height of the host boat) and keep the mooring posts; lines then only clamp the boat onto the knees and restrain
-sway/yaw. That is the standard pusher-tug arrangement and it is what the numbers favour.
+Design direction for EXO-01 (to be confirmed with a damped-element model and the real knee geometry): **two push knees with fenders on the
+rear deck edge** (x ≈ 2.1 m, y ≈ ±0.9 m, at the transom height of the host boat), lines clamping the boat onto the knees and
+restraining sway/yaw — the pusher-tug arrangement. Among the configurations tested, it is the one with the smallest boat travel
+under push and the lowest line peaks at equal stiffness.
 
 ## 2. Statics: which loops close
 
@@ -38,7 +41,7 @@ Push through fenders: 300–450 N compression per fender at full thrust (R_boat 
 
 Beam waves H 0.3 m, T 2.5 s (the reference wake), worst line of the arrangement:
 
-| arrangement | k [kN/m] | T0 [N] | peak line [N] | slack fraction | fender peak [N] | transom gap min [m] |
+| arrangement | k [kN/m] | T0 [N] | peak line [N] (time domain) | slack fraction | fender peak [N] (time domain) | transom gap min [m] (linear model, see note) |
 |---|---|---|---|---|---|---|
 | fenders + crossed lines | 10 | 200 | 760 | 0.22 | 560 | 0.02 |
 | fenders + crossed lines | 10 | 400 | 1270 | 0.19 | 700 | −0.02 |
@@ -51,6 +54,13 @@ Beam waves H 0.3 m, T 2.5 s (the reference wake), worst line of the arrangement:
 | simulator_default | 10 | 400 | 950 | 0.22 | — | 0.05 |
 | figure_all_forward | 50 | 100 | 2200 | 0.95 | — | −0.11 (contact) |
 | rigid struts | 1000 (bilateral) | — | 1130 per strut (linear), 1180 (time domain) | 0 | — | 0.03 |
+
+Note on the transom gap: the column is the rest gap minus the *linear* relative-motion amplitude at the transom; in the linear model a
+compressed fender is a bilateral spring, so a negative value (e.g. −0.02 m for crossed lines at 10 kN/m / 400 N) means the linearised
+motion exceeds the rest gap — fender compression beyond its rest state in the linear picture, not a predicted structure–hull
+contact. The time-domain check (which applies the unilateral fender law) gives the fender peak loads in the same row; a time-domain
+gap statistic is not computed yet (next version). For the arrangements without fenders a negative value does mean the boat's transom
+reaches the deck-plate edge in the linear model.
 
 Head waves H 0.3 m, T 2.5 s give similar line peaks (0.5–1.3 kN at 10 kN/m) but the soft-line configurations let the
 boat surge into the deck (gap −0.09 m with 2 kN/m lines and no fenders). Beam waves H 0.5 m, T 3.0 s: line peaks
@@ -66,8 +76,10 @@ hulls' relative wave loads through the frame.
   and undamped; no wind, current, or wake impulse (a passing boat's wake is a short group, not a regular wave).
 * The berth gap at the transom is 0.07 m from the assumed placement (boat stern 0.1 m forward of the deck plate at the
   CAD datum, then the flotations); the real gap depends on the knee geometry.
-* The time-domain check with 1 MN/m struts is at the limit of the integrator (NaN in the 0.5 m case): use the linear strut
-  amplitudes.
+* Time-step convergence of the time-domain check was verified on the strut and the fender cases (64 → 512 steps per period: peak
+  loads change < 2 %); the strut peaks agree with the linear amplitudes within 5 % (1176 vs 1131 N). The reported "motion ratio"
+  is dominated by DOFs with near-zero linear amplitude and is not a quality metric. The 0.5 m / 3.0 s strut case diverged (NaN) and is
+  excluded; the linear strut amplitudes are the ones to use.
 * Nothing structural: the posts, knees and cleats are not analysed, only their loads are given.
 
 ## 5. Batteries: float frame vs the last beam of the frame (user question, 29 Oct)
@@ -89,20 +101,30 @@ frame is the better compromise** — provided the end-frame beam / side rails ta
 forward float noses keep ≥ 0.33 m freeboard (they do: 0.34–0.35 m). The forward floats are also where the boat's bow wave
 arrives: keep the batteries' boxes watertight.
 
-## 6. EXO-01 alone: registration sheet (DDTM / service instructeur)
+## 6. EXO-01 alone: registration sheet (DDTM / service instructeur) — separate from the coupled cases
 
-`scripts/run_stability_sheet.py` → `results/stability/stability_sheet.md`. Values read against the ES-TRIN art. 19.03
-passenger-vessel figures (75 kg per person, heel ≤ 12°, residual freeboard ≥ 0.20 m); whether that text or a lighter
-regime applies to EXO-01 (< 12 passengers, work platform, "engin flottant") is for the service instructeur — the numbers
-are the same either way.
+`scripts/run_stability_sheet.py` → `results/stability/stability_sheet.md`. EXO-01 alone, no boat, **75 kg per person** (the
+coupled cases above use 80 kg illustrative occupants — do not mix the two). Read against the ES-TRIN art. 19.03 passenger-vessel
+figures (heel ≤ 12° under passenger + wind moment, residual freeboard ≥ 0.20 m) and, separately, the 0.30 m minimum freeboard of
+art. 19.04; the wind moment uses the 19.03 pressure (0.25 kN/m²) on an *assumed* 6 m² lateral area (heel ≈ 0.7°); the turning
+moment is not evaluated. The floating-equipment chapter has different provisions. Which regime applies to EXO-01 is for the
+service instructeur, and it changes the assessment — the tables give the inputs for either reading.
 
 * Heel is never the limit: GM_T ≈ 21 m; eight people on one side of the upper deck heel the platform 4°.
 * **Freeboard is the limit.** Each 75 kg passenger sinks the platform ≈ 15 mm (waterplane ≈ 5.6 m²) plus the trim from
   where they stand. Rear-deck freeboard light: 0.17 m (drawing batteries) / 0.36 m (x 3.6) / 0.38 m (x 4.24).
 * Capacity under "residual freeboard ≥ 0.20 m at the worst placement": **0 passengers** with the drawing's batteries,
   **1–2** with the batteries forward (limited by two people in the stern corner), 10 if everyone stays on the upper deck.
-* Deck-edge-awash regular wave height, light ship, batteries forward: ≈ 0.27 m at T 2.0 s, 0.46 m at T 2.5 s, 0.68 m at
-  T 3 s (linear, 5 % damping, worst heading — the short-period values are resonance-driven and need the decay test).
+  Under the 0.30 m minimum freeboard of 19.04: 0–1 passenger in every configuration.
+* **Zoning + counterweight (recommended layout, `results/stability/recommended_layout_cases.json`)**: aft 1.0 m of the rear deck
+  closed to passengers (no float under the aft 0.5 m), batteries at the end frame (x 4.24), cabinet moved to x 3.5, 2 × 50 kg
+  counterweight at x 4.75 on the side rails → **4 passengers anywhere in the allowed zones keep ≥ 0.216 m** (4 on one side of the
+  forward half: 0.216 m; 6 spread over both decks: 0.246 m); light ship then trims +3.3° bow-down with 0.30 m forward float-top
+  freeboard, and 4 people on one side of the upper deck bring the forward float tops to 0.17 m — the forward floats become the
+  limit. A counterweight does not add freeboard (it sinks the platform ≈ 15 mm per 100 kg); it works through the trim lever.
+* Deck-edge-awash regular wave height, light ship (no crew), batteries forward: ≈ 0.27 m at T 2.0 s, 0.46 m at T 2.5 s, 0.68 m at
+  T 3 s (linear, 5 % damping, worst heading, BEM of a nearby pose reused — the short-period values are resonance-driven and need
+  the decay test and an exact-pose BEM before being quoted).
 
 Consequence: as drawn, EXO-01 alone does not have the freeboard of a passenger craft; it has the freeboard of a work
 platform for a crew of 1–2 on the rear deck. Options if passenger carriage is the goal: raise the rear deck freeboard

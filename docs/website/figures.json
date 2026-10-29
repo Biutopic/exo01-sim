@@ -7,22 +7,22 @@
   "caption_en": "EXO-01 and L'Hydronaute alongside, still water (simulator render).",
   "state": {
    "note": "EXO-01 + Hydronaute moored (simulator default lines), still water, isometric",
-   "trim_deg": -3.839863141694412,
-   "heel_deg": -0.1758664193253577,
-   "deck_freeboard_m": 0.17243876476044584,
+   "trim_deg": -3.8398631416940123,
+   "heel_deg": -0.17586641932536662,
+   "deck_freeboard_m": 0.1724387647603972,
    "wave": {
-    "H_m": null,
+    "H_m": 0.3,
     "T_s": 3,
     "heading_deg": 90,
     "exo_amp_deg": {
-     "pitch": 0.24894115994990962,
-     "roll": 3.753650058420314,
-     "yaw": 0.6777759038648035
+     "pitch": 0.2489411599505149,
+     "roll": 3.7536500584201287,
+     "yaw": 0.6777759038637649
     },
     "boat_amp_deg": {
-     "pitch": 0.1201960539691874,
-     "roll": 5.563413204080909,
-     "yaw": 0.22249839604229946
+     "pitch": 0.12019605396826577,
+     "roll": 5.563413204083992,
+     "yaw": 0.22249839604275823
     }
    }
   }
@@ -35,22 +35,22 @@
   "caption_en": "Top view: the boat berthed between the two float rows, four lines.",
   "state": {
    "note": "same state, top view: the boat berthed between the float rows, four lines",
-   "trim_deg": -3.839863141694412,
-   "heel_deg": -0.1758664193253577,
-   "deck_freeboard_m": 0.17243876476044584,
+   "trim_deg": -3.8398631416940123,
+   "heel_deg": -0.17586641932536662,
+   "deck_freeboard_m": 0.1724387647603972,
    "wave": {
-    "H_m": null,
+    "H_m": 0.3,
     "T_s": 3,
     "heading_deg": 90,
     "exo_amp_deg": {
-     "pitch": 0.24894115994990962,
-     "roll": 3.753650058420314,
-     "yaw": 0.6777759038648035
+     "pitch": 0.2489411599505149,
+     "roll": 3.7536500584201287,
+     "yaw": 0.6777759038637649
     },
     "boat_amp_deg": {
-     "pitch": 0.1201960539691874,
-     "roll": 5.563413204080909,
-     "yaw": 0.22249839604229946
+     "pitch": 0.12019605396826577,
+     "roll": 5.563413204083992,
+     "yaw": 0.22249839604275823
     }
    }
   }
@@ -63,22 +63,22 @@
   "caption_en": "Side view, batteries at the rear-deck side rails: trim −3.8°.",
   "state": {
    "note": "same state, side view: 3.8 deg stern trim of the EXO at the figure's battery position",
-   "trim_deg": -3.839863141694412,
-   "heel_deg": -0.1758664193253577,
-   "deck_freeboard_m": 0.17243876476044584,
+   "trim_deg": -3.8398631416940123,
+   "heel_deg": -0.17586641932536662,
+   "deck_freeboard_m": 0.1724387647603972,
    "wave": {
-    "H_m": null,
+    "H_m": 0.3,
     "T_s": 3,
     "heading_deg": 90,
     "exo_amp_deg": {
-     "pitch": 0.24894115994990962,
-     "roll": 3.753650058420314,
-     "yaw": 0.6777759038648035
+     "pitch": 0.2489411599505149,
+     "roll": 3.7536500584201287,
+     "yaw": 0.6777759038637649
     },
     "boat_amp_deg": {
-     "pitch": 0.1201960539691874,
-     "roll": 5.563413204080909,
-     "yaw": 0.22249839604229946
+     "pitch": 0.12019605396826577,
+     "roll": 5.563413204083992,
+     "yaw": 0.22249839604275823
     }
    }
   }
@@ -90,23 +90,23 @@
   "caption_fr": "Houle régulière de travers H 0,3 m, T 2,5 s : instant de roulis maximal (échelle 1:1).",
   "caption_en": "Regular beam waves H 0.3 m, T 2.5 s: instant of maximum roll (scale 1:1).",
   "state": {
-   "note": "beam sea H 0.3 m T 2.5 s, frame at maximum EXO roll (t = 1.85 s, rotation [-4.24, -0.49, -0.94] deg)",
-   "trim_deg": -3.839863141694412,
-   "heel_deg": -0.1758664193253577,
-   "deck_freeboard_m": 0.17243876476044584,
+   "note": "beam sea H 0.3 m T 2.5 s, frame at maximum EXO roll (t = 1.92 s, rotation [-4.3, -0.44, -0.8] deg)",
+   "trim_deg": -3.8398631416940123,
+   "heel_deg": -0.17586641932536662,
+   "deck_freeboard_m": 0.1724387647603972,
    "wave": {
-    "H_m": null,
+    "H_m": 0.3,
     "T_s": 2.5,
     "heading_deg": 90,
     "exo_amp_deg": {
-     "pitch": 0.5314432443918605,
-     "roll": 4.301168308184794,
-     "yaw": 1.2051160477465535
+     "pitch": 0.5314432443926562,
+     "roll": 4.301168308184467,
+     "yaw": 1.2051160477475855
     },
     "boat_amp_deg": {
-     "pitch": 0.20722361988619073,
-     "roll": 8.18097052642399,
-     "yaw": 0.622720991931109
+     "pitch": 0.207223619885518,
+     "roll": 8.180970526428645,
+     "yaw": 0.6227209919331045
     }
    }
   }
@@ -118,23 +118,23 @@
   "caption_fr": "Houle de face H 0,3 m, T 2,5 s : instant de tangage maximal du bateau.",
   "caption_en": "Head waves H 0.3 m, T 2.5 s: instant of maximum boat pitch.",
   "state": {
-   "note": "head sea H 0.3 m T 2.5 s, frame at maximum boat pitch (t = 4.03 s, rotation [-0.01, 2.39, -0.01] deg)",
-   "trim_deg": -3.839863141694412,
-   "heel_deg": -0.1758664193253577,
-   "deck_freeboard_m": 0.17243876476044584,
+   "note": "head sea H 0.3 m T 2.5 s, frame at maximum boat pitch (t = 1.66 s, rotation [-0.02, 2.6, -0.0] deg)",
+   "trim_deg": -3.8398631416940123,
+   "heel_deg": -0.17586641932536662,
+   "deck_freeboard_m": 0.1724387647603972,
    "wave": {
-    "H_m": null,
+    "H_m": 0.3,
     "T_s": 2.5,
     "heading_deg": 180,
     "exo_amp_deg": {
-     "pitch": 4.8971037355133795,
-     "roll": 0.03978712323683571,
-     "yaw": 0.0027778066472652933
+     "pitch": 4.897103735514801,
+     "roll": 0.03978712323688352,
+     "yaw": 0.0027778066473086865
     },
     "boat_amp_deg": {
-     "pitch": 2.606037608236543,
-     "roll": 0.023677494199071693,
-     "yaw": 0.009125383191411665
+     "pitch": 2.6060376082370023,
+     "roll": 0.02367749419890992,
+     "yaw": 0.00912538319143269
     }
    }
   }
@@ -147,22 +147,22 @@
   "caption_en": "Batteries moved onto the float-top frames (x 3.60 m): the platform floats level.",
   "state": {
    "note": "batteries moved to the float-top side frames (x 3.60 m): the EXO floats level, still water",
-   "trim_deg": 0.1022310648616751,
-   "heel_deg": -0.164752776049824,
+   "trim_deg": 0.10223106486167478,
+   "heel_deg": -0.16475277604982377,
    "deck_freeboard_m": 0.3636471358635305,
    "wave": {
-    "H_m": null,
+    "H_m": 0.3,
     "T_s": 2.5,
     "heading_deg": 180,
     "exo_amp_deg": {
-     "pitch": 3.6856426327661125,
-     "roll": 0.016516337593189278,
-     "yaw": 0.000592214225249047
+     "pitch": 3.6856426327661174,
+     "roll": 0.016516337593188313,
+     "yaw": 0.0005922142252495123
     },
     "boat_amp_deg": {
-     "pitch": 2.5788102435762337,
-     "roll": 0.02220260371420549,
-     "yaw": 0.003340871502413966
+     "pitch": 2.578810243576233,
+     "roll": 0.022202603714205293,
+     "yaw": 0.0033408715024140626
     }
    }
   }
@@ -175,22 +175,22 @@
   "caption_en": "Side view, batteries forward: trim +0.1°, rear-deck freeboard 0.36 m.",
   "state": {
    "note": "same state, side view (compare with 03)",
-   "trim_deg": 0.1022310648616751,
-   "heel_deg": -0.164752776049824,
+   "trim_deg": 0.10223106486167478,
+   "heel_deg": -0.16475277604982377,
    "deck_freeboard_m": 0.3636471358635305,
    "wave": {
-    "H_m": null,
+    "H_m": 0.3,
     "T_s": 2.5,
     "heading_deg": 180,
     "exo_amp_deg": {
-     "pitch": 3.6856426327661125,
-     "roll": 0.016516337593189278,
-     "yaw": 0.000592214225249047
+     "pitch": 3.6856426327661174,
+     "roll": 0.016516337593188313,
+     "yaw": 0.0005922142252495123
     },
     "boat_amp_deg": {
-     "pitch": 2.5788102435762337,
-     "roll": 0.02220260371420549,
-     "yaw": 0.003340871502413966
+     "pitch": 2.578810243576233,
+     "roll": 0.022202603714205293,
+     "yaw": 0.0033408715024140626
     }
    }
   }
@@ -203,17 +203,17 @@
   "caption_en": "EXO-01 alone, end view: two rows of Flofiz floats and the open berth for the boat.",
   "state": {
    "note": "EXO-01 alone, end view: the two Flofiz float rows and the open berth between them",
-   "trim_deg": -3.825541409261119,
-   "heel_deg": -0.17599631674030852,
-   "deck_freeboard_m": 0.17041059412570558,
+   "trim_deg": -3.8255414092611195,
+   "heel_deg": -0.17599631674030866,
+   "deck_freeboard_m": 0.17041059412570547,
    "wave": {
-    "H_m": null,
+    "H_m": 0.3,
     "T_s": 2.5,
     "heading_deg": 180,
     "exo_amp_deg": {
      "pitch": 6.080986868911104,
-     "roll": 0.04754373712574805,
-     "yaw": 0.029583256069397348
+     "roll": 0.047543737125746686,
+     "yaw": 0.029583256069397584
     },
     "boat_amp_deg": null
    }
@@ -227,17 +227,17 @@
   "caption_en": "EXO-01 alone, light (856 kg listed).",
   "state": {
    "note": "EXO-01 alone, isometric",
-   "trim_deg": -3.825541409261119,
-   "heel_deg": -0.17599631674030852,
-   "deck_freeboard_m": 0.17041059412570558,
+   "trim_deg": -3.8255414092611195,
+   "heel_deg": -0.17599631674030866,
+   "deck_freeboard_m": 0.17041059412570547,
    "wave": {
-    "H_m": null,
+    "H_m": 0.3,
     "T_s": 2.5,
     "heading_deg": 180,
     "exo_amp_deg": {
      "pitch": 6.080986868911104,
-     "roll": 0.04754373712574805,
-     "yaw": 0.029583256069397348
+     "roll": 0.047543737125746686,
+     "yaw": 0.029583256069397584
     },
     "boat_amp_deg": null
    }
@@ -274,5 +274,25 @@
   "caption_fr": "Fonctions de transfert (RAO) pilonnement/roulis/tangage par scénario, houle de travers.",
   "caption_en": "Heave/roll/pitch transfer functions (RAO) per scenario, beam waves.",
   "state": null
+ },
+ {
+  "id": "14_layout_fr",
+  "file_png": "img/14_layout_fr.png",
+  "file_web": "img/web/14_layout_fr.webp",
+  "caption_fr": "Implantation recommandée : défenses, aussières, zones passagers, batteries, contrepoids (vue de dessus et de côté).",
+  "caption_en": "Recommended layout: fenders, lines, passenger zones, batteries, counterweight (top and side view).",
+  "state": {
+   "note": "drawn from configs/illustrative.json geometry; numbers from results/stability/recommended_layout_cases.json and results/mooring"
+  }
+ },
+ {
+  "id": "14_layout_en",
+  "file_png": "img/14_layout_en.png",
+  "file_web": "img/web/14_layout_en.webp",
+  "caption_fr": "Implantation recommandée : défenses, aussières, zones passagers, batteries, contrepoids (vue de dessus et de côté).",
+  "caption_en": "Recommended layout: fenders, lines, passenger zones, batteries, counterweight (top and side view).",
+  "state": {
+   "note": "drawn from configs/illustrative.json geometry; numbers from results/stability/recommended_layout_cases.json and results/mooring"
+  }
  }
 ]

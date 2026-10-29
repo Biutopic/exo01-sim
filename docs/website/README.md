@@ -1,12 +1,12 @@
 # Website package — "EXO-01 en simulation"
 
-Everything needed for one page/article on biutopic.com (Astro, FR + /en), generated from exo01-sim v1.1 on 29 Oct 2026.
+Everything needed for one page/article on biutopic.com (Astro, FR + /en), generated from exo01-sim v1.2 on 29 Oct 2026.
 
 ```
 docs/website/
   exo01-simulation.fr.md      article, French (frontmatter: title, description, maturity, date, version, repo, lang)
   exo01-simulation.en.md      article, English
-  figures.json                13 figures: file, FR/EN caption, exact simulation state behind each render
+  figures.json                15 figures: file, FR/EN caption, exact simulation state behind each render
   key_numbers.json            every number quoted in the article, with its origin
   img/*.png                   renders 1920x1080 + plots (source)
   img/web/*.webp              same, 1600 px wide, 17-64 kB each (what the site should serve)

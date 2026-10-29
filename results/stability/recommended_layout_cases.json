@@ -1,0 +1,48 @@
+{
+ "label": "Exploratory",
+ "configuration": "batteries x 4.24 (end frame) + cabinet x 3.5 + counterweight 2 x 50 kg at x 4.75 on the side rails; passengers 75 kg; aft 1.0 m of the rear deck closed",
+ "cases": {
+  "light": {
+   "trim_deg": 3.25,
+   "heel_deg": -0.17,
+   "deck_fb_m": 0.387,
+   "float_top_fb_m": 0.295,
+   "mass_kg": 956.0
+  },
+  "4_one_side_fwd_half": {
+   "trim_deg": 0.19,
+   "heel_deg": -1.89,
+   "deck_fb_m": 0.216,
+   "float_top_fb_m": 0.221,
+   "mass_kg": 1256.0
+  },
+  "4_spread_fwd_half": {
+   "trim_deg": 0.19,
+   "heel_deg": -0.16,
+   "deck_fb_m": 0.285,
+   "float_top_fb_m": 0.28,
+   "mass_kg": 1256.0
+  },
+  "4_stern_corner_FORBIDDEN_zone": {
+   "trim_deg": -1.95,
+   "heel_deg": -1.92,
+   "deck_fb_m": 0.114,
+   "float_top_fb_m": 0.196,
+   "mass_kg": 1256.0
+  },
+  "6_4_fwd_half_2_upper": {
+   "trim_deg": -0.14,
+   "heel_deg": -0.17,
+   "deck_fb_m": 0.246,
+   "float_top_fb_m": 0.252,
+   "mass_kg": 1406.0
+  },
+  "4_upper_one_side": {
+   "trim_deg": 3.51,
+   "heel_deg": -2.05,
+   "deck_fb_m": 0.256,
+   "float_top_fb_m": 0.167,
+   "mass_kg": 1256.0
+  }
+ }
+}

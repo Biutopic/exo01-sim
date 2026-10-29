@@ -57,7 +57,7 @@ def shot(pg, name, note):
                  deck_freeboard_m: e && e.freeboard && e.freeboard.lower_deck_freeboard_min_m,
                  boat: b && b.equilibrium && { trim_deg: b.equilibrium.trim_deg, heel_deg: b.equilibrium.heel_deg },
                  lines: (S.still.lines || []).map((l) => [l.id, Math.round(l.tension_N), l.slack]),
-                 wave: S.waveRes && S.waveRes.regular_wave && { H_m: S.waveRes.regular_wave.height_m, T_s: S.waveRes.regular_wave.period_s, heading_deg: S.waveRes.regular_wave.heading_deg,
+                 wave: S.waveRes && S.waveRes.regular_wave && { H_m: S.waveRes.regular_wave.H_m, T_s: S.waveRes.regular_wave.period_s, heading_deg: S.waveRes.regular_wave.heading_deg,
                         exo_amp_deg: S.waveRes.regular_wave.bodies.EXO.amplitude_deg, boat_amp_deg: S.waveRes.regular_wave.bodies.BOAT && S.waveRes.regular_wave.bodies.BOAT.amplitude_deg },
                  label: S.config && S.config.result_label }; }""")
     meta[name] = dict(note=note, **s)

@@ -57,7 +57,14 @@ def resolve(cfg, overrides=None):
     by_id = {c["id"]: c for c in out["components"]}
     for cid, fields in (ov.get("components") or {}).items():
         if cid not in by_id:
-            raise KeyError(f"unknown component {cid}")
+            if "mass_kg" in fields and "com_m" in fields:
+                # a new item (ballast, payload, counterweight what-if): point inertia unless given
+                item = dict(id=cid, name=fields.get("name", cid), category=fields.get("category", "payload"), mass_kg=float(fields["mass_kg"]),
+                            mass_source=fields.get("mass_source", "user_edit"), com_m=list(fields["com_m"]), com_source=fields.get("com_source", "user_edit"),
+                            inertia=fields.get("inertia", {"model": "point", "source": "assumption"}))
+                out["components"].append(item); by_id[cid] = item
+                continue
+            raise KeyError(f"unknown component {cid} (a new item needs mass_kg and com_m)")
         for k, v in fields.items():
             if k == "inertia" and isinstance(v, dict) and by_id[cid].get("inertia"):
                 by_id[cid]["inertia"] = _deep_merge(by_id[cid]["inertia"], v)

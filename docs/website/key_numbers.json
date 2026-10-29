@@ -1,6 +1,6 @@
 {
  "label": "Exploratory — assumed geometry and mass distribution",
- "version": "exo01-sim v1.1 (29 Oct 2026)",
+ "version": "exo01-sim v1.2 (29 Oct 2026)",
  "light_mass_kg": 856,
  "mass_breakdown_kg": {
   "structure": 290,
@@ -28,7 +28,8 @@
   "roll_amp_deg_before_after": [
    4.7,
    3.8
-  ]
+  ],
+  "moment_shift_kgm_1.43_to_3.60": 522
  },
  "occupants": {
   "two_at_rear_table_trim_deg": {
@@ -73,5 +74,77 @@
   "checks": 31,
   "reference_point_transform_error": "1e-15",
   "two_body_convergence_pct": 5.6
- }
+ },
+ "recommended_layout_exo_alone_75kg": {
+  "label": "Exploratory",
+  "configuration": "batteries x 4.24 (end frame) + cabinet x 3.5 + counterweight 2 x 50 kg at x 4.75 on the side rails; passengers 75 kg; aft 1.0 m of the rear deck closed",
+  "cases": {
+   "light": {
+    "trim_deg": 3.25,
+    "heel_deg": -0.17,
+    "deck_fb_m": 0.387,
+    "float_top_fb_m": 0.295,
+    "mass_kg": 956.0
+   },
+   "4_one_side_fwd_half": {
+    "trim_deg": 0.19,
+    "heel_deg": -1.89,
+    "deck_fb_m": 0.216,
+    "float_top_fb_m": 0.221,
+    "mass_kg": 1256.0
+   },
+   "4_spread_fwd_half": {
+    "trim_deg": 0.19,
+    "heel_deg": -0.16,
+    "deck_fb_m": 0.285,
+    "float_top_fb_m": 0.28,
+    "mass_kg": 1256.0
+   },
+   "4_stern_corner_FORBIDDEN_zone": {
+    "trim_deg": -1.95,
+    "heel_deg": -1.92,
+    "deck_fb_m": 0.114,
+    "float_top_fb_m": 0.196,
+    "mass_kg": 1256.0
+   },
+   "6_4_fwd_half_2_upper": {
+    "trim_deg": -0.14,
+    "heel_deg": -0.17,
+    "deck_fb_m": 0.246,
+    "float_top_fb_m": 0.252,
+    "mass_kg": 1406.0
+   },
+   "4_upper_one_side": {
+    "trim_deg": 3.51,
+    "heel_deg": -2.05,
+    "deck_fb_m": 0.256,
+    "float_top_fb_m": 0.167,
+    "mass_kg": 1256.0
+   }
+  }
+ },
+ "mooring_study": {
+  "configurations": 121,
+  "push_closes": [
+   "fenders_crossed_lines",
+   "fenders_diagonals",
+   "best_diagonals (k>=10 kN/m, 20-45 mm travel)",
+   "six_lines (k>=10 kN/m)"
+  ],
+  "line_peak_N_beam03_by_k": {
+   "2k": "500-1300",
+   "10k": "600-1500",
+   "50k": "1500-3000",
+   "200k": "3000-5000"
+  },
+  "fender_static_push_N": "300-600 each",
+  "strut_cyclic_N_beam03": 1131,
+  "boat_roll_deg_soft_vs_rigid": [
+   9.0,
+   2.3
+  ],
+  "damping_note": "undamped springs; 5 % critical assumed on the hulls"
+ },
+ "damping_assumption": "radiation damping + 5 % of critical (heave/roll/pitch), 10 % for the boat roll/pitch",
+ "occupant_mass_note": "coupled EXO+boat cases: 80 kg illustrative; EXO-alone stability sheet: 75 kg (ES-TRIN)"
 }
