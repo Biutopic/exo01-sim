@@ -10,14 +10,17 @@ results/exports/
 results/jobs/
 results/ui/
 results/*.log
-results/cache/*.lock
-results/cache/*.tmp
+# BEM cache: only the files referenced by pose_index.json are committed, added explicitly with
+#   python scripts/prune_cache.py --apply --stage      (git add -f on the referenced files)
+# so half-written outputs of a running job never show up as untracked files
+results/cache/*
+!results/cache/pose_index.json
 results/comparison/.fresh
 results/optimisation/.fresh
 results/verification/.fresh
 
-# the shipped BEM cache (results/cache/*.npz + pose_index.json), the comparison, optimisation and verification
-# reports ARE committed: they are the precomputed data the interface boots from.
+# the comparison, optimisation and verification reports ARE committed (with the indexed BEM cache above):
+# they are the precomputed data the interface boots from.
 
 # editors / OS
 .DS_Store

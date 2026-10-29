@@ -17,8 +17,8 @@ server and opens the browser at http://127.0.0.1:8050 (close the window to stop)
 
 **Updates**: the project is a git repository (`Biutopic/exo01-sim`). Clone it once (`git clone https://github.com/Biutopic/exo01-sim.git`
 or GitHub Desktop), then double-click `update_windows.bat` (`git pull`) to get a new version — the Python environment and the
-BEM cache are kept, nothing is reinstalled. `results/cache` (precomputed BEM), `results/comparison`, `results/optimisation` and
-`results/verification` are committed; `results/exports`, `results/jobs` and `results/ui` are local outputs.
+BEM cache are kept, nothing is reinstalled. `results/cache` (precomputed BEM, only the files listed in `pose_index.json`, added with `python scripts/prune_cache.py --apply --stage`),
+`results/comparison`, `results/optimisation` and `results/verification` are committed; `results/exports`, `results/jobs` and `results/ui` are local outputs.
 
 By hand:
 
