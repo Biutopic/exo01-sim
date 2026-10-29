@@ -1,0 +1,118 @@
+{
+ "best_diagonals": {
+  "title": "aft posts -> midship cleats + fwd posts -> stern cleats (line-sweep best)",
+  "push_ok_all": false,
+  "tow_ok_all": true,
+  "push_ok_any": true,
+  "tow_ok_any": true,
+  "min_pretension_no_slack_beam03_by_k": {
+   "2000": null,
+   "10000": null,
+   "50000": null,
+   "200000": null
+  },
+  "loads_at_min_pretension_by_k": {},
+  "transom_gap_min_m_worst": -0.11316847687271303,
+  "transom_gap_motion_amp_m_worst": 0.15521892226898504
+ },
+ "simulator_default": {
+  "title": "Aft breasts + backward springs (v0.3 default)",
+  "push_ok_all": false,
+  "tow_ok_all": true,
+  "push_ok_any": true,
+  "tow_ok_any": true,
+  "min_pretension_no_slack_beam03_by_k": {
+   "2000": null,
+   "10000": null,
+   "50000": null,
+   "200000": null
+  },
+  "loads_at_min_pretension_by_k": {},
+  "transom_gap_min_m_worst": -0.646993447190588,
+  "transom_gap_motion_amp_m_worst": 0.8362294074232619
+ },
+ "figure_all_forward": {
+  "title": "Four lines all running forward (anatomy figure, 28/10)",
+  "push_ok_all": false,
+  "tow_ok_all": false,
+  "push_ok_any": false,
+  "tow_ok_any": true,
+  "min_pretension_no_slack_beam03_by_k": {
+   "2000": null,
+   "10000": null,
+   "50000": null,
+   "200000": null
+  },
+  "loads_at_min_pretension_by_k": {},
+  "transom_gap_min_m_worst": -1.4031736053361745,
+  "transom_gap_motion_amp_m_worst": 1.0512083549346791
+ },
+ "six_lines": {
+  "title": "Six lines: breasts + push springs + tow springs",
+  "push_ok_all": false,
+  "tow_ok_all": true,
+  "push_ok_any": true,
+  "tow_ok_any": true,
+  "min_pretension_no_slack_beam03_by_k": {
+   "2000": null,
+   "10000": null,
+   "50000": null,
+   "200000": null
+  },
+  "loads_at_min_pretension_by_k": {},
+  "transom_gap_min_m_worst": -0.18735032802779783,
+  "transom_gap_motion_amp_m_worst": 0.21286059585866834
+ },
+ "fenders_crossed_lines": {
+  "title": "Two stern fenders + crossed stern lines + tow lines",
+  "push_ok_all": true,
+  "tow_ok_all": true,
+  "push_ok_any": true,
+  "tow_ok_any": true,
+  "min_pretension_no_slack_beam03_by_k": {
+   "2000": null,
+   "10000": null,
+   "50000": null,
+   "200000": null
+  },
+  "loads_at_min_pretension_by_k": {},
+  "transom_gap_min_m_worst": -0.09062357808289173,
+  "transom_gap_motion_amp_m_worst": 0.1415881079037305
+ },
+ "fenders_diagonals": {
+  "title": "Two stern fenders + the best line diagonals",
+  "push_ok_all": true,
+  "tow_ok_all": true,
+  "push_ok_any": true,
+  "tow_ok_any": true,
+  "min_pretension_no_slack_beam03_by_k": {
+   "2000": null,
+   "10000": null,
+   "50000": null,
+   "200000": null
+  },
+  "loads_at_min_pretension_by_k": {},
+  "transom_gap_min_m_worst": 0.012060147204121074,
+  "transom_gap_motion_amp_m_worst": 0.0475434363214442
+ },
+ "rigid_struts": {
+  "title": "Rigid coupling: four bilateral struts (k = 1 MN/m)",
+  "push_ok_all": true,
+  "tow_ok_all": true,
+  "push_ok_any": true,
+  "tow_ok_any": true,
+  "min_pretension_no_slack_beam03_by_k": {
+   "1000000": null
+  },
+  "loads_at_min_pretension_by_k": {},
+  "transom_gap_min_m_worst": 0.014988765744555564,
+  "transom_gap_motion_amp_m_worst": 0.04473539121148249,
+  "strut_peak_abs_N_by_wave": {
+   "beam_03_25": 1176.4797288622565,
+   "head_03_25": 1260.8933065898498,
+   "beam_05_30": NaN
+  },
+  "strut_static_push_N": 139.14321427788144,
+  "strut_static_tow_N": 254.60936591215068
+ }
+}
