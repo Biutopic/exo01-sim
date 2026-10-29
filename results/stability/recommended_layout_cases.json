@@ -1,48 +1,54 @@
 {
  "label": "Exploratory",
- "configuration": "batteries x 4.24 (end frame) + cabinet on the rear deck, centred, at its forward edge (x 1.75, y 0) + counterweight 2 x 75 kg at x 4.75 on the side rails; passengers 75 kg; aft 1.0 m of the rear deck closed",
+ "configuration": "batteries 2 x 120 kg at x 5.05, |y| 2.05, z 0.8 (bracket beyond the forward post, raised 0.3 m above the rail) + cabinet on the rear deck centred at its forward edge (x 1.75, y 0); no ballast; passengers 75 kg; aft 1.0 m of the rear deck closed",
  "cases": {
   "light": {
-   "trim_deg": 3.27,
+   "trim_deg": 2.73,
    "heel_deg": 0.0,
-   "deck_fb_m": 0.384,
-   "float_top_fb_m": 0.29,
-   "mass_kg": 1006.0
+   "deck_fb_m": 0.406,
+   "float_top_fb_m": 0.328,
+   "GM_T_m": 21.3,
+   "mass_kg": 856.0
   },
   "4_one_side_fwd_half": {
-   "trim_deg": 0.23,
+   "trim_deg": -0.4,
    "heel_deg": -1.73,
-   "deck_fb_m": 0.214,
-   "float_top_fb_m": 0.216,
-   "mass_kg": 1306.0
+   "deck_fb_m": 0.219,
+   "float_top_fb_m": 0.243,
+   "GM_T_m": 17.1,
+   "mass_kg": 1156.0
   },
   "4_spread_fwd_half": {
-   "trim_deg": 0.23,
+   "trim_deg": -0.38,
    "heel_deg": 0.0,
-   "deck_fb_m": 0.282,
-   "float_top_fb_m": 0.276,
-   "mass_kg": 1306.0
+   "deck_fb_m": 0.288,
+   "float_top_fb_m": 0.303,
+   "GM_T_m": 16.4,
+   "mass_kg": 1156.0
   },
   "4_stern_corner_FORBIDDEN_zone": {
-   "trim_deg": -1.9,
-   "heel_deg": -1.75,
-   "deck_fb_m": 0.113,
-   "float_top_fb_m": 0.192,
-   "mass_kg": 1306.0
+   "trim_deg": -2.57,
+   "heel_deg": -1.78,
+   "deck_fb_m": 0.109,
+   "float_top_fb_m": 0.212,
+   "GM_T_m": 16.7,
+   "mass_kg": 1156.0
   },
   "6_4_fwd_half_2_upper": {
-   "trim_deg": -0.1,
+   "trim_deg": -0.75,
    "heel_deg": -0.0,
-   "deck_fb_m": 0.245,
-   "float_top_fb_m": 0.249,
-   "mass_kg": 1456.0
+   "deck_fb_m": 0.241,
+   "float_top_fb_m": 0.269,
+   "GM_T_m": 14.2,
+   "mass_kg": 1306.0
   },
   "4_upper_one_side": {
-   "trim_deg": 3.54,
-   "heel_deg": -1.88,
-   "deck_fb_m": 0.253,
-   "float_top_fb_m": 0.162,
-   "mass_kg": 1306.0
+   "trim_deg": 2.82,
+   "heel_deg": -1.84,
+   "deck_fb_m": 0.275,
+   "float_top_fb_m": 0.204,
+   "GM_T_m": 16.1,
+   "mass_kg": 1156.0
   }
  }
 }

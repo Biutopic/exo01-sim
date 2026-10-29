@@ -116,12 +116,13 @@ service instructeur, and it changes the assessment — the tables give the input
 * Capacity under "residual freeboard ≥ 0.20 m at the worst placement": **0 passengers** with the drawing's batteries,
   **1–2** with the batteries forward (limited by two people in the stern corner), 10 if everyone stays on the upper deck.
   Under the 0.30 m minimum freeboard of 19.04: 0–1 passenger in every configuration.
-* **Zoning + counterweight (recommended layout, `results/stability/recommended_layout_cases.json`)**: aft 1.0 m of the rear deck
-  closed to passengers (no float under the aft 0.5 m), batteries at the end frame (x 4.24), cabinet on the rear deck centred at its
-  forward edge (x 1.75, y 0 — it cannot go elsewhere), 2 × 75 kg counterweight at x 4.75 on the side rails → **4 passengers anywhere in
-  the allowed zones keep ≥ 0.214 m** (4 on one side of the forward half: 0.214 m; 6 spread over both decks: 0.245 m; 100 kg of
-  counterweight gives 0.197 m, just short); light ship then trims +3.3° bow-down with 0.29 m forward float-top freeboard, and 4 people on one side of the upper deck bring the forward float tops to 0.17 m — the forward floats become the
-  limit. A counterweight does not add freeboard (it sinks the platform ≈ 15 mm per 100 kg); it works through the trim lever.
+* **Zoning + batteries forward (recommended layout, `results/stability/recommended_layout_cases.json`)**: aft 1.0 m of the rear deck
+  closed to passengers (no float under the aft 0.5 m), batteries 2 × 120 kg on a bracket beyond the forward post (x 5.05, raised
+  0.3 m — height changes nothing measurable: 1 mm of freeboard, 0.2 m of GM on 21), cabinet on the rear deck centred at its forward
+  edge (x 1.75, y 0), no ballast → **4 passengers anywhere in the allowed zones keep ≥ 0.219 m** (6 spread over both decks: 0.241 m);
+  light ship trims +2.7° bow-down with 0.33 m forward float-top freeboard, ≥ 0.20 m with 4 people on one side of the upper deck.
+  Alternatives examined: batteries at the end upright (x 4.24) need 150 kg of ballast at x 4.75 for the same capacity; four batteries
+  (480 kg) reach it too but at +4.6° light and 0.11 m forward float freeboard in the worst upper-deck case. A counterweight does not add freeboard (it sinks the platform ≈ 15 mm per 100 kg); it works through the trim lever.
 * Deck-edge-awash regular wave height, light ship (no crew), batteries forward: ≈ 0.27 m at T 2.0 s, 0.46 m at T 2.5 s, 0.68 m at
   T 3 s (linear, 5 % damping, worst heading, BEM of a nearby pose reused — the short-period values are resonance-driven and need
   the decay test and an exact-pose BEM before being quoted).
