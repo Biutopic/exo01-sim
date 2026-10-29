@@ -1,0 +1,262 @@
+{
+ "recommended (6 floats)": {
+  "light": {
+   "trim": 2.73,
+   "deck_fb": 0.406,
+   "float_top": 0.328,
+   "draught": 0.33,
+   "GM_T": 21.3,
+   "GM_L": 9.5,
+   "mass": 856.0
+  },
+  "4 one side fwd half": {
+   "trim": -0.4,
+   "deck_fb": 0.219,
+   "float_top": 0.243,
+   "draught": 0.37,
+   "GM_T": 17.1,
+   "GM_L": 6.6,
+   "mass": 1156.0
+  },
+  "4 spread fwd half": {
+   "trim": -0.38,
+   "deck_fb": 0.288,
+   "float_top": 0.303,
+   "draught": 0.31,
+   "GM_T": 16.4,
+   "GM_L": 6.8,
+   "mass": 1156.0
+  },
+  "4 stern corner": {
+   "trim": -2.57,
+   "deck_fb": 0.109,
+   "float_top": 0.212,
+   "draught": 0.45,
+   "GM_T": 16.7,
+   "GM_L": 6.7,
+   "mass": 1156.0
+  },
+  "6: 4 fwd + 2 upper": {
+   "trim": -0.75,
+   "deck_fb": 0.241,
+   "float_top": 0.269,
+   "draught": 0.35,
+   "GM_T": 14.2,
+   "GM_L": 5.7,
+   "mass": 1306.0
+  },
+  "6 all on rear deck": {
+   "trim": -3.35,
+   "deck_fb": 0.11,
+   "float_top": 0.233,
+   "draught": 0.44,
+   "GM_T": 13.9,
+   "GM_L": 6.1,
+   "mass": 1306.0
+  },
+  "4 upper one side": {
+   "trim": 2.82,
+   "deck_fb": 0.275,
+   "float_top": 0.204,
+   "draught": 0.46,
+   "GM_T": 16.1,
+   "GM_L": 6.1,
+   "mass": 1156.0
+  }
+ },
+ "A: + centre float x 0.5-2.1": {
+  "light": {
+   "trim": 3.15,
+   "deck_fb": 0.421,
+   "float_top": 0.33,
+   "draught": 0.34,
+   "GM_T": 20.1,
+   "GM_L": 11.4,
+   "mass": 886.0
+  },
+  "4 one side fwd half": {
+   "trim": 0.93,
+   "deck_fb": 0.275,
+   "float_top": 0.258,
+   "draught": 0.36,
+   "GM_T": 16.5,
+   "GM_L": 7.9,
+   "mass": 1186.0
+  },
+  "4 spread fwd half": {
+   "trim": 0.92,
+   "deck_fb": 0.344,
+   "float_top": 0.318,
+   "draught": 0.3,
+   "GM_T": 15.8,
+   "GM_L": 8.1,
+   "mass": 1186.0
+  },
+  "4 stern corner": {
+   "trim": -0.82,
+   "deck_fb": 0.227,
+   "float_top": 0.267,
+   "draught": 0.35,
+   "GM_T": 16.3,
+   "GM_L": 7.8,
+   "mass": 1186.0
+  },
+  "6: 4 fwd + 2 upper": {
+   "trim": 0.89,
+   "deck_fb": 0.319,
+   "float_top": 0.294,
+   "draught": 0.33,
+   "GM_T": 13.8,
+   "GM_L": 6.9,
+   "mass": 1336.0
+  },
+  "6 all on rear deck": {
+   "trim": -1.23,
+   "deck_fb": 0.252,
+   "float_top": 0.298,
+   "draught": 0.33,
+   "GM_T": 14.0,
+   "GM_L": 7.1,
+   "mass": 1336.0
+  },
+  "4 upper one side": {
+   "trim": 3.68,
+   "deck_fb": 0.299,
+   "float_top": 0.204,
+   "draught": 0.48,
+   "GM_T": 15.3,
+   "GM_L": 7.7,
+   "mass": 1186.0
+  }
+ },
+ "B: + centre float x 0.0-1.6": {
+  "light": {
+   "trim": 3.07,
+   "deck_fb": 0.416,
+   "float_top": 0.329,
+   "draught": 0.34,
+   "GM_T": 20.3,
+   "GM_L": 12.8,
+   "mass": 886.0
+  },
+  "4 one side fwd half": {
+   "trim": 1.2,
+   "deck_fb": 0.277,
+   "float_top": 0.252,
+   "draught": 0.38,
+   "GM_T": 16.5,
+   "GM_L": 9.1,
+   "mass": 1186.0
+  },
+  "4 spread fwd half": {
+   "trim": 1.18,
+   "deck_fb": 0.345,
+   "float_top": 0.312,
+   "draught": 0.32,
+   "GM_T": 15.8,
+   "GM_L": 9.2,
+   "mass": 1186.0
+  },
+  "4 stern corner": {
+   "trim": -0.34,
+   "deck_fb": 0.25,
+   "float_top": 0.272,
+   "draught": 0.34,
+   "GM_T": 16.4,
+   "GM_L": 8.9,
+   "mass": 1186.0
+  },
+  "6: 4 fwd + 2 upper": {
+   "trim": 1.22,
+   "deck_fb": 0.321,
+   "float_top": 0.286,
+   "draught": 0.34,
+   "GM_T": 13.8,
+   "GM_L": 7.9,
+   "mass": 1336.0
+  },
+  "6 all on rear deck": {
+   "trim": -0.65,
+   "deck_fb": 0.28,
+   "float_top": 0.299,
+   "draught": 0.32,
+   "GM_T": 14.0,
+   "GM_L": 8.1,
+   "mass": 1336.0
+  },
+  "4 upper one side": {
+   "trim": 3.63,
+   "deck_fb": 0.295,
+   "float_top": 0.201,
+   "draught": 0.48,
+   "GM_T": 15.4,
+   "GM_L": 8.8,
+   "mass": 1186.0
+  }
+ },
+ "C: + two floats y +-1.0, x 0.0-1.6": {
+  "light": {
+   "trim": 3.23,
+   "deck_fb": 0.422,
+   "float_top": 0.329,
+   "draught": 0.34,
+   "GM_T": 20.8,
+   "GM_L": 15.3,
+   "mass": 916.0
+  },
+  "4 one side fwd half": {
+   "trim": 1.92,
+   "deck_fb": 0.302,
+   "float_top": 0.255,
+   "draught": 0.39,
+   "GM_T": 17.2,
+   "GM_L": 10.9,
+   "mass": 1216.0
+  },
+  "4 spread fwd half": {
+   "trim": 1.9,
+   "deck_fb": 0.366,
+   "float_top": 0.311,
+   "draught": 0.33,
+   "GM_T": 16.5,
+   "GM_L": 11.1,
+   "mass": 1216.0
+  },
+  "4 stern corner": {
+   "trim": 0.63,
+   "deck_fb": 0.295,
+   "float_top": 0.285,
+   "draught": 0.33,
+   "GM_T": 17.2,
+   "GM_L": 10.6,
+   "mass": 1216.0
+  },
+  "6: 4 fwd + 2 upper": {
+   "trim": 2.08,
+   "deck_fb": 0.344,
+   "float_top": 0.285,
+   "draught": 0.36,
+   "GM_T": 14.5,
+   "GM_L": 9.7,
+   "mass": 1366.0
+  },
+  "6 all on rear deck": {
+   "trim": 0.51,
+   "deck_fb": 0.336,
+   "float_top": 0.321,
+   "draught": 0.29,
+   "GM_T": 14.9,
+   "GM_L": 9.6,
+   "mass": 1366.0
+  },
+  "4 upper one side": {
+   "trim": 4.0,
+   "deck_fb": 0.31,
+   "float_top": 0.205,
+   "draught": 0.48,
+   "GM_T": 15.9,
+   "GM_L": 10.9,
+   "mass": 1216.0
+  }
+ }
+}
