@@ -137,6 +137,16 @@ def _sym(id_, exo, boat):
             {"id": f"{id_}_STBD", "exo_point_m": [exo[0], -exo[1], exo[2]], "boat_point_m": [boat[0], -boat[1], boat[2]]}]
 
 
+def _fender(id_, exo, boat, k=50000.0, preload=0.0):
+    """Compression-only pair (kind fender): contact length = nominal distance (+ preload/k); k ~ 50 kN/m foam/pneumatic fender."""
+    return [dict(l, kind="fender", stiffness_N_per_m=k, pretension_N=preload) for l in _sym(id_, exo, boat)]
+
+
+def _strut(id_, exo, boat, k=1.0e6):
+    """Bilateral pair (kind strut): a rigid link in the limit of a large k."""
+    return [dict(l, kind="strut", stiffness_N_per_m=k, pretension_N=0.0) for l in _sym(id_, exo, boat)]
+
+
 LINE_PRESETS = [
     {"id": "simulator_default", "title": "Aft breasts + backward springs (v0.3 default)",
      "note": "EXO aft posts -> stern cleats, EXO forward posts -> midship cleats aft of them: balanced at rest, the springs can carry a forward push",
@@ -153,6 +163,26 @@ LINE_PRESETS = [
      "note": "breasts at the stern cleats from the aft posts, long push springs from the forward posts to the stern cleats, tow springs from the "
              "aft posts to the midship cleats",
      "lines": _sym("BREAST", (2.1, 2.25, 0.0), (0.3, 1.3, 0.8)) + _sym("PUSH", (4.95, 2.25, 0.0), (0.30, 1.30, 0.80)) + _sym("TOW", (2.1, 2.25, 0.0), (4.30, 1.35, 0.80))},
+    # ---- v1.2: push bars / stern fenders (compression-only) and rigid struts (bilateral) as elements, see ASSUMPTIONS 5e
+    {"id": "fenders_tow_lines", "title": "Two stern fenders (push bars) + tow lines to the midship cleats",
+     "note": "two compression-only fenders between the EXO rear deck edge (x 2.1) and the boat's transom at the quarters carry the pods' push "
+             "directly (pusher-tug arrangement); the two lines from the aft posts to the midship cleats carry a tow and hold the boat against "
+             "the fenders; yaw is restrained by the fender pair in compression and the lines in tension",
+     "lines": _fender("FENDER", (2.1, 0.9, 0.25), (0.0, 0.9, 0.40), k=50000.0, preload=0.0) + _sym("TOW", (2.1, 2.25, 0.0), (4.30, 1.35, 0.80))},
+    {"id": "fenders_crossed_lines", "title": "Two stern fenders + crossed stern lines + tow lines",
+     "note": "fenders as above; crossed lines from the aft posts to the opposite stern cleats (face wires) restrain yaw and sway; tow lines "
+             "to the midship cleats for the tow case",
+     "lines": _fender("FENDER", (2.1, 0.9, 0.25), (0.0, 0.9, 0.40), k=50000.0, preload=0.0)
+              + [{"id": "CROSS_P2S", "exo_point_m": [2.1, 2.25, 0.0], "boat_point_m": [0.3, -1.3, 0.8]}, {"id": "CROSS_S2P", "exo_point_m": [2.1, -2.25, 0.0], "boat_point_m": [0.3, 1.3, 0.8]}]
+              + _sym("TOW", (2.1, 2.25, 0.0), (4.30, 1.35, 0.80))},
+    {"id": "fenders_diagonals", "title": "Two stern fenders + the best line diagonals",
+     "note": "fenders as above plus the arrangement the line sweep ranks first (aft posts -> midship cleats, forward posts -> stern cleats)",
+     "lines": _fender("FENDER", (2.1, 0.9, 0.25), (0.0, 0.9, 0.40), k=50000.0, preload=0.0)
+              + _sym("AFT2MID", (0.05, 2.25, 0.0), (4.30, 1.35, 0.80)) + _sym("FWD2STERN", (4.95, 2.25, 0.0), (0.30, 1.30, 0.80))},
+    {"id": "rigid_struts", "title": "Rigid coupling: four bilateral struts (k = 1 MN/m)",
+     "note": "limit case of a bolted/rigid connection between the EXO frame and the boat: struts at the aft posts -> stern cleats and forward "
+             "posts -> midship cleats, bilateral and very stiff; the element loads are what a rigid coupling must carry",
+     "lines": _strut("STRUT_AFT", (2.1, 2.25, 0.0), (0.3, 1.3, 0.8)) + _strut("STRUT_FWD", (4.95, 2.25, 0.0), (4.30, 1.35, 0.80))},
 ]
 
 

@@ -282,12 +282,17 @@ class ResponseModel:
                 d = Bm @ Xa
                 T_dyn = ln["stiffness_N_per_m"] * (u @ d)
                 T0 = float(ln["pretension_N"])
-                lt.append(dict(id=ln["id"], pretension_N=T0, dynamic_tension_amp_N=float(abs(T_dyn)),
-                               tension_mean_N=T0, tension_amp_N=float(abs(T_dyn)), min_N=float(max(0.0, T0 - abs(T_dyn))),
-                               max_N=float(T0 + abs(T_dyn)), slack_in_cycle=bool(abs(T_dyn) > T0),
-                               slack_at_rest=bool(ln.get("slack", False)),
+                kind = ln.get("kind", "line")
+                # unilateral elements lose their load when the dynamic amplitude exceeds the static load: a line goes
+                # slack (T0 > 0), a fender loses contact (T0 < 0); a strut is bilateral and never does
+                unloads = bool(abs(T_dyn) > abs(T0)) if kind != "strut" else False
+                lt.append(dict(id=ln["id"], kind=kind, pretension_N=T0, dynamic_tension_amp_N=float(abs(T_dyn)),
+                               tension_mean_N=T0, tension_amp_N=float(abs(T_dyn)),
+                               min_N=float(max(0.0, T0 - abs(T_dyn))) if kind == "line" else float(T0 - abs(T_dyn)),
+                               max_N=float(T0 + abs(T_dyn)) if kind != "fender" else float(min(0.0, T0 + abs(T_dyn))),
+                               slack_in_cycle=unloads, slack_at_rest=bool(ln.get("slack", False)),
                                relative_stretch_amp_m=float(abs(u @ d)), transverse_rel_motion_amp_m=float(np.linalg.norm(d - (u @ d) * u)),
-                               goes_slack=bool(abs(T_dyn) > T0)))
+                               goes_slack=unloads))
             out["lines"] = lt
             self._last_linear_lines = lt
         # relative motion between the two bodies at the clearance points (linear amplitude vs the still clearance)
@@ -506,8 +511,9 @@ def time_domain_check(model, omega, heading, H, damping, steps_per_period=(16, 3
 
 
 def line_snatch_check(model, omega, heading, H, damping, speed=0.0, n_periods=14, steps_per_period=96):
-    """Time-domain check of the UNILATERAL lines: the linear line stiffness is removed from K and replaced by the
-    tension-only law T = max(0, k (L - L0)) evaluated on the instantaneous attachment positions (small rotations), with
+    """Time-domain check of the UNILATERAL elements: the linear line stiffness is removed from K and replaced by the
+    tension-only law T = max(0, k (L - L0)) (lines), the compression-only law (fenders) or the bilateral law (struts)
+    evaluated on the instantaneous attachment positions (small rotations), with
     the hydrodynamic coefficients frozen at the (encounter) frequency - the same assumption as the frequency-domain
     model. Reports, per line, the peak and minimum tension, the fraction of the cycle spent slack and the snatch ratio
     (peak dynamic tension / linear-model amplitude), and the motion amplitudes compared with the linear solution.
@@ -537,7 +543,15 @@ def line_snatch_check(model, omega, heading, H, damping, speed=0.0, n_periods=14
             k = float(ln.get("stiffness_N_per_m_nominal", 0.0) or 0.0)
         # unstretched length consistent with the static solution (slack lines: the recorded unstretched length)
         L0 = float(ln.get("unstretched_length_m", L - (T0 / k if k > 0 else 0.0)))
-        lines.append(dict(id=ln["id"], i=ln["body_i"], j=ln["body_j"], ra=a - coms[ln["body_i"]], rb=b - coms[ln["body_j"]], k=k, L0=L0, T0=T0))
+        kind = ln.get("kind", "line")
+        u0 = (b - a) / L if L > 1e-12 else np.zeros(3)
+        if kind == "fender":
+            # compression-only along the fender's own axis (signed penetration, as in the static solver): a lateral
+            # offset of the contact point does not open the gap
+            L = float((b - a) @ u0)
+            if ln.get("slack") and L0 <= L:
+                L0 = L                                        # a fender just touching at rest
+        lines.append(dict(id=ln["id"], kind=kind, i=ln["body_i"], j=ln["body_j"], ra=a - coms[ln["body_i"]], rb=b - coms[ln["body_j"]], k=k, L0=L0, T0=T0, u0=u0))
 
     def line_forces(x):
         f = np.zeros(n)
@@ -549,9 +563,13 @@ def line_snatch_check(model, omega, heading, H, damping, speed=0.0, n_periods=14
             pa = coms[i] + ln["ra"] + ui + np.cross(ti, ln["ra"])
             pb = coms[j] + ln["rb"] + uj + np.cross(tj, ln["rb"])
             d = pb - pa
-            L = np.linalg.norm(d)
-            u = d / L if L > 1e-12 else np.zeros(3)
-            T = max(0.0, ln["k"] * (L - ln["L0"])) if ln["k"] > 0 else 0.0
+            if ln["kind"] == "fender":
+                u = ln["u0"]; L = float(d @ u)
+            else:
+                L = np.linalg.norm(d)
+                u = d / L if L > 1e-12 else np.zeros(3)
+            ext = ln["k"] * (L - ln["L0"]) if ln["k"] > 0 else 0.0
+            T = max(0.0, ext) if ln["kind"] == "line" else (min(0.0, ext) if ln["kind"] == "fender" else ext)
             Ts.append(T)
             Fa = T * u                     # on body i, toward body j
             f[6 * i:6 * i + 3] += Fa; f[6 * i + 3:6 * i + 6] += np.cross(ln["ra"] + ui * 0, Fa)
@@ -594,10 +612,13 @@ def line_snatch_check(model, omega, heading, H, damping, speed=0.0, n_periods=14
         for lt in (getattr(model, "_last_linear_lines", None) or []):
             if lt["id"] == ln["id"]:
                 lin_amp = lt["tension_amp_N"]
-        out_lines.append(dict(id=ln["id"], static_N=float(T_static[q]), peak_N=float(Tq.max()), min_N=float(Tq.min()),
-                              slack_fraction_of_cycle=float((Tq <= 1e-6).mean()), dynamic_peak_N=float(Tq.max() - T_static[q]),
+        s_ = +1 if ln["kind"] == "line" else (-1 if ln["kind"] == "fender" else 0)
+        peak = float(Tq.max()) if s_ >= 0 else float(Tq.min())              # the largest load in the admissible direction
+        dyn_peak = float(abs(peak - T_static[q]))
+        out_lines.append(dict(id=ln["id"], kind=ln["kind"], static_N=float(T_static[q]), peak_N=peak, min_N=float(Tq.min()), max_N=float(Tq.max()),
+                              slack_fraction_of_cycle=float((np.abs(Tq) <= 1e-6).mean()) if s_ != 0 else 0.0, dynamic_peak_N=dyn_peak,
                               linear_amp_N=lin_amp,
-                              snatch_ratio=(float((Tq.max() - T_static[q]) / lin_amp) if lin_amp else None)))
+                              snatch_ratio=(float(dyn_peak / lin_amp) if lin_amp else None)))
     return dict(omega_e=float(we), period_e_s=float(T_e), n_periods=n_periods, steps_per_period=steps_per_period,
                 amplitude_nonlinear={nm: float(a) for nm, a in zip(names, amp_nl)}, amplitude_linear={nm: float(a) for nm, a in zip(names, amp_lin)},
                 max_amplitude_ratio=float(np.max(amp_nl / np.maximum(amp_lin, 1e-9))) if n else None,

@@ -336,6 +336,7 @@ def build_response(res, hydro, cfg, extra_stiffness=None):
         M = np.block([[M, np.zeros((6, 6))], [np.zeros((6, 6)), Mb]])
         K = np.block([[K, np.zeros((6, 6))], [np.zeros((6, 6)), Kb]])
         # equilibrium tensions feed the line stiffness; a line slack at rest has no linear stiffness
+        # (fenders in contact and struts enter the same way: a compressed fender is a spring about its preload)
         lines = [dict(l, body_i=0, body_j=1, stiffness_N_per_m=(0.0 if l.get("slack") else l["stiffness_N_per_m"]),
                       stiffness_N_per_m_nominal=l["stiffness_N_per_m"]) for l in res.get("lines", [])]
         Kl, line_B = line_stiffness(lines, [pose_e["com_world"], pose_b["com_world"]])
@@ -372,6 +373,13 @@ def _relative_points(cfg, res, pose_e, pose_b):
         if best:
             pe = [float(best[2][0] - ce[0] + Ge[0]), 0.0, cr["exo_header_underside_z_m"]]
             pts.append(dict(name="roof_vs_header", body_i=0, body_j=1, p_i=pe, p_j=best[1], axis="z", still_clearance_m=float(vert)))
+    # longitudinal: boat transom vs the EXO rear deck plate edge (the gap a stern fender would fill), at both quarters
+    gap = cl.get("transom_to_rear_deck_plate_m")
+    if gap is not None:
+        x_edge = cr["exo_rear_deck_plate_x_range_m"][1]
+        for sgn, key in ((1, "port"), (-1, "starboard")):
+            pts.append(dict(name=f"transom_vs_deck_edge_{key}", body_i=0, body_j=1, p_i=[x_edge, sgn * 0.9, 0.0], p_j=[0.0, sgn * 0.9, cr["boat_deck_z_m"] - 0.4],
+                            axis="x", still_clearance_m=float(gap)))
     return pts
 
 

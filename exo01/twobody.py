@@ -135,9 +135,10 @@ def line_geometry(hb, pose_e, pose_b):
         u = (b - a) / L if L > 0 else np.zeros(3)
         T0 = float(ln.get("pretension_N", d.get("pretension_N", 0.0)))
         k = float(ln.get("stiffness_N_per_m", d.get("stiffness_N_per_m", 0.0)))
-        lines.append(dict(id=ln["id"], a_world=a.tolist(), b_world=b.tolist(), length_m=L, unit=u.tolist(),
-                          pretension_N=T0, tension_N=T0, slack=False, nominal_pretension_N=T0, stiffness_N_per_m=k,
-                          vertical_component_N=float(T0 * abs(u[2]))))
+        s = element_sign(ln)
+        lines.append(dict(id=ln["id"], kind=ln.get("kind", "line"), a_world=a.tolist(), b_world=b.tolist(), length_m=L, unit=u.tolist(),
+                          pretension_N=-T0 if s < 0 else T0, tension_N=-T0 if s < 0 else T0, slack=False, nominal_pretension_N=T0,
+                          stiffness_N_per_m=k, vertical_component_N=float(T0 * abs(u[2]))))
     return lines
 
 
@@ -205,22 +206,44 @@ def clearances(cfg, pose_e, pose_b, exo_assembly):
 
 
 # ---------------------------------------------------------------- coupled static equilibrium with tension-only lines
+ELEMENT_KINDS = {"line": +1, "fender": -1, "strut": 0}
+# sign of the admissible force: line = tension only (T >= 0), fender = compression only (T <= 0, e.g. a push bar or a
+# fender between the EXO rear deck edge and the boat's transom), strut = bilateral (a rigid or bolted link)
+
+
+def element_sign(ln):
+    kind = str(ln.get("kind", "line")).lower()
+    if kind not in ELEMENT_KINDS:
+        raise ValueError(f"line {ln.get('id')}: unknown kind {kind!r} (line, fender, strut)")
+    return ELEMENT_KINDS[kind]
+
+
 def _line_forces(hb, lines_cfg, pose_e, pose_b, L0, k, active=None):
-    """World attachment points, lengths, unit vectors and line forces.
-    Tension-only: T = max(0, k (L - L0)). With an `active` mask (active-set solve) the active lines are treated as
-    bilateral springs T = k (L - L0) (may be negative, which the outer loop then rejects) and the others carry nothing."""
+    """World attachment points, lengths, unit vectors and element forces (T > 0 tension pulling the bodies together,
+    T < 0 compression pushing them apart).
+    line: T = max(0, k (L - L0)); fender: T = min(0, k (L - L0)); strut: T = k (L - L0). With an `active` mask
+    (active-set solve) the active unilateral elements are treated as bilateral springs (the sign is checked by the
+    outer loop) and the inactive ones carry nothing."""
     out = []
     for i, (ln, l0, kk) in enumerate(zip(lines_cfg, L0, k)):
         a = to_world(pose_e, ln["exo_point_m"])
         b = to_world(pose_b, ln["boat_point_m"])
-        L = float(np.linalg.norm(b - a))
-        u = (b - a) / L if L > 1e-12 else np.zeros(3)
+        s = element_sign(ln)
+        if s < 0 and ln.get("_u0") is not None:
+            # fender: signed penetration along its nominal axis, so that a transom pushed past the contact point keeps
+            # compressing instead of 'reappearing' as a free gap on the other side
+            u = np.asarray(ln["_u0"], float)
+            L = float((b - a) @ u)
+        else:
+            L = float(np.linalg.norm(b - a))
+            u = (b - a) / L if L > 1e-12 else np.zeros(3)
         ext = kk * (L - l0)
         if active is None:
-            T = max(0.0, ext)
+            T = ext if s == 0 else (max(0.0, ext) if s > 0 else min(0.0, ext))
         else:
-            T = ext if active[i] else 0.0
-        out.append(dict(id=ln["id"], a=a, b=b, L=L, u=u, T=T, slack=T <= 0.0, L0=l0, k=kk, extension_N=ext))
+            T = ext if (active[i] or s == 0) else 0.0
+        slack = (T == 0.0) if s != 0 else False
+        out.append(dict(id=ln["id"], a=a, b=b, L=L, u=u, T=T, slack=slack, L0=l0, k=kk, extension_N=ext, sign=s, kind=ln.get("kind", "line")))
     return out
 
 
@@ -232,8 +255,10 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
     position and heading (it defines the world frame); the boat may shift/yaw from the nominal berth placement.
     Equations: EXO force/moment balance in all 6 components (buoyancy + weight + line forces), boat vertical force
     and heel/pitch moments (its horizontal balance is the EXO's with opposite sign: internal forces).
-    Lines: unstretched length L0 = L_nominal - T0/k (so each line carries its nominal pretension T0 at the nominal
-    placement and the independently solved flotations); tension-only (T = max(0, k (L - L0))).
+    Elements (kind): "line" = tension-only spring (T = max(0, k (L - L0)), L0 = L_nominal - T0/k so it carries the
+    nominal pretension T0 at the nominal berth); "fender" = compression-only (push bar / fender between the two bodies,
+    T = min(0, k (L - L0)), L0 = L_nominal + T0/k: preload T0 in compression, T0 = 0 just touching); "strut" = bilateral
+    spring (rigid link in the limit k -> large).
     Newton with analytic hydrostatic Jacobian blocks and finite-difference line terms; backtracking line search.
     If every line is slack the boat's horizontal position is undetermined: a weak numerical centering spring
     (1 N/m, 1 N m/rad) holds it at the nominal placement and the result is flagged.
@@ -254,7 +279,13 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
         eq_b0 = eqm.equilibrium(boat_asm, M_b, G_b, rho, g)
     pose_e0, pose_b0 = pose_exo(eq_e0), pose_boat(eq_b0, pl)
     Lnom = np.array([np.linalg.norm(to_world(pose_b0, l["boat_point_m"]) - to_world(pose_e0, l["exo_point_m"])) for l in lines_cfg])
-    L0 = Lnom - np.where(k > 0, T0 / np.maximum(k, 1e-12), 0.0)
+    # fenders keep their nominal axis (unit vector at the independent flotations) as the direction of contact
+    lines_cfg = [dict(l, _u0=((to_world(pose_b0, l["boat_point_m"]) - to_world(pose_e0, l["exo_point_m"])) / max(ln_, 1e-12)).tolist())
+                 if element_sign(l) < 0 else l for l, ln_ in zip(lines_cfg, Lnom)]
+    signs = np.array([element_sign(l) for l in lines_cfg], float) if lines_cfg else np.zeros(0)
+    # lines and struts: unstretched length L0 = L_nominal - T0/k (pretension T0 at the nominal berth);
+    # fenders: contact length L0 = L_nominal + T0/k (preload T0 in compression at the nominal berth; T0 = 0 -> just touching)
+    L0 = Lnom - np.where(k > 0, np.where(signs < 0, -1.0, 1.0) * T0 / np.maximum(k, 1e-12), 0.0)
     yaw0 = np.radians(pl.get("yaw_deg", 0.0))
     x0, y0 = pl["x_m"], pl["y_m"]
     scale = np.array([M_e * g] * 6 + [M_b * g] * 3)
@@ -286,9 +317,10 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
             Fe = Fe + np.asarray(Fxe, float); Me = Me + np.asarray(Mxe, float)
             Fb = Fb + np.asarray(Fxb, float); Mb = Mb + np.asarray(Mxb, float)
         all_slack = all(l["slack"] for l in lf) or not lf
-        if all_slack:
-            Fb[:2] += -centering * q[3:5]; Fe[:2] -= -centering * q[3:5]
-            Mb[2] += -centering * q[5]
+        # numerical centering (1 N/m, 1 N m/rad): always on, so that an in-plane mode no element restrains (sway with
+        # fenders only, everything when all lines are slack) stays determined; negligible against any real line force
+        Fb[:2] += -centering * q[3:5]; Fe[:2] -= -centering * q[3:5]
+        Mb[2] += -centering * q[5]
         return np.array([Fe[0], Fe[1], Fe[2], Me[0], Me[1], Me[2], Fb[2], Mb[0], Mb[1]]), lf, all_slack
 
     def coupling_only(q):
@@ -338,9 +370,8 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
             Fe = Fe + np.asarray(Fxe, float); Me = Me + np.asarray(Mxe, float)
             Fb = Fb + np.asarray(Fxb, float); Mb = Mb + np.asarray(Mxb, float)
         all_slack = all(l["slack"] for l in lf) or not lf
-        if all_slack:                                  # numerical centering (undetermined otherwise)
-            Fb[:2] += -centering * q[3:5]; Fe[:2] -= -centering * q[3:5]
-            Mb[2] += -centering * q[5]
+        Fb[:2] += -centering * q[3:5]; Fe[:2] -= -centering * q[3:5]          # numerical centering, see coupling_part
+        Mb[2] += -centering * q[5]
         R = np.array([Fe[0], Fe[1], We[0] + Fe[2], We[1] + Me[0], We[2] + Me[1], Me[2],
                       Wb[0] + Fb[2], Mb_xy[0] + Mb[0], Mb_xy[1] + Mb[1]])
         if want_lines:
@@ -428,7 +459,7 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
     #         joins it; the kink of the tension-only law is never inside a Newton solve
     q, R, r, lf, aux = start_point()
     n_eval += 1
-    active = np.array([l["extension_N"] > 0 for l in lf]) if lf else np.zeros(0, bool)
+    active = np.array([(l["sign"] == 0) or (l["sign"] * l["extension_N"] > 0) for l in lf]) if lf else np.zeros(0, bool)
     converged = False
     history = []
     for sweep in range(2 * max(len(lf), 1) + 2):
@@ -436,8 +467,9 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
         R, lf, aux = residual(q, True)
         r = np.linalg.norm(R / scale)
         q, R, r, lf, aux, conv = newton(q, R, r, lf, aux)
-        drop = np.array([bool(active[i]) and l["T"] < -1e-9 * max(1.0, M_e * g) for i, l in enumerate(lf)])
-        add = np.array([(not active[i]) and l["extension_N"] > 1e-9 * max(1.0, M_e * g) for i, l in enumerate(lf)])
+        tol_f = 1e-9 * max(1.0, M_e * g)
+        drop = np.array([bool(active[i]) and l["sign"] != 0 and l["sign"] * l["T"] < -tol_f for i, l in enumerate(lf)])
+        add = np.array([(not active[i]) and l["sign"] != 0 and l["sign"] * l["extension_N"] > tol_f for i, l in enumerate(lf)])
         history.append(dict(sweep=sweep, active=active.tolist(), converged=bool(conv), residual=float(r)))
         if conv and not drop.any() and not add.any():
             converged = True
@@ -489,10 +521,10 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
     eq_b = dict(phi=float(q[7]), theta=float(q[8]), zG=float(q[6]), R=Rbl, integrals=Ib, G_body=np.asarray(G_b), mass=float(M_b), rho=rho, g=g,
                 residual_relative=float(r), n_evaluations=n_eval, newton_converged=bool(converged), z_origin=float(q[6] - (Rbl @ np.asarray(G_b))[2]),
                 statically_stable=True, yaw_removed_rad=0.0)
-    lines_out = [dict(id=l["id"], a_world=l["a"].tolist(), b_world=l["b"].tolist(), length_m=l["L"], unstretched_length_m=l["L0"],
+    lines_out = [dict(id=l["id"], kind=l["kind"], a_world=l["a"].tolist(), b_world=l["b"].tolist(), length_m=l["L"], unstretched_length_m=l["L0"],
                       nominal_length_m=float(ln), unit=l["u"].tolist(), tension_N=l["T"], slack=bool(l["slack"]),
                       pretension_N=l["T"], stiffness_N_per_m=l["k"], vertical_component_N=float(l["T"] * abs(l["u"][2])),
-                      nominal_pretension_N=float(t0)) for l, ln, t0 in zip(lf, Lnom, T0)]
+                      nominal_pretension_N=float(t0), compression_N=float(max(0.0, -l["T"]))) for l, ln, t0 in zip(lf, Lnom, T0)]
     ext_net = None
     if external is not None:
         Fxe, Mxe, Fxb, Mxb = external(pe, pb)

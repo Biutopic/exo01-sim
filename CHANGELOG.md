@@ -1,5 +1,20 @@
 # Changelog
 
+## v1.2 (29 Oct 2026)
+
+Mooring elements and the mooring study
+* Elements between the EXO and the boat now have a kind: line (tension only), fender (compression only: push bar / stern
+  fender) and strut (bilateral, rigid link in the stiff limit) — in the coupled static solver (active set, signed fender
+  penetration), the linear wave model and the time-domain snatch check. Presets `fenders_tow_lines`,
+  `fenders_crossed_lines`, `fenders_diagonals`, `rigid_struts`; the line editor has a kind selector; fenders are drawn
+  cyan, struts grey. The transom-to-deck-edge gap is tracked as a relative-motion point in waves.
+* `scripts/run_mooring_study.py`: arrangement × stiffness × pretension study (static moored/push/tow + three waves, linear
+  and time domain) → `results/mooring/` and the reading in `docs/MOORING.md`.
+* `scripts/run_stability_sheet.py`: EXO-01 alone flotation/stability sheet (light ship, passenger load cases with the
+  ES-TRIN art. 19.03 values 75 kg/person, heel ≤ 12°, residual freeboard ≥ 0.20 m, crowding, deck-edge-awash wave height)
+  → `results/stability/`, as input for a registration file — not a certificate.
+* Battery sweep: the end-frame position (x 4.24 m) added to the discussion (docs/MOORING.md §batteries).
+
 ## v1.1 (29 Oct 2026)
 
 Battery position — second zone (user proposal: both batteries further forward)

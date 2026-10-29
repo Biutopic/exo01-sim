@@ -84,18 +84,22 @@ function renderLines() {
   const num = (i, k, j, v, step = 0.05) => `<input type="number" step="${step}" data-i="${i}" data-k="${k}" data-j="${j}" value="${v === undefined || v === null ? '' : v}">`;
   const rows = b.lines.map((l, i) => {
     const r = lineResult(l.id);
-    const ten = r ? (r.slack ? '<b class="nc">slack</b>' : `${r.tension_N.toFixed(0)} N`) : '<span class="nc">—</span>';
-    return `<tr class="${S.selected && S.selected.startsWith('LINE:' + l.id + ':') ? 'sel' : ''}" data-line="${l.id}"><td><input type="text" data-i="${i}" data-k="id" value="${l.id}" style="width:74px"></td>` +
+    const kind = l.kind || 'line';
+    const ten = r ? (r.slack ? `<b class="nc">${kind === 'fender' ? 'free' : 'slack'}</b>` : `${r.tension_N.toFixed(0)} N`) : '<span class="nc">—</span>';
+    const kindSel = `<select data-i="${i}" data-k="kind" title="line: tension only · fender: compression only (push bar / stern fender) · strut: bilateral (rigid link)">` +
+      ['line', 'fender', 'strut'].map((k) => `<option value="${k}" ${k === kind ? 'selected' : ''}>${k}</option>`).join('') + '</select>';
+    return `<tr class="${S.selected && S.selected.startsWith('LINE:' + l.id + ':') ? 'sel' : ''}" data-line="${l.id}"><td><input type="text" data-i="${i}" data-k="id" value="${l.id}" style="width:74px">${kindSel}</td>` +
       `<td>${num(i, 'exo_point_m', 0, l.exo_point_m[0])}${num(i, 'exo_point_m', 1, l.exo_point_m[1])}${num(i, 'exo_point_m', 2, l.exo_point_m[2])}</td>` +
       `<td>${num(i, 'boat_point_m', 0, l.boat_point_m[0])}${num(i, 'boat_point_m', 1, l.boat_point_m[1])}${num(i, 'boat_point_m', 2, l.boat_point_m[2])}</td>` +
       `<td><input type="number" step="500" data-i="${i}" data-k="stiffness_N_per_m" placeholder="${d.stiffness_N_per_m ?? ''}" value="${l.stiffness_N_per_m ?? ''}" style="width:52px"></td>` +
       `<td><input type="number" step="10" data-i="${i}" data-k="pretension_N" placeholder="${d.pretension_N ?? ''}" value="${l.pretension_N ?? ''}" style="width:46px"></td>` +
       `<td class="small">${ten}</td><td><button data-i="${i}" data-k="rm">✕</button></td></tr>`;
   });
-  $('lines').innerHTML = `<tr><th>id</th><th>EXO x, y, z [m]</th><th>boat x, y, z [m]</th><th>k</th><th>T₀</th><th>tension</th><th></th></tr>${rows.join('')}`;
-  $('lines').querySelectorAll('input').forEach((el) => el.addEventListener('change', (e) => {
+  $('lines').innerHTML = `<tr><th>id / kind</th><th>EXO x, y, z [m]</th><th>boat x, y, z [m]</th><th>k</th><th>T₀</th><th>load</th><th></th></tr>${rows.join('')}`;
+  $('lines').querySelectorAll('input, select').forEach((el) => el.addEventListener('change', (e) => {
     const list = linesList(); const { i, k, j } = e.target.dataset; const l = list[+i];
     if (k === 'id') l.id = e.target.value || l.id;
+    else if (k === 'kind') { if (e.target.value === 'line') delete l.kind; else l.kind = e.target.value; }
     else if (j !== undefined) l[k][+j] = parseFloat(e.target.value) || 0;
     else { const v = parseFloat(e.target.value); if (Number.isNaN(v)) delete l[k]; else l[k] = v; }
     writeLines(list);
@@ -948,7 +952,7 @@ function placePeople() {
   if (selIsPerson) { const sel = findHandle(S.selected); if (sel && S.config.mode !== 'baseline') { tctl.attach(sel.obj); tctl.showZ = false; } }
 }
 // ---- mooring-line end handles: persistent spheres in each body frame (draggable), one cylinder per line in the physics frame
-const LINE_COL = { taut: 0xffeb3b, slack: 0xef5350, unknown: 0x90a4ae };
+const LINE_COL = { taut: 0xffeb3b, slack: 0xef5350, unknown: 0x90a4ae, fender: 0x26c6da, strut: 0xb0bec5 };   // fender = cyan (compression), strut = grey (rigid link)
 function placeLineHandles() {
   const E = bodies3d.EXO, B = bodies3d.BOAT;
   const selId = S.selected && S.selected.startsWith('LINE:') ? S.selected : null;
@@ -970,12 +974,13 @@ function placeLineHandles() {
 }
 function colourLines() {
   const rs = (S.still && S.still.lines) || [];
-  const tmax = Math.max(1, ...rs.map((l) => l.tension_N || 0));
+  const tmax = Math.max(1, ...rs.map((l) => Math.abs(l.tension_N) || 0));
   for (const an of bodies3d.EXO.lineAnchors) {
     const r = rs.find((l) => l.id === an.id);
-    const col = r ? (r.slack ? LINE_COL.slack : LINE_COL.taut) : LINE_COL.unknown;
+    const kind = (r && r.kind) || 'line';
+    const col = r ? (r.slack ? LINE_COL.slack : (kind === 'fender' ? LINE_COL.fender : kind === 'strut' ? LINE_COL.strut : LINE_COL.taut)) : LINE_COL.unknown;
     an.cyl.material.color.setHex(col); an.a.material.color.setHex(col); an.b.material.color.setHex(col);
-    an.r = r && !r.slack ? 0.012 + 0.03 * (r.tension_N / tmax) : 0.008;
+    an.r = r && !r.slack ? 0.012 + 0.03 * (Math.abs(r.tension_N) / tmax) : 0.008;
   }
 }
 // ---- thrust arrows (quasi-static propulsion result)
@@ -1042,7 +1047,7 @@ function applyPose(r) {
     linesGroup.visible = true; colourLines();
     const sl = (r.lines || []).filter((l) => l.slack).length;
     const prop = r.propulsion && r.propulsion.thrust_total_N > 0 ? ` · thrust ${r.propulsion.thrust_total_N.toFixed(0)} N, ${fmt(r.propulsion.speed_m_s, 2)} m/s` : '';
-    $('poseInfo').textContent = `EXO: heel ${r.equilibrium.heel_deg.toFixed(2)}°, trim ${r.equilibrium.trim_deg.toFixed(2)}°, draft ${r.equilibrium.freeboard.draft_max_m.toFixed(3)} m · boat: heel ${bb.equilibrium.heel_deg.toFixed(2)}°, trim ${bb.equilibrium.trim_deg.toFixed(2)}°, draft ${bb.equilibrium.draft_hull_proxy_m.toFixed(2)} m${prop} — red: COM, blue: COB, lines yellow = taut, red = slack${sl ? ` (${sl} slack)` : ''}${exNote}`;
+    $('poseInfo').textContent = `EXO: heel ${r.equilibrium.heel_deg.toFixed(2)}°, trim ${r.equilibrium.trim_deg.toFixed(2)}°, draft ${r.equilibrium.freeboard.draft_max_m.toFixed(3)} m · boat: heel ${bb.equilibrium.heel_deg.toFixed(2)}°, trim ${bb.equilibrium.trim_deg.toFixed(2)}°, draft ${bb.equilibrium.draft_hull_proxy_m.toFixed(2)} m${prop} — red: COM, blue: COB, lines yellow = taut, cyan = fender in contact, grey = strut, red = slack or free${sl ? ` (${sl} slack)` : ''}${exNote}`;
   } else {
     B.outer.visible = false; linesGroup.visible = false;
     $('poseInfo').textContent = `still water: heel ${r.equilibrium.heel_deg.toFixed(2)}°, trim ${r.equilibrium.trim_deg.toFixed(2)}°, draft ${r.equilibrium.freeboard.draft_max_m.toFixed(3)} m — red: COM, blue: COB` + (bb ? ' · boat: not solved' : '') + exNote;

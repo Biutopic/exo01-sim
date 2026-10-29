@@ -1,0 +1,2007 @@
+{
+ "label": "Exploratory \u2014 assumed geometry and mass distribution; not a measured stability test.",
+ "passenger_mass_kg": 75.0,
+ "criteria": {
+  "heel_max_deg": 12.0,
+  "residual_deck_freeboard_min_m": 0.2,
+  "note": "orders of magnitude used by inland passenger-craft rules; the applicable text (ES-TRIN / arr\u00eat\u00e9) must be confirmed with the service instructeur"
+ },
+ "batteries": {
+  "figure_x1.43": {
+   "light_ship": {
+    "feasible": true,
+    "people": 0,
+    "mass_kg": 856.0,
+    "heel_deg": -0.17599631674030564,
+    "trim_deg": -3.825541409261119,
+    "draught_m": 0.37405142092070287,
+    "deck_freeboard_min_m": 0.17041059412570558,
+    "float_top_freeboard_min_m": 0.3115569286409719,
+    "GM_T_m": 20.592039968735246,
+    "GM_L_m": 9.435339447266884,
+    "KG_m": 0.6415420560747664,
+    "com_x_m": 2.2966588785046724
+   },
+   "cases": {
+    "rear_deck_spread": {
+     "max_people": 0,
+     "limiting": null
+    },
+    "upper_deck_spread": {
+     "max_people": 0,
+     "limiting": null
+    },
+    "both_decks_spread": {
+     "max_people": 0,
+     "limiting": null
+    },
+    "rear_deck_one_side": {
+     "max_people": 0,
+     "limiting": null
+    },
+    "upper_deck_one_side": {
+     "max_people": 0,
+     "limiting": null
+    },
+    "rear_deck_stern_corner": {
+     "max_people": 0,
+     "limiting": null
+    }
+   },
+   "max_people_all_cases": 0,
+   "deck_wetting_wave_height": {
+    "light": {
+     "table": {
+      "T1.5_b0": {
+       "T_s": 1.5,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.3221287340888262,
+       "roll_amp_deg_per_m": 0.1606782804409346,
+       "pitch_amp_deg_per_m": 6.823571675370945,
+       "pose_reuse": null
+      },
+      "T1.5_b45": {
+       "T_s": 1.5,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.17368720375407626,
+       "roll_amp_deg_per_m": 2.416906631099708,
+       "pitch_amp_deg_per_m": 10.004079909502824,
+       "pose_reuse": null
+      },
+      "T1.5_b90": {
+       "T_s": 1.5,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 0.4108153038225874,
+       "roll_amp_deg_per_m": 3.156743037825196,
+       "pitch_amp_deg_per_m": 3.514340054030358,
+       "pose_reuse": null
+      },
+      "T1.5_b135": {
+       "T_s": 1.5,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.26807613556231014,
+       "roll_amp_deg_per_m": 2.6517231032970896,
+       "pitch_amp_deg_per_m": 11.982417708064792,
+       "pose_reuse": null
+      },
+      "T1.5_b180": {
+       "T_s": 1.5,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.22157190822940553,
+       "roll_amp_deg_per_m": 0.14399245129060242,
+       "pitch_amp_deg_per_m": 5.6021012532871435,
+       "pose_reuse": null
+      },
+      "T2.0_b0": {
+       "T_s": 2.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.10459919120925176,
+       "roll_amp_deg_per_m": 0.2313717499365425,
+       "pitch_amp_deg_per_m": 24.724775580995434,
+       "pose_reuse": null
+      },
+      "T2.0_b45": {
+       "T_s": 2.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.19891955752880894,
+       "roll_amp_deg_per_m": 9.09582621175536,
+       "pitch_amp_deg_per_m": 2.723160927565577,
+       "pose_reuse": null
+      },
+      "T2.0_b90": {
+       "T_s": 2.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 0.5350377117380737,
+       "roll_amp_deg_per_m": 14.635497111117276,
+       "pitch_amp_deg_per_m": 1.0770144162687851,
+       "pose_reuse": null
+      },
+      "T2.0_b135": {
+       "T_s": 2.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.19757805093567984,
+       "roll_amp_deg_per_m": 9.812278733490057,
+       "pitch_amp_deg_per_m": 3.9612609583401923,
+       "pose_reuse": null
+      },
+      "T2.0_b180": {
+       "T_s": 2.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.13811969001900667,
+       "roll_amp_deg_per_m": 0.28935929885493145,
+       "pitch_amp_deg_per_m": 27.5017037898038,
+       "pose_reuse": null
+      },
+      "T2.5_b0": {
+       "T_s": 2.5,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.19988664422484093,
+       "roll_amp_deg_per_m": 0.08695381485145963,
+       "pitch_amp_deg_per_m": 18.36143232095297,
+       "pose_reuse": null
+      },
+      "T2.5_b45": {
+       "T_s": 2.5,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.21111242135281463,
+       "roll_amp_deg_per_m": 9.952272196729568,
+       "pitch_amp_deg_per_m": 8.171771724506696,
+       "pose_reuse": null
+      },
+      "T2.5_b90": {
+       "T_s": 2.5,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 1.152008964500092,
+       "roll_amp_deg_per_m": 15.059586609558087,
+       "pitch_amp_deg_per_m": 0.6201894182529117,
+       "pose_reuse": null
+      },
+      "T2.5_b135": {
+       "T_s": 2.5,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.2200834056651598,
+       "roll_amp_deg_per_m": 10.287782366269514,
+       "pitch_amp_deg_per_m": 9.862630926373738,
+       "pose_reuse": null
+      },
+      "T2.5_b180": {
+       "T_s": 2.5,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.24859154525444246,
+       "roll_amp_deg_per_m": 0.15847912375251086,
+       "pitch_amp_deg_per_m": 20.26995622970371,
+       "pose_reuse": null
+      },
+      "T3.0_b0": {
+       "T_s": 3.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.355934290416668,
+       "roll_amp_deg_per_m": 0.027059861875717156,
+       "pitch_amp_deg_per_m": 13.767668020818418,
+       "pose_reuse": null
+      },
+      "T3.0_b45": {
+       "T_s": 3.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.31817765097322837,
+       "roll_amp_deg_per_m": 8.556959112524154,
+       "pitch_amp_deg_per_m": 7.667509727116419,
+       "pose_reuse": null
+      },
+      "T3.0_b90": {
+       "T_s": 3.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 1.7388571313788521,
+       "roll_amp_deg_per_m": 12.504105330417604,
+       "pitch_amp_deg_per_m": 0.54724579808529,
+       "pose_reuse": null
+      },
+      "T3.0_b135": {
+       "T_s": 3.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.3316058907333221,
+       "roll_amp_deg_per_m": 8.67484137375135,
+       "pitch_amp_deg_per_m": 8.92621507918822,
+       "pose_reuse": null
+      },
+      "T3.0_b180": {
+       "T_s": 3.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.42776638830900443,
+       "roll_amp_deg_per_m": 0.08529737162441725,
+       "pitch_amp_deg_per_m": 15.060821264200527,
+       "pose_reuse": null
+      },
+      "T4.0_b0": {
+       "T_s": 4.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.789198385852579,
+       "roll_amp_deg_per_m": 0.003382523759843292,
+       "pitch_amp_deg_per_m": 9.168014723322608,
+       "pose_reuse": null
+      },
+      "T4.0_b45": {
+       "T_s": 4.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.6378639518709869,
+       "roll_amp_deg_per_m": 6.264831102940522,
+       "pitch_amp_deg_per_m": 5.797929183243531,
+       "pose_reuse": null
+      },
+      "T4.0_b90": {
+       "T_s": 4.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 3.2029915592106,
+       "roll_amp_deg_per_m": 8.973093645411087,
+       "pitch_amp_deg_per_m": 0.39323275419639137,
+       "pose_reuse": null
+      },
+      "T4.0_b135": {
+       "T_s": 4.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.6663541360961723,
+       "roll_amp_deg_per_m": 6.2935884921334955,
+       "pitch_amp_deg_per_m": 6.618526931773494,
+       "pose_reuse": null
+      },
+      "T4.0_b180": {
+       "T_s": 4.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.9288878515130855,
+       "roll_amp_deg_per_m": 0.039374975939459156,
+       "pitch_amp_deg_per_m": 9.983941964857657,
+       "pose_reuse": null
+      }
+     },
+     "H_min_over_table_m": 0.10459919120925176,
+     "pose_reuse": null
+    },
+    "0_passengers_both_decks": {
+     "table": {
+      "T1.5_b0": {
+       "T_s": 1.5,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.3011092749310131,
+       "roll_amp_deg_per_m": 0.4769127330137264,
+       "pitch_amp_deg_per_m": 6.325758570176598,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b45": {
+       "T_s": 1.5,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.12721215578467968,
+       "roll_amp_deg_per_m": 2.1499286340840396,
+       "pitch_amp_deg_per_m": 8.084202971454964,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b90": {
+       "T_s": 1.5,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 0.2650631074152607,
+       "roll_amp_deg_per_m": 2.9388137473214524,
+       "pitch_amp_deg_per_m": 3.366960598977172,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b135": {
+       "T_s": 1.5,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.2369849236505488,
+       "roll_amp_deg_per_m": 2.8389458412163293,
+       "pitch_amp_deg_per_m": 8.941232476414207,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b180": {
+       "T_s": 1.5,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.14490753679305607,
+       "roll_amp_deg_per_m": 0.39769009271822275,
+       "pitch_amp_deg_per_m": 5.023847207202179,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b0": {
+       "T_s": 2.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.05461045068677304,
+       "roll_amp_deg_per_m": 0.3062015617390666,
+       "pitch_amp_deg_per_m": 29.25894341044339,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b45": {
+       "T_s": 2.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.11821751270398535,
+       "roll_amp_deg_per_m": 9.537664897759715,
+       "pitch_amp_deg_per_m": 4.0029070150996215,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b90": {
+       "T_s": 2.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 0.22900910935801722,
+       "roll_amp_deg_per_m": 15.653021275628507,
+       "pitch_amp_deg_per_m": 2.9031307487175275,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b135": {
+       "T_s": 2.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.11811627520218156,
+       "roll_amp_deg_per_m": 10.38467126885512,
+       "pitch_amp_deg_per_m": 4.106126060467233,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b180": {
+       "T_s": 2.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.07710909379741199,
+       "roll_amp_deg_per_m": 0.4004148387561682,
+       "pitch_amp_deg_per_m": 33.13150442484544,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b0": {
+       "T_s": 2.5,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.11324602700959199,
+       "roll_amp_deg_per_m": 0.7282960715149405,
+       "pitch_amp_deg_per_m": 20.84526058272884,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b45": {
+       "T_s": 2.5,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.12234987586472765,
+       "roll_amp_deg_per_m": 10.723608058757543,
+       "pitch_amp_deg_per_m": 10.577490955204174,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b90": {
+       "T_s": 2.5,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 0.521160133496032,
+       "roll_amp_deg_per_m": 15.924832740322014,
+       "pitch_amp_deg_per_m": 1.52798471640446,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b135": {
+       "T_s": 2.5,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.13474427227680752,
+       "roll_amp_deg_per_m": 10.535223268436303,
+       "pitch_amp_deg_per_m": 10.194721684511274,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b180": {
+       "T_s": 2.5,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.14481280369445315,
+       "roll_amp_deg_per_m": 0.6783961534036732,
+       "pitch_amp_deg_per_m": 23.308385689632193,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b0": {
+       "T_s": 3.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.22001471839807452,
+       "roll_amp_deg_per_m": 0.5799393015241516,
+       "pitch_amp_deg_per_m": 15.15794857479287,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b45": {
+       "T_s": 3.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.19766704240158867,
+       "roll_amp_deg_per_m": 9.209208233791138,
+       "pitch_amp_deg_per_m": 9.452209930479277,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b90": {
+       "T_s": 3.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 1.1966554133985459,
+       "roll_amp_deg_per_m": 13.045489798476778,
+       "pitch_amp_deg_per_m": 1.2843911085439417,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b135": {
+       "T_s": 3.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.21269286478078475,
+       "roll_amp_deg_per_m": 8.721810991908603,
+       "pitch_amp_deg_per_m": 9.03969061015488,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b180": {
+       "T_s": 3.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.26459288246674234,
+       "roll_amp_deg_per_m": 0.5185902877961323,
+       "pitch_amp_deg_per_m": 16.796016720574496,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b0": {
+       "T_s": 4.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.570081083179818,
+       "roll_amp_deg_per_m": 0.41414474131609724,
+       "pitch_amp_deg_per_m": 9.904021667465267,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b45": {
+       "T_s": 4.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.45926414300890633,
+       "roll_amp_deg_per_m": 6.698424739378859,
+       "pitch_amp_deg_per_m": 6.9393853771069836,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b90": {
+       "T_s": 4.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 3.5922828859547606,
+       "roll_amp_deg_per_m": 9.282826386137229,
+       "pitch_amp_deg_per_m": 1.328514219457777,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b135": {
+       "T_s": 4.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.47254734265712495,
+       "roll_amp_deg_per_m": 6.286109051620519,
+       "pitch_amp_deg_per_m": 6.715927864739988,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b180": {
+       "T_s": 4.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.6436633030389781,
+       "roll_amp_deg_per_m": 0.36971719428175215,
+       "pitch_amp_deg_per_m": 10.94502958928739,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.9487745759940693,
+        "dtrim_deg": -0.7150177647723791,
+        "dz_m": -0.017015729035474658,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      }
+     },
+     "H_min_over_table_m": 0.05461045068677304,
+     "pose_reuse": {
+      "tier": "near",
+      "dheel_deg": 0.9487745759940693,
+      "dtrim_deg": -0.7150177647723791,
+      "dz_m": -0.017015729035474658,
+      "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+     }
+    }
+   }
+  },
+  "float_frame_x3.60": {
+   "light_ship": {
+    "feasible": true,
+    "people": 0,
+    "mass_kg": 856.0,
+    "heel_deg": -0.1650763853931947,
+    "trim_deg": 0.1229232725074444,
+    "draught_m": 0.2443246197370983,
+    "deck_freeboard_min_m": 0.3612117340057316,
+    "float_top_freeboard_min_m": 0.35867479918108297,
+    "GM_T_m": 21.91132414471675,
+    "GM_L_m": 9.205812150555323,
+    "KG_m": 0.6415420560747664,
+    "com_x_m": 2.9064719626168216
+   },
+   "cases": {
+    "rear_deck_spread": {
+     "max_people": 2,
+     "limiting": "deck freeboard"
+    },
+    "upper_deck_spread": {
+     "max_people": 10,
+     "limiting": null
+    },
+    "both_decks_spread": {
+     "max_people": 4,
+     "limiting": "deck freeboard"
+    },
+    "rear_deck_one_side": {
+     "max_people": 2,
+     "limiting": "deck freeboard"
+    },
+    "upper_deck_one_side": {
+     "max_people": 4,
+     "limiting": "deck freeboard"
+    },
+    "rear_deck_stern_corner": {
+     "max_people": 1,
+     "limiting": "deck freeboard"
+    }
+   },
+   "max_people_all_cases": 1,
+   "deck_wetting_wave_height": {
+    "light": {
+     "table": {
+      "T1.5_b0": {
+       "T_s": 1.5,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.4778781203514549,
+       "roll_amp_deg_per_m": 0.07603259076674934,
+       "pitch_amp_deg_per_m": 6.5437236833976336,
+       "pose_reuse": null
+      },
+      "T1.5_b45": {
+       "T_s": 1.5,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.28879621886976076,
+       "roll_amp_deg_per_m": 1.679116543807837,
+       "pitch_amp_deg_per_m": 13.182568523932082,
+       "pose_reuse": null
+      },
+      "T1.5_b90": {
+       "T_s": 1.5,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 0.9650807017782713,
+       "roll_amp_deg_per_m": 2.9345923824877262,
+       "pitch_amp_deg_per_m": 0.13268804060496936,
+       "pose_reuse": null
+      },
+      "T1.5_b135": {
+       "T_s": 1.5,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.4320738640239312,
+       "roll_amp_deg_per_m": 1.8707212877292565,
+       "pitch_amp_deg_per_m": 12.799004623184334,
+       "pose_reuse": null
+      },
+      "T1.5_b180": {
+       "T_s": 1.5,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.43651439470220793,
+       "roll_amp_deg_per_m": 0.07626562285123643,
+       "pitch_amp_deg_per_m": 6.382525506764121,
+       "pose_reuse": null
+      },
+      "T2.0_b0": {
+       "T_s": 2.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.2747644301748112,
+       "roll_amp_deg_per_m": 0.09490907974856314,
+       "pitch_amp_deg_per_m": 21.66364005997481,
+       "pose_reuse": null
+      },
+      "T2.0_b45": {
+       "T_s": 2.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.41131167098269417,
+       "roll_amp_deg_per_m": 8.818514957946231,
+       "pitch_amp_deg_per_m": 2.6621079374164087,
+       "pose_reuse": null
+      },
+      "T2.0_b90": {
+       "T_s": 2.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 1.2198057798310742,
+       "roll_amp_deg_per_m": 14.226209834023082,
+       "pitch_amp_deg_per_m": 0.2567129768447065,
+       "pose_reuse": null
+      },
+      "T2.0_b135": {
+       "T_s": 2.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.43318003516527276,
+       "roll_amp_deg_per_m": 9.005483918630022,
+       "pitch_amp_deg_per_m": 2.950550276677633,
+       "pose_reuse": null
+      },
+      "T2.0_b180": {
+       "T_s": 2.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.34080443489455575,
+       "roll_amp_deg_per_m": 0.13684267019198035,
+       "pitch_amp_deg_per_m": 21.554631398223616,
+       "pose_reuse": null
+      },
+      "T2.5_b0": {
+       "T_s": 2.5,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.5073746171637846,
+       "roll_amp_deg_per_m": 0.03171614533466308,
+       "pitch_amp_deg_per_m": 17.324764889566236,
+       "pose_reuse": null
+      },
+      "T2.5_b45": {
+       "T_s": 2.5,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.4573338438065412,
+       "roll_amp_deg_per_m": 9.709228510989563,
+       "pitch_amp_deg_per_m": 8.04596137586477,
+       "pose_reuse": null
+      },
+      "T2.5_b90": {
+       "T_s": 2.5,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 2.5066371736064417,
+       "roll_amp_deg_per_m": 14.72011206661004,
+       "pitch_amp_deg_per_m": 0.1246339054385023,
+       "pose_reuse": null
+      },
+      "T2.5_b135": {
+       "T_s": 2.5,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.4942507836607365,
+       "roll_amp_deg_per_m": 9.793505251186552,
+       "pitch_amp_deg_per_m": 8.198052449996059,
+       "pose_reuse": null
+      },
+      "T2.5_b180": {
+       "T_s": 2.5,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.6043578954333789,
+       "roll_amp_deg_per_m": 0.09146264040782937,
+       "pitch_amp_deg_per_m": 17.305983107530054,
+       "pose_reuse": null
+      },
+      "T3.0_b0": {
+       "T_s": 3.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.876898875527027,
+       "roll_amp_deg_per_m": 0.00732453877182437,
+       "pitch_amp_deg_per_m": 13.477508406297323,
+       "pose_reuse": null
+      },
+      "T3.0_b45": {
+       "T_s": 3.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.6832392581379597,
+       "roll_amp_deg_per_m": 8.401258770774325,
+       "pitch_amp_deg_per_m": 7.735778227572727,
+       "pose_reuse": null
+      },
+      "T3.0_b90": {
+       "T_s": 3.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 4.198446837886159,
+       "roll_amp_deg_per_m": 12.312950208941716,
+       "pitch_amp_deg_per_m": 0.05618549076711649,
+       "pose_reuse": null
+      },
+      "T3.0_b135": {
+       "T_s": 3.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.7400127996642384,
+       "roll_amp_deg_per_m": 8.439163925412084,
+       "pitch_amp_deg_per_m": 7.806391437442524,
+       "pose_reuse": null
+      },
+      "T3.0_b180": {
+       "T_s": 3.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 1.0220118789093815,
+       "roll_amp_deg_per_m": 0.05410424161417015,
+       "pitch_amp_deg_per_m": 13.465317952160623,
+       "pose_reuse": null
+      },
+      "T4.0_b0": {
+       "T_s": 4.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 1.905119082206475,
+       "roll_amp_deg_per_m": 0.012074719632424385,
+       "pitch_amp_deg_per_m": 9.256279322310558,
+       "pose_reuse": null
+      },
+      "T4.0_b45": {
+       "T_s": 4.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 1.3550563220185377,
+       "roll_amp_deg_per_m": 6.192504469822203,
+       "pitch_amp_deg_per_m": 5.99424161379442,
+       "pose_reuse": null
+      },
+      "T4.0_b90": {
+       "T_s": 4.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 8.862866328520008,
+       "roll_amp_deg_per_m": 8.886674151769865,
+       "pitch_amp_deg_per_m": 0.01851369962839956,
+       "pose_reuse": null
+      },
+      "T4.0_b135": {
+       "T_s": 4.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 1.4796620995089926,
+       "roll_amp_deg_per_m": 6.204352480116722,
+       "pitch_amp_deg_per_m": 6.01058030729798,
+       "pose_reuse": null
+      },
+      "T4.0_b180": {
+       "T_s": 4.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 2.205394359701153,
+       "roll_amp_deg_per_m": 0.02772639100226611,
+       "pitch_amp_deg_per_m": 9.244535809676691,
+       "pose_reuse": null
+      }
+     },
+     "H_min_over_table_m": 0.2747644301748112,
+     "pose_reuse": null
+    },
+    "1_passengers_both_decks": {
+     "table": {
+      "T1.5_b0": {
+       "T_s": 1.5,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.42050080326818334,
+       "roll_amp_deg_per_m": 0.08440027910299233,
+       "pitch_amp_deg_per_m": 6.85093262624483,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b45": {
+       "T_s": 1.5,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.24546857433739303,
+       "roll_amp_deg_per_m": 1.669187092578927,
+       "pitch_amp_deg_per_m": 12.924926818614477,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b90": {
+       "T_s": 1.5,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 0.738585596679836,
+       "roll_amp_deg_per_m": 2.776653359334819,
+       "pitch_amp_deg_per_m": 1.3272580886189036,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b135": {
+       "T_s": 1.5,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.3941076906775451,
+       "roll_amp_deg_per_m": 1.894873961693031,
+       "pitch_amp_deg_per_m": 12.650823807907894,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b180": {
+       "T_s": 1.5,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.3706429699897549,
+       "roll_amp_deg_per_m": 0.09383156618210346,
+       "pitch_amp_deg_per_m": 6.152331086171742,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b0": {
+       "T_s": 2.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.21852243912366123,
+       "roll_amp_deg_per_m": 0.1408767267397072,
+       "pitch_amp_deg_per_m": 22.55889916541921,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b45": {
+       "T_s": 2.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.3433383833726926,
+       "roll_amp_deg_per_m": 8.837690712240498,
+       "pitch_amp_deg_per_m": 2.7106112261224578,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b90": {
+       "T_s": 2.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 1.0245002412034023,
+       "roll_amp_deg_per_m": 14.35924790160156,
+       "pitch_amp_deg_per_m": 0.16476789435741782,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b135": {
+       "T_s": 2.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.3594623108209527,
+       "roll_amp_deg_per_m": 9.016595857702026,
+       "pitch_amp_deg_per_m": 3.1542822232735244,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b180": {
+       "T_s": 2.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.27693400097211895,
+       "roll_amp_deg_per_m": 0.17634006695238158,
+       "pitch_amp_deg_per_m": 22.733450674681468,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b0": {
+       "T_s": 2.5,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.4174113353726545,
+       "roll_amp_deg_per_m": 0.06681050127326614,
+       "pitch_amp_deg_per_m": 17.541197850126597,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b45": {
+       "T_s": 2.5,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.38605289385177166,
+       "roll_amp_deg_per_m": 9.62369075298496,
+       "pitch_amp_deg_per_m": 8.067283617575058,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b90": {
+       "T_s": 2.5,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 2.313024671872508,
+       "roll_amp_deg_per_m": 14.653050745969265,
+       "pitch_amp_deg_per_m": 0.2451534514611897,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b135": {
+       "T_s": 2.5,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.4124967740887027,
+       "roll_amp_deg_per_m": 9.733425505324709,
+       "pitch_amp_deg_per_m": 8.499795017001729,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b180": {
+       "T_s": 2.5,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.5020281877652929,
+       "roll_amp_deg_per_m": 0.11963161021548797,
+       "pitch_amp_deg_per_m": 17.811442084068734,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b0": {
+       "T_s": 3.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.7466180977535534,
+       "roll_amp_deg_per_m": 0.02794350337356896,
+       "pitch_amp_deg_per_m": 13.483498521020625,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b45": {
+       "T_s": 3.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.5881725203687934,
+       "roll_amp_deg_per_m": 8.304539153924608,
+       "pitch_amp_deg_per_m": 7.677583133289012,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b90": {
+       "T_s": 3.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 4.174399408862553,
+       "roll_amp_deg_per_m": 12.203481713142347,
+       "pitch_amp_deg_per_m": 0.25283654226267077,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b135": {
+       "T_s": 3.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.629287242745105,
+       "roll_amp_deg_per_m": 8.365044036134321,
+       "pitch_amp_deg_per_m": 8.005898037601314,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b180": {
+       "T_s": 3.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.8754614470391088,
+       "roll_amp_deg_per_m": 0.07164789710955428,
+       "pitch_amp_deg_per_m": 13.711466568858398,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b0": {
+       "T_s": 4.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 1.7607325576396395,
+       "roll_amp_deg_per_m": 0.010841724257660945,
+       "pitch_amp_deg_per_m": 9.178867583528197,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b45": {
+       "T_s": 4.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 1.2277510584884823,
+       "roll_amp_deg_per_m": 6.1188707719841124,
+       "pitch_amp_deg_per_m": 5.9049466542865545,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b90": {
+       "T_s": 4.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 9.713254223941059,
+       "roll_amp_deg_per_m": 8.79559346245925,
+       "pitch_amp_deg_per_m": 0.3080707625491091,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b135": {
+       "T_s": 4.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 1.3284335134438838,
+       "roll_amp_deg_per_m": 6.145146913490742,
+       "pitch_amp_deg_per_m": 6.119206371495469,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b180": {
+       "T_s": 4.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 2.061111099294259,
+       "roll_amp_deg_per_m": 0.03683413325325328,
+       "pitch_amp_deg_per_m": 9.342582973876992,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": 0.0009153386345876029,
+        "dtrim_deg": -0.9207065630352737,
+        "dz_m": -0.061150757175568726,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      }
+     },
+     "H_min_over_table_m": 0.21852243912366123,
+     "pose_reuse": {
+      "tier": "approximate",
+      "dheel_deg": 0.0009153386345876029,
+      "dtrim_deg": -0.9207065630352737,
+      "dz_m": -0.061150757175568726,
+      "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+     }
+    }
+   }
+  },
+  "end_frame_x4.24": {
+   "light_ship": {
+    "feasible": true,
+    "people": 0,
+    "mass_kg": 856.0,
+    "heel_deg": -0.16584199282730802,
+    "trim_deg": 1.2428479960596284,
+    "draught_m": 0.28576745515810353,
+    "deck_freeboard_min_m": 0.3770865691444881,
+    "float_top_freeboard_min_m": 0.34250019420566213,
+    "GM_T_m": 21.813005126217394,
+    "GM_L_m": 9.293727029210782,
+    "KG_m": 0.6415420560747664,
+    "com_x_m": 3.08591121495327
+   },
+   "cases": {
+    "rear_deck_spread": {
+     "max_people": 3,
+     "limiting": "deck freeboard"
+    },
+    "upper_deck_spread": {
+     "max_people": 10,
+     "limiting": null
+    },
+    "both_decks_spread": {
+     "max_people": 4,
+     "limiting": "deck freeboard"
+    },
+    "rear_deck_one_side": {
+     "max_people": 2,
+     "limiting": "deck freeboard"
+    },
+    "upper_deck_one_side": {
+     "max_people": 5,
+     "limiting": "deck freeboard"
+    },
+    "rear_deck_stern_corner": {
+     "max_people": 2,
+     "limiting": "deck freeboard"
+    }
+   },
+   "max_people_all_cases": 2,
+   "deck_wetting_wave_height": {
+    "light": {
+     "table": {
+      "T1.5_b0": {
+       "T_s": 1.5,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.596379643555467,
+       "roll_amp_deg_per_m": 0.05620928707871488,
+       "pitch_amp_deg_per_m": 5.900348843149254,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b45": {
+       "T_s": 1.5,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.3439080939790321,
+       "roll_amp_deg_per_m": 1.6382302854954234,
+       "pitch_amp_deg_per_m": 12.660092877769303,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b90": {
+       "T_s": 1.5,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 1.025948555844783,
+       "roll_amp_deg_per_m": 3.1303768458585086,
+       "pitch_amp_deg_per_m": 1.294455077537182,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b135": {
+       "T_s": 1.5,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.5654036498323676,
+       "roll_amp_deg_per_m": 1.9038857292050353,
+       "pitch_amp_deg_per_m": 12.173963199691556,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b180": {
+       "T_s": 1.5,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.5087967031424899,
+       "roll_amp_deg_per_m": 0.0659140612611181,
+       "pitch_amp_deg_per_m": 6.2540386927209255,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b0": {
+       "T_s": 2.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.28887311458916703,
+       "roll_amp_deg_per_m": 0.05515629986964566,
+       "pitch_amp_deg_per_m": 23.87470015263825,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b45": {
+       "T_s": 2.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.46266040595864305,
+       "roll_amp_deg_per_m": 8.821693136809735,
+       "pitch_amp_deg_per_m": 3.0185878695858244,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b90": {
+       "T_s": 2.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 1.2968035557811892,
+       "roll_amp_deg_per_m": 14.175243970657528,
+       "pitch_amp_deg_per_m": 0.43964705886566946,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b135": {
+       "T_s": 2.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.499126274352306,
+       "roll_amp_deg_per_m": 9.00731938816095,
+       "pitch_amp_deg_per_m": 3.134795160231337,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b180": {
+       "T_s": 2.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.3768538589589295,
+       "roll_amp_deg_per_m": 0.09720864387234304,
+       "pitch_amp_deg_per_m": 23.421625599110286,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b0": {
+       "T_s": 2.5,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.5342673623379419,
+       "roll_amp_deg_per_m": 0.009774354422923662,
+       "pitch_amp_deg_per_m": 18.59880305837378,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b45": {
+       "T_s": 2.5,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.499731958086093,
+       "roll_amp_deg_per_m": 9.790448916941749,
+       "pitch_amp_deg_per_m": 8.739662888899655,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b90": {
+       "T_s": 2.5,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 2.5216765159303365,
+       "roll_amp_deg_per_m": 14.788955686119554,
+       "pitch_amp_deg_per_m": 0.11766891134625297,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b135": {
+       "T_s": 2.5,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.5580822961588169,
+       "roll_amp_deg_per_m": 9.83821436363113,
+       "pitch_amp_deg_per_m": 8.558075531872118,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b180": {
+       "T_s": 2.5,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.6604254000974225,
+       "roll_amp_deg_per_m": 0.05275970827233675,
+       "pitch_amp_deg_per_m": 18.238950806439483,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b0": {
+       "T_s": 3.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.9116478655775369,
+       "roll_amp_deg_per_m": 0.026239507306619482,
+       "pitch_amp_deg_per_m": 14.243945071453371,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b45": {
+       "T_s": 3.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.7364329832149688,
+       "roll_amp_deg_per_m": 8.485868407792825,
+       "pitch_amp_deg_per_m": 8.262975312702771,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b90": {
+       "T_s": 3.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 4.012531645887074,
+       "roll_amp_deg_per_m": 12.402599451021548,
+       "pitch_amp_deg_per_m": 0.32529419844983837,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b135": {
+       "T_s": 3.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.8178048825042071,
+       "roll_amp_deg_per_m": 8.491189624120912,
+       "pitch_amp_deg_per_m": 8.012171362524505,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b180": {
+       "T_s": 3.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 1.086944807106798,
+       "roll_amp_deg_per_m": 0.027109639576068663,
+       "pitch_amp_deg_per_m": 13.939949855028715,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b0": {
+       "T_s": 4.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 1.8553302700132155,
+       "roll_amp_deg_per_m": 0.02713170767433651,
+       "pitch_amp_deg_per_m": 9.660857791586453,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b45": {
+       "T_s": 4.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 1.3929754767890397,
+       "roll_amp_deg_per_m": 6.254192781426129,
+       "pitch_amp_deg_per_m": 6.324338144292286,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b90": {
+       "T_s": 4.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 6.409240167114597,
+       "roll_amp_deg_per_m": 8.957081216125397,
+       "pitch_amp_deg_per_m": 0.48395121449363443,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b135": {
+       "T_s": 4.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 1.5404864540938388,
+       "roll_amp_deg_per_m": 6.244698071985487,
+       "pitch_amp_deg_per_m": 6.087855340329625,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b180": {
+       "T_s": 4.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 2.154822920610715,
+       "roll_amp_deg_per_m": 0.013735682430848455,
+       "pitch_amp_deg_per_m": 9.431163747467044,
+       "pose_reuse": {
+        "tier": "approximate",
+        "dheel_deg": -0.0007656074341133244,
+        "dtrim_deg": 1.1199247235521839,
+        "dz_m": 0.05694749746674954,
+        "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      }
+     },
+     "H_min_over_table_m": 0.28887311458916703,
+     "pose_reuse": {
+      "tier": "approximate",
+      "dheel_deg": -0.0007656074341133244,
+      "dtrim_deg": 1.1199247235521839,
+      "dz_m": 0.05694749746674954,
+      "note": "APPROXIMATE PREVIEW: BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+     }
+    },
+    "2_passengers_both_decks": {
+     "table": {
+      "T1.5_b0": {
+       "T_s": 1.5,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.5978447520035933,
+       "roll_amp_deg_per_m": 0.05225137697894769,
+       "pitch_amp_deg_per_m": 5.7183632573694165,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b45": {
+       "T_s": 1.5,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.31655995729186925,
+       "roll_amp_deg_per_m": 1.7583198195502192,
+       "pitch_amp_deg_per_m": 11.007308631706145,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b90": {
+       "T_s": 1.5,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 0.8262082296773687,
+       "roll_amp_deg_per_m": 2.7063459803537637,
+       "pitch_amp_deg_per_m": 0.23849180449146806,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b135": {
+       "T_s": 1.5,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.5374725682043674,
+       "roll_amp_deg_per_m": 2.159848437518998,
+       "pitch_amp_deg_per_m": 10.656402772713498,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T1.5_b180": {
+       "T_s": 1.5,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.4500491877996717,
+       "roll_amp_deg_per_m": 0.10154771649875388,
+       "pitch_amp_deg_per_m": 5.67172898227587,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b0": {
+       "T_s": 2.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.2000621139919216,
+       "roll_amp_deg_per_m": 0.13984551560717912,
+       "pitch_amp_deg_per_m": 28.170861377476317,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b45": {
+       "T_s": 2.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.36417820392081945,
+       "roll_amp_deg_per_m": 9.125296496517526,
+       "pitch_amp_deg_per_m": 3.439919578230619,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b90": {
+       "T_s": 2.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 0.9956298974416529,
+       "roll_amp_deg_per_m": 14.9820066285202,
+       "pitch_amp_deg_per_m": 0.37197125928090846,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b135": {
+       "T_s": 2.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.4040142885194198,
+       "roll_amp_deg_per_m": 9.310292804795267,
+       "pitch_amp_deg_per_m": 3.7876288376683154,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.0_b180": {
+       "T_s": 2.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.2791920801719977,
+       "roll_amp_deg_per_m": 0.16225282892960635,
+       "pitch_amp_deg_per_m": 27.961681975239166,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b0": {
+       "T_s": 2.5,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.4108365564523161,
+       "roll_amp_deg_per_m": 0.05304327583718369,
+       "pitch_amp_deg_per_m": 19.851575727352373,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b45": {
+       "T_s": 2.5,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.4040514496054934,
+       "roll_amp_deg_per_m": 9.8741922361372,
+       "pitch_amp_deg_per_m": 9.206923549872752,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b90": {
+       "T_s": 2.5,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 2.180665060197984,
+       "roll_amp_deg_per_m": 15.07590323054633,
+       "pitch_amp_deg_per_m": 0.12019712989876745,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b135": {
+       "T_s": 2.5,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.4529681759744748,
+       "roll_amp_deg_per_m": 9.9575433598575,
+       "pitch_amp_deg_per_m": 9.32032020680819,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T2.5_b180": {
+       "T_s": 2.5,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.5205015148542287,
+       "roll_amp_deg_per_m": 0.0948903980861964,
+       "pitch_amp_deg_per_m": 19.768294943017224,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b0": {
+       "T_s": 3.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 0.7577564275107586,
+       "roll_amp_deg_per_m": 0.030907784933040784,
+       "pitch_amp_deg_per_m": 14.555446178436975,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b45": {
+       "T_s": 3.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 0.6248109441014539,
+       "roll_amp_deg_per_m": 8.409662286657781,
+       "pitch_amp_deg_per_m": 8.355852861397981,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b90": {
+       "T_s": 3.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 4.024334682125262,
+       "roll_amp_deg_per_m": 12.36088551520337,
+       "pitch_amp_deg_per_m": 0.0432695111363541,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b135": {
+       "T_s": 3.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 0.6891581226544875,
+       "roll_amp_deg_per_m": 8.44333547889981,
+       "pitch_amp_deg_per_m": 8.377200559873918,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T3.0_b180": {
+       "T_s": 3.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 0.9162120461174117,
+       "roll_amp_deg_per_m": 0.05586355333601318,
+       "pitch_amp_deg_per_m": 14.494869945522797,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b0": {
+       "T_s": 4.0,
+       "heading_deg": 0,
+       "H_deck_edge_awash_m": 1.7580294397458835,
+       "roll_amp_deg_per_m": 0.028038824436975928,
+       "pitch_amp_deg_per_m": 9.56529923183787,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b45": {
+       "T_s": 4.0,
+       "heading_deg": 45,
+       "H_deck_edge_awash_m": 1.2885285517713976,
+       "roll_amp_deg_per_m": 6.134280425024165,
+       "pitch_amp_deg_per_m": 6.20031502729489,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b90": {
+       "T_s": 4.0,
+       "heading_deg": 90,
+       "H_deck_edge_awash_m": 9.628701857176972,
+       "roll_amp_deg_per_m": 8.810591527560932,
+       "pitch_amp_deg_per_m": 0.05375104676789527,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b135": {
+       "T_s": 4.0,
+       "heading_deg": 135,
+       "H_deck_edge_awash_m": 1.4180157230465302,
+       "roll_amp_deg_per_m": 6.142189799208062,
+       "pitch_amp_deg_per_m": 6.177250284779191,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      },
+      "T4.0_b180": {
+       "T_s": 4.0,
+       "heading_deg": 180,
+       "H_deck_edge_awash_m": 2.087569707967415,
+       "roll_amp_deg_per_m": 0.03377443397719644,
+       "pitch_amp_deg_per_m": 9.520903855081533,
+       "pose_reuse": {
+        "tier": "near",
+        "dheel_deg": 0.0009072807779129282,
+        "dtrim_deg": 0.17332131672643697,
+        "dz_m": -0.0206406662669818,
+        "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+       }
+      }
+     },
+     "H_min_over_table_m": 0.2000621139919216,
+     "pose_reuse": {
+      "tier": "near",
+      "dheel_deg": 0.0009072807779129282,
+      "dtrim_deg": 0.17332131672643697,
+      "dz_m": -0.0206406662669818,
+      "note": "BEM of a nearby pose reused (same geometry and grid); coefficients moved exactly to the current COM; the pose difference is NOT accounted for (run Compute BEM for the exact pose)"
+     }
+    }
+   }
+  }
+ },
+ "seconds": 98.19383883476257
+}

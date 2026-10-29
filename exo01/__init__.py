@@ -3,4 +3,4 @@
 Physics (mass, hydrostatics, equilibrium, hydrodynamics, response) is kept
 independent of rendering. See ASSUMPTIONS.md for scope and limits.
 """
-__version__ = "1.1.0"
+__version__ = "1.2.0"

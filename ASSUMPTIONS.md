@@ -249,6 +249,27 @@ the list of missing items.
 * With forward speed the wave response is solved at the **encounter frequency** ω_e = ω − kU cos β with zero-speed
   coefficients at ω_e (low-Froude approximation, labelled in the output); no speed-dependent hydrodynamics.
 
+## 5e. Mooring elements, fenders and the rigid-coupling limit (v1.2)
+
+* Every connection between the EXO frame and the boat is an element with a `kind`: **line** = tension-only spring
+  (T = max(0, k (L − L0)), L0 = L_nominal − T0/k so that it carries the pretension T0 at the nominal berth); **fender** =
+  compression-only (push bar / stern fender between the EXO rear deck edge and the boat's transom, T = min(0, k (L − L0)),
+  L0 = L_nominal + T0/k: preload T0 in compression, T0 = 0 just touching; the contact is measured as the signed
+  penetration along the fender's nominal axis, so a transom pushed past the contact point keeps compressing it);
+  **strut** = bilateral spring (a bolted or rigid link in the limit k → large; k = 1 MN/m in the preset). The coupled
+  static solver treats unilateral elements with an active set; a 1 N/m numerical centering spring keeps an in-plane
+  mode that no element restrains (sway with fenders only) determined. In the wave model a compressed fender or a strut is
+  a spring about its static load; the time-domain check applies the unilateral laws.
+* Assumed element properties (no measurements): line stiffness 2 kN/m (elastic snubber / long nylon), 10 kN/m
+  (default), 50 kN/m (short polyester), 200 kN/m (Dyneema-like); fenders 50 kN/m (foam / pneumatic); struts 1 MN/m.
+  Lines are massless, linear, undamped; no friction at the fenders; no wind, current or wake impulse.
+* Fender points: EXO rear deck edge (x 2.1, y ±0.9, z 0.25) to the boat's transom (boat x 0, y ±0.9, z 0.40), levelled
+  so that the element axis is horizontal at the nominal berth (gap ≈ 0.07 m there, from the assumed berth placement).
+* `scripts/run_mooring_study.py` sweeps arrangement × line stiffness × pretension in the moored, push (pods 100 %) and
+  tow (boat engine 100 %) states and in three regular waves (beam 0.3 m / 2.5 s, head 0.3 m / 2.5 s, beam 0.5 m / 3 s),
+  with the linear response and the tension-only time-domain check (peak loads, slack fraction, fender impact, transom gap
+  breathing, strut loads for the rigid limit). Results in `results/mooring/`; reading in `docs/MOORING.md`.
+
 ## 6. What the model cannot say
 
 Capsize limits, breaking-wave impacts, slamming, green water, surf-riding, mooring loads, joint stresses, deck load
