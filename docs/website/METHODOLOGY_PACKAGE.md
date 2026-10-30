@@ -51,3 +51,25 @@ the figures is typed from memory; if a check changes, re-run the script rather t
 Every figure carries the exploratory label in its footer, with the version and the repository. The numbers in figure 19
 are verification results (the code solves its equations correctly), not validation results (the inputs are right) —
 figure 19's own footer says so, and that distinction should survive any editing of the captions.
+
+## Interactive version
+
+`methodologie-interactive.html` is the same five sections as one self-contained interactive page, FR/EN toggle in the
+header (the choice is remembered per viewer in `localStorage`). No build step, no external JS; the only outside request
+is the Google Fonts stylesheet.
+
+Three things on it are interactive rather than animated:
+
+- **§03** a slider moves the boat relative to the platform; the three force laws, the loads in newtons and the state of
+  each element (slack / no contact / in tension) follow it live. At +34 mm the rope reads 400 N, which is the working
+  pretension the mooring study settled on.
+- **§04** picking a measurement lights the limits it would lift, and names the three that no planned measurement lifts.
+- **§01** and **§05** replay their sequence on demand; both are complete and readable at rest.
+
+**To embed in Astro**: serve it as a static page (copy the file into `public/` and link it), or inline its `<style>`,
+markup and `<script>` into a `.astro` page — it uses no framework and no bundler. The language toggle replaces the need
+for two URLs, so it sits equally under `/methodologie` and `/en/methodology`; if the site prefers one language per URL,
+read the `exo-lang` key or set `L` at the top of the script and drop the toggle.
+
+Numbers in §05 are the same verification results as figure 19 and are written into the page's `CHECKS` array — if the
+verification report changes, update both (`scripts/draw_methodology.py` regenerates the figure; the array is by hand).
