@@ -1,0 +1,8 @@
+{
+  "files": {
+    "scripts/run_stability_sheet.py": {
+      "name": "Stability sheet for registration",
+      "description": "The platform on its own: how far it leans and how much freeboard is left, empty and with four to six people, read against the inland-waterway rules, plus the deck area to keep closed."
+    }
+  }
+}

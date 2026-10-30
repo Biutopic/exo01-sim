@@ -1,0 +1,24 @@
+{
+  "files": {
+    "scripts/draw_layout.py": {
+      "name": "Deck layout drawing",
+      "description": "Draws the recommended arrangement from above and from the side: ropes, fenders, where people stand, batteries, and the area kept clear."
+    },
+    "scripts/render_website.py": {
+      "name": "Pictures for the website",
+      "description": "Opens the 3D view without a person, sets up nine scenes and saves the pictures used in the public article."
+    },
+    "scripts/ui_smoke.py": {
+      "name": "Does the page still work",
+      "description": "Quick check that the page loads, the 3D model appears and the results are drawn."
+    },
+    "scripts/ui_v04_check.py": {
+      "name": "Interface checks (earlier version)",
+      "description": "Checks the features added in an earlier version of the interface still behave."
+    },
+    "scripts/ui_v1_check.py": {
+      "name": "Full interface check",
+      "description": "Walks the whole interface end to end the way a person would, and reports anything that failed."
+    }
+  }
+}

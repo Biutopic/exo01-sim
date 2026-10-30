@@ -1,0 +1,12 @@
+{
+  "files": {
+    "scripts/run_mooring_final.py": {
+      "name": "Choosing the final arrangement",
+      "description": "Compares the twelve shortlisted ways of tying the platform to the boat, including rigid tubes, and ranks them on load, slack and how much the boat rolls."
+    },
+    "scripts/run_mooring_study.py": {
+      "name": "The full mooring sweep",
+      "description": "Tries every combination of arrangement, rope stiffness and tightness, in still water and in three waves, to find what actually works."
+    }
+  }
+}

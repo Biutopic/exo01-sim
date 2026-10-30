@@ -1,0 +1,98 @@
+{
+  "files": {
+    "app.py": {
+      "name": "The server",
+      "description": "Receives what you changed in the browser, runs the calculations, and sends the results back; slow work is started as a job with a progress bar."
+    },
+    "start_unix.sh": {
+      "name": "Start on Mac or Linux",
+      "description": "Sets up what is needed the first time, starts the server and opens the browser at the simulator."
+    }
+  },
+  "routes": {
+    "GET /": {
+      "name": "The simulator page",
+      "description": "Opens the 3D view of the platform and the boat."
+    },
+    "GET /reference.glb": {
+      "name": "Platform 3D model",
+      "description": "Sends the 3D model of the platform so the browser can draw it."
+    },
+    "GET /boat.glb": {
+      "name": "Boat 3D model",
+      "description": "Sends the 3D model of L'Hydronaute so the browser can draw it alongside."
+    },
+    "GET /api/health": {
+      "name": "Is the server alive",
+      "description": "Answers that the server is running, used when the page first opens."
+    },
+    "GET /api/meta": {
+      "name": "What is available",
+      "description": "Lists the starting set-ups, the saved variations and the version, so the page can fill its menus."
+    },
+    "GET /api/config/<name>": {
+      "name": "One starting set-up",
+      "description": "Sends the full description of the platform for the chosen starting point, strict or illustrative."
+    },
+    "GET /api/scenario/<name>": {
+      "name": "One saved variation",
+      "description": "Sends a saved variation: what was moved, added or removed compared to the starting point."
+    },
+    "POST /api/scenario/save": {
+      "name": "Save this variation",
+      "description": "Stores what you currently have set up under a name so you can come back to it or compare it."
+    },
+    "POST /api/evaluate": {
+      "name": "How does it float now",
+      "description": "The everyday answer: with what is on board right now, how deep it sits, how far it leans, how much freeboard is left, and how hard each rope is pulled. Comes back in under a second."
+    },
+    "POST /api/hydro": {
+      "name": "Work out the water physics",
+      "description": "Starts the slow calculation of how water resists the hulls for this position; needed once before any wave result."
+    },
+    "GET /api/jobs": {
+      "name": "What is running",
+      "description": "Lists the slow calculations currently queued or running, with their progress."
+    },
+    "POST /api/job/<jid>/cancel": {
+      "name": "Stop a calculation",
+      "description": "Stops a slow calculation that is still running."
+    },
+    "GET /api/job/<jid>": {
+      "name": "How far along is it",
+      "description": "Reports progress, estimated time left and, when finished, the result of one slow calculation."
+    },
+    "POST /api/wave": {
+      "name": "Behaviour in one wave",
+      "description": "For a wave of a given height, period and direction: how much each craft moves, what the deck feels, and the load in every rope and fender."
+    },
+    "POST /api/snatch": {
+      "name": "Check for snatch loads",
+      "description": "Follows the same wave step by step in time, letting ropes go slack and fenders lose contact, to catch the sudden peaks a smooth estimate misses."
+    },
+    "POST /api/irregular": {
+      "name": "Behaviour in a real sea",
+      "description": "Instead of one clean wave, a realistic mix of waves, giving typical and extreme values rather than a single number."
+    },
+    "POST /api/timestep_check": {
+      "name": "Is the time step fine enough",
+      "description": "Re-runs the same case with a finer time step to confirm the answer is not an artefact of the calculation."
+    },
+    "POST /api/compare": {
+      "name": "Compare set-ups",
+      "description": "Builds the side-by-side table of several saved variations, leaving blank anything that was not computed."
+    },
+    "POST /api/export": {
+      "name": "Export the results",
+      "description": "Writes the current results to files you can download and keep."
+    },
+    "POST /api/optimise": {
+      "name": "Find the best position",
+      "description": "Starts a sweep that tries many battery positions or rope arrangements and ranks them."
+    },
+    "GET /api/download/<fname>": {
+      "name": "Download a file",
+      "description": "Hands over a file that was exported earlier."
+    }
+  }
+}

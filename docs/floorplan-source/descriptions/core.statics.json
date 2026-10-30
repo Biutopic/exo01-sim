@@ -1,0 +1,16 @@
+{
+  "files": {
+    "exo01/buoyancy.py": {
+      "name": "The shapes in the water",
+      "description": "Describes each float as a closed 3D shape, cuts it at the water surface and measures exactly how much of it is submerged, at any angle."
+    },
+    "exo01/equilibrium.py": {
+      "name": "Where it comes to rest",
+      "description": "Finds the depth, the lean and the nose-up angle at which weight and buoyancy balance, then reports the freeboard left at every point of interest."
+    },
+    "exo01/mass.py": {
+      "name": "Weight and balance",
+      "description": "Adds up every item on board into a total weight and balance point; if a weight or a position is unknown it stops rather than guessing."
+    }
+  }
+}

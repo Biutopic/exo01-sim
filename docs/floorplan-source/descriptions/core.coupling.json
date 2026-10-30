@@ -1,0 +1,16 @@
+{
+  "files": {
+    "exo01/boat.py": {
+      "name": "Shape of the boat's hull",
+      "description": "Turns the table of hull cross-sections into a closed 3D shape so the boat can be floated like the platform; it is a stand-in, not a survey."
+    },
+    "exo01/propulsion.py": {
+      "name": "Motors, drag and towing",
+      "description": "Works out the steady speed the two craft reach for a given motor setting, and the drag of the floats and the hull at that speed."
+    },
+    "exo01/twobody.py": {
+      "name": "The two craft joined together",
+      "description": "Settles the platform and the boat at the same time, with ropes that can only pull, fenders that can only push and tubes that do both, and reports the gap between them."
+    }
+  }
+}

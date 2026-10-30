@@ -1,0 +1,20 @@
+{
+  "files": {
+    "data/reference_v3/build_model.py": {
+      "name": "Rebuilding the platform drawing",
+      "description": "Rebuilds the 3D reference drawing of the platform from its measurements; a reference assembly, not a validated engineering model."
+    },
+    "data/reference_v3/render_preview.py": {
+      "name": "Preview pictures of the drawing",
+      "description": "Renders the real 3D model to pictures you can check by eye, with nothing added or imagined."
+    },
+    "data/reference_v3/validate_model.py": {
+      "name": "Checking the drawing files",
+      "description": "Re-opens the exported drawing files independently and checks they really hold the shape and the scale they claim."
+    },
+    "data/reference_v3/viewer_template.html": {
+      "name": "Drawing viewer",
+      "description": "A small standalone page for looking at the platform drawing on its own, outside the simulator."
+    }
+  }
+}

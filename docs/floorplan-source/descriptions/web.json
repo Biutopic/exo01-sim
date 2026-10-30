@@ -1,0 +1,16 @@
+{
+  "files": {
+    "web/app.css": {
+      "name": "Look of the page",
+      "description": "The colours, spacing and layout of the simulator page."
+    },
+    "web/app.js": {
+      "name": "The 3D view and the controls",
+      "description": "Draws the platform, the boat, the floats, the people, the ropes and the water, handles everything you move, and shows the results the server sends back."
+    },
+    "web/index.html": {
+      "name": "The page itself",
+      "description": "The structure of the simulator page: the 3D area, the panels of controls and the results beside them."
+    }
+  }
+}

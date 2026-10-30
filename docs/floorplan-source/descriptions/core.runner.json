@@ -1,0 +1,16 @@
+{
+  "files": {
+    "exo01/analysis.py": {
+      "name": "The conductor",
+      "description": "Runs one complete case in order: weight and balance, how it floats, how it leans, the boat alongside, the motors, then the wave behaviour."
+    },
+    "exo01/jobs.py": {
+      "name": "Slow jobs, run aside",
+      "description": "Runs the long wave calculations in a separate process with a progress bar, so the page in the browser never freezes."
+    },
+    "exo01/optimise.py": {
+      "name": "Trying many options",
+      "description": "Sweeps battery positions on the deck or on the float frame, and rope arrangements, and ranks them with the score stated openly."
+    }
+  }
+}

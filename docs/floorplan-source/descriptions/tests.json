@@ -1,0 +1,52 @@
+{
+  "files": {
+    "tests/conftest.py": {
+      "name": "Shared test set-up",
+      "description": "Prepares the set-ups and drawings the other checks reuse, so each one starts from the same known state."
+    },
+    "tests/test_api.py": {
+      "name": "Server checks",
+      "description": "Checks the server answers each request with the right shape of result, and refuses what it should refuse."
+    },
+    "tests/test_buoyancy.py": {
+      "name": "Submerged-volume checks",
+      "description": "Checks the submerged volume and the water surface against shapes whose exact answer is known."
+    },
+    "tests/test_equilibrium.py": {
+      "name": "Floating-position checks",
+      "description": "Checks the platform settles where it should, and that an impossible case is reported rather than forced."
+    },
+    "tests/test_hydro_response.py": {
+      "name": "Wave-behaviour checks",
+      "description": "Checks the water physics and the resulting movement on small cases, including that stored results are reused correctly."
+    },
+    "tests/test_jobs.py": {
+      "name": "Slow-job checks",
+      "description": "Checks a slow calculation reports its progress, writes its result, and gives the same answer whether run in one go or in pieces."
+    },
+    "tests/test_mass.py": {
+      "name": "Weight and balance checks",
+      "description": "Checks the weight, balance point and spin resistance of simple shapes against the exact values."
+    },
+    "tests/test_mooring_elements.py": {
+      "name": "Rope, fender and tube checks",
+      "description": "Checks a rope only pulls, a fender only pushes and a tube does both, in still water and in waves."
+    },
+    "tests/test_propulsion.py": {
+      "name": "Motor and drag checks",
+      "description": "Checks the speed reached for a given motor setting, and that drag behaves sensibly as speed rises."
+    },
+    "tests/test_reference.py": {
+      "name": "Reference-drawing checks",
+      "description": "Checks the drawing package is read correctly: units, size and the positions it declares."
+    },
+    "tests/test_scenarios.py": {
+      "name": "Saved-variation checks",
+      "description": "Checks a saved variation reloads exactly as saved and that uncomputed values stay blank in the comparison."
+    },
+    "tests/test_twobody.py": {
+      "name": "Two-craft checks",
+      "description": "Checks the platform and the boat settle together correctly under a push and under a tow, with the right rope loads."
+    }
+  }
+}

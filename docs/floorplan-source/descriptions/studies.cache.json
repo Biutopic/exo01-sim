@@ -1,0 +1,12 @@
+{
+  "files": {
+    "scripts/precompute_cache.py": {
+      "name": "Compute the slow part in advance",
+      "description": "Runs the water physics ahead of time for the usual set-ups, so the simulator answers immediately on a fresh install."
+    },
+    "scripts/prune_cache.py": {
+      "name": "Clear out stale results",
+      "description": "Deletes stored water-physics files that no longer match any current position, and keeps only what ships with the project."
+    }
+  }
+}

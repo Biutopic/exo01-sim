@@ -1,0 +1,12 @@
+{
+  "files": {
+    "exo01/hydro.py": {
+      "name": "How the water pushes back",
+      "description": "Computes how water resists each hull as it moves, and stores the answer so a nearby position can reuse it instead of waiting again."
+    },
+    "exo01/response.py": {
+      "name": "Movement and rope loads in waves",
+      "description": "Turns a wave height, period and direction into how much each craft moves and how hard every rope and fender is pulled, including sudden snatch loads."
+    }
+  }
+}

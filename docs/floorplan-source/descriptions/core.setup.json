@@ -1,0 +1,24 @@
+{
+  "files": {
+    "exo01/__init__.py": {
+      "name": "The toolkit's front door",
+      "description": "Names the toolkit and its version; holds no calculation of its own."
+    },
+    "exo01/config.py": {
+      "name": "Reading a set-up",
+      "description": "Loads the description of the platform, applies the variations you asked for, and checks that nothing essential is missing."
+    },
+    "exo01/reference.py": {
+      "name": "Reading the reference drawings",
+      "description": "Opens the measured drawing package of the platform and checks it: units, overall size, float positions and the weights that came with it."
+    },
+    "exo01/scenarios.py": {
+      "name": "Saving and comparing set-ups",
+      "description": "Saves a set-up under a name and builds the side-by-side table; anything that was not computed stays blank rather than being filled in."
+    },
+    "exo01/units.py": {
+      "name": "Units and constants",
+      "description": "One place for metres, degrees, gravity and the density of fresh water, so no conversion is done twice."
+    }
+  }
+}

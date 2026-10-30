@@ -1,0 +1,20 @@
+{
+  "files": {
+    "scripts/run_comparison.py": {
+      "name": "Side-by-side report",
+      "description": "Runs the saved variations and writes the comparison table, with the wave behaviour included."
+    },
+    "scripts/run_optimisation_report.py": {
+      "name": "Best battery position report",
+      "description": "Runs the battery sweep over both possible zones and writes the ranked result with the plots."
+    },
+    "scripts/run_verification.py": {
+      "name": "Checking the model against the drawings",
+      "description": "Checks the simulation against the reference drawings: volumes, dimensions, left-right symmetry and whether the answers settle."
+    },
+    "scripts/verification_md.py": {
+      "name": "Verification report, readable",
+      "description": "Turns the raw verification results into a report a person can read."
+    }
+  }
+}

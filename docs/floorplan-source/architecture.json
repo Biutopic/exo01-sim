@@ -1,0 +1,426 @@
+{
+  "$schema": "floorplan/architecture@1",
+  "project": {
+    "name": "EXO-01 simulation",
+    "summary": "A simulator for EXO-01, the floating platform that clips onto the boat L'Hydronaute. It works out how the platform sits in the water, how far it tips with people and batteries on board, how both craft move in waves, and how hard the ropes and fenders between them are pulled. You use it through a 3D view in your browser; study scripts run the same calculations in bulk to answer design questions.",
+    "entrypoints": [
+      "app.py",
+      "web/app.js"
+    ]
+  },
+  "audience": "everyone",
+  "include": [
+    "code"
+  ],
+  "ignore": [
+    "web/vendor/**",
+    "docs/codemap/**",
+    "docs/website/preview.html"
+  ],
+  "nodes": [
+    {
+      "id": "web",
+      "label": "3D view in the browser",
+      "kind": "ui",
+      "summary": "What you actually look at: the platform and the boat in 3D, with sliders and boxes for everything you can move, and the results beside them.",
+      "details": "Runs with no build step and no internet: the 3D library is kept in the project. It never does any physics of its own, it only asks the server and draws what comes back.",
+      "paths": [
+        "web/**"
+      ]
+    },
+    {
+      "id": "server",
+      "label": "The server",
+      "kind": "service",
+      "summary": "Sits between the browser and the calculations: receives what you changed, answers with results, and runs the slow jobs out of the way so the page never freezes.",
+      "details": "Quick answers (how the platform floats) come straight back. Slow ones (wave physics, design sweeps) are started as separate background jobs with a progress bar.",
+      "paths": [
+        "app.py",
+        "start_unix.sh"
+      ]
+    },
+    {
+      "id": "core",
+      "label": "The calculation engine",
+      "kind": "library",
+      "summary": "All the physics, as plain Python with no screen and no server. Everything else in the project asks this.",
+      "details": "One single set of calculations is used by the browser, by the study scripts and by the tests, so there is no second version that could disagree.",
+      "paths": [
+        "exo01/**"
+      ]
+    },
+    {
+      "id": "core.setup",
+      "parent": "core",
+      "label": "Setting up a case",
+      "kind": "config",
+      "summary": "Reads the description of the platform (what is on board, where, how heavy) and applies the variations you asked for.",
+      "details": "Two starting points: a strict one that leaves unknowns blank and refuses to invent them, and an illustrative one where the gaps are filled with clearly-labelled assumptions.",
+      "paths": [
+        "exo01/config.py",
+        "exo01/reference.py",
+        "exo01/units.py",
+        "exo01/scenarios.py",
+        "exo01/__init__.py"
+      ]
+    },
+    {
+      "id": "core.statics",
+      "parent": "core",
+      "label": "How it floats and tips",
+      "kind": "feature",
+      "summary": "Works out the total weight and balance point, then how deep the platform sits and how much it leans.",
+      "details": "The floats are treated as real 3D shapes cut by the water surface, so any amount of lean or nose-down is handled the same way. If a weight or a position is missing, it stops and says so instead of guessing.",
+      "paths": [
+        "exo01/mass.py",
+        "exo01/buoyancy.py",
+        "exo01/equilibrium.py"
+      ]
+    },
+    {
+      "id": "core.waves",
+      "parent": "core",
+      "label": "Behaviour in waves",
+      "kind": "feature",
+      "summary": "How much the platform and the boat move in a given wave, and how hard the ropes and fenders are pulled.",
+      "details": "The heavy part (how water pushes back on a moving hull) is solved once per shape and position and then kept, so it does not have to be redone every time you move something on deck. Ropes that can only pull and fenders that can only push are also checked step by step in time, which is where sudden snatch loads show up.",
+      "paths": [
+        "exo01/hydro.py",
+        "exo01/response.py"
+      ]
+    },
+    {
+      "id": "core.coupling",
+      "parent": "core",
+      "label": "Platform plus boat",
+      "kind": "feature",
+      "summary": "Treats L'Hydronaute as a second floating body tied to the platform, and finds where both end up when the motors push or someone tows.",
+      "details": "Each connection has a type: a rope that can only pull, a fender that can only push, or a rigid tube that does both. The gap between the boat's transom and the platform is tracked so you can see if they would touch.",
+      "paths": [
+        "exo01/twobody.py",
+        "exo01/boat.py",
+        "exo01/propulsion.py"
+      ]
+    },
+    {
+      "id": "core.runner",
+      "parent": "core",
+      "label": "Running a whole case",
+      "kind": "feature",
+      "summary": "The conductor: takes one set-up and runs it through weight, floating, leaning, the boat, the motors and the waves, in the right order.",
+      "details": "Also handles the long jobs and the design sweeps that try many battery positions or rope arrangements and rank them.",
+      "paths": [
+        "exo01/analysis.py",
+        "exo01/optimise.py",
+        "exo01/jobs.py"
+      ]
+    },
+    {
+      "id": "studies",
+      "label": "Study scripts",
+      "kind": "script",
+      "summary": "Batch runs that answer a design question and write the answer into the project as a table, a sketch or a report.",
+      "paths": [
+        "scripts/**"
+      ]
+    },
+    {
+      "id": "studies.mooring",
+      "parent": "studies",
+      "label": "How to tie the two together",
+      "kind": "script",
+      "summary": "Tries many rope and fender arrangements, with different stiffness and tightness, and ranks them on how hard they are pulled and how much the boat moves.",
+      "paths": [
+        "scripts/run_mooring_study.py",
+        "scripts/run_mooring_final.py"
+      ]
+    },
+    {
+      "id": "studies.stability",
+      "parent": "studies",
+      "label": "Stability sheet",
+      "kind": "script",
+      "summary": "The platform on its own, for the registration file: how it leans with 4 or 6 people, how much freeboard is left, and which part of the deck should stay closed to passengers.",
+      "paths": [
+        "scripts/run_stability_sheet.py"
+      ]
+    },
+    {
+      "id": "studies.reports",
+      "parent": "studies",
+      "label": "Comparisons and checks",
+      "kind": "script",
+      "summary": "Side-by-side scenario tables, the battery-position report, and the verification run that checks the model against the reference drawings.",
+      "paths": [
+        "scripts/run_comparison.py",
+        "scripts/run_optimisation_report.py",
+        "scripts/run_verification.py",
+        "scripts/verification_md.py"
+      ]
+    },
+    {
+      "id": "studies.setup",
+      "parent": "studies",
+      "label": "Building the input files",
+      "kind": "script",
+      "summary": "Rebuilds the two starting descriptions of the platform from the reference drawings, so geometry is edited in one place only.",
+      "paths": [
+        "scripts/make_configs.py",
+        "scripts/package.py"
+      ]
+    },
+    {
+      "id": "studies.cache",
+      "parent": "studies",
+      "label": "Keeping the heavy results",
+      "kind": "script",
+      "summary": "Computes the slow wave physics ahead of time and prunes the stored copies, so a fresh download of the project works straight away.",
+      "paths": [
+        "scripts/precompute_cache.py",
+        "scripts/prune_cache.py"
+      ]
+    },
+    {
+      "id": "studies.figures",
+      "parent": "studies",
+      "label": "Pictures for the website",
+      "kind": "script",
+      "summary": "Drives the 3D view without a person to take the renders, and draws the recommended deck layout.",
+      "paths": [
+        "scripts/render_website.py",
+        "scripts/draw_layout.py",
+        "scripts/ui_smoke.py",
+        "scripts/ui_v04_check.py",
+        "scripts/ui_v1_check.py"
+      ]
+    },
+    {
+      "id": "geometry",
+      "label": "Reference drawings",
+      "kind": "data",
+      "summary": "The measured shapes and weights the whole simulation is built from: the platform package and the boat hull.",
+      "details": "These are read, never edited by the simulation. The boat hull is a stand-in built from a table of cross-sections, not a survey.",
+      "paths": [
+        "data/**"
+      ]
+    },
+    {
+      "id": "tests",
+      "label": "Automatic checks",
+      "kind": "test",
+      "summary": "89 checks that run the physics against known shapes and simple cases, so a change that breaks something is caught immediately.",
+      "paths": [
+        "tests/**"
+      ]
+    },
+    {
+      "id": "ext.capytaine",
+      "label": "Capytaine (wave physics solver)",
+      "kind": "external",
+      "summary": "The outside library that solves how water pushes back on the hulls.",
+      "packages": [
+        "pypi:capytaine"
+      ]
+    },
+    {
+      "id": "ext.cadquery",
+      "label": "CadQuery (CAD)",
+      "kind": "external",
+      "summary": "Used only when rebuilding the reference drawings of the platform.",
+      "packages": [
+        "pypi:cadquery"
+      ]
+    },
+    {
+      "id": "ext.three",
+      "label": "three.js (3D drawing)",
+      "kind": "external",
+      "summary": "The 3D library the browser view draws with, kept inside the project so it works offline.",
+      "packages": [
+        "npm:three"
+      ]
+    },
+    {
+      "id": "ext.playwright",
+      "label": "Playwright (headless browser)",
+      "kind": "external",
+      "summary": "Opens the 3D view without a person so renders can be taken automatically.",
+      "packages": [
+        "pypi:playwright"
+      ]
+    },
+    {
+      "id": "ext.flask",
+      "label": "Flask (web server)",
+      "kind": "external",
+      "summary": "The small web framework the server is built on.",
+      "packages": [
+        "pypi:flask",
+        "pypi:werkzeug"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "studies.cache",
+      "to": "core.waves",
+      "kind": "call",
+      "label": "precompute",
+      "description": "Runs the slow wave physics ahead of time and stores it so the browser answers instantly."
+    },
+    {
+      "from": "studies.figures",
+      "to": "web",
+      "kind": "http",
+      "label": "drives the 3D view",
+      "description": "Opens the running page in a headless browser, sets the scene and takes the renders used on the website."
+    },
+    {
+      "from": "geometry",
+      "to": "core.setup",
+      "kind": "data",
+      "label": "shapes and weights",
+      "description": "The reference packages are parsed into the description of the platform and the boat."
+    }
+  ],
+  "annotations": [
+    {
+      "path": "exo01/hydro.py",
+      "note": "The expensive part of the whole project. Results are stored and reused when the position is close enough, which is why moving a battery on deck does not trigger a ten-minute wait.",
+      "tags": [
+        "hotspot"
+      ]
+    },
+    {
+      "path": "exo01/twobody.py",
+      "note": "Where ropes, fenders and rigid tubes are given their behaviour (pull only, push only, both). Every mooring conclusion comes from here.",
+      "tags": [
+        "hotspot"
+      ]
+    }
+  ],
+  "flows": [
+    {
+      "id": "settle",
+      "title": "Move a battery, see the platform settle",
+      "description": "The quick loop you use all day in the browser.",
+      "steps": [
+        {
+          "node": "web",
+          "note": "You drag a battery to a new spot on the deck."
+        },
+        {
+          "node": "server",
+          "note": "The page sends the whole set-up, with your change, to the server."
+        },
+        {
+          "node": "core.setup",
+          "note": "The change is merged into the description of the platform and checked."
+        },
+        {
+          "node": "core.statics",
+          "note": "New total weight and balance point, then how deep and how tilted it floats."
+        },
+        {
+          "node": "core.coupling",
+          "note": "If the boat is attached, both craft are settled together with the ropes and fenders."
+        },
+        {
+          "node": "web",
+          "note": "Freeboard, tilt, rope tensions and the gap to the boat come back and are drawn, in under a second."
+        }
+      ]
+    },
+    {
+      "id": "waves",
+      "title": "Find out how it behaves in waves",
+      "description": "The slow part, run once and then reused.",
+      "steps": [
+        {
+          "node": "web",
+          "note": "You ask for a wave of a given height, period and direction."
+        },
+        {
+          "node": "server",
+          "note": "If the water physics for this shape and position has never been computed, it starts a background job."
+        },
+        {
+          "node": "core.runner",
+          "note": "The job runs in its own process so the page stays responsive, with a progress bar and an estimated time."
+        },
+        {
+          "node": "ext.capytaine",
+          "note": "The outside solver computes how water pushes back on each hull, frequency by frequency."
+        },
+        {
+          "node": "core.waves",
+          "note": "The result is stored, then turned into motions, deck accelerations and the load in every rope and fender, including sudden snatch loads."
+        },
+        {
+          "node": "web",
+          "note": "Curves and numbers appear, with the linear estimate and the step-by-step-in-time check shown separately."
+        }
+      ]
+    },
+    {
+      "id": "mooring",
+      "title": "Decide how to tie the platform to the boat",
+      "description": "How a design question becomes a documented answer in the project.",
+      "steps": [
+        {
+          "node": "studies.mooring",
+          "note": "A script lists the candidate arrangements: ropes, fenders, rigid tubes, at several stiffnesses and tightnesses."
+        },
+        {
+          "node": "core.coupling",
+          "note": "Each one is settled statically: the motors pushing, and someone towing. Arrangements where the force path does not close are rejected."
+        },
+        {
+          "node": "core.waves",
+          "note": "The survivors are run in three waves, and the peak load, slack and contact are recorded."
+        },
+        {
+          "node": "studies.mooring",
+          "note": "An openly-stated score ranks them, and the tables and sketches are written into the project next to the reading of them."
+        }
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "node": "web",
+      "title": "What you see",
+      "note": "A 3D view of the platform and the boat in your browser. Everything you can move on the real thing, you can move here."
+    },
+    {
+      "node": "server",
+      "title": "What answers you",
+      "note": "A small server on your own machine. Quick questions come back instantly; slow ones run in the background with a progress bar."
+    },
+    {
+      "node": "core",
+      "title": "Where the physics lives",
+      "note": "One set of calculations, used by the browser, by the batch studies and by the automatic checks alike. There is no second version to disagree with it."
+    },
+    {
+      "node": "core.statics",
+      "title": "The everyday answer",
+      "note": "How deep the platform sits and how far it tips with people, batteries and a cabinet on board. This is what the registration file needs."
+    },
+    {
+      "node": "core.coupling",
+      "title": "The two craft together",
+      "note": "The boat is a second floating body, joined by ropes that can only pull, fenders that can only push, and tubes that do both."
+    },
+    {
+      "node": "geometry",
+      "title": "Where the shapes come from",
+      "note": "Measured drawings of the platform, and a stand-in hull for the boat built from cross-sections. Read, never modified."
+    },
+    {
+      "node": "studies",
+      "title": "Answering a design question",
+      "note": "Batch runs that try many options and write the ranked answer into the project, with the scoring stated openly."
+    }
+  ]
+}

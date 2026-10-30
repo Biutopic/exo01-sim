@@ -1,0 +1,26 @@
+{
+  "updatedAt": "2026-10-30T12:20:00Z",
+  "tasks": [
+    {
+      "title": "Deciding the mooring",
+      "request": "More tests to decide the mooring: optimum pretension, where it needs to be rigid, shock absorbers, fender at the back — then tell me the best one",
+      "summary": "Twelve ways of tying the platform to the boat were compared, from ropes with stern knees to four rigid tubes, in still water and in three waves. The six-rope arrangement with two stern knees and the rope eyes raised to the boat's cleat height came out best among the rope solutions: the lowest peak load of all, no slack in the bigger wave, and it can still be released by hand. Four rigid tubes halve the boat's roll but give that up. The hybrid of two tubes plus two ropes was tested and rejected: the two short tubes end up carrying everything. The reading is written up in docs/MOORING.md section 7, with drawings in results/mooring/.",
+      "items": [
+        { "ref": "scripts/run_mooring_final.py", "change": "new", "note": "New: runs the twelve shortlisted arrangements through the same still-water and wave checks and ranks them, with the scoring printed next to the table so anyone can disagree with the weighting." },
+        { "ref": "studies.mooring", "change": "changed", "note": "This is where the mooring question was answered; the earlier sweep of every stiffness and tightness feeds the shortlist this new comparison ranks." },
+        { "ref": "exo01/twobody.py", "change": "changed", "note": "The behaviour of ropes, fenders and rigid tubes lives here, so every conclusion about what to build rests on this file." },
+        { "ref": "exo01/response.py", "change": "changed", "note": "Supplies the step-by-step-in-time check that catches the sudden snatch loads, which is what separated the arrangements that looked fine on paper from the ones that actually are." }
+      ]
+    },
+    {
+      "title": "Where the batteries go",
+      "request": "Both batteries should move further forward — as far forward as possible, and slightly up",
+      "summary": "The battery sweep was extended to the float frame and then to a bracket beyond the forward post. The recommendation is two 120 kg batteries at the very front, raised, with the cabinet kept centred on the rear deck; with that layout four people on one side still leave the required freeboard without any ballast. Written into the stability sheet and the deck layout drawing.",
+      "items": [
+        { "ref": "exo01/optimise.py", "change": "changed", "note": "Gained the float-frame zone and the uprights it has to avoid, so the sweep could consider positions forward of the rear deck at all." },
+        { "ref": "scripts/run_stability_sheet.py", "change": "changed", "note": "Checks the recommended layout against the passenger cases: this is the file that says whether four or six people still leave enough freeboard." },
+        { "ref": "scripts/draw_layout.py", "change": "new", "note": "Draws the resulting deck layout — batteries, cabinet, people, ropes and the area kept clear — for the public article." }
+      ]
+    }
+  ]
+}

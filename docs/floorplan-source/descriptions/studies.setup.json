@@ -1,0 +1,12 @@
+{
+  "files": {
+    "scripts/make_configs.py": {
+      "name": "Rebuilding the set-up files",
+      "description": "Rebuilds both starting descriptions of the platform from the reference drawings, so geometry is edited in one place only; also holds the ready-made rope arrangements."
+    },
+    "scripts/package.py": {
+      "name": "Packaging for distribution",
+      "description": "Bundles the code, the drawings, the set-ups and the stored water physics into one archive to hand over."
+    }
+  }
+}
