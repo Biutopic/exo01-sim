@@ -1,0 +1,112 @@
+[
+ {
+  "id": "15_method_chain_fr",
+  "file_png": "img/15_method_chain_fr.png",
+  "file_web": "img/web/15_method_chain_fr.webp",
+  "lang": "fr",
+  "caption_fr": "La chaîne de calcul d'exo01-sim : cinq étapes, chacune vérifiable séparément ; chaque entrée porte sa provenance.",
+  "caption_en": "The exo01-sim calculation chain: five stages, each separately verifiable; every input carries its provenance.",
+  "source": "Diagramme. Contenu issu de configs/illustrative.json (18 postes de masse, 856 kg à vide) et de la structure du code (exo01/).",
+  "generated_by": "scripts/draw_methodology.py",
+  "version": "exo01-sim v1.2.1"
+ },
+ {
+  "id": "15_method_chain_en",
+  "file_png": "img/15_method_chain_en.png",
+  "file_web": "img/web/15_method_chain_en.webp",
+  "lang": "en",
+  "caption_fr": "La chaîne de calcul d'exo01-sim : cinq étapes, chacune vérifiable séparément ; chaque entrée porte sa provenance.",
+  "caption_en": "The exo01-sim calculation chain: five stages, each separately verifiable; every input carries its provenance.",
+  "source": "Diagramme. Contenu issu de configs/illustrative.json (18 postes de masse, 856 kg à vide) et de la structure du code (exo01/).",
+  "generated_by": "scripts/draw_methodology.py",
+  "version": "exo01-sim v1.2.1"
+ },
+ {
+  "id": "16_claim_discipline_fr",
+  "file_png": "img/16_claim_discipline_fr.png",
+  "file_web": "img/web/16_claim_discipline_fr.webp",
+  "lang": "fr",
+  "caption_fr": "Les deux configurations parallèles — baseline (entrées vides → « non calculé ») et illustrative (hypothèses explicites, étiquetées).",
+  "caption_en": "The two parallel configurations — baseline (empty inputs → “not computed”) and illustrative (explicit, labelled assumptions).",
+  "source": "Diagramme. Décrit le mécanisme implémenté dans exo01/config.py et configs/{baseline,illustrative}.json.",
+  "generated_by": "scripts/draw_methodology.py",
+  "version": "exo01-sim v1.2.1"
+ },
+ {
+  "id": "16_claim_discipline_en",
+  "file_png": "img/16_claim_discipline_en.png",
+  "file_web": "img/web/16_claim_discipline_en.webp",
+  "lang": "en",
+  "caption_fr": "Les deux configurations parallèles — baseline (entrées vides → « non calculé ») et illustrative (hypothèses explicites, étiquetées).",
+  "caption_en": "The two parallel configurations — baseline (empty inputs → “not computed”) and illustrative (explicit, labelled assumptions).",
+  "source": "Diagramme. Décrit le mécanisme implémenté dans exo01/config.py et configs/{baseline,illustrative}.json.",
+  "generated_by": "scripts/draw_methodology.py",
+  "version": "exo01-sim v1.2.1"
+ },
+ {
+  "id": "17_element_kinds_fr",
+  "file_png": "img/17_element_kinds_fr.png",
+  "file_web": "img/web/17_element_kinds_fr.webp",
+  "lang": "fr",
+  "caption_fr": "Les trois lois de comportement des liaisons EXO-01 ↔ bateau : aussière (traction seule), défense (compression seule), tube rigide (bilatéral).",
+  "caption_en": "The three force laws of the EXO-01 ↔ boat links: rope (tension only), fender (compression only), rigid tube (bilateral).",
+  "source": "Diagramme. Lois implémentées dans exo01/twobody.py (ELEMENT_KINDS) et exo01/response.py (line_snatch_check).",
+  "generated_by": "scripts/draw_methodology.py",
+  "version": "exo01-sim v1.2.1"
+ },
+ {
+  "id": "17_element_kinds_en",
+  "file_png": "img/17_element_kinds_en.png",
+  "file_web": "img/web/17_element_kinds_en.webp",
+  "lang": "en",
+  "caption_fr": "Les trois lois de comportement des liaisons EXO-01 ↔ bateau : aussière (traction seule), défense (compression seule), tube rigide (bilatéral).",
+  "caption_en": "The three force laws of the EXO-01 ↔ boat links: rope (tension only), fender (compression only), rigid tube (bilateral).",
+  "source": "Diagramme. Lois implémentées dans exo01/twobody.py (ELEMENT_KINDS) et exo01/response.py (line_snatch_check).",
+  "generated_by": "scripts/draw_methodology.py",
+  "version": "exo01-sim v1.2.1"
+ },
+ {
+  "id": "18_model_boundary_fr",
+  "file_png": "img/18_model_boundary_fr.png",
+  "file_web": "img/web/18_model_boundary_fr.webp",
+  "lang": "fr",
+  "caption_fr": "Ce qui est dans le modèle et ce qui n'y est pas ; la colonne de droite est la liste de ce qu'il faudra mesurer.",
+  "caption_en": "What is inside the model and what is not; the right column is the list of what will have to be measured.",
+  "source": "Diagramme. Contenu repris d'ASSUMPTIONS.md (v1.2.1).",
+  "generated_by": "scripts/draw_methodology.py",
+  "version": "exo01-sim v1.2.1"
+ },
+ {
+  "id": "18_model_boundary_en",
+  "file_png": "img/18_model_boundary_en.png",
+  "file_web": "img/web/18_model_boundary_en.webp",
+  "lang": "en",
+  "caption_fr": "Ce qui est dans le modèle et ce qui n'y est pas ; la colonne de droite est la liste de ce qu'il faudra mesurer.",
+  "caption_en": "What is inside the model and what is not; the right column is the list of what will have to be measured.",
+  "source": "Diagramme. Contenu repris d'ASSUMPTIONS.md (v1.2.1).",
+  "generated_by": "scripts/draw_methodology.py",
+  "version": "exo01-sim v1.2.1"
+ },
+ {
+  "id": "19_verification_fr",
+  "file_png": "img/19_verification_fr.png",
+  "file_web": "img/web/19_verification_fr.webp",
+  "lang": "fr",
+  "caption_fr": "Les six familles de contrôles automatiques et leurs écarts mesurés ; plus ce que ces contrôles ne disent pas.",
+  "caption_en": "The six families of automatic checks and their measured errors; plus what those checks do not say.",
+  "source": "Diagramme. Tous les nombres sont lus à l'exécution dans results/verification/verification_report.json (31/31 contrôles au vert) et du décompte pytest (89 tests).",
+  "generated_by": "scripts/draw_methodology.py",
+  "version": "exo01-sim v1.2.1"
+ },
+ {
+  "id": "19_verification_en",
+  "file_png": "img/19_verification_en.png",
+  "file_web": "img/web/19_verification_en.webp",
+  "lang": "en",
+  "caption_fr": "Les six familles de contrôles automatiques et leurs écarts mesurés ; plus ce que ces contrôles ne disent pas.",
+  "caption_en": "The six families of automatic checks and their measured errors; plus what those checks do not say.",
+  "source": "Diagramme. Tous les nombres sont lus à l'exécution dans results/verification/verification_report.json (31/31 contrôles au vert) et du décompte pytest (89 tests).",
+  "generated_by": "scripts/draw_methodology.py",
+  "version": "exo01-sim v1.2.1"
+ }
+]

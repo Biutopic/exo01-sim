@@ -2,6 +2,13 @@
 
 ## v1.2.1 (30 Oct 2026)
 
+* Methodology package for the website: `scripts/draw_methodology.py` -> five figures x FR/EN (calculation chain,
+  claim discipline, mooring element laws, model boundary, verification evidence), `docs/website/methodologie.fr.md`,
+  `methodology.en.md`, `methodology_figures.json`, `METHODOLOGY_PACKAGE.md`. Every number in the verification figure is
+  read from `results/verification/verification_report.json` at run time.
+* Two code maps of the project itself: `docs/codemap/` (static, technical) and `docs/floorplan-source/` (plain-language,
+  rebuildable with the Floorplan plugin).
+
 * `scripts/run_mooring_final.py`: final comparison of 12 arrangements (ropes + knees, four tubes rigid / with
   cartridges, two-tube hybrids) at the converged settings → `results/mooring/final_comparison.{md,json}`, read in
   `docs/MOORING.md` §7. Sketches `results/mooring/sketch_six_lines*.png`, `sketch_hybrid_tubes_ropes.png`.
