@@ -106,20 +106,28 @@ section .wrap{padding-block:clamp(38px,5.5vw,62px)}
 .legend{display:flex;flex-wrap:wrap;gap:7px 18px;margin-top:14px}
 .legend div{display:flex;gap:7px;align-items:center;font-family:var(--data);font-size:.72rem;color:var(--mute)}
 
-/* 02 system map */
-.map{display:grid;gap:10px}
-.maprow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-@media(max-width:760px){.maprow{grid-template-columns:1fr}}
-.node{background:var(--surface);border:1px solid var(--rule);padding:12px 13px;display:grid;gap:4px;cursor:pointer;text-align:left;font:inherit;color:inherit;transition:.2s;position:relative}
-.alt .node{background:var(--bg)}
-.node[aria-pressed="true"]{border-color:var(--water);box-shadow:inset 3px 0 0 var(--water)}
-.node:focus-visible{outline:2px solid var(--water);outline-offset:2px}
-.node .nt{font-family:var(--display);font-weight:600;font-size:.95rem}
-.node .nm{font-family:var(--data);font-size:.71rem;color:var(--mute)}
-.maprow.sub{grid-template-columns:repeat(3,minmax(0,1fr));padding-left:clamp(0px,4vw,48px)}
-@media(max-width:760px){.maprow.sub{padding-left:14px;grid-template-columns:1fr}}
-.flowmark{font-family:var(--data);font-size:.7rem;color:var(--mute);text-align:center;letter-spacing:.2em}
-.nodedetail{margin-top:12px;border:1px solid var(--rule);border-left:3px solid var(--water);background:var(--surface);padding:13px 15px;min-height:4.4em}
+/* 02 system map — node graph */
+.graphbox{overflow-x:auto;overflow-y:hidden;border:1px solid var(--rule);background:var(--surface);padding:6px}
+.alt .graphbox{background:var(--bg)}
+.graphbox svg{display:block;width:100%;min-width:900px;height:auto;border:0;background:none}
+.gnode{cursor:pointer}
+.gnode rect.body{fill:var(--surface);stroke:var(--rule-strong);stroke-width:1}
+.alt .gnode rect.body{fill:var(--bg)}
+.gnode .ttl{font-family:'Archivo',system-ui,sans-serif;font-weight:600;font-size:13px;fill:var(--ink)}
+.gnode .sub{font-family:'IBM Plex Mono',monospace;font-size:10px;fill:var(--mute)}
+.gnode[data-dim="1"]{opacity:.26}
+.gnode[data-sel="1"] rect.body{stroke:var(--water);stroke-width:2}
+.gnode:focus-visible rect.body{stroke:var(--water);stroke-width:2}
+.gedge{stroke:var(--rule-strong);stroke-width:1.4;fill:none}
+.gedge[data-dim="1"]{opacity:.18}
+.gedge[data-hot="1"]{stroke:var(--water);stroke-width:2}
+.glabel{font-family:'IBM Plex Mono',monospace;font-size:9.5px;fill:var(--mute);paint-order:stroke;stroke:var(--surface);stroke-width:3.5px;stroke-linejoin:round}
+.alt .glabel{stroke:var(--bg)}
+.glabel[data-dim="1"]{opacity:.18}
+.gclus rect{fill:none;stroke:var(--rule);stroke-width:1;stroke-dasharray:4 4}
+.gclus text{font-family:'IBM Plex Mono',monospace;font-size:10px;fill:var(--mute);letter-spacing:.06em}
+.gclus[data-dim="1"]{opacity:.4}
+.nodedetail{margin-top:12px;border:1px solid var(--rule);border-left:3px solid var(--water);background:var(--surface);padding:13px 15px;min-height:4.6em}
 .alt .nodedetail{background:var(--bg)}
 .nodedetail .nd1{font-family:var(--display);font-weight:600;font-size:.95rem;margin-bottom:3px}
 .nodedetail .nd2{font-size:.92rem;color:var(--mute);font-family:var(--display);font-weight:500;line-height:1.5}
@@ -246,25 +254,8 @@ footer .meta{font-family:var(--data);font-size:.75rem;color:var(--mute);line-hei
       <h2 data-i="s2h">Le système</h2>
       <p class="sdeck" data-i="s2d">Un seul jeu de calculs, utilisé par l'interface 3D, par les études en série et par les tests. Cliquez une pièce.</p>
     </div>
-    <div class="map" id="map">
-      <div class="maprow">
-        <button class="node" data-n="ui" aria-pressed="false"><span class="nt" data-i="n1t">Interface 3D</span><span class="nm">web/ · 3 · 1 400 L</span></button>
-        <button class="node" data-n="srv" aria-pressed="false"><span class="nt" data-i="n2t">Serveur</span><span class="nm">app.py · 21 routes</span></button>
-        <button class="node" data-n="core" aria-pressed="true"><span class="nt" data-i="n3t">Moteur de calcul</span><span class="nm">exo01/ · 16 · 4 000 L</span></button>
-      </div>
-      <div class="flowmark">· · ·</div>
-      <div class="maprow sub">
-        <button class="node" data-n="stat" aria-pressed="false"><span class="nt" data-i="n4t">Statique</span><span class="nm">mass · buoyancy · equilibrium</span></button>
-        <button class="node" data-n="hydro" aria-pressed="false"><span class="nt" data-i="n5t">Houle</span><span class="nm">hydro · response</span></button>
-        <button class="node" data-n="two" aria-pressed="false"><span class="nt" data-i="n6t">Deux corps</span><span class="nm">twobody · boat · propulsion</span></button>
-      </div>
-      <div class="flowmark">· · ·</div>
-      <div class="maprow">
-        <button class="node" data-n="studies" aria-pressed="false"><span class="nt" data-i="n7t">Études</span><span class="nm">scripts/ · 16</span></button>
-        <button class="node" data-n="tests" aria-pressed="false"><span class="nt" data-i="n8t">Vérification</span><span class="nm">tests/ · 89</span></button>
-        <button class="node" data-n="res" aria-pressed="false"><span class="nt" data-i="n9t">Résultats publiés</span><span class="nm">results/ · docs/</span></button>
-      </div>
-    </div>
+    <div class="chiprow" id="flows" role="group" aria-label="Flow"></div>
+    <div class="graphbox"><svg id="graph" viewBox="0 0 1036 580" role="img" aria-label="Carte du système"></svg></div>
     <div class="nodedetail" id="nodedetail"></div>
   </div>
 </section>
@@ -498,13 +489,138 @@ function playChain(){
 }
 $("#playchain").addEventListener("click",playChain);
 
-/* 02 system map */
+/* ---- 02 system map: clusters, nodes, edges, flows (layout in SVG units) ---- */
+const NW=172, NH=50;
+const CLUS=[
+ {x:16,y:24,w:404,h:160, fr:"Interface et serveur", en:"Interface and server"},
+ {x:440,y:24,w:404,h:160, fr:"Entrées : plans, configurations", en:"Inputs: drawings, configurations"},
+ {x:16,y:206,w:404,h:206, fr:"Moteur — statique", en:"Engine — statics"},
+ {x:440,y:206,w:212,h:206, fr:"Moteur — houle", en:"Engine — waves"},
+ {x:672,y:206,w:212,h:206, fr:"Moteur — deux corps", en:"Engine — two bodies"},
+ {x:16,y:434,w:868,h:128, fr:"Études, tests, résultats", en:"Studies, tests, results"}
+];
+const GN={
+ ui:{x:36,y:52, sub:"web/app.js", fr:["Interface 3D","Ce que vous regardez : la plateforme et le bateau en 3D. Tout ce qui se déplace sur le vrai se déplace ici. Elle ne calcule rien elle-même.","web/ · 3 fichiers · bibliothèque 3D embarquée, pas d'étape de build"],
+     en:["3D interface","What you look at: the platform and the boat in 3D. Everything that moves on the real thing moves here. It computes nothing itself.","web/ · 3 files · 3D library vendored, no build step"]},
+ api:{x:228,y:52, sub:"app.py · 21 routes", fr:["Serveur","Reçoit ce que vous changez, renvoie le résultat. Les réponses rapides arrivent en moins d'une seconde.","app.py · 21 routes"],
+      en:["Server","Takes what you changed, sends the result back. Quick answers come in under a second.","app.py · 21 routes"]},
+ jobs:{x:228,y:118, sub:"exo01/jobs.py", fr:["Tâches de fond","Les calculs lourds partent dans un processus séparé avec une barre de progression, pour que la page ne gèle jamais.","exo01/jobs.py"],
+       en:["Background jobs","Heavy calculations go to a separate process with a progress bar, so the page never freezes.","exo01/jobs.py"]},
+ refs:{x:460,y:52, sub:"data/", fr:["Plans de référence","Les formes et les masses mesurées dont tout part : le plan d'assemblage d'EXO-01, et la coque du bateau reconstituée par sections. Lus, jamais modifiés.","data/reference_v3 · data/renaud8000_v1"],
+       en:["Reference drawings","The measured shapes and masses everything starts from: EXO-01's assembly drawing, and the boat's hull rebuilt from sections. Read, never modified.","data/reference_v3 · data/renaud8000_v1"]},
+ cfg:{x:652,y:52, sub:"configs/ · scenarios/", fr:["Configurations","Deux points de départ : l'un laisse les inconnues vides et répond « non calculé », l'autre les comble par des hypothèses datées.","configs/ · scenarios/"],
+      en:["Configurations","Two starting points: one leaves unknowns empty and answers “not computed”, the other fills them with dated assumptions.","configs/ · scenarios/"]},
+ mass:{x:36,y:234, sub:"exo01/mass.py", fr:["Masses","Poids total, centre de gravité et inertie, poste par poste. Une masse manquante arrête le calcul au lieu d'être devinée.","exo01/mass.py · 18 postes · 856 kg à vide"],
+       en:["Masses","Total weight, centre of gravity and inertia, item by item. A missing mass stops the calculation instead of being guessed.","exo01/mass.py · 18 items · 856 kg light"]},
+ hyd:{x:228,y:234, sub:"exo01/buoyancy.py", fr:["Hydrostatique","Les flotteurs comme formes 3D fermées, coupées par le plan d'eau. Volume immergé exact à n'importe quelle gîte.","exo01/buoyancy.py"],
+      en:["Hydrostatics","The floats as closed 3D shapes, cut by the water plane. Exact immersed volume at any heel.","exo01/buoyancy.py"]},
+ eq:{x:36,y:300, sub:"exo01/equilibrium.py", fr:["Équilibre","La position où poids et poussée s'équilibrent : tirant d'eau, gîte, assiette, et le franc-bord restant en chaque point.","exo01/equilibrium.py"],
+     en:["Equilibrium","Where weight and buoyancy balance: draft, heel, trim, and the freeboard left at every point.","exo01/equilibrium.py"]},
+ ev:{x:228,y:300, sub:"exo01/analysis.py", fr:["evaluate()","Le chef d'orchestre : enchaîne masses, flottaison, équilibre, bateau, propulsion et houle dans l'ordre. C'est la fonction que l'interface, les études et les tests appellent tous.","exo01/analysis.py"],
+     en:["evaluate()","The conductor: chains masses, flotation, equilibrium, boat, propulsion and waves in order. This is the function the interface, the studies and the tests all call.","exo01/analysis.py"]},
+ bem:{x:460,y:234, sub:"exo01/hydro.py", fr:["Calcul BEM","Comment l'eau repousse chaque coque. La partie lourde : calculée une fois par position et réutilisée tant qu'on reste assez près.","exo01/hydro.py · Capytaine 3.0"],
+      en:["BEM solve","How water pushes back on each hull. The heavy part: computed once per position and reused while you stay close enough.","exo01/hydro.py · Capytaine 3.0"]},
+ resp:{x:460,y:300, sub:"exo01/response.py", fr:["Réponse en houle","Mouvements, accélérations de pont et effort dans chaque liaison — plus le calcul pas-à-pas en temps qui attrape les pics de reprise.","exo01/response.py"],
+       en:["Wave response","Motion, deck accelerations and the load in every link — plus the step-by-step time calculation that catches snatch peaks.","exo01/response.py"]},
+ two:{x:692,y:234, sub:"exo01/twobody.py", fr:["Équilibre couplé","Le bateau comme second corps flottant, relié par des aussières, des défenses et des tubes. C'est ici que vit la loi de chaque liaison.","exo01/twobody.py · boat.py"],
+      en:["Coupled equilibrium","The boat as a second floating body, joined by ropes, fenders and tubes. This is where each link's force law lives.","exo01/twobody.py · boat.py"]},
+ prop:{x:692,y:300, sub:"exo01/propulsion.py", fr:["Propulsion","Poussée des propulseurs et résistance de coque → vitesse d'équilibre, et l'effort que les aussières doivent reprendre, en poussée comme en remorquage.","exo01/propulsion.py"],
+       en:["Propulsion","Pod thrust and hull resistance → steady speed, and the load the ropes must take, pushing or towing.","exo01/propulsion.py"]},
+ stu:{x:36,y:462, sub:"scripts/ · 16", fr:["Études","Des séries qui répondent à une question de conception et écrivent la réponse dans le dépôt : position des batteries, arrangement d'amarrage, fiche de stabilité.","scripts/ · 16 scripts"],
+      en:["Studies","Batch runs that answer a design question and write the answer into the repository: battery position, mooring arrangement, stability sheet.","scripts/ · 16 scripts"]},
+ tst:{x:384,y:462, sub:"tests/ · 89", fr:["Tests","Quatre-vingt-neuf tests rejouent la physique contre des formes dont la solution exacte est connue. Ils appellent le même code que l'interface.","tests/ · 89 tests"],
+      en:["Tests","Eighty-nine tests replay the physics against shapes whose exact solution is known. They call the same code as the interface.","tests/ · 89 tests"]},
+ res:{x:712,y:462, sub:"results/ · docs/", fr:["Résultats publiés","Tableaux, croquis et rapports écrits par les études, versionnés avec le code : chaque chiffre cité ailleurs se retrouve ici avec le calcul qui l'a produit.","results/ · docs/"],
+      en:["Published results","Tables, sketches and reports written by the studies, versioned with the code: every figure quoted elsewhere is here with the calculation that produced it.","results/ · docs/"]}
+};
+const GE=[
+ ["ui","api",{fr:"fetch /api/*",en:"fetch /api/*"}],
+ ["api","jobs",{fr:"tâches BEM",en:"BEM jobs"}],
+ ["refs","cfg",{fr:"construit depuis",en:"built from"}],
+ ["cfg","ev",{fr:"charge + variantes",en:"load + overrides"}],
+ ["api","ev",{fr:"/api/evaluate",en:"/api/evaluate"}],
+ ["mass","ev",{fr:"M, G, I",en:"M, G, I"}],
+ ["hyd","ev",{fr:"assemblage",en:"assembly"}],
+ ["eq","ev",{fr:"tirant d'eau, gîte",en:"draft, heel"}],
+ ["ev","two",{fr:"si bateau présent",en:"if boat present"}],
+ ["two","prop",{fr:"poussée ↔ vitesse",en:"thrust ↔ speed"}],
+ ["jobs","bem",{fr:"calcule",en:"computes"}],
+ ["bem","resp",{fr:"coefficients",en:"coefficients"}],
+ ["ev","resp",{fr:"modèle",en:"model"}],
+ ["stu","ev",{fr:"évalue",en:"evaluates"}],
+ ["stu","res",{fr:"écrit",en:"writes"}],
+ ["tst","ev",{fr:"vérifie",en:"checks"}]
+];
+const FLOWS=[
+ {id:"still", fr:"Eau calme", en:"Still water",
+  n:["ui","api","cfg","mass","hyd","eq","ev","two"],
+  e:[["ui","api"],["api","ev"],["cfg","ev"],["mass","ev"],["hyd","ev"],["eq","ev"],["ev","two"]]},
+ {id:"wave", fr:"Calcul en houle", en:"Wave calculation",
+  n:["ui","api","jobs","bem","ev","resp"],
+  e:[["ui","api"],["api","jobs"],["jobs","bem"],["bem","resp"],["ev","resp"]]},
+ {id:"study", fr:"Étude d'amarrage", en:"Mooring study",
+  n:["stu","ev","two","resp","res"],
+  e:[["stu","ev"],["ev","two"],["ev","resp"],["stu","res"]]}
+];
+let flowOn=null, nodeOn="ev";
+const ek=(a,b)=>a+">"+b;
+function anchors(a,b){
+  const A=GN[a],B=GN[b], ac={x:A.x+NW/2,y:A.y+NH/2}, bc={x:B.x+NW/2,y:B.y+NH/2};
+  if(Math.abs(bc.x-ac.x) >= Math.abs(bc.y-ac.y)){
+    const s=bc.x>ac.x?{x:A.x+NW,y:ac.y}:{x:A.x,y:ac.y}, t=bc.x>ac.x?{x:B.x,y:bc.y}:{x:B.x+NW,y:bc.y};
+    const d=(t.x-s.x)*.45; return [s,t,{x:s.x+d,y:s.y},{x:t.x-d,y:t.y}];
+  }
+  const s=bc.y>ac.y?{x:ac.x,y:A.y+NH}:{x:ac.x,y:A.y}, t=bc.y>ac.y?{x:bc.x,y:B.y}:{x:bc.x,y:B.y+NH};
+  const d=(t.y-s.y)*.45; return [s,t,{x:s.x,y:s.y+d},{x:t.x,y:t.y-d}];
+}
+function buildGraph(){
+  const g=$("#graph");
+  const esc=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+  let out=`<defs><marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8 z" fill="context-stroke"/></marker></defs>`;
+  out+=CLUS.map(c=>`<g class="gclus" data-dim="0"><rect x="${c.x}" y="${c.y}" width="${c.w}" height="${c.h}" rx="6"/><text x="${c.x+10}" y="${c.y+15}">${esc(c[L])}</text></g>`).join("");
+  out+=GE.map(([a,b,lab])=>{
+    const [s,t,c1,c2]=anchors(a,b);
+    const mx=(s.x+t.x)/2, my=(s.y+t.y)/2;
+    return `<path class="gedge" data-e="${ek(a,b)}" data-dim="0" marker-end="url(#ah)" d="M${s.x} ${s.y} C${c1.x} ${c1.y} ${c2.x} ${c2.y} ${t.x} ${t.y}"/>`+
+           `<text class="glabel" data-e="${ek(a,b)}" data-dim="0" x="${mx}" y="${my-4}" text-anchor="middle">${esc(lab[L])}</text>`;
+  }).join("");
+  out+=Object.entries(GN).map(([k,n])=>
+    `<g class="gnode" data-n="${k}" data-dim="0" data-sel="${k===nodeOn?1:0}" tabindex="0" role="button" aria-label="${esc(n[L][0])}">`+
+    `<rect class="body" x="${n.x}" y="${n.y}" width="${NW}" height="${NH}" rx="4"/>`+
+    `<text class="ttl" x="${n.x+12}" y="${n.y+21}">${esc(n[L][0])}</text>`+
+    `<text class="sub" x="${n.x+12}" y="${n.y+37}">${esc(n.sub)}</text></g>`).join("");
+  g.innerHTML=out;
+  g.querySelectorAll(".gnode").forEach(el=>{
+    el.addEventListener("click",()=>showNode(el.dataset.n));
+    el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showNode(el.dataset.n);}});
+  });
+}
 function showNode(n){
-  $$("#map .node").forEach(b=>b.setAttribute("aria-pressed",b.dataset.n===n));
-  const [t,p,f]=NODES[n][L];
+  nodeOn=n;
+  $$("#graph .gnode").forEach(el=>el.dataset.sel = el.dataset.n===n ? "1":"0");
+  const [t,p,f]=GN[n][L];
   $("#nodedetail").innerHTML=`<div class="nd1">${t}</div><div class="nd2">${p}</div><div class="nd3">${f}</div>`;
 }
-$$("#map .node").forEach(b=>b.addEventListener("click",()=>showNode(b.dataset.n)));
+function buildFlows(){
+  $("#flows").innerHTML=FLOWS.map(f=>`<button class="chip" data-f="${f.id}" aria-pressed="${flowOn===f.id}">${f[L]}</button>`).join("")
+    +`<span class="hint" style="margin-left:4px" data-nohl>${L==="fr"?"ou cliquez une pièce":"or click a part"}</span>`;
+  $$("#flows .chip").forEach(b=>b.addEventListener("click",()=>setFlow(b.dataset.f)));
+}
+function setFlow(id){
+  flowOn = flowOn===id ? null : id;
+  $$("#flows .chip").forEach(b=>b.setAttribute("aria-pressed", b.dataset.f===flowOn));
+  const f=FLOWS.find(x=>x.id===flowOn);
+  const ns=f?new Set(f.n):null, es=f?new Set(f.e.map(([a,b])=>ek(a,b))):null;
+  $$("#graph .gnode").forEach(el=>el.dataset.dim = (ns && !ns.has(el.dataset.n)) ? "1":"0");
+  $$("#graph .gclus").forEach(el=>el.dataset.dim = f ? "1":"0");
+  $$("#graph .gedge, #graph .glabel").forEach(el=>{
+    const hot = es && es.has(el.dataset.e);
+    el.dataset.dim = (es && !hot) ? "1":"0";
+    if(el.classList.contains("gedge")) el.dataset.hot = hot ? "1":"0";
+  });
+  if(f) showNode(f.n[0]);
+}
+
 
 /* 03 links */
 function buildLab(){
@@ -574,7 +690,7 @@ function setLang(l){
   L=l; try{localStorage.setItem("exo-lang",l);}catch(e){}
   applyStrings();
   buildLab(); updateLab();
-  showNode($("#map .node[aria-pressed='true']")?.dataset.n || "core");
+  buildFlows(); buildGraph(); showNode(nodeOn); if(flowOn){const k=flowOn;flowOn=null;setFlow(k);}
   buildMeas(); buildChecks();
 }
 $("#bfr").addEventListener("click",()=>setLang("fr"));
@@ -583,7 +699,7 @@ $("#ben").addEventListener("click",()=>setLang("en"));
 /* boot — complete at rest, then the chain plays once when it comes into view */
 applyStrings();
 buildLab(); updateLab();
-showNode("core");
+buildFlows(); buildGraph(); showNode(nodeOn);
 buildMeas(); buildChecks();
 stages.forEach(s=>s.dataset.on="1");
 if(!reduce){

@@ -68,7 +68,9 @@ Three things are interactive rather than animated:
 - **§03** the slider moves the boat from −60 to +60 mm; the three force laws, the loads in newtons and the state of each
   element (slack / no contact / in tension) follow live. At +34 mm the rope reads 340 N, near the 400 N working
   pretension the mooring study settled on.
-- **§02** clicking a part of the system shows what it does and how big it is, with real file counts.
+- **§02** a node graph of the system — clusters, 16 parts with their real file paths, labelled edges. Three flows
+  (still water · wave calculation · mooring study) light their path and dim the rest; clicking any part shows what it
+  does. Same idea as the full code map in `docs/codemap/`, trimmed to what a reader needs.
 - **§05** the measurement cards light on hover or tap, each naming what it would lift.
 
 **Tone.** The page shows the tool rather than arguing for it. The exploratory status is stated once, in the footer, and
