@@ -1,0 +1,593 @@
+<title>Méthodologie EXO-01</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: full-bleed bands, each with an inner wrapper that carries the gutter.
+   The waterline — a teal rule with a hatched field under it — is the recurring mark. */
+:root{
+  --bg:#f3f6f7; --surface:#ffffff; --surface-2:#e9eff1;
+  --ink:#10212b; --mute:#5d7482; --rule:#d3dde2; --rule-strong:#b3c4cc;
+  --water:#0b5f70; --water-soft:#d7eaee;
+  --ok:#1a6e3d; --ok-soft:#dcefe3;
+  --declared:#a8680a; --declared-soft:#f6ecd8;
+  --assume:#bb4318; --assume-soft:#f9e5dc;
+  --display:'Archivo',system-ui,sans-serif;
+  --body:'Newsreader',Georgia,serif;
+  --data:'IBM Plex Mono',ui-monospace,monospace;
+  --maxw:1120px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0a1318; --surface:#101e25; --surface-2:#16282f;
+  --ink:#e4edf0; --mute:#8ba4af; --rule:#1d313a; --rule-strong:#2b4751;
+  --water:#3cb6cd; --water-soft:#0f2b33;
+  --ok:#53c07e; --ok-soft:#102a1c;
+  --declared:#dca63f; --declared-soft:#2a2112;
+  --assume:#f08050; --assume-soft:#2d1710;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a1318; --surface:#101e25; --surface-2:#16282f;
+  --ink:#e4edf0; --mute:#8ba4af; --rule:#1d313a; --rule-strong:#2b4751;
+  --water:#3cb6cd; --water-soft:#0f2b33;
+  --ok:#53c07e; --ok-soft:#102a1c;
+  --declared:#dca63f; --declared-soft:#2a2112;
+  --assume:#f08050; --assume-soft:#2d1710;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.62;margin:0;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--surface)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,.ui{font-family:var(--display);text-wrap:balance}
+h1{font-size:clamp(2rem,5.2vw,3.25rem);line-height:1.04;font-weight:700;letter-spacing:-.021em;margin:0}
+h2{font-size:clamp(1.35rem,2.9vw,1.9rem);line-height:1.14;font-weight:600;letter-spacing:-.014em;margin:0}
+h3{font-size:1rem;font-weight:600;margin:0}
+p{margin:0}
+a{color:var(--water);text-underline-offset:3px}
+.mono{font-family:var(--data);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--data);font-size:.69rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:500}
+figure{margin:0}
+figcaption{font-family:var(--data);font-size:.74rem;line-height:1.55;color:var(--mute);margin-top:8px}
+img{display:block;width:100%;height:auto;border:1px solid var(--rule);background:var(--surface-2)}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:19;background:var(--surface);border-bottom:1px solid var(--rule)}
+header .wrap{display:flex;align-items:center;gap:16px;padding-block:11px;min-height:56px}
+.brand{font-family:var(--display);font-weight:600;font-size:.93rem;display:flex;align-items:baseline;gap:9px;min-width:0}
+.brand span{font-family:var(--data);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.spacer{flex:1}
+.seg{display:flex;border:1px solid var(--rule-strong);border-radius:999px;overflow:hidden;background:var(--bg);flex:none}
+.seg button{font-family:var(--data);font-size:.72rem;font-weight:600;letter-spacing:.07em;padding:5px 12px;border:0;background:transparent;color:var(--mute);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.seg button:focus-visible{outline:2px solid var(--water);outline-offset:-2px}
+
+.hero{border-bottom:1px solid var(--rule);background:var(--surface);position:relative;overflow:hidden}
+.hero .wrap{padding-block:clamp(34px,6vw,64px) clamp(44px,7vw,78px);position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:clamp(22px,4vw,52px);align-items:center}
+@media(max-width:820px){.hero-grid{grid-template-columns:1fr}}
+.lede{font-size:clamp(1.02rem,1.9vw,1.18rem);color:var(--mute);margin-top:17px;max-width:36em}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--data);font-size:.69rem;letter-spacing:.1em;text-transform:uppercase;color:var(--water);margin-bottom:16px}
+.kicker i{width:22px;height:1px;background:var(--water);display:block}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:26px;max-width:560px}
+.fact{background:var(--surface);padding:10px 13px}
+.fact b{display:block;font-family:var(--data);font-size:1.05rem;font-weight:600;font-variant-numeric:tabular-nums}
+.fact span{font-size:.8rem;color:var(--mute);font-family:var(--display);line-height:1.35;display:block;margin-top:1px}
+.waterline{position:absolute;left:0;right:0;bottom:0;height:40px;background:var(--water-soft);border-top:1px solid var(--water);z-index:0}
+.waterline::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent 0 9px,color-mix(in srgb,var(--water) 11%,transparent) 9px 10px)}
+
+section{border-bottom:1px solid var(--rule)}
+section .wrap{padding-block:clamp(38px,5.5vw,62px)}
+.alt{background:var(--surface)}
+.shead{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 18px;align-items:start;margin-bottom:24px}
+.snum{font-family:var(--data);font-size:.72rem;font-weight:600;color:var(--water);border:1px solid var(--water);border-radius:3px;width:26px;height:26px;display:grid;place-items:center;margin-top:3px}
+.sdeck{grid-column:2;color:var(--mute);margin-top:8px;max-width:58ch}
+.prose{max-width:62ch;margin-top:20px;display:grid;gap:12px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px}
+.btn{font-family:var(--data);font-size:.74rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:8px 14px;border:1px solid var(--ink);background:var(--ink);color:var(--surface);border-radius:3px;cursor:pointer}
+.btn:focus-visible{outline:2px solid var(--water);outline-offset:2px}
+.hint{font-family:var(--data);font-size:.72rem;color:var(--mute)}
+.chip{font-family:var(--data);font-size:.73rem;padding:6px 11px;border:1px solid var(--rule-strong);border-radius:999px;background:var(--surface);color:var(--mute);cursor:pointer;transition:.2s}
+.chip[aria-pressed="true"]{border-color:var(--ink);color:var(--surface);background:var(--ink)}
+.chip:focus-visible{outline:2px solid var(--water);outline-offset:2px}
+.chiprow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+
+/* 01 chain */
+.splitfig{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.72fr);gap:clamp(18px,3vw,34px);align-items:start}
+@media(max-width:860px){.splitfig{grid-template-columns:1fr}}
+.chain{display:grid;gap:8px}
+.stage{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--rule-strong);padding:11px 13px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 12px;align-items:baseline;transition:border-color .3s,background .3s}
+.alt .stage{background:var(--bg)}
+.stage[data-on="1"]{border-left-color:var(--water)}
+.stage .k{font-family:var(--data);font-size:.7rem;color:var(--mute)}
+.stage p{grid-column:2;font-size:.86rem;line-height:1.48;color:var(--mute);font-family:var(--display);font-weight:500}
+.dots{display:flex;gap:4px}
+.dot{width:13px;height:8px;border-radius:1px;display:block}
+.d-ok{background:var(--ok)}.d-de{background:var(--declared)}.d-as{background:var(--assume)}
+.legend{display:flex;flex-wrap:wrap;gap:7px 18px;margin-top:14px}
+.legend div{display:flex;gap:7px;align-items:center;font-family:var(--data);font-size:.72rem;color:var(--mute)}
+
+/* 02 system map */
+.map{display:grid;gap:10px}
+.maprow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media(max-width:760px){.maprow{grid-template-columns:1fr}}
+.node{background:var(--surface);border:1px solid var(--rule);padding:12px 13px;display:grid;gap:4px;cursor:pointer;text-align:left;font:inherit;color:inherit;transition:.2s;position:relative}
+.alt .node{background:var(--bg)}
+.node[aria-pressed="true"]{border-color:var(--water);box-shadow:inset 3px 0 0 var(--water)}
+.node:focus-visible{outline:2px solid var(--water);outline-offset:2px}
+.node .nt{font-family:var(--display);font-weight:600;font-size:.95rem}
+.node .nm{font-family:var(--data);font-size:.71rem;color:var(--mute)}
+.maprow.sub{grid-template-columns:repeat(3,minmax(0,1fr));padding-left:clamp(0px,4vw,48px)}
+@media(max-width:760px){.maprow.sub{padding-left:14px;grid-template-columns:1fr}}
+.flowmark{font-family:var(--data);font-size:.7rem;color:var(--mute);text-align:center;letter-spacing:.2em}
+.nodedetail{margin-top:12px;border:1px solid var(--rule);border-left:3px solid var(--water);background:var(--surface);padding:13px 15px;min-height:4.4em}
+.alt .nodedetail{background:var(--bg)}
+.nodedetail .nd1{font-family:var(--display);font-weight:600;font-size:.95rem;margin-bottom:3px}
+.nodedetail .nd2{font-size:.92rem;color:var(--mute);font-family:var(--display);font-weight:500;line-height:1.5}
+.nodedetail .nd3{font-family:var(--data);font-size:.72rem;color:var(--mute);margin-top:6px}
+
+/* 03 links */
+.lab{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+@media(max-width:820px){.lab{grid-template-columns:1fr}}
+.el{border:1px solid var(--rule);background:var(--surface);padding:13px;display:grid;gap:9px}
+.alt .el{background:var(--bg)}
+.el .elh{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.el .nm{font-family:var(--display);font-weight:600;font-size:.98rem}
+.el .kk{font-family:var(--data);font-size:.69rem;color:var(--mute)}
+.el .rule{font-family:var(--display);font-weight:500;font-size:.84rem;color:var(--mute)}
+.el svg{width:100%;height:auto;display:block;border:0;background:none}
+.readout{display:flex;align-items:baseline;justify-content:space-between;gap:8px;border-top:1px solid var(--rule);padding-top:8px}
+.readout .v{font-family:var(--data);font-size:1.16rem;font-weight:600;font-variant-numeric:tabular-nums}
+.readout .s{font-family:var(--data);font-size:.69rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);text-align:right}
+.slab{display:grid;gap:8px;margin:2px 0 16px}
+.slab .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+input[type=range]{flex:1;min-width:190px;accent-color:var(--water)}
+.gapval{font-family:var(--data);font-size:.95rem;font-weight:600;min-width:7ch}
+.flag{font-family:var(--data);font-size:.7rem;color:var(--assume);border:1px solid var(--assume);background:var(--assume-soft);padding:2px 7px;border-radius:3px}
+
+/* 05 next measurements */
+.meas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(max-width:760px){.meas{grid-template-columns:1fr}}
+.mcard{border:1px solid var(--rule);border-left:3px solid var(--rule-strong);background:var(--surface);padding:13px 15px;display:grid;gap:5px;align-content:start;transition:.3s}
+.alt .mcard{background:var(--bg)}
+.mcard[data-on="1"]{border-left-color:var(--ok);background:var(--ok-soft)}
+.mcard .mt{font-family:var(--display);font-weight:600;font-size:.96rem}
+.mcard .mw{font-family:var(--data);font-size:.73rem;color:var(--mute);line-height:1.55}
+.mcard .ml{font-family:var(--data);font-size:.71rem;color:var(--ok);opacity:0;transition:.3s}
+.mcard[data-on="1"] .ml{opacity:1}
+
+/* 06 checks */
+.checks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+@media(max-width:900px){.checks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.checks{grid-template-columns:1fr}}
+.chk{border:1px solid var(--rule);border-left:3px solid var(--ok);background:var(--surface);padding:13px;display:grid;gap:6px;align-content:start}
+.alt .chk{background:var(--bg)}
+.chk.warnish{border-left-color:var(--declared)}
+.chk .ch{display:flex;align-items:center;gap:9px;justify-content:space-between}
+.chk h3{font-size:.9rem}
+.chk .tick{font-family:var(--data);font-size:.76rem;font-weight:600;color:var(--ok)}
+.chk.warnish .tick{color:var(--declared)}
+.chk .val{font-family:var(--data);font-size:1.08rem;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.chk p{font-size:.85rem;color:var(--mute);font-family:var(--display);font-weight:500;line-height:1.48}
+
+footer .wrap{padding-block:30px 42px;display:grid;gap:10px}
+footer .meta{font-family:var(--data);font-size:.75rem;color:var(--mute);line-height:1.8}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+</style>
+
+<header>
+  <div class="wrap">
+    <div class="brand">EXO‑01 <span data-i="brandsub">Méthodologie de simulation</span></div>
+    <div class="spacer"></div>
+    <div class="seg" role="group" aria-label="Langue / Language">
+      <button id="bfr" aria-pressed="true">FR</button>
+      <button id="ben" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="kicker"><i></i><span data-i="kick">Simulation ouverte · exo01-sim v1.2.1</span></div>
+        <h1 data-i="h1">Une plateforme flottante, calculée avant d'être soudée</h1>
+        <p class="lede" data-i="lede">EXO-01 s'accouple à un bateau existant. Avant la première mise à l'eau, trois questions décident de l'intégration : où placer les masses, comment attacher le bateau, et comment l'ensemble bouge dans le clapot. Voici l'outil qui y répond, et comment il travaille.</p>
+        <div class="facts">
+          <div class="fact"><b class="mono">856 kg</b><span data-i="f1">à vide, 18 postes de masse</span></div>
+          <div class="fact"><b class="mono">12</b><span data-i="f2">degrés de liberté couplés</span></div>
+          <div class="fact"><b class="mono">53</b><span data-i="f3">fichiers de code, tous publics</span></div>
+          <div class="fact"><b class="mono">31 / 31</b><span data-i="f4">contrôles automatiques au vert</span></div>
+        </div>
+      </div>
+      <figure>
+        <img id="heroimg" alt="">
+        <figcaption data-i="cap0">EXO-01 et L'Hydronaute à couple, eau calme. Rendu du simulateur, géométrie du plan d'assemblage.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="waterline"></div>
+</div>
+
+<section id="s1">
+  <div class="wrap">
+    <div class="shead">
+      <div class="snum">01</div>
+      <h2 data-i="s1h">La chaîne de calcul</h2>
+      <p class="sdeck" data-i="s1d">Cinq étapes, chacune rejouable seule et comparable à une référence.</p>
+    </div>
+    <div class="splitfig">
+      <div>
+        <div class="chain" id="chain">
+          <div class="stage" data-on="0"><span class="k">01</span><h3 data-i="g1t">Géométrie</h3><span class="dots"><i class="dot d-ok"></i><i class="dot d-de"></i></span><p data-i="g1b">Six flotteurs Flofiz Ø 0,60 × 1,60 m en deux rangées, structure aluminium du plan d'assemblage.</p></div>
+          <div class="stage" data-on="0"><span class="k">02</span><h3 data-i="g2t">Masses</h3><span class="dots"><i class="dot d-de"></i><i class="dot d-as"></i></span><p data-i="g2b">Dix-huit postes, chacun étiqueté par sa source. Une masse manquante arrête le calcul.</p></div>
+          <div class="stage" data-on="0"><span class="k">03</span><h3 data-i="g3t">Hydrostatique</h3><span class="dots"><i class="dot d-ok"></i></span><p data-i="g3b">Surfaces triangulées coupées par le plan d'eau. Volume immergé et flottaison intégrés exactement, à n'importe quelle gîte.</p></div>
+          <div class="stage" data-on="0"><span class="k">04</span><h3 data-i="g4t">Hydrodynamique</h3><span class="dots"><i class="dot d-as"></i></span><p data-i="g4b">Théorie potentielle, douze degrés de liberté couplés : l'interaction entre les deux coques, pas deux calculs côte à côte.</p></div>
+          <div class="stage" data-on="0"><span class="k">05</span><h3 data-i="g5t">Réponse et liaisons</h3><span class="dots"><i class="dot d-as"></i></span><p data-i="g5b">Mouvements, accélérations de pont, effort dans chaque aussière — doublés d'un calcul pas-à-pas en temps.</p></div>
+        </div>
+        <div class="legend">
+          <div><i class="dot d-ok"></i><span data-i="lg1">relevé sur plan</span></div>
+          <div><i class="dot d-de"></i><span data-i="lg2">déclaré</span></div>
+          <div><i class="dot d-as"></i><span data-i="lg3">hypothèse versionnée</span></div>
+        </div>
+        <div class="tools"><button class="btn" id="playchain" data-i="play">Rejouer la chaîne</button></div>
+      </div>
+      <figure>
+        <img id="img1" alt="">
+        <figcaption data-i="cap1">EXO-01 seul, à vide : les 856 kg listés, répartis sur six flotteurs.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="s2">
+  <div class="wrap">
+    <div class="shead">
+      <div class="snum">02</div>
+      <h2 data-i="s2h">Le système</h2>
+      <p class="sdeck" data-i="s2d">Un seul jeu de calculs, utilisé par l'interface 3D, par les études en série et par les tests. Cliquez une pièce.</p>
+    </div>
+    <div class="map" id="map">
+      <div class="maprow">
+        <button class="node" data-n="ui" aria-pressed="false"><span class="nt" data-i="n1t">Interface 3D</span><span class="nm">web/ · 3 · 1 400 L</span></button>
+        <button class="node" data-n="srv" aria-pressed="false"><span class="nt" data-i="n2t">Serveur</span><span class="nm">app.py · 21 routes</span></button>
+        <button class="node" data-n="core" aria-pressed="true"><span class="nt" data-i="n3t">Moteur de calcul</span><span class="nm">exo01/ · 16 · 4 000 L</span></button>
+      </div>
+      <div class="flowmark">· · ·</div>
+      <div class="maprow sub">
+        <button class="node" data-n="stat" aria-pressed="false"><span class="nt" data-i="n4t">Statique</span><span class="nm">mass · buoyancy · equilibrium</span></button>
+        <button class="node" data-n="hydro" aria-pressed="false"><span class="nt" data-i="n5t">Houle</span><span class="nm">hydro · response</span></button>
+        <button class="node" data-n="two" aria-pressed="false"><span class="nt" data-i="n6t">Deux corps</span><span class="nm">twobody · boat · propulsion</span></button>
+      </div>
+      <div class="flowmark">· · ·</div>
+      <div class="maprow">
+        <button class="node" data-n="studies" aria-pressed="false"><span class="nt" data-i="n7t">Études</span><span class="nm">scripts/ · 16</span></button>
+        <button class="node" data-n="tests" aria-pressed="false"><span class="nt" data-i="n8t">Vérification</span><span class="nm">tests/ · 89</span></button>
+        <button class="node" data-n="res" aria-pressed="false"><span class="nt" data-i="n9t">Résultats publiés</span><span class="nm">results/ · docs/</span></button>
+      </div>
+    </div>
+    <div class="nodedetail" id="nodedetail"></div>
+  </div>
+</section>
+
+<section id="s3">
+  <div class="wrap">
+    <div class="shead">
+      <div class="snum">03</div>
+      <h2 data-i="s3h">Les liaisons</h2>
+      <p class="sdeck" data-i="s3d">Une aussière ne tire, une défense ne pousse, un tube fait les deux. Déplacez le bateau : chaque liaison répond à sa façon.</p>
+    </div>
+    <div class="splitfig" style="align-items:start">
+      <div>
+        <div class="slab">
+          <div class="row">
+            <span class="eyebrow" data-i="s3slide">Déplacement du bateau</span>
+            <input type="range" id="gap" min="-60" max="60" value="34" step="1">
+            <span class="gapval mono" id="gapv">+34 mm</span>
+          </div>
+          <div class="hint" id="gaphint"></div>
+        </div>
+        <div class="lab" id="lab"></div>
+        <div class="prose">
+          <p data-i="s3p1">Modéliser une aussière comme un ressort linéaire est commode, et faux dans le cas qui compte : le mou suivi d'une reprise brutale est le mode de rupture d'un amarrage, et un modèle linéaire ne le voit jamais.</p>
+          <p data-i="s3p2">C'est ce qui a montré qu'un arrangement d'aussières toutes filantes vers l'avant n'encaisse pas la poussée des propulseurs : le bateau recule de 300 à 370 mm et toutes les aussières se détendent. Avec deux défenses à la poupe, le même arrangement tient.</p>
+        </div>
+      </div>
+      <figure>
+        <img id="img2" alt="">
+        <figcaption data-i="cap2">Vue de dessus : le bateau accosté entre les deux rangées de flotteurs, et les aussières qui le tiennent.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="s4">
+  <div class="wrap">
+    <div class="shead">
+      <div class="snum">04</div>
+      <h2 data-i="s4h">En houle</h2>
+      <p class="sdeck" data-i="s4d">Houle régulière de travers, H 0,3 m et T 2,5 s : le clapot de l'Erdre pris comme cas d'essai. Le simulateur rejoue le mouvement à l'échelle 1:1.</p>
+    </div>
+    <div class="splitfig">
+      <figure>
+        <img id="img3" alt="">
+        <figcaption data-i="cap3">Houle de travers H 0,3 m, T 2,5 s : instant de roulis maximal, échelle 1:1.</figcaption>
+      </figure>
+      <figure>
+        <img id="img4" alt="">
+        <figcaption data-i="cap4">Fonctions de transfert pilonnement, roulis et tangage par scénario, houle de travers.</figcaption>
+      </figure>
+    </div>
+    <div class="prose">
+      <p data-i="s4p1">L'amortissement est celui du rayonnement, plus 5 % d'amortissement critique supposé : c'est la plus grosse hypothèse du calcul en houle, et un essai d'extinction à l'eau la remplacera. Les amortisseurs d'amarrage — snubber, cartouche élastomère — n'entrent eux aussi que comme une raideur : leur dissipation n'est pas modélisée.</p>
+    </div>
+  </div>
+</section>
+
+<section id="s5">
+  <div class="wrap">
+    <div class="shead">
+      <div class="snum">05</div>
+      <h2 data-i="s5h">Ce qui reste à mesurer</h2>
+      <p class="sdeck" data-i="s5d">Chaque hypothèse du modèle a une mesure qui la remplace. Elles sont au programme des essais.</p>
+    </div>
+    <div class="meas" id="meas"></div>
+    <div class="prose">
+      <p data-i="s5p1">Trois limites ne se lèvent pas par une mesure : le ragage et le fluage des cordages, qui viennent avec l'usage ; le vent en rafale, qui n'entre qu'en charge statique ; et les efforts de structure dans le châssis, qui demandent un calcul, pas un essai.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="s6">
+  <div class="wrap">
+    <div class="shead">
+      <div class="snum">06</div>
+      <h2 data-i="s6h">Vérification</h2>
+      <p class="sdeck" data-i="s6d">Trente-et-un contrôles rejoués à chaque modification du code, plus quatre-vingt-neuf tests. Le rapport complet est publié avec le code.</p>
+    </div>
+    <div class="checks" id="checks"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="meta" data-i="foot">Exploratoire — géométrie du plan d'assemblage, masses déclarées, coque du bateau reconstituée. Les chiffres orientent l'intégration et préparent les essais ; ils deviendront des caractéristiques après le pesage et l'essai de stabilité.</p>
+    <p class="meta"><a href="https://github.com/Biutopic/exo01-sim" target="_blank" rel="noopener">github.com/Biutopic/exo01-sim</a> · BIUTOPIC · exo01-sim v1.2.1</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+const D = /*__DATA__*/null;
+
+const T = {
+ fr:{brandsub:"Méthodologie de simulation",kick:"Simulation ouverte · exo01-sim v1.2.1",
+  h1:"Une plateforme flottante, calculée avant d'être soudée",
+  lede:"EXO-01 s'accouple à un bateau existant. Avant la première mise à l'eau, trois questions décident de l'intégration : où placer les masses, comment attacher le bateau, et comment l'ensemble bouge dans le clapot. Voici l'outil qui y répond, et comment il travaille.",
+  f1:"à vide, 18 postes de masse",f2:"degrés de liberté couplés",f3:"fichiers de code, tous publics",f4:"contrôles automatiques au vert",
+  cap0:"EXO-01 et L'Hydronaute à couple, eau calme. Rendu du simulateur, géométrie du plan d'assemblage.",
+  s1h:"La chaîne de calcul",s1d:"Cinq étapes, chacune rejouable seule et comparable à une référence.",
+  g1t:"Géométrie",g1b:"Six flotteurs Flofiz Ø 0,60 × 1,60 m en deux rangées, structure aluminium du plan d'assemblage.",
+  g2t:"Masses",g2b:"Dix-huit postes, chacun étiqueté par sa source. Une masse manquante arrête le calcul.",
+  g3t:"Hydrostatique",g3b:"Surfaces triangulées coupées par le plan d'eau. Volume immergé et flottaison intégrés exactement, à n'importe quelle gîte.",
+  g4t:"Hydrodynamique",g4b:"Théorie potentielle, douze degrés de liberté couplés : l'interaction entre les deux coques, pas deux calculs côte à côte.",
+  g5t:"Réponse et liaisons",g5b:"Mouvements, accélérations de pont, effort dans chaque aussière — doublés d'un calcul pas-à-pas en temps.",
+  lg1:"relevé sur plan",lg2:"déclaré",lg3:"hypothèse versionnée",play:"Rejouer la chaîne",
+  cap1:"EXO-01 seul, à vide : les 856 kg listés, répartis sur six flotteurs.",
+  s2h:"Le système",s2d:"Un seul jeu de calculs, utilisé par l'interface 3D, par les études en série et par les tests. Cliquez une pièce.",
+  n1t:"Interface 3D",n2t:"Serveur",n3t:"Moteur de calcul",n4t:"Statique",n5t:"Houle",n6t:"Deux corps",n7t:"Études",n8t:"Vérification",n9t:"Résultats publiés",
+  s3h:"Les liaisons",s3d:"Une aussière ne tire, une défense ne pousse, un tube fait les deux. Déplacez le bateau : chaque liaison répond à sa façon.",
+  s3slide:"Déplacement du bateau",
+  s3p1:"Modéliser une aussière comme un ressort linéaire est commode, et faux dans le cas qui compte : le mou suivi d'une reprise brutale est le mode de rupture d'un amarrage, et un modèle linéaire ne le voit jamais.",
+  s3p2:"C'est ce qui a montré qu'un arrangement d'aussières toutes filantes vers l'avant n'encaisse pas la poussée des propulseurs : le bateau recule de 300 à 370 mm et toutes les aussières se détendent. Avec deux défenses à la poupe, le même arrangement tient.",
+  cap2:"Vue de dessus : le bateau accosté entre les deux rangées de flotteurs, et les aussières qui le tiennent.",
+  s4h:"En houle",s4d:"Houle régulière de travers, H 0,3 m et T 2,5 s : le clapot de l'Erdre pris comme cas d'essai. Le simulateur rejoue le mouvement à l'échelle 1:1.",
+  cap3:"Houle de travers H 0,3 m, T 2,5 s : instant de roulis maximal, échelle 1:1.",
+  cap4:"Fonctions de transfert pilonnement, roulis et tangage par scénario, houle de travers.",
+  s4p1:"L'amortissement est celui du rayonnement, plus 5 % d'amortissement critique supposé : c'est la plus grosse hypothèse du calcul en houle, et un essai d'extinction à l'eau la remplacera. Les amortisseurs d'amarrage — snubber, cartouche élastomère — n'entrent eux aussi que comme une raideur : leur dissipation n'est pas modélisée.",
+  s5h:"Ce qui reste à mesurer",s5d:"Chaque hypothèse du modèle a une mesure qui la remplace. Elles sont au programme des essais.",
+  s5p1:"Trois limites ne se lèvent pas par une mesure : le ragage et le fluage des cordages, qui viennent avec l'usage ; le vent en rafale, qui n'entre qu'en charge statique ; et les efforts de structure dans le châssis, qui demandent un calcul, pas un essai.",
+  s6h:"Vérification",s6d:"Trente-et-un contrôles rejoués à chaque modification du code, plus quatre-vingt-neuf tests. Le rapport complet est publié avec le code.",
+  foot:"Exploratoire — géométrie du plan d'assemblage, masses déclarées, coque du bateau reconstituée. Les chiffres orientent l'intégration et préparent les essais ; ils deviendront des caractéristiques après le pesage et l'essai de stabilité."},
+ en:{brandsub:"Simulation methodology",kick:"Open simulation · exo01-sim v1.2.1",
+  h1:"A floating platform, calculated before it is welded",
+  lede:"EXO-01 clips onto an existing boat. Before the first launch, three questions decide the integration: where the masses go, how the boat is tied on, and how the pair moves in a chop. Here is the tool that answers them, and how it works.",
+  f1:"light ship, 18 mass items",f2:"coupled degrees of freedom",f3:"source files, all public",f4:"automatic checks green",
+  cap0:"EXO-01 and L'Hydronaute alongside, still water. Simulator render, assembly-drawing geometry.",
+  s1h:"The calculation chain",s1d:"Five stages, each replayable alone and comparable against a reference.",
+  g1t:"Geometry",g1b:"Six Flofiz floats Ø 0.60 × 1.60 m in two rows, aluminium frame from the assembly drawing.",
+  g2t:"Masses",g2b:"Eighteen items, each labelled with its source. A missing mass stops the calculation.",
+  g3t:"Hydrostatics",g3b:"Triangulated surfaces cut by the water plane. Immersed volume and waterplane integrated exactly, at any heel.",
+  g4t:"Hydrodynamics",g4b:"Potential flow, twelve coupled degrees of freedom: the interaction between the two hulls, not two calculations side by side.",
+  g5t:"Response and links",g5b:"Motion, deck accelerations, load in every rope — doubled by a step-by-step calculation in time.",
+  lg1:"read off the drawing",lg2:"declared",lg3:"versioned assumption",play:"Replay the chain",
+  cap1:"EXO-01 alone, light: the 856 kg listed, spread over six floats.",
+  s2h:"The system",s2d:"One set of calculations, used by the 3D interface, by the batch studies and by the tests alike. Click a part.",
+  n1t:"3D interface",n2t:"Server",n3t:"Calculation engine",n4t:"Statics",n5t:"Waves",n6t:"Two bodies",n7t:"Studies",n8t:"Verification",n9t:"Published results",
+  s3h:"The links",s3d:"A rope only pulls, a fender only pushes, a tube does both. Move the boat: each link answers in its own way.",
+  s3slide:"Boat displacement",
+  s3p1:"Modelling a rope as a linear spring is convenient, and wrong in the case that matters: slack followed by a sudden take-up is how a mooring fails, and a linear model never sees it.",
+  s3p2:"That is what showed that an arrangement with every rope running forward does not take the thrust of the pods: the boat slides 300 to 370 mm aft and every rope goes slack. With two fenders at the stern, the same arrangement holds.",
+  cap2:"Top view: the boat berthed between the two float rows, and the ropes that hold it.",
+  s4h:"In waves",s4d:"Regular beam waves, H 0.3 m and T 2.5 s: the Erdre's chop taken as the test case. The simulator replays the motion at 1:1.",
+  cap3:"Beam waves H 0.3 m, T 2.5 s: the instant of maximum roll, scale 1:1.",
+  cap4:"Heave, roll and pitch transfer functions per scenario, beam waves.",
+  s4p1:"Damping is radiation damping plus an assumed 5 % of critical: it is the largest assumption in the wave calculation, and a decay test on the water will replace it. Mooring shock absorbers — snubbers, elastomer cartridges — likewise enter only as a stiffness: their dissipation is not modelled.",
+  s5h:"What is left to measure",s5d:"Every assumption in the model has a measurement that replaces it. They are on the trials programme.",
+  s5p1:"Three limits are not lifted by a measurement: chafe and creep of ropes, which come with use; wind gusts, which enter only as a static load; and structural loads in the frame, which need a calculation rather than a trial.",
+  s6h:"Verification",s6d:"Thirty-one checks replayed on every change to the code, plus eighty-nine tests. The full report is published with the code.",
+  foot:"Exploratory — assembly-drawing geometry, declared masses, reconstructed boat hull. The figures steer the integration and prepare the trials; they become characteristics after the weighing and the inclining test."}
+};
+
+const NODES = {
+ ui:{fr:["Interface 3D","Ce que vous regardez : la plateforme et le bateau en 3D, tout ce qui se déplace sur le vrai se déplace ici. Elle ne calcule rien elle-même.","web/ · 3 fichiers · pas d'étape de build, bibliothèque 3D embarquée"],
+     en:["3D interface","What you look at: the platform and the boat in 3D; everything that moves on the real thing moves here. It computes nothing itself.","web/ · 3 files · no build step, 3D library vendored"]},
+ srv:{fr:["Serveur","Reçoit ce que vous changez, renvoie le résultat. Les réponses rapides arrivent en moins d'une seconde ; les calculs lourds partent en tâche de fond avec une barre de progression.","app.py · 21 routes"],
+      en:["Server","Takes what you changed, sends the result back. Quick answers come in under a second; heavy work goes to a background job with a progress bar.","app.py · 21 routes"]},
+ core:{fr:["Moteur de calcul","Toute la physique, en Python, sans écran ni serveur. L'interface, les études et les tests appellent le même code : il n'existe pas de seconde version qui pourrait diverger.","exo01/ · 16 modules · 4 000 lignes"],
+       en:["Calculation engine","All the physics, in Python, with no screen and no server. The interface, the studies and the tests call the same code: there is no second version that could diverge.","exo01/ · 16 modules · 4,000 lines"]},
+ stat:{fr:["Statique","Poids et équilibre, puis la position où la plateforme se stabilise : tirant d'eau, gîte, assiette, franc-bord restant. Si une masse manque, le calcul s'arrête au lieu de deviner.","mass.py · buoyancy.py · equilibrium.py"],
+       en:["Statics","Weight and balance, then where the platform settles: draft, heel, trim, remaining freeboard. If a mass is missing the calculation stops rather than guessing.","mass.py · buoyancy.py · equilibrium.py"]},
+ hydro:{fr:["Houle","Comment l'eau repousse chaque coque, puis le mouvement et l'effort dans chaque liaison. La partie lourde est calculée une fois par position et réutilisée.","hydro.py · response.py"],
+        en:["Waves","How water pushes back on each hull, then the motion and the load in every link. The heavy part is computed once per position and reused.","hydro.py · response.py"]},
+ two:{fr:["Deux corps","Le bateau traité comme un second corps flottant, relié par des aussières, des défenses et des tubes. Poussée des propulseurs, remorquage, jeu à la poupe.","twobody.py · boat.py · propulsion.py"],
+      en:["Two bodies","The boat treated as a second floating body, joined by ropes, fenders and tubes. Pod thrust, towing, transom gap.","twobody.py · boat.py · propulsion.py"]},
+ studies:{fr:["Études","Des séries qui répondent à une question de conception et écrivent la réponse dans le dépôt : position des batteries, arrangement d'amarrage, fiche de stabilité.","scripts/ · 16 scripts"],
+          en:["Studies","Batch runs that answer a design question and write the answer into the repository: battery position, mooring arrangement, stability sheet.","scripts/ · 16 scripts"]},
+ tests:{fr:["Vérification","Quatre-vingt-neuf tests rejouent la physique contre des formes dont la solution exacte est connue, plus trente-et-un contrôles sur le modèle complet.","tests/ · 89 tests · results/verification/"],
+        en:["Verification","Eighty-nine tests replay the physics against shapes whose exact solution is known, plus thirty-one checks on the whole model.","tests/ · 89 tests · results/verification/"]},
+ res:{fr:["Résultats publiés","Tableaux, croquis et rapports écrits par les études, versionnés avec le code : chaque chiffre cité ailleurs se retrouve ici avec le calcul qui l'a produit.","results/ · docs/ · github.com/Biutopic/exo01-sim"],
+      en:["Published results","Tables, sketches and reports written by the studies, versioned with the code: every figure quoted elsewhere is here with the calculation that produced it.","results/ · docs/ · github.com/Biutopic/exo01-sim"]}
+};
+
+const ELS = [
+ {id:"rope",   k:10,   col:"--water",  fr:["Aussière","ne travaille qu'en traction","12 mm, ≈ 10 kN/m"], en:["Rope","tension only","12 mm, ≈ 10 kN/m"], law:x=>Math.max(0,x)},
+ {id:"fender", k:50,   col:"--ok",     fr:["Défense","ne travaille qu'en compression","mousse, ≈ 50 kN/m"], en:["Fender","compression only","foam, ≈ 50 kN/m"], law:x=>Math.min(0,x)},
+ {id:"tube",   k:1000, col:"--assume", fr:["Tube rigide","travaille dans les deux sens","acier, ≈ 1 MN/m"], en:["Rigid tube","works both ways","steel, ≈ 1 MN/m"], law:x=>x}
+];
+const ELSTATE={fr:{slack:"molle — ne transmet rien",nocontact:"pas de contact",tension:"en traction",compression:"en compression",tubewarn:"le tube ne pourrait pas s'allonger autant"},
+               en:{slack:"slack — transmits nothing",nocontact:"no contact",tension:"in tension",compression:"in compression",tubewarn:"the tube could not stretch this far"}};
+const GAPHINT={fr:{neg:"Le bateau se rapproche : seules les défenses travaillent, les aussières sont molles.",zero:"Position au repos : rien ne transmet d'effort.",pos:"Le bateau s'écarte : les aussières tirent, les défenses perdent le contact."},
+               en:{neg:"The boat closes in: only the fenders work, the ropes are slack.",zero:"Rest position: nothing transmits force.",pos:"The boat moves away: the ropes pull, the fenders lose contact."}};
+
+const MEAS = [
+ {fr:["Pesage et essai de stabilité","Remplacent la masse et le centre de gravité déclarés par des valeurs mesurées.","→ lève : masses réelles, franc-bord, gîte sous passagers"],
+  en:["Weighing and inclining test","Replace the declared mass and centre of gravity with measured values.","→ lifts: real masses, freeboard, heel under passengers"]},
+ {fr:["Relevé des flotteurs et de la coque","Trancherait l'écart de 16,6 % entre les flotteurs du plan et les flotteurs Flofiz réels, et remplacerait la coque reconstituée.","→ lève : géométrie immergée des deux corps"],
+  en:["Survey of the floats and the hull","Would settle the 16.6 % gap between the drawing's floats and the real Flofiz floats, and replace the reconstructed hull.","→ lifts: immersed geometry of both bodies"]},
+ {fr:["Essai d'extinction à l'eau","Donnerait l'amortissement réel, aujourd'hui remplacé par 5 % supposé.","→ lève : la plus grosse hypothèse du calcul en houle"],
+  en:["Decay test on the water","Would give the real damping, today replaced by an assumed 5 %.","→ lifts: the largest assumption in the wave calculation"]},
+ {fr:["Essai des liaisons sur banc","Donnerait la dissipation des snubbers et des défenses, que le modèle ne représente que par une raideur.","→ lève : le comportement réel des amortisseurs"],
+  en:["Bench test of the links","Would give the dissipation of the snubbers and fenders, which the model represents only as a stiffness.","→ lifts: the real behaviour of the shock absorbers"]}
+];
+
+let L="fr";
+try{const s=localStorage.getItem("exo-lang");if(s==="en"||s==="fr")L=s;}catch(e){}
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const nf=v=>L==="fr"?String(v).replace(".",","):String(v);
+
+function applyStrings(){
+  const d=T[L];
+  $$("[data-i]").forEach(el=>{const k=el.dataset.i;if(d[k]!==undefined)el.innerHTML=d[k];});
+  document.documentElement.lang=L;
+  $("#bfr").setAttribute("aria-pressed",L==="fr");
+  $("#ben").setAttribute("aria-pressed",L==="en");
+  $("#gap").setAttribute("aria-label",d.s3slide);
+  [["heroimg","cap0"],["img1","cap1"],["img2","cap2"],["img3","cap3"],["img4","cap4"]].forEach(([i,c])=>{
+    const el=$("#"+i); if(el) el.alt=d[c];
+  });
+}
+
+/* images */
+$("#heroimg").src=D.renders["01_moored_still_iso"];
+$("#img1").src=D.renders["09_exo_alone_iso"];
+$("#img2").src=D.renders["02_moored_still_top"];
+$("#img3").src=D.renders["04_beam_sea_max_roll"];
+$("#img4").src=D.renders["13_rao_comparison"];
+
+/* 01 chain */
+const stages=$$("#chain .stage");
+let chainT=null;
+function playChain(){
+  if(chainT)chainT.forEach(clearTimeout);
+  chainT=[];
+  if(reduce){stages.forEach(s=>s.dataset.on="1");return;}
+  stages.forEach(s=>s.dataset.on="0");
+  stages.forEach((s,i)=>chainT.push(setTimeout(()=>{s.dataset.on="1";},260+i*320)));
+}
+$("#playchain").addEventListener("click",playChain);
+
+/* 02 system map */
+function showNode(n){
+  $$("#map .node").forEach(b=>b.setAttribute("aria-pressed",b.dataset.n===n));
+  const [t,p,f]=NODES[n][L];
+  $("#nodedetail").innerHTML=`<div class="nd1">${t}</div><div class="nd2">${p}</div><div class="nd3">${f}</div>`;
+}
+$$("#map .node").forEach(b=>b.addEventListener("click",()=>showNode(b.dataset.n)));
+
+/* 03 links */
+function buildLab(){
+  $("#lab").innerHTML=ELS.map(e=>{const [nm,rule,kk]=e[L];
+    return `<div class="el" data-el="${e.id}"><div class="elh"><span class="nm">${nm}</span><span class="kk">${kk}</span></div>
+      <div class="rule">${rule}</div><svg viewBox="0 0 250 124" role="img" aria-label="${nm}"></svg>
+      <div class="readout"><span class="v" id="f-${e.id}">—</span><span class="s" id="s-${e.id}"></span></div></div>`;}).join("");
+  ELS.forEach(drawEl);
+}
+const GW=250,GH=124,PX=24,PY=11;
+const gcx=PX+(GW-PX-12)/2, gmid=PY+(GH-PY*2)/2, gsx=(GW-PX-12)/2/60, gsy=(GH-PY*2)/2;
+function drawEl(e){
+  const svg=document.querySelector(`.el[data-el="${e.id}"] svg`);
+  const col=cssv(e.col),rule=cssv("--rule"),mute=cssv("--mute"),soft=cssv("--surface-2");
+  const pts=[];for(let x=-60;x<=60;x+=2){pts.push(`${(gcx+x*gsx).toFixed(1)},${(gmid-(e.law(x)/60)*gsy).toFixed(1)}`);}
+  const df=e.id==="rope"?-60:(e.id==="fender"?0:null), dt=e.id==="rope"?0:(e.id==="fender"?60:null);
+  const dead=df===null?"":`<rect x="${gcx+df*gsx}" y="${PY}" width="${(dt-df)*gsx}" height="${GH-PY*2}" fill="${soft}"/>`;
+  svg.innerHTML=`${dead}
+    <line x1="${PX}" y1="${gmid}" x2="${GW-9}" y2="${gmid}" stroke="${rule}" stroke-width="1"/>
+    <line x1="${gcx}" y1="${PY}" x2="${gcx}" y2="${GH-PY}" stroke="${rule}" stroke-width="1"/>
+    <polyline points="${pts.join(" ")}" fill="none" stroke="${col}" stroke-width="2.6" stroke-linejoin="round"/>
+    <circle id="pt-${e.id}" cx="${gcx}" cy="${gmid}" r="4.4" fill="${col}"/>
+    <text x="${PX-3}" y="${PY+8}" font-family="IBM Plex Mono,monospace" font-size="8" fill="${mute}">+F</text>
+    <text x="${PX-3}" y="${GH-PY-1}" font-family="IBM Plex Mono,monospace" font-size="8" fill="${mute}">−F</text>
+    <text x="${GW-11}" y="${gmid-5}" font-family="IBM Plex Mono,monospace" font-size="8" fill="${mute}" text-anchor="end">+mm</text>`;
+}
+function updateLab(){
+  const x=+$("#gap").value;
+  $("#gapv").textContent=(x>0?"+":"")+x+" mm";
+  $("#gaphint").textContent=GAPHINT[L][x>2?"pos":(x<-2?"neg":"zero")];
+  ELS.forEach(e=>{
+    const d=e.law(x), F=d*e.k, st=ELSTATE[L];
+    const pt=document.getElementById("pt-"+e.id);
+    if(pt){pt.setAttribute("cx",(gcx+x*gsx).toFixed(1));pt.setAttribute("cy",(gmid-(d/60)*gsy).toFixed(1));}
+    const fv=document.getElementById("f-"+e.id), sv=document.getElementById("s-"+e.id);
+    if(Math.abs(F)<1){fv.textContent="0 N";fv.style.color=cssv("--mute");
+      sv.textContent=e.id==="rope"?st.slack:(e.id==="fender"?st.nocontact:"—");}
+    else{fv.textContent=Math.abs(F)>=1000?nf((Math.abs(F)/1000).toFixed(1))+" kN":Math.round(Math.abs(F))+" N";
+      fv.style.color=cssv(e.col);sv.textContent=F>0?st.tension:st.compression;}
+    const card=document.querySelector(`.el[data-el="${e.id}"]`);
+    let flag=card.querySelector(".flag");
+    if(e.id==="tube"&&Math.abs(x)>6){if(!flag){flag=document.createElement("div");flag.className="flag";card.appendChild(flag);}flag.textContent=st.tubewarn;}
+    else if(flag){flag.remove();}
+  });
+}
+$("#gap").addEventListener("input",updateLab);
+
+/* 05 measurements */
+function buildMeas(){
+  $("#meas").innerHTML=MEAS.map((m,i)=>{const [t,w,l]=m[L];
+    return `<div class="mcard" data-on="0" data-i="${i}"><span class="mt">${t}</span><span class="mw">${w}</span><span class="ml">${l}</span></div>`;}).join("");
+  $$("#meas .mcard").forEach(c=>{
+    const on=()=>c.dataset.on="1", off=()=>c.dataset.on="0";
+    c.addEventListener("pointerenter",on); c.addEventListener("pointerleave",off);
+    c.addEventListener("click",()=>c.dataset.on=c.dataset.on==="1"?"0":"1");
+  });
+}
+
+/* 06 checks */
+function buildChecks(){
+  $("#checks").innerHTML=D.checks[L].map(c=>
+    `<div class="chk${c.warn?" warnish":""}"><div class="ch"><h3>${c.t}</h3><span class="tick">${c.warn?"⚠":"✓"}</span></div>
+     <div class="val">${c.v}</div><p>${c.p}</p></div>`).join("");
+}
+
+function setLang(l){
+  L=l; try{localStorage.setItem("exo-lang",l);}catch(e){}
+  applyStrings();
+  buildLab(); updateLab();
+  showNode($("#map .node[aria-pressed='true']")?.dataset.n || "core");
+  buildMeas(); buildChecks();
+}
+$("#bfr").addEventListener("click",()=>setLang("fr"));
+$("#ben").addEventListener("click",()=>setLang("en"));
+
+/* boot — complete at rest, then the chain plays once when it comes into view */
+applyStrings();
+buildLab(); updateLab();
+showNode("core");
+buildMeas(); buildChecks();
+stages.forEach(s=>s.dataset.on="1");
+if(!reduce){
+  const once=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){playChain();once.disconnect();}});},{threshold:.4});
+  once.observe($("#chain"));
+}
+</script>
