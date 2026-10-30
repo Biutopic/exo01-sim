@@ -1,0 +1,1779 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>exo01-sim Code Map</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --surface-2: #eef2f6;
+      --ink: #17202a;
+      --muted: #617080;
+      --line: #c7d0d9;
+      --strong-line: #738395;
+      --api: #2563eb;
+      --auth: #0f766e;
+      --worker: #7c3aed;
+      --data: #b45309;
+      --external: #475569;
+      --risk: #b91c1c;
+      --ok: #047857;
+      --radius: 8px;
+      --shadow: 0 1px 2px rgba(15, 23, 42, 0.08), 0 10px 28px rgba(15, 23, 42, 0.08);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.45;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+      padding: 16px 22px 14px;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0;
+      font-weight: 720;
+    }
+
+    .subtitle {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 26px;
+      padding: 3px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: #2e3b48;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(640px, 1fr) 390px;
+      gap: 16px;
+      padding: 16px;
+      min-height: 0;
+    }
+
+    .workspace {
+      display: grid;
+      grid-auto-rows: min-content;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .search {
+      min-width: min(360px, 100%);
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      background: #fbfcfe;
+      border-radius: 7px;
+      padding: 6px 10px;
+    }
+
+    .search input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--ink);
+      min-height: 26px;
+    }
+
+    .segmented {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .segmented button,
+    .flow-tabs button {
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      color: #263544;
+      min-height: 30px;
+      border-radius: 7px;
+      padding: 5px 9px;
+      cursor: pointer;
+    }
+
+    .segmented button.active,
+    .flow-tabs button.active {
+      color: #fff;
+      border-color: #1f2937;
+      background: #1f2937;
+    }
+
+    .diagram-shell {
+      position: relative;
+      height: 58vh;
+      min-height: 440px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.05) 1px, transparent 0) 0 0 / 22px 22px,
+        #fbfcfe;
+      box-shadow: var(--shadow);
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      cursor: grab;
+      touch-action: none;
+    }
+
+    svg.panning {
+      cursor: grabbing;
+    }
+
+    .zoom-controls {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      display: flex;
+      gap: 6px;
+      z-index: 3;
+    }
+
+    .zoom-controls button {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      color: #263544;
+      min-width: 30px;
+      min-height: 30px;
+      border-radius: 7px;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-weight: 650;
+      box-shadow: var(--shadow);
+    }
+
+    .zoom-controls button:hover {
+      border-color: #1f2937;
+    }
+
+    .zoom-hint {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 3;
+      font-size: 11px;
+      color: #5a6b7c;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 10px;
+    }
+
+    .cluster-label {
+      fill: #64748b;
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: 0;
+    }
+
+    .cluster-box {
+      fill: transparent;
+      stroke: #d7dee7;
+      stroke-width: 1;
+      stroke-dasharray: 6 5;
+    }
+
+    .edge {
+      fill: none;
+      stroke: var(--strong-line);
+      stroke-width: 1.4;
+      marker-end: url(#arrow);
+      opacity: 0.4;
+      transition: opacity 0.18s ease, stroke 0.18s ease, stroke-width 0.18s ease;
+    }
+
+    .edge-group {
+      cursor: pointer;
+    }
+
+    .edge-hit {
+      fill: none;
+      stroke: transparent;
+      stroke-width: 14;
+    }
+
+    .edge-label {
+      pointer-events: none;
+      fill: #34414e;
+      font-size: 10px;
+      font-weight: 600;
+      paint-order: stroke;
+      stroke: #fbfcfe;
+      stroke-width: 3.5px;
+      opacity: 0;
+      transition: opacity 0.18s ease;
+    }
+
+    /* Connected to the current selection (or part of a traced flow) */
+    .edge-group.flow .edge {
+      stroke-width: 2.6;
+      opacity: 0.95;
+      stroke: #1f2937;
+      marker-end: url(#arrow-active);
+    }
+
+    .edge-group.flow .edge-label {
+      opacity: 1;
+    }
+
+    .edge-group.faded {
+      opacity: 0.12;
+    }
+
+    .edge-group.dim {
+      opacity: 0.07;
+    }
+
+    .node {
+      cursor: pointer;
+    }
+
+    .node rect {
+      stroke: #cdd6e0;
+      stroke-width: 1.2;
+      rx: 11;
+      ry: 11;
+      filter: drop-shadow(0 1px 2px rgba(15, 23, 42, 0.08));
+      transition: stroke 0.18s ease, stroke-width 0.18s ease, opacity 0.18s ease;
+    }
+
+    .node text {
+      pointer-events: none;
+      letter-spacing: 0;
+    }
+
+    .node .label {
+      fill: var(--ink);
+      font-weight: 720;
+      font-size: 13px;
+    }
+
+    .node .hint {
+      fill: var(--muted);
+      font-size: 11px;
+    }
+
+    .node .stripe {
+      stroke-width: 4;
+      stroke-linecap: round;
+    }
+
+    .node.active rect {
+      stroke: #1f2937;
+      stroke-width: 2.6;
+      filter: drop-shadow(0 3px 10px rgba(15, 23, 42, 0.18));
+    }
+
+    .node.focus rect {
+      stroke: #5a6b7c;
+      stroke-width: 1.8;
+    }
+
+    .node.faded {
+      opacity: 0.34;
+    }
+
+    .node.dim {
+      opacity: 0.16;
+    }
+
+    .legend {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      max-width: 70%;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .legend .key {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #344456;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    aside {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 14px;
+    }
+
+    .panel,
+    .section {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      overflow: hidden;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .panel-head {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcfe;
+    }
+
+    .panel-head h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .panel-head p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .panel-body {
+      overflow: auto;
+      padding: 14px;
+    }
+
+    .detail-block {
+      margin-bottom: 18px;
+    }
+
+    .detail-block h3,
+    .section h2 {
+      margin: 0 0 8px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #415162;
+    }
+
+    .detail-block ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .detail-block li {
+      margin: 5px 0;
+    }
+
+    .file-list {
+      display: grid;
+      gap: 5px;
+    }
+
+    code,
+    .file {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: #1f3b57;
+      background: #eef4fa;
+      border: 1px solid #dae6ef;
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+
+    .section {
+      padding: 14px;
+    }
+
+    .flows {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 12px;
+    }
+
+    .flow-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .flow-content {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) minmax(260px, 1fr);
+      gap: 12px;
+    }
+
+    .flow-content ol {
+      margin: 0;
+      padding-left: 19px;
+    }
+
+    .flow-content li {
+      margin: 6px 0;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: 1.1fr 0.8fr 1.4fr 1.4fr 0.9fr;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .matrix div {
+      padding: 8px 9px;
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      font-size: 12px;
+      min-height: 34px;
+    }
+
+    .matrix .head {
+      background: #edf2f7;
+      color: #334155;
+      font-weight: 720;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 11px;
+    }
+
+    .matrix div:nth-child(5n) {
+      border-right: 0;
+    }
+
+    .matrix div:nth-last-child(-n + 5) {
+      border-bottom: 0;
+    }
+
+    .warn {
+      border-left: 4px solid var(--risk);
+      padding-left: 10px;
+    }
+
+    .ok {
+      border-left: 4px solid var(--ok);
+      padding-left: 10px;
+    }
+
+    .info {
+      border-left: 4px solid var(--api);
+      padding-left: 10px;
+    }
+
+    .guide {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin-top: 8px;
+    }
+
+    .guide .item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: #44545f;
+    }
+
+    .guide .glyph {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      border: 1px solid var(--line);
+      background: #f1f5f9;
+      font-size: 11px;
+      color: #334155;
+    }
+
+    .detail-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+      color: #344456;
+    }
+
+    .neighbors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .neighbors button {
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      color: #1f3b57;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .neighbors button:hover {
+      border-color: #1f2937;
+    }
+
+    .neighbors .dir {
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    .job-matrix {
+      grid-template-columns: 1.3fr 0.8fr 1.7fr 1.6fr;
+    }
+
+    .job-matrix div:nth-child(5n) {
+      border-right: 1px solid var(--line);
+    }
+
+    .job-matrix div:nth-child(4n) {
+      border-right: 0;
+    }
+
+    .job-matrix div:nth-last-child(-n + 4) {
+      border-bottom: 0;
+    }
+
+    .job-matrix code {
+      font-size: 11px;
+    }
+
+    /* ----- Overview ----- */
+    .overview {
+      padding: 16px;
+    }
+
+    .overview h2 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ink);
+    }
+
+    .overview p {
+      margin: 0 0 10px;
+      font-size: 13.5px;
+      color: #38454f;
+      max-width: 78ch;
+    }
+
+    .overview p .accent {
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    .caps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .cap {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: #2e3b48;
+      border: 1px solid var(--line);
+      background: #fbfcfe;
+      border-radius: 999px;
+      padding: 4px 11px;
+    }
+
+    .cap .dot {
+      width: 8px;
+      height: 8px;
+    }
+
+    .runtimes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .runtime {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      background: #fbfcfe;
+    }
+
+    .runtime h3 {
+      margin: 0 0 3px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .runtime.api h3 {
+      color: var(--api);
+    }
+
+    .runtime.worker h3 {
+      color: var(--worker);
+    }
+
+    .runtime p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ----- Request lifecycle ----- */
+    .req {
+      display: grid;
+      gap: 12px;
+    }
+
+    .req-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .req-controls {
+      display: flex;
+      gap: 6px;
+    }
+
+    .req-controls button {
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      color: #263544;
+      min-height: 30px;
+      border-radius: 7px;
+      padding: 5px 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .req-controls button.primary {
+      background: #1f2937;
+      color: #fff;
+      border-color: #1f2937;
+    }
+
+    .req-controls button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .req-request {
+      font-family: var(--mono);
+      font-size: 12px;
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      line-height: 1.7;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .req-request .method {
+      color: #7dd3fc;
+      font-weight: 700;
+    }
+
+    .req-request .path {
+      color: #fbbf24;
+    }
+
+    .req-request .hdr-k {
+      color: #94a3b8;
+    }
+
+    .req-request .hdr-v {
+      color: #cbd5e1;
+    }
+
+    .req-progress {
+      height: 6px;
+      background: var(--surface-2);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .req-progress .bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--api), var(--worker));
+      transition: width 0.35s ease;
+    }
+
+    .req-track {
+      display: grid;
+      gap: 8px;
+    }
+
+    .req-stage {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      gap: 10px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px 10px 14px;
+      background: #fbfcfe;
+      opacity: 0.5;
+      transition: opacity 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+
+    .req-stage .stripe2 {
+      position: absolute;
+      left: 0;
+      top: 9px;
+      bottom: 9px;
+      width: 4px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .req-stage .num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--surface-2);
+      color: #475569;
+      border: 1px solid var(--line);
+    }
+
+    .req-stage.done {
+      opacity: 1;
+    }
+
+    .req-stage.done .num {
+      background: var(--ok);
+      color: #fff;
+      border-color: var(--ok);
+    }
+
+    .req-stage.active {
+      opacity: 1;
+      border-color: #1f2937;
+      box-shadow: var(--shadow);
+    }
+
+    .req-stage.active .num {
+      background: #1f2937;
+      color: #fff;
+      border-color: #1f2937;
+    }
+
+    .req-stage .title {
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .req-stage .desc {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .req-stage .file {
+      margin-top: 6px;
+      display: inline-block;
+    }
+
+    .req-stage .badge {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+      align-self: center;
+    }
+
+    .req-stage .badge.gate {
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+
+    .req-stage .badge.pass {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .req-stage .badge.return {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    @media (max-width: 1040px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        grid-template-rows: auto;
+      }
+
+      .flow-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      header,
+      main {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .matrix {
+        grid-template-columns: 1fr;
+      }
+
+      .matrix div {
+        border-right: 0;
+      }
+
+      .matrix .head {
+        display: none;
+      }
+
+      .runtimes {
+        grid-template-columns: 1fr;
+      }
+
+      .req-stage {
+        grid-template-columns: 30px 1fr;
+      }
+
+      .req-stage .badge {
+        grid-column: 2;
+        justify-self: start;
+        margin-top: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="title-row">
+        <div>
+          <h1 id="bm-title"></h1>
+          <p class="subtitle" id="bm-subtitle"></p>
+          <div class="guide">
+            <span class="item"><span class="glyph">&#9673;</span> click a node to spotlight its connections + see details</span>
+            <span class="item"><span class="glyph">&rarr;</span> click an edge to read what flows between two parts</span>
+            <span class="item"><span class="glyph">&#9678;</span> pick a flow tab to trace a whole path</span>
+            <span class="item"><span class="glyph">&times;</span> click empty space to clear</span>
+          </div>
+        </div>
+        <div class="meta" id="bm-meta"></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="workspace">
+        <div class="section overview">
+          <h2 id="bm-ov-title">Overview</h2>
+          <p id="bm-summary"></p>
+          <div class="caps" id="bm-caps"></div>
+        </div>
+
+        <div class="toolbar">
+          <label class="search" aria-label="Search components">
+            <span>Search</span>
+            <input id="search" type="search" placeholder="component, file, endpoint, design decision" />
+          </label>
+          <div class="segmented" role="group" aria-label="Layer filter" id="bm-segmented"></div>
+        </div>
+
+        <div class="diagram-shell">
+          <span class="zoom-hint">Drag to pan &middot; scroll to zoom</span>
+          <div class="zoom-controls">
+            <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+            <button type="button" data-zoom="out" aria-label="Zoom out">&minus;</button>
+            <button type="button" data-zoom="reset">Reset</button>
+          </div>
+          <svg id="diagram" viewBox="0 0 1560 720" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Interactive backend architecture diagram">
+            <defs>
+              <marker id="arrow" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L0,6 L8,3 z" fill="#738395"></path>
+              </marker>
+              <marker id="arrow-active" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L0,6 L8,3 z" fill="#1f2937"></path>
+              </marker>
+            </defs>
+            <g id="viewport">
+              <g id="clusters"></g>
+              <g id="edges"></g>
+              <g id="nodes"></g>
+            </g>
+          </svg>
+          <div class="legend" id="bm-legend"></div>
+        </div>
+
+        <div class="section req">
+          <div class="req-top">
+            <div>
+              <h2 id="bm-wt-title">Worked example</h2>
+              <p class="subtitle" style="margin:4px 0 0">Step through a path stage by stage. Pick a scenario, then play or step.</p>
+            </div>
+            <div class="flow-tabs" id="reqScenarios"></div>
+          </div>
+          <div id="reqRequest" class="req-request"></div>
+          <div class="req-progress"><div id="reqBar" class="bar"></div></div>
+          <div class="req-top">
+            <span class="subtitle" id="reqStatus">Stage 0 / 0</span>
+            <div class="req-controls">
+              <button type="button" id="reqPlay" class="primary">Play</button>
+              <button type="button" id="reqStep">Step</button>
+              <button type="button" id="reqReset">Reset</button>
+            </div>
+          </div>
+          <div id="reqTrack" class="req-track"></div>
+        </div>
+
+        <div class="section flows">
+          <div>
+            <h2>Flow Walkthroughs</h2>
+            <div id="flowTabs" class="flow-tabs"></div>
+          </div>
+          <div id="flowContent" class="flow-content"></div>
+        </div>
+
+        <div class="section" id="bm-matrices-section">
+          <h2 id="bm-matrices-title">Reference tables</h2>
+          <div id="bm-matrices"></div>
+        </div>
+
+            </section>
+
+      <aside>
+        <div class="panel">
+          <div class="panel-head">
+            <h2 id="detailTitle">Select a component</h2>
+            <p id="detailSubtitle">Click any node in the diagram or a flow tab to inspect how it works.</p>
+          </div>
+          <div id="detailBody" class="panel-body"></div>
+        </div>
+
+        <div class="section">
+          <h2>Scan Notes</h2>
+          <div id="bm-notes"></div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    const DATA = {"title":"exo01-sim — Architecture","subtitle":"Built from a scan of exo01/, app.py, web/, scripts/, tests/, configs/, scenarios/, data/, results/ (v1.2.1, 30 Oct 2026)","summary":"Three layers: a pure-Python calculation package (exo01/: hydrostatics → still-water equilibrium → BEM hydrodynamics → linear and time-domain wave response, with the Hydronaute as a second moored body), a Flask API (app.py) that runs the long BEM/optimisation jobs in separate processes, and a vendored three.js browser UI (web/). Study scripts (scripts/) call the same package and write the committed results (mooring, stability, optimisation, website figures). Every illustrative result carries the label 'Exploratory — assumed geometry and mass distribution'.","mode":"architecture","meta":["Python 3.11–3.13","Capytaine 3.0 BEM","Flask","three.js (vendored)","89 pytest tests"],"layers":[{"key":"ui","label":"Browser UI","color":"#0e7490","tint":"#ddecef"},{"key":"api","label":"Flask API / jobs","color":"#2563eb","tint":"#e0e9fc"},{"key":"core","label":"Calculation core (exo01/)","color":"#7c3aed","tint":"#ede3fc"},{"key":"studies","label":"Study scripts","color":"#b45309","tint":"#f5e7dd"},{"key":"data","label":"Inputs, cache, results","color":"#475569","tint":"#e5e7ea"},{"key":"qa","label":"Tests & docs","color":"#15803d","tint":"#deede4"}],"clusters":[{"key":"front","label":"Browser (web/)","x":24,"y":24,"w":190,"h":202},{"key":"server","label":"Server (app.py, exo01/jobs.py)","x":244,"y":24,"w":368,"h":202},{"key":"inputs","label":"Inputs: reference packages, configs, scenarios","x":642,"y":24,"w":368,"h":202},{"key":"statics","label":"Core — mass & still-water statics","x":24,"y":262,"w":368,"h":202},{"key":"dynamics","label":"Core — hydrodynamics & wave response","x":422,"y":262,"w":190,"h":202},{"key":"coupled","label":"Core — second body, mooring elements, propulsion","x":642,"y":262,"w":368,"h":202},{"key":"scripts","label":"Study scripts → results/","x":24,"y":500,"w":546,"h":202},{"key":"store","label":"Cache & committed results","x":600,"y":500,"w":190,"h":202},{"key":"qa","label":"Tests & documents","x":820,"y":500,"w":190,"h":202}],"nodes":[{"id":"web-ui","label":"3D interface","hint":"web/index.html + app.js","layer":"ui","x":44,"y":68,"description":"Single-page three.js viewer: loads the EXO and boat GLBs, draws floats, people, batteries, mooring elements (line blue / fender cyan / strut grey) and the waterline; edits components, people, lines and propulsion; shows still-water results, wave plots and job progress.","decisions":["No build step: three.js is vendored under web/vendor so the app runs offline from start_windows.bat.","The UI never computes physics — every number comes from /api/*; results are re-rendered from the server payload.","window.__exo exposes camera/scene for the headless render script."],"files":["web/index.html","web/app.js:24","web/app.js:273","web/app.js:527","web/app.css"],"data":["scenario overrides","still-water result","wave result","job list"]},{"id":"three","label":"three.js vendored","hint":"GLTFLoader, OrbitControls","layer":"ui","x":44,"y":152,"description":"Pinned three.js build plus loaders/controls used by the viewer; the reference GLBs are served by app.py.","decisions":[],"files":["web/vendor/three/build/three.module.js","web/vendor/three/addons/loaders/GLTFLoader.js","web/vendor/three/addons/controls/TransformControls.js"],"data":["EXO01_reference.glb","Renaud8000_reference.glb"]},{"id":"flask","label":"Flask API","hint":"app.py, 20 routes","layer":"api","x":264,"y":68,"description":"HTTP surface: /api/evaluate (still water, synchronous), /api/wave, /api/snatch, /api/irregular, /api/timestep_check (wave response from cached BEM), /api/hydro and /api/optimise (queued jobs), /api/compare, /api/export, scenario save/load, GLB files.","decisions":["Still-water evaluation is synchronous (< 1 s, cached tessellation); anything with BEM goes through the job queue so the server never blocks.","Wave endpoints use cache_only BEM lookups with pose reuse (POSE_TOL tiers) — if no cached pose is close enough they tell the UI to run /api/hydro first."],"files":["app.py:116","app.py:177","app.py:290","app.py:370","app.py:424","app.py:596"],"data":["config JSON","scenario overrides","HydroData meta","job records"]},{"id":"jobs","label":"Job runner","hint":"spawned processes","layer":"api","x":442,"y":68,"description":"Scheduler thread in app.py starts one multiprocessing 'spawn' Process per BEM or optimisation job; exo01/jobs.py is the process entry point and writes progress and result JSON files that the API polls.","decisions":["Separate process, not thread: Capytaine BEM is CPU-bound and would freeze the Flask server under the GIL.","Progress callbacks (fraction, message, ETA) are written to a file so the UI progress bar survives a page reload."],"files":["app.py:220","app.py:240","exo01/jobs.py:26","exo01/jobs.py:62"],"data":["results/jobs/*.json"]},{"id":"launchers","label":"Launchers","hint":"start_*.bat/.sh, update","layer":"api","x":264,"y":152,"description":"Double-click launchers: create/reuse a venv, pip install, start app.py on :8050 and open the browser; update_windows.bat is a git pull (environment and BEM cache kept).","decisions":[],"files":["start_windows.bat","start_unix.sh","update_windows.bat","requirements.txt"],"data":["requirements-lock-py313.txt"]},{"id":"ref-exo","label":"EXO-01 reference pkg","hint":"data/reference_v3","layer":"data","x":662,"y":68,"description":"Revision-3 reference package: STEP + GLB geometry, parameters.json, mass metadata and validation reports; exo01/reference.py parses and audits it (units, extents, float positions).","decisions":["Geometry is read, never edited: the floats are Flofiz pontoons modelled from the plan ('mesures approximatives'); masses are user-reported or user-estimated and tagged as such."],"files":["data/reference_v3/README.md","data/reference_v3/parameters.json","data/reference_v3/EXO01_mass_metadata.json","exo01/reference.py"],"data":["float capsules","frame posts","component masses"]},{"id":"ref-boat","label":"Renaud 8000 package","hint":"data/renaud8000_v1","layer":"data","x":840,"y":68,"description":"Hydronaute hull as a station table → closed hull envelope PROXY (exo01/boat.py); whole-boat mass metadata; GLB for display.","decisions":["The hull is a proxy from stations, not a survey: the boat's own hydrostatics are indicative and labelled as such."],"files":["data/renaud8000_v1/README.md","data/renaud8000_v1/parameters.json","exo01/boat.py:29"],"data":["stations_mm","boat mass","cleat positions"]},{"id":"configs","label":"Configs & scenarios","hint":"baseline / illustrative","layer":"data","x":662,"y":152,"description":"configs/baseline.json keeps unknown inputs null (reports 'not computed'); configs/illustrative.json fills them with labelled assumptions and the line presets; scenarios/*.json are overrides (batteries moved, occupants, with_hydronaute). exo01/config.py resolves overrides → one fully-resolved config and validates it.","decisions":["Baseline vs illustrative is the claim-discipline mechanism: a number only exists if its inputs exist.","scripts/make_configs.py regenerates both configs from the reference packages, so geometry edits happen in one place."],"files":["configs/baseline.json","configs/illustrative.json","scenarios/with_hydronaute.json","exo01/config.py:48","scripts/make_configs.py"],"data":["components","people","host_boat.lines","propulsion","line_presets"]},{"id":"mass","label":"Mass model","hint":"exo01/mass.py","layer":"core","x":44,"y":306,"description":"Mass, centre of mass and inertia tensor from explicitly assigned component properties (point, solid/shell box, cylinder shell); people as point masses on an occupied surface; raises MissingInput instead of guessing.","decisions":[],"files":["exo01/mass.py:100","exo01/mass.py:156"],"data":["Item","mass_properties"]},{"id":"buoyancy","label":"Hydrostatics","hint":"exo01/buoyancy.py","layer":"core","x":222,"y":306,"description":"Closed triangulated surfaces (CapsuleX proxy, FlofizX pontoon, imported MeshSurface) clipped by z = 0; exact wet volume, centroid and waterplane integrals of the assembly at any heel/trim.","decisions":["Exact integrals on triangles rather than tabulated hydrostatics so arbitrary heel/trim and asymmetric floats are handled with one code path."],"files":["exo01/buoyancy.py","exo01/buoyancy.py:351"],"data":["BuoyantAssembly","wet_integrals"]},{"id":"equilibrium","label":"Still-water equilibrium","hint":"exo01/equilibrium.py","layer":"core","x":44,"y":390,"description":"Newton solve for draft, heel and trim (zero net force/moment), exact restoring matrix, initial stability (GM-like measures), freeboards per float and deck point, NoEquilibrium with the best balance point when none exists.","decisions":[],"files":["exo01/equilibrium.py:132"],"data":["draft, heel, trim","C restoring matrix","freeboards"]},{"id":"analysis","label":"evaluate()","hint":"exo01/analysis.py","layer":"core","x":222,"y":390,"description":"The orchestrator for one resolved config: mass → equilibrium → stability → freeboards → (if host boat) coupled equilibrium and clearances → propulsion speed; also builds the ResponseModel from BEM data (hydro_for / build_response).","decisions":["Tessellation is cached per config and the previous equilibrium seeds the next Newton solve (warm_key) — that is what makes the UI feel interactive."],"files":["exo01/analysis.py:76","exo01/analysis.py:294","exo01/analysis.py:390"],"data":["still-water result dict","ResponseModel"]},{"id":"hydro","label":"BEM (Capytaine)","hint":"exo01/hydro.py","layer":"core","x":442,"y":306,"description":"Added mass, radiation damping and exact-heading wave excitation on an (omega, heading) grid for one body or N bodies in a common world frame; internal free-surface lid for irregular frequencies; resonant gap-band detection between float rows.","decisions":["BEM is computed about each body's CAD origin (COM-independent) and transformed exactly to the COM afterwards, so moving a battery never invalidates the cache.","Cache by pose signature with tiered tolerance (POSE_TOL 'near' / POSE_TOL_COARSE 'approximate'): a nearby pose is reused and flagged, not recomputed."],"files":["exo01/hydro.py:406","exo01/hydro.py:605","exo01/hydro.py:166"],"data":["HydroData","rad_*.npz / dif_*.npz","pose_index.json"]},{"id":"response","label":"Wave response","hint":"exo01/response.py","layer":"core","x":442,"y":390,"description":"Linear frequency-domain RAOs for 6 or 12 DOF (EXO + boat) with line/fender/strut stiffness, regular and irregular (JONSWAP) waves, deck accelerations and relative-motion points; time-domain RK4 check at fixed coefficients; line_snatch_check replaces the linear elements by unilateral laws (tension-only, compression-only, bilateral) and reports peaks, slack fraction and snatch ratio.","decisions":["Damping = radiation + an assumed fraction of critical (5 %, 10 % boat roll/pitch): there is no viscous model, and the assumption is stated in every output.","Linear and time-domain results are always reported separately."],"files":["exo01/response.py:87","exo01/response.py:218","exo01/response.py:416","exo01/response.py:513"],"data":["RAOs","peak_N, slack_fraction_of_cycle","transom gap"]},{"id":"twobody","label":"Coupled equilibrium","hint":"exo01/twobody.py","layer":"core","x":662,"y":306,"description":"The Hydronaute as a second floating body: its own equilibrium, common-world poses, mooring elements with a kind (line +1 tension-only, fender −1 compression-only with signed penetration, strut 0 bilateral), active-set static solve of EXO + boat under thrust/tow, clearances (transom gap, propeller).","decisions":["A 1 N/m centering spring is always on so fender-only arrangements have a defined sway/yaw reference.","Fender rest length L0 = Lnom + T0/k so preload is expressed the same way as line pretension."],"files":["exo01/twobody.py:250","exo01/twobody.py"],"data":["coupled_equilibrium","lines[].tension_N / compression_N / slack"]},{"id":"propulsion","label":"Propulsion / tow","hint":"exo01/propulsion.py","layer":"core","x":840,"y":306,"description":"Quasi-static thrust → steady speed → forces on each body: ITTC-57 friction with form factor plus frontal pressure drag for the floats, boat resistance from the hull envelope; the external force callable the coupled solver uses for push and tow cases.","decisions":["Every coefficient is an explicit, editable assumption in the config (no hidden hull-form data)."],"files":["exo01/propulsion.py:87","exo01/propulsion.py"],"data":["speed_m_s","thrust units: EXO_PODS / BOAT_ENGINE"]},{"id":"optimise","label":"Design sweeps","hint":"exo01/optimise.py","layer":"core","x":662,"y":390,"description":"Battery position (rear deck / float frame zones with upright obstacles) and mooring-line candidate sweeps using the real solvers and cached BEM; scoring is explicit and reported as 'highest-ranked under selected scoring'.","decisions":[],"files":["exo01/optimise.py:133","exo01/optimise.py:231"],"data":["candidates","ranked table"]},{"id":"s-mooring","label":"Mooring studies","hint":"121-config grid + final","layer":"studies","x":44,"y":544,"description":"run_mooring_study.py: arrangement × line stiffness × pretension (static moored/push/tow + three waves, linear and time domain); run_mooring_final.py: the 12 candidate arrangements (ropes + knees, four tubes, hybrids) at the converged settings. Read in docs/MOORING.md.","decisions":[],"files":["scripts/run_mooring_study.py","scripts/run_mooring_final.py","results/mooring/mooring_study.md","results/mooring/final_comparison.md"],"data":["results/mooring/*"]},{"id":"s-stability","label":"Stability sheet","hint":"EXO alone, ES-TRIN reading","layer":"studies","x":222,"y":544,"description":"run_stability_sheet.py: EXO-01 without the boat — load cases (empty, 4–6 persons, one side, zoned deck), heel/freeboard against ES-TRIN 19.03/19.04 readings, wind, deck-awash wave table, recommended layout cases, extra-float what-ifs.","decisions":[],"files":["scripts/run_stability_sheet.py","results/stability/stability_sheet.md","results/stability/recommended_layout_cases.json"],"data":["results/stability/*"]},{"id":"s-reports","label":"Comparison, optimisation, verification","hint":"committed tables","layer":"studies","x":400,"y":544,"description":"run_comparison.py (scenario table, with BEM), run_optimisation_report.py (battery zones), run_verification.py (checks against the reference packages: volumes, extents, symmetry, convergence), precompute_cache.py / prune_cache.py (BEM cache management).","decisions":[],"files":["scripts/run_comparison.py","scripts/run_optimisation_report.py","scripts/run_verification.py","scripts/precompute_cache.py","scripts/prune_cache.py"],"data":["results/comparison","results/optimisation","results/verification"]},{"id":"s-website","label":"Website package","hint":"renders + article FR/EN","layer":"studies","x":44,"y":628,"description":"render_website.py drives the running UI headlessly (Playwright) for 9 renders; draw_layout.py draws the recommended deck layout; docs/website holds the FR/EN article, figures.json and key_numbers.json with the origin of every quoted number.","decisions":[],"files":["scripts/render_website.py","scripts/draw_layout.py","docs/website/README.md","docs/website/figures.json","docs/website/key_numbers.json"],"data":["docs/website/img/web/*.webp"]},{"id":"cache","label":"BEM cache","hint":"results/cache","layer":"data","x":620,"y":544,"description":"Radiation / diffraction coefficients per (geometry signature, pose, grid) as .npz, indexed by pose_index.json; only indexed files are committed (prune_cache.py --apply --stage), everything else is git-ignored.","decisions":["Committing the pruned cache means a fresh clone can run every wave endpoint on the illustrative scenarios without a 10-minute BEM."],"files":["results/cache/pose_index.json","exo01/hydro.py:107",".gitignore"],"data":["rad_*.npz","dif_*.npz"]},{"id":"results","label":"Committed results","hint":"mooring, stability, …","layer":"data","x":620,"y":628,"description":"Markdown/JSON/CSV tables and PNG sketches written by the study scripts; local outputs (exports, jobs, ui) are not committed.","decisions":[],"files":["results/mooring/final_comparison.md","results/mooring/recommended_coupling.png","results/stability/stability_sheet.md","results/optimisation"],"data":["*.md","*.json","*.csv","*.png"]},{"id":"tests","label":"pytest suite","hint":"89 tests","layer":"qa","x":840,"y":544,"description":"Unit and integration tests: hydrostatic integrals vs analytic shapes, equilibrium, mass, reference package parsing, BEM + response on small grids, two-body coupling, mooring element kinds (line/fender/strut laws), propulsion, jobs, API smoke.","decisions":[],"files":["tests/conftest.py","tests/test_twobody.py","tests/test_mooring_elements.py","tests/test_hydro_response.py","tests/test_api.py"],"data":["configs/illustrative.json fixtures"]},{"id":"docs","label":"Claim-discipline docs","hint":"ASSUMPTIONS, AUDIT, MOORING","layer":"qa","x":840,"y":628,"description":"ASSUMPTIONS.md (conventions, assumptions, limits, validation plan — §5e mooring elements), AUDIT.md (what the reference packages contain), docs/MOORING.md (study readings §1–7), docs/API.md, CHANGELOG.md.","decisions":["Read AUDIT.md and ASSUMPTIONS.md before quoting any number — the README says so and the website article repeats the maturity label."],"files":["ASSUMPTIONS.md","AUDIT.md","docs/MOORING.md","docs/API.md","CHANGELOG.md","README.md"],"data":[]}],"edges":[["web-ui","three","render scene"],["web-ui","flask","fetch /api/*"],["flask","jobs","queue BEM / optimise"],["launchers","flask","python app.py"],["flask","configs","load + overrides"],["configs","ref-exo","built from"],["configs","ref-boat","built from"],["flask","analysis","/api/evaluate"],["flask","response","/api/wave, /snatch"],["jobs","hydro","compute_hydro(_bodies)"],["jobs","optimise","optimise_job"],["analysis","mass","items → M, G, I"],["analysis","buoyancy","assembly"],["analysis","equilibrium","solve draft/heel/trim"],["analysis","twobody","if host boat"],["analysis","propulsion","thrust → speed"],["analysis","hydro","hydro_for (cache)"],["analysis","response","build_response"],["hydro","cache","npz + pose_index"],["twobody","propulsion","external forces"],["optimise","analysis","evaluate candidates"],["optimise","response","wave score"],["s-mooring","analysis","evaluate / build_response"],["s-mooring","response","line_snatch_check"],["s-stability","analysis","load cases"],["s-reports","analysis","scenarios"],["s-website","web-ui","Playwright renders"],["s-mooring","results","mooring/*"],["s-stability","results","stability/*"],["s-reports","results","comparison, optimisation"],["s-reports","cache","precompute / prune"],["tests","analysis","exercise"],["docs","results","cites"]],"flows":[{"id":"still","label":"Still water","title":"Editing a battery position in the UI (synchronous)","nodes":["web-ui","flask","configs","analysis","mass","buoyancy","equilibrium","twobody","propulsion"],"steps":["The UI sends the base config name plus overrides (component positions, people, lines, thrust) to POST /api/evaluate.","config.resolve() merges overrides into a fully-resolved config and validates it (null inputs → 'not computed').","mass.items_from_config / mass_properties give M, COM and inertia; MissingInput stops the chain instead of guessing.","buoyancy builds the BuoyantAssembly (cached tessellation); equilibrium solves draft, heel, trim by Newton, seeded by the previous solve.","With the Hydronaute present, twobody.coupled_equilibrium solves both bodies with the mooring elements (active set) and propulsion forces.","The result dict (freeboards, stability, line tensions, clearances, speed) is rendered by the UI in < 1 s."],"decisions":["Nothing in this path touches the BEM, so it stays interactive; the label 'Exploratory' is attached by the server, not the UI."]},{"id":"bem","label":"BEM job","title":"Computing hydrodynamics for a new pose (background process)","nodes":["web-ui","flask","jobs","hydro","cache"],"steps":["POST /api/hydro queues a job; the scheduler thread spawns a Process running exo01.jobs.run_job.","hydro_job builds the immersed Capytaine meshes at the equilibrium pose (about the CAD origins), with an internal lid.","compute_hydro_bodies solves radiation for every omega and diffraction for every heading; progress (fraction, ETA) is written to a file.","Coefficients are stored as .npz in results/cache and registered in pose_index.json with the pose signature.","The UI polls /api/job/<id>; when done, wave endpoints find the pose (exact, 'near' or 'approximate' tier) and run instantly."],"decisions":["COM-independent BEM + pose tolerance tiers are why most UI edits never trigger a new BEM."]},{"id":"wave","label":"Wave response","title":"A regular wave with tension-only mooring lines","nodes":["web-ui","flask","analysis","hydro","response","twobody"],"steps":["POST /api/wave (H, T, heading, damping) after a still-water evaluate.","analysis.hydro_for looks the BEM up in the cache (cache_only, pose reuse allowed) and build_response assembles the 12-DOF model with line/fender/strut stiffness.","ResponseModel.regular_wave returns RAOs, deck accelerations, relative motions (transom gap) and linear element tensions.","POST /api/snatch runs line_snatch_check: RK4 in time with unilateral element laws → peak loads, slack fraction, snatch ratio.","The UI plots both and labels linear vs time-domain separately."],"decisions":["Damping is radiation + an assumed fraction of critical; the assumption travels with the result."]},{"id":"study","label":"Mooring study","title":"From a sketch to results/mooring/final_comparison.md","nodes":["configs","s-mooring","analysis","twobody","response","results","docs"],"steps":["Candidate arrangements are built as element lists (kind, EXO point, boat point, k, T0) from the line presets in configs/illustrative.json.","For each: static moored / push / tow cases through evaluate() and the coupled solver; the push and tow loops must close (hard gate).","Three waves (beam 0.3 m, head 0.3 m, beam 0.5 m): linear response + time-domain snatch check from the cached BEM.","An explicit score (worst peak, slack, transom overlap, boat roll, static shift) ranks the candidates; weights are printed in the table.","Tables and sketches go to results/mooring/, the reading to docs/MOORING.md §7, the changelog entry to CHANGELOG.md."],"decisions":["Scripts import the same exo01 functions as the server — there is no second physics path to keep consistent."]}],"matrices":[{"title":"API endpoints (app.py)","headers":["Route","Mode","Calls","Returns"],"rows":[["GET /api/meta, /api/config/<name>, /api/scenario/<name>","sync","config.load_config / load_scenario","config JSON, scenario list"],["POST /api/evaluate","sync","analysis.evaluate","still-water result (freeboards, stability, lines, clearances, propulsion)"],["POST /api/hydro","job","jobs.hydro_job → hydro.compute_hydro_bodies","job id → HydroData meta"],["POST /api/wave, /api/irregular, /api/timestep_check","sync (cached BEM)","analysis.hydro_for + ResponseModel","RAOs, accelerations, relative motions, linear element loads"],["POST /api/snatch","sync (cached BEM)","response.line_snatch_check","peaks, slack fraction, snatch ratio per element"],["POST /api/optimise","job","jobs.optimise_job → optimise.*","ranked candidates"],["POST /api/compare, /api/export, /api/scenario/save","sync","scenarios.compare_table / save_scenario","table, files in results/exports"],["GET /api/jobs, /api/job/<id>, POST /api/job/<id>/cancel","sync","job records","status, progress, ETA"]]},{"title":"Element kinds (exo01/twobody.py, response.py)","headers":["Kind","Sign","Law","Rest length"],"rows":[["line","+1","tension only; slack when shorter than L0","L0 = Lnom − T0/k"],["fender","−1","compression only; signed penetration along the nominal axis","L0 = Lnom + T0/k"],["strut","0","bilateral (rigid in the stiff limit, k 1 MN/m)","L0 = Lnom"]]}],"walkthroughs":[],"notes":[{"kind":"ok","text":"One physics path: the UI, the API and every study script call the same exo01 functions; results differ only by inputs."},{"kind":"ok","text":"Claim discipline is structural: baseline config keeps unknowns null and reports 'not computed'; illustrative results carry the 'Exploratory' label from the server."},{"kind":"info","text":"BEM cache is keyed by geometry signature and pose with two tolerance tiers; results flag 'pose_reuse' when an approximate pose was used."},{"kind":"warn","text":"No viscous or element damping anywhere: wave results use radiation damping + an assumed fraction of critical, so shock absorbers can only be modelled as stiffness."},{"kind":"warn","text":"The Hydronaute hull is a station-table proxy and EXO masses are user-reported/estimated: the registration sheet needs the measured light-ship weight and an inclining test before any number is a characteristic."},{"kind":"info","text":"Long results (results/cache beyond pose_index.json, exports, jobs, ui renders) are git-ignored; prune_cache.py --apply --stage is the only way cache files enter the repo."}],"sections":{},"viewBox":"0 0 1034 726"};
+
+    const colors = Object.fromEntries((DATA.layers || []).map((l) => [l.key, l.color]));
+    const layerTint = Object.fromEntries((DATA.layers || []).map((l) => [l.key, l.tint]));
+    const clusters = DATA.clusters || [];
+    const nodes = DATA.nodes || [];
+    const edges = DATA.edges || [];
+    const flowDefs = DATA.flows || [];
+    const matrices = DATA.matrices || [];
+    const requestScenarios = (DATA.walkthroughs || []).map((w) => ({
+      id: w.id,
+      label: w.label,
+      request: { method: (w.header && w.header.kind) || '', path: (w.header && w.header.path) || '', headers: (w.header && w.header.pairs) || [] },
+      stages: w.stages || []
+    }));
+
+    const nodeById = new Map(nodes.map((node) => [node.id, node]));
+    const edgeKey = (a, b) => `${a}->${b}`;
+    const edgeByKey = new Map(edges.map(([a, b, label]) => [edgeKey(a, b), label]));
+
+    const NODE_W = 150;
+    const NODE_H = 58;
+
+    const adjacency = new Map(nodes.map((node) => [node.id, new Set([node.id])]));
+    const neighborEdges = new Map(nodes.map((node) => [node.id, []]));
+    for (const [a, b, label] of edges) {
+      adjacency.get(a)?.add(b);
+      adjacency.get(b)?.add(a);
+      neighborEdges.get(a)?.push({ other: b, label, dir: 'out' });
+      neighborEdges.get(b)?.push({ other: a, label, dir: 'in' });
+    }
+
+    let currentFilter = 'all';
+    let currentQuery = '';
+    let selectedId = (nodes[0] && nodes[0].id) || null;
+    let selectedEdge = null; // { from, to }
+    let highlighted = new Set();
+
+    // Pan / zoom state
+    const view = { scale: 1, tx: 0, ty: 0 };
+
+    function borderPoint(node, target) {
+      const cx = node.x + NODE_W / 2;
+      const cy = node.y + NODE_H / 2;
+      const dx = target.x + NODE_W / 2 - cx;
+      const dy = target.y + NODE_H / 2 - cy;
+      if (dx === 0 && dy === 0) return { x: cx, y: cy };
+      const halfW = NODE_W / 2 + 3;
+      const halfH = NODE_H / 2 + 3;
+      const scaleX = dx !== 0 ? halfW / Math.abs(dx) : Infinity;
+      const scaleY = dy !== 0 ? halfH / Math.abs(dy) : Infinity;
+      const scale = Math.min(scaleX, scaleY);
+      return { x: cx + dx * scale, y: cy + dy * scale };
+    }
+
+    function wrapText(text, maxChars) {
+      const words = text.split(' ');
+      const lines = [];
+      let line = '';
+      for (const word of words) {
+        const candidate = line ? `${line} ${word}` : word;
+        if (candidate.length > maxChars && line) {
+          lines.push(line);
+          line = word;
+        } else {
+          line = candidate;
+        }
+      }
+      if (line) lines.push(line);
+      return lines.slice(0, 2);
+    }
+
+    function matchesNode(node) {
+      if (currentFilter !== 'all' && node.layer !== currentFilter) return false;
+      if (!currentQuery) return true;
+      const haystack = [
+        node.label,
+        node.hint,
+        node.description,
+        ...(node.decisions || []),
+        ...(node.files || []),
+        ...(node.data || [])
+      ].join(' ').toLowerCase();
+      return haystack.includes(currentQuery);
+    }
+
+    function renderDiagram() {
+      const clusterGroup = document.getElementById('clusters');
+      const edgeGroup = document.getElementById('edges');
+      const nodeGroup = document.getElementById('nodes');
+      clusterGroup.innerHTML = '';
+      edgeGroup.innerHTML = '';
+      nodeGroup.innerHTML = '';
+
+      for (const cluster of clusters) {
+        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('class', 'cluster-box');
+        rect.setAttribute('x', cluster.x);
+        rect.setAttribute('y', cluster.y);
+        rect.setAttribute('width', cluster.w);
+        rect.setAttribute('height', cluster.h);
+        rect.setAttribute('rx', 10);
+        clusterGroup.appendChild(rect);
+
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('class', 'cluster-label');
+        label.setAttribute('x', cluster.x + 12);
+        label.setAttribute('y', cluster.y + 18);
+        label.textContent = cluster.label;
+        clusterGroup.appendChild(label);
+      }
+
+      const visible = new Set(nodes.filter(matchesNode).map((node) => node.id));
+      const flowActive = highlighted.size > 0;
+      const flowEdges = new Set();
+      if (flowActive) {
+        const ids = Array.from(highlighted);
+        for (let i = 0; i < ids.length - 1; i++) flowEdges.add(edgeKey(ids[i], ids[i + 1]));
+      }
+      const neighborSet = (!flowActive && selectedId) ? (adjacency.get(selectedId) || new Set([selectedId])) : null;
+      const hasFocusContext = flowActive || !!neighborSet || !!selectedEdge;
+
+      for (const [fromId, toId, label] of edges) {
+        const from = nodeById.get(fromId);
+        const to = nodeById.get(toId);
+        const p1 = borderPoint(from, to);
+        const p2 = borderPoint(to, from);
+
+        const isSearchDim = (currentFilter !== 'all' || currentQuery) && (!visible.has(fromId) || !visible.has(toId));
+        let connects = false;
+        if (flowActive) {
+          connects = flowEdges.has(edgeKey(fromId, toId)) || (highlighted.has(fromId) && highlighted.has(toId));
+        } else if (selectedEdge) {
+          connects = selectedEdge.from === fromId && selectedEdge.to === toId;
+        } else if (selectedId) {
+          connects = fromId === selectedId || toId === selectedId;
+        }
+
+        let edgeClass = 'edge-group';
+        if (isSearchDim) edgeClass += ' dim';
+        else if (connects) edgeClass += ' flow';
+        else if (hasFocusContext) edgeClass += ' faded';
+
+        const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        group.setAttribute('class', edgeClass);
+        group.dataset.from = fromId;
+        group.dataset.to = toId;
+        group.dataset.label = label;
+
+        // gentle curve via quadratic control point offset perpendicular to the segment
+        const mx = (p1.x + p2.x) / 2;
+        const my = (p1.y + p2.y) / 2;
+        const dx = p2.x - p1.x;
+        const dy = p2.y - p1.y;
+        const len = Math.hypot(dx, dy) || 1;
+        const bow = Math.min(26, len * 0.08);
+        const cxp = mx + (-dy / len) * bow;
+        const cyp = my + (dx / len) * bow;
+        const d = `M ${p1.x} ${p1.y} Q ${cxp} ${cyp} ${p2.x} ${p2.y}`;
+
+        const hit = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        hit.setAttribute('class', 'edge-hit');
+        hit.setAttribute('d', d);
+        group.appendChild(hit);
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('class', 'edge');
+        path.setAttribute('d', d);
+        group.appendChild(path);
+
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('class', 'edge-label');
+        text.setAttribute('x', cxp);
+        text.setAttribute('y', cyp - 3);
+        text.setAttribute('text-anchor', 'middle');
+        text.textContent = label;
+        group.appendChild(text);
+
+        group.addEventListener('click', (event) => {
+          event.stopPropagation();
+          selectEdge(fromId, toId, label);
+        });
+
+        edgeGroup.appendChild(group);
+      }
+
+      for (const node of nodes) {
+        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        const visibleMatch = matchesNode(node);
+
+        const classList = ['node'];
+        if (node.id === selectedId) classList.push('active');
+        if (!visibleMatch) {
+          classList.push('dim');
+        } else if (flowActive) {
+          if (!highlighted.has(node.id)) classList.push('dim');
+        } else if (selectedEdge) {
+          if (node.id === selectedEdge.from || node.id === selectedEdge.to) classList.push('focus');
+          else classList.push('faded');
+        } else if (neighborSet && node.id !== selectedId) {
+          classList.push(neighborSet.has(node.id) ? 'focus' : 'faded');
+        }
+        g.setAttribute('class', classList.join(' '));
+        g.setAttribute('transform', `translate(${node.x}, ${node.y})`);
+        g.setAttribute('role', 'button');
+        g.setAttribute('tabindex', '0');
+        g.dataset.id = node.id;
+
+        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('width', 150);
+        rect.setAttribute('height', 58);
+        rect.setAttribute('fill', layerTint[node.layer] || '#ffffff');
+        g.appendChild(rect);
+
+        const stripe = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        stripe.setAttribute('class', 'stripe');
+        stripe.setAttribute('x1', 8);
+        stripe.setAttribute('y1', 7);
+        stripe.setAttribute('x2', 8);
+        stripe.setAttribute('y2', 51);
+        stripe.setAttribute('stroke', colors[node.layer]);
+        g.appendChild(stripe);
+
+        const lines = wrapText(node.label, 17);
+        lines.forEach((lineText, index) => {
+          const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          text.setAttribute('class', 'label');
+          text.setAttribute('x', 18);
+          text.setAttribute('y', 22 + index * 14);
+          text.textContent = lineText;
+          g.appendChild(text);
+        });
+
+        const hint = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        hint.setAttribute('class', 'hint');
+        hint.setAttribute('x', 18);
+        hint.setAttribute('y', 48);
+        hint.textContent = node.hint;
+        g.appendChild(hint);
+
+        g.addEventListener('click', (event) => {
+          event.stopPropagation();
+          selectNode(node.id);
+        });
+        g.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            selectNode(node.id);
+          }
+        });
+        nodeGroup.appendChild(g);
+      }
+
+      applyViewTransform();
+    }
+
+    function applyViewTransform() {
+      const viewport = document.getElementById('viewport');
+      if (viewport) {
+        viewport.setAttribute('transform', `translate(${view.tx} ${view.ty}) scale(${view.scale})`);
+      }
+    }
+
+    function selectNode(id) {
+      selectedId = id;
+      selectedEdge = null;
+      highlighted = new Set();
+      renderDiagram();
+      renderDetail(nodeById.get(id));
+      setActiveFlowButton(null);
+    }
+
+    function selectEdge(fromId, toId, label) {
+      selectedId = null;
+      selectedEdge = { from: fromId, to: toId };
+      highlighted = new Set();
+      renderDiagram();
+      renderEdgeDetail(fromId, toId, label);
+      setActiveFlowButton(null);
+    }
+
+    function deselect() {
+      if (!selectedId && !selectedEdge && highlighted.size === 0) return;
+      selectedId = null;
+      selectedEdge = null;
+      highlighted = new Set();
+      renderDiagram();
+      setActiveFlowButton(null);
+      document.getElementById('detailTitle').textContent = 'Select a component';
+      document.getElementById('detailSubtitle').textContent = 'Click any node or edge in the diagram, or pick a flow tab.';
+      document.getElementById('detailBody').innerHTML =
+        '<div class="detail-block"><p class="hint">Click a node to see its files, design decisions, and connections. Click an edge to read what flows between two components. Click empty space to clear.</p></div>';
+    }
+
+    const layerNames = Object.fromEntries((DATA.layers || []).map((l) => [l.key, l.label]));
+
+    function renderDetail(node) {
+      document.getElementById('detailTitle').textContent = node.label;
+      document.getElementById('detailSubtitle').textContent = `${node.hint} - ${layerNames[node.layer] || node.layer}`;
+      const conns = (neighborEdges.get(node.id) || []);
+      const body = document.getElementById('detailBody');
+      body.innerHTML = `
+        <div class="detail-meta">
+          <span class="tag"><span class="dot" style="background:${colors[node.layer]}"></span>${escapeHtml(layerNames[node.layer] || node.layer)}</span>
+          <span class="tag">${conns.length} connection${conns.length === 1 ? '' : 's'}</span>
+        </div>
+        <div class="detail-block" style="margin-top:14px">
+          <h3>What it does</h3>
+          <p>${escapeHtml(node.description)}</p>
+        </div>
+        <div class="detail-block">
+          <h3>Design decisions</h3>
+          <ul>${node.decisions.map((d) => `<li>${escapeHtml(d)}</li>`).join('')}</ul>
+        </div>
+        <div class="detail-block">
+          <h3>Connections</h3>
+          <div class="neighbors">${conns.map((c) => `<button data-goto="${c.other}"><span class="dir">${c.dir === 'out' ? '&rarr;' : '&larr;'}</span> ${escapeHtml(nodeById.get(c.other).label)}</button>`).join('') || '<span class="hint">No direct edges.</span>'}</div>
+        </div>
+        <div class="detail-block">
+          <h3>Source files</h3>
+          <div class="file-list">${node.files.map((f) => `<span class="file">${escapeHtml(f)}</span>`).join('')}</div>
+        </div>
+        <div class="detail-block">
+          <h3>Data touched</h3>
+          <ul>${node.data.map((d) => `<li>${escapeHtml(d)}</li>`).join('')}</ul>
+        </div>
+      `;
+      body.querySelectorAll('button[data-goto]').forEach((button) => {
+        button.addEventListener('click', () => selectNode(button.dataset.goto));
+      });
+    }
+
+    function renderEdgeDetail(fromId, toId, label) {
+      const from = nodeById.get(fromId);
+      const to = nodeById.get(toId);
+      document.getElementById('detailTitle').textContent = `${from.label} \u2192 ${to.label}`;
+      document.getElementById('detailSubtitle').textContent = `Relationship: ${label}`;
+      const body = document.getElementById('detailBody');
+      body.innerHTML = `
+        <div class="detail-block" style="margin-top:6px">
+          <h3>Direction</h3>
+          <p><strong>${escapeHtml(from.label)}</strong> (${escapeHtml(layerNames[from.layer] || from.layer)}) calls <strong>${escapeHtml(to.label)}</strong> (${escapeHtml(layerNames[to.layer] || to.layer)}).</p>
+          <p class="hint">${escapeHtml(label)}</p>
+        </div>
+        <div class="detail-block">
+          <h3>Source endpoints</h3>
+          <p>${escapeHtml(from.label)}</p>
+          <p>${escapeHtml(from.description)}</p>
+        </div>
+        <div class="detail-block">
+          <h3>Target endpoint</h3>
+          <p>${escapeHtml(to.label)}</p>
+          <p>${escapeHtml(to.description)}</p>
+        </div>
+        <div class="detail-block">
+          <h3>Inspect</h3>
+          <div class="neighbors">
+            <button data-goto="${fromId}">Open ${escapeHtml(from.label)}</button>
+            <button data-goto="${toId}">Open ${escapeHtml(to.label)}</button>
+          </div>
+        </div>
+      `;
+      body.querySelectorAll('button[data-goto]').forEach((button) => {
+        button.addEventListener('click', () => selectNode(button.dataset.goto));
+      });
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function setActiveFlowButton(id) {
+      document.querySelectorAll('#flowTabs button').forEach((button) => {
+        button.classList.toggle('active', button.dataset.flow === id);
+      });
+    }
+
+    function renderFlow(flowId) {
+      const flow = flowDefs.find((item) => item.id === flowId) || flowDefs[0];
+      highlighted = new Set(flow.nodes);
+      selectedId = flow.nodes[0];
+      selectedEdge = null;
+      setActiveFlowButton(flow.id);
+      renderDiagram();
+      document.getElementById('flowContent').innerHTML = `
+        <div>
+          <h3>${escapeHtml(flow.title)}</h3>
+          <ol>${flow.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join('')}</ol>
+        </div>
+        <div>
+          <h3>Design decisions</h3>
+          <ul>${flow.decisions.map((decision) => `<li>${escapeHtml(decision)}</li>`).join('')}</ul>
+        </div>
+      `;
+      renderDetail(nodeById.get(flow.nodes[0]));
+    }
+
+    function renderFlows() {
+      const tabs = document.getElementById('flowTabs');
+      tabs.innerHTML = flowDefs.map((flow) => `<button data-flow="${flow.id}">${escapeHtml(flow.label)}</button>`).join('');
+      tabs.querySelectorAll('button').forEach((button) => {
+        button.addEventListener('click', () => renderFlow(button.dataset.flow));
+      });
+      if (flowDefs.length) renderFlow(flowDefs[0].id);
+    }
+
+    function renderMatrices() {
+      const host = document.getElementById('bm-matrices');
+      if (!host) return;
+      if (!matrices.length) { const sec = host.closest('.section'); if (sec) sec.style.display = 'none'; return; }
+      host.innerHTML = matrices.map((m) => {
+        const cols = (m.headers || []).length || 1;
+        const head = (m.headers || []).map((h) => `<div class="head">${escapeHtml(h)}</div>`).join('');
+        const rows = (m.rows || []).map((r) => r.map((c) => `<div>${escapeHtml(c)}</div>`).join('')).join('');
+        return `<div style="margin-bottom:18px"><h3 style="margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:0.04em;color:#415162">${escapeHtml(m.title || '')}</h3>` +
+          `<div class="matrix" style="grid-template-columns:repeat(${cols}, minmax(0,1fr))">${head}${rows}</div></div>`;
+      }).join('');
+    }
+
+    // ----- Request lifecycle -----
+    let reqScenarioId = requestScenarios[0] ? requestScenarios[0].id : null;
+    let reqStep = 0;
+    let reqTimer = null;
+
+    function currentReqScenario() {
+      return requestScenarios.find((s) => s.id === reqScenarioId) || requestScenarios[0];
+    }
+
+    function renderReqScenarios() {
+      const tabs = document.getElementById('reqScenarios');
+      tabs.innerHTML = requestScenarios
+        .map((s) => `<button data-req="${s.id}"${s.id === reqScenarioId ? ' class="active"' : ''}>${escapeHtml(s.label)}</button>`)
+        .join('');
+      tabs.querySelectorAll('button').forEach((button) => {
+        button.addEventListener('click', () => selectReqScenario(button.dataset.req));
+      });
+    }
+
+    function renderReqRequest() {
+      const scenario = currentReqScenario();
+      const headers = scenario.request.headers
+        .map(([k, v]) => `<div><span class="hdr-k">${escapeHtml(k)}:</span> <span class="hdr-v">${escapeHtml(v)}</span></div>`)
+        .join('');
+      document.getElementById('reqRequest').innerHTML =
+        `<div><span class="method">${escapeHtml(scenario.request.method)}</span> <span class="path">${escapeHtml(scenario.request.path)}</span></div>` + headers;
+    }
+
+    function renderReqTrack() {
+      const scenario = currentReqScenario();
+      const track = document.getElementById('reqTrack');
+      track.innerHTML = scenario.stages.map((stage, index) => {
+        const badge = stage.badge ? `<span class="badge ${stage.badge.type}">${escapeHtml(stage.badge.text)}</span>` : '<span></span>';
+        const file = stage.file ? `<span class="file">${escapeHtml(stage.file)}</span>` : '';
+        return `
+          <div class="req-stage" data-index="${index}">
+            <span class="stripe2" style="background:${colors[stage.layer]}"></span>
+            <span class="num">${index + 1}</span>
+            <div>
+              <div class="title">${escapeHtml(stage.title)}</div>
+              <div class="desc">${escapeHtml(stage.desc)}</div>
+              ${file}
+            </div>
+            ${badge}
+          </div>`;
+      }).join('');
+      track.querySelectorAll('.req-stage').forEach((el) => {
+        el.addEventListener('click', () => {
+          stopReqPlay();
+          reqStep = Number(el.dataset.index) + 1;
+          paintReqState();
+        });
+      });
+      paintReqState();
+    }
+
+    function paintReqState() {
+      const scenario = currentReqScenario();
+      const total = scenario.stages.length;
+      document.querySelectorAll('#reqTrack .req-stage').forEach((el) => {
+        const index = Number(el.dataset.index);
+        el.classList.toggle('done', index < reqStep - 1);
+        el.classList.toggle('active', index === reqStep - 1);
+        if (index >= reqStep) el.classList.remove('done', 'active');
+      });
+      const pct = total > 1 ? (Math.max(0, reqStep - 1) / (total - 1)) * 100 : 0;
+      document.getElementById('reqBar').style.width = `${reqStep === 0 ? 0 : pct}%`;
+      document.getElementById('reqStatus').textContent =
+        reqStep === 0 ? `Ready - ${total} stages` : `Stage ${reqStep} / ${total}: ${scenario.stages[reqStep - 1].title}`;
+      const active = document.querySelector('#reqTrack .req-stage.active');
+      if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+
+    function stepReq() {
+      const total = currentReqScenario().stages.length;
+      if (reqStep >= total) {
+        stopReqPlay();
+        return false;
+      }
+      reqStep += 1;
+      paintReqState();
+      return reqStep < total;
+    }
+
+    function stopReqPlay() {
+      if (reqTimer) {
+        clearInterval(reqTimer);
+        reqTimer = null;
+      }
+      const play = document.getElementById('reqPlay');
+      if (play) play.textContent = 'Play';
+    }
+
+    function playReq() {
+      if (reqTimer) {
+        stopReqPlay();
+        return;
+      }
+      const total = currentReqScenario().stages.length;
+      if (reqStep >= total) reqStep = 0;
+      document.getElementById('reqPlay').textContent = 'Pause';
+      stepReq();
+      reqTimer = setInterval(() => {
+        if (!stepReq()) stopReqPlay();
+      }, 950);
+    }
+
+    function resetReq() {
+      stopReqPlay();
+      reqStep = 0;
+      paintReqState();
+    }
+
+    function selectReqScenario(id) {
+      stopReqPlay();
+      reqScenarioId = id;
+      reqStep = 0;
+      renderReqScenarios();
+      renderReqRequest();
+      renderReqTrack();
+    }
+
+    function initRequestFlow() {
+      renderReqScenarios();
+      renderReqRequest();
+      renderReqTrack();
+      document.getElementById('reqPlay').addEventListener('click', playReq);
+      document.getElementById('reqStep').addEventListener('click', () => {
+        stopReqPlay();
+        stepReq();
+      });
+      document.getElementById('reqReset').addEventListener('click', resetReq);
+    }
+
+    // ----- Pan & zoom -----
+    const svg = document.getElementById('diagram');
+
+    function clampScale(value) {
+      return Math.max(0.5, Math.min(3, value));
+    }
+
+    function clientToViewBox(clientX, clientY) {
+      const pt = svg.createSVGPoint();
+      pt.x = clientX;
+      pt.y = clientY;
+      return pt.matrixTransform(svg.getScreenCTM().inverse());
+    }
+
+    function zoomAt(clientX, clientY, factor) {
+      const v = clientToViewBox(clientX, clientY);
+      const cx = (v.x - view.tx) / view.scale;
+      const cy = (v.y - view.ty) / view.scale;
+      view.scale = clampScale(view.scale * factor);
+      view.tx = v.x - view.scale * cx;
+      view.ty = v.y - view.scale * cy;
+      applyViewTransform();
+    }
+
+    function resetView() {
+      view.scale = 1;
+      view.tx = 0;
+      view.ty = 0;
+      applyViewTransform();
+    }
+
+    function initPanZoom() {
+      svg.addEventListener('wheel', (event) => {
+        event.preventDefault();
+        zoomAt(event.clientX, event.clientY, event.deltaY < 0 ? 1.12 : 1 / 1.12);
+      }, { passive: false });
+
+      let pending = false; // pointer down on background, not yet a drag
+      let dragging = false;
+      let moved = 0;
+      const DRAG_THRESHOLD = 4;
+
+      svg.addEventListener('pointerdown', (event) => {
+        if (event.target.closest('.node') || event.target.closest('.edge-group')) return;
+        pending = true;
+        dragging = false;
+        moved = 0;
+      });
+      svg.addEventListener('pointermove', (event) => {
+        if (!pending) return;
+        moved += Math.abs(event.movementX) + Math.abs(event.movementY);
+        if (!dragging && moved > DRAG_THRESHOLD) {
+          dragging = true;
+          svg.classList.add('panning');
+          svg.setPointerCapture(event.pointerId);
+        }
+        if (dragging) {
+          const ctm = svg.getScreenCTM();
+          view.tx += event.movementX / ctm.a;
+          view.ty += event.movementY / ctm.d;
+          applyViewTransform();
+        }
+      });
+      const endPointer = () => {
+        if (pending && !dragging) deselect(); // clean click on empty canvas
+        pending = false;
+        dragging = false;
+        svg.classList.remove('panning');
+      };
+      svg.addEventListener('pointerup', endPointer);
+      svg.addEventListener('pointercancel', endPointer);
+
+      document.querySelectorAll('.zoom-controls button').forEach((button) => {
+        button.addEventListener('click', () => {
+          const action = button.dataset.zoom;
+          if (action === 'reset') return resetView();
+          const rect = svg.getBoundingClientRect();
+          zoomAt(rect.left + rect.width / 2, rect.top + rect.height / 2, action === 'in' ? 1.2 : 1 / 1.2);
+        });
+      });
+    }
+
+    document.getElementById('search').addEventListener('input', (event) => {
+      currentQuery = event.target.value.trim().toLowerCase();
+      renderDiagram();
+    });
+
+    function renderHeader() {
+      const t = document.getElementById('bm-title'); if (t) t.textContent = DATA.title || 'Code Map';
+      const s = document.getElementById('bm-subtitle'); if (s) s.textContent = DATA.subtitle || '';
+      const m = document.getElementById('bm-meta'); if (m) m.innerHTML = (DATA.meta || []).map((x) => `<span class="pill">${escapeHtml(x)}</span>`).join('');
+      const ot = document.getElementById('bm-ov-title'); if (ot) ot.textContent = DATA.title || 'Overview';
+      const wt = document.getElementById('bm-wt-title'); if (wt) wt.textContent = (DATA.sections && DATA.sections.walkthroughTitle) || 'Worked example';
+      const mt = document.getElementById('bm-matrices-title'); if (mt) mt.textContent = (DATA.sections && DATA.sections.matricesTitle) || 'Reference tables';
+    }
+    function renderOverview() {
+      const p = document.getElementById('bm-summary'); if (p) p.textContent = DATA.summary || '';
+      const caps = document.getElementById('bm-caps');
+      if (caps) caps.innerHTML = (DATA.layers || []).map((l) => `<span class="cap"><span class="dot" style="background:${l.color}"></span>${escapeHtml(l.label)}</span>`).join('');
+    }
+    function renderFilters() {
+      const host = document.getElementById('bm-segmented'); if (!host) return;
+      const btns = ['<button class="active" data-filter="all">All</button>']
+        .concat((DATA.layers || []).map((l) => `<button data-filter="${escapeHtml(l.key)}">${escapeHtml(l.label)}</button>`));
+      host.innerHTML = btns.join('');
+      host.querySelectorAll('button').forEach((button) => {
+        button.addEventListener('click', () => {
+          host.querySelectorAll('button').forEach((b) => b.classList.remove('active'));
+          button.classList.add('active');
+          currentFilter = button.dataset.filter;
+          selectedId = null; selectedEdge = null; highlighted = new Set();
+          setActiveFlowButton(null); renderDiagram();
+        });
+      });
+    }
+    function renderLegend() {
+      const host = document.getElementById('bm-legend'); if (!host) return;
+      host.innerHTML = (DATA.layers || []).map((l) => `<span class="key"><span class="dot" style="background:${l.color}"></span>${escapeHtml(l.label)}</span>`).join('');
+    }
+    function renderNotes() {
+      const host = document.getElementById('bm-notes'); if (!host) return;
+      if (!(DATA.notes || []).length) { const sec = host.closest('.section'); if (sec) sec.style.display = 'none'; return; }
+      host.innerHTML = (DATA.notes || []).map((n) => `<div class="detail-block ${n.kind || 'info'}"><p>${escapeHtml(n.text)}</p></div>`).join('');
+    }
+    function hideWalkSection() {
+      const el = document.getElementById('reqRequest'); const sec = el && el.closest('.section'); if (sec) sec.style.display = 'none';
+    }
+
+    renderHeader();
+    renderOverview();
+    renderFilters();
+    renderLegend();
+    renderMatrices();
+    renderNotes();
+    document.getElementById('diagram').setAttribute('viewBox', DATA.viewBox || '0 0 1560 720');
+    renderFlows();
+    if (!flowDefs.length) { renderDiagram(); if (selectedId) renderDetail(nodeById.get(selectedId)); }
+    if (requestScenarios.length) initRequestFlow(); else hideWalkSection();
+    initPanZoom();
+  </script>
+</body>
+</html>
