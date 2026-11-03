@@ -1,0 +1,179 @@
+{
+ "label": "Exploratory - rope EA from published material ranges, not measured on the actual product.",
+ "path_length_m": 11.02,
+ "target_bumper_N": 2000.0,
+ "ropes": {
+  "polyester 12 mm (soft, bedded in)": {
+   "EA_kN": 80,
+   "d_mm": 12,
+   "k_N_per_m": 7259.528130671507,
+   "commanded_T0_N": 1379.108782717914,
+   "rope_tension_N": 1095.6877872049204,
+   "pulley_N": 2000.419652774589,
+   "bumper_N": 2000.000000004598,
+   "boat_dx_mm": -22.179417220747887,
+   "dT_per_mm_N": 13.253869315739,
+   "creep": [
+    {
+     "creep_mm": 0,
+     "bumper_total_N": 2000.000000004598,
+     "rope_N": 1095.6877872049204,
+     "kept_pct": 100.0
+    },
+    {
+     "creep_mm": 1,
+     "bumper_total_N": 1980.7031189306047,
+     "rope_N": 1085.144733791016,
+     "kept_pct": 99.03515594630255
+    },
+    {
+     "creep_mm": 2,
+     "bumper_total_N": 1961.4079998369505,
+     "rope_N": 1074.602110205974,
+     "kept_pct": 98.07039999162205
+    },
+    {
+     "creep_mm": 5,
+     "bumper_total_N": 1903.5332480653256,
+     "rope_N": 1042.9768342153877,
+     "kept_pct": 95.17666240304747
+    },
+    {
+     "creep_mm": 10,
+     "bumper_total_N": 1807.1108845887584,
+     "rope_N": 990.2767863589869,
+     "kept_pct": 90.35554422923019
+    }
+   ]
+  },
+  "polyester 12 mm (typical)": {
+   "EA_kN": 150,
+   "d_mm": 12,
+   "k_N_per_m": 13611.615245009076,
+   "commanded_T0_N": 1627.1021538195987,
+   "rope_tension_N": 1095.687787257399,
+   "pulley_N": 2000.4196528704676,
+   "bumper_N": 2000.0000000222062,
+   "boat_dx_mm": -22.179417218758722,
+   "dT_per_mm_N": 24.851004967011463,
+   "creep": [
+    {
+     "creep_mm": 0,
+     "bumper_total_N": 2000.0000000222062,
+     "rope_N": 1095.687787257399,
+     "kept_pct": 100.0
+    },
+    {
+     "creep_mm": 1,
+     "bumper_total_N": 1969.3329762270896,
+     "rope_N": 1078.9108468806894,
+     "kept_pct": 98.46664881026119
+    },
+    {
+     "creep_mm": 2,
+     "bumper_total_N": 1938.669695073991,
+     "rope_N": 1062.1352388929402,
+     "kept_pct": 96.93348475262329
+    },
+    {
+     "creep_mm": 5,
+     "bumper_total_N": 1846.7024970040602,
+     "rope_N": 1011.8165114256526,
+     "kept_pct": 92.3351248491778
+    },
+    {
+     "creep_mm": 10,
+     "bumper_total_N": 1693.5004834260913,
+     "rope_N": 927.9795825457106,
+     "kept_pct": 84.67502417036441
+    }
+   ]
+  },
+  "polyester 14 mm (stiff)": {
+   "EA_kN": 300,
+   "d_mm": 14,
+   "k_N_per_m": 27223.23049001815,
+   "commanded_T0_N": 2158.516520349133,
+   "rope_tension_N": 1095.6877871921154,
+   "pulley_N": 2000.4196527512331,
+   "bumper_N": 1999.999999981772,
+   "boat_dx_mm": -22.179417220314235,
+   "dT_per_mm_N": 49.70200993402182,
+   "creep": [
+    {
+     "creep_mm": 0,
+     "bumper_total_N": 1999.999999981772,
+     "rope_N": 1095.6877871921154,
+     "kept_pct": 100.0
+    },
+    {
+     "creep_mm": 1,
+     "bumper_total_N": 1953.7190832705219,
+     "rope_N": 1070.3503341693602,
+     "kept_pct": 97.68595416441642
+    },
+    {
+     "creep_mm": 2,
+     "bumper_total_N": 1907.4476860916122,
+     "rope_N": 1045.0173037966797,
+     "kept_pct": 95.37238430544984
+    },
+    {
+     "creep_mm": 5,
+     "bumper_total_N": 1768.6915881150899,
+     "rope_N": 969.0452861972373,
+     "kept_pct": 88.4345794065605
+    },
+    {
+     "creep_mm": 10,
+     "bumper_total_N": 1537.6311485296055,
+     "rope_N": 842.5188493240605,
+     "kept_pct": 76.88155742718098
+    }
+   ]
+  },
+  "UHMWPE 4.8 mm (winch rope)": {
+   "EA_kN": 1810,
+   "d_mm": 4.8,
+   "k_N_per_m": 164246.82395644285,
+   "commanded_T0_N": 7508.087810625464,
+   "rope_tension_N": 1095.6877871754832,
+   "pulley_N": 2000.4196527208514,
+   "bumper_N": 1999.9999999946283,
+   "boat_dx_mm": -22.17941722063874,
+   "dT_per_mm_N": 299.8687932685959,
+   "creep": [
+    {
+     "creep_mm": 0,
+     "bumper_total_N": 1999.9999999946283,
+     "rope_N": 1095.6877871754832,
+     "kept_pct": 100.0
+    },
+    {
+     "creep_mm": 1,
+     "bumper_total_N": 1919.4715389263429,
+     "rope_N": 1051.574042303801,
+     "kept_pct": 95.97357694657492
+    },
+    {
+     "creep_mm": 2,
+     "bumper_total_N": 1838.9882719784146,
+     "rope_N": 1007.4848180282019,
+     "kept_pct": 91.94941359916768
+    },
+    {
+     "creep_mm": 5,
+     "bumper_total_N": 1597.8185644083155,
+     "rope_N": 875.3691747251775,
+     "kept_pct": 79.89092822063036
+    },
+    {
+     "creep_mm": 10,
+     "bumper_total_N": 1196.859653025606,
+     "rope_N": 655.7144926380807,
+     "kept_pct": 59.84298265144103
+    }
+   ]
+  }
+ }
+}

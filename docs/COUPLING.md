@@ -167,3 +167,42 @@ six**, and with a bow reaction the previous arrangement never created.
 5. **Run this configuration in waves.** The study is quasi-static. The previous arrangement was judged on peak loads and
    snatch in the Erdre test case; this one has not been through that yet. The preloaded system should behave *better*
    there, but that is a prediction, not a result.
+
+## 11. Addendum (3 Nov): can the winch's own 4.8 mm rope be used for the V?
+
+Yes. `scripts/run_rope_choice.py` → `results/coupling/rope_choice.json` compares rope stiffness over the real V path
+(2 × 5.54 m = 11.08 m) for a target rear preload of 2 000 N.
+
+| rope | EA [kN] | k over the path [kN/m] | tension to hold 2 000 N | tension change per mm of surge | preload kept after 5 mm of bumper creep |
+|---|---|---|---|---|---|
+| polyester 12 mm, bedded in | 80 | 7.3 | 1 096 N | 13 N/mm | 95 % |
+| polyester 12 mm, typical | 150 | 13.6 | 1 096 N | 25 N/mm | 92 % |
+| polyester 14 mm, stiff | 300 | 27.2 | 1 096 N | 50 N/mm | 88 % |
+| **UHMWPE 4.8 mm (supplied)** | **1 810** | **164** | **1 096 N** | **300 N/mm** | **80 %** |
+
+**The tension required is identical for every rope** — 1 096 N — because the force law of §4 has no stiffness term. The
+rope diameter changes nothing about what the winch must pull or what the bow must carry.
+
+What it does change:
+
+* **Strength is a non-issue either way.** 1 096 N working against a UHMWPE 4.8 mm MBL of order 10–24 kN is 5–11 % of
+  breaking load. The 12 mm polyester would be at ~4 % — both are far oversized; the rope is not sized by strength here.
+* **Preload stability is mildly worse and manageable.** A stiff rope stops the boat following the bumpers as they take a
+  set, so the lost compression is not recovered: 5 mm of creep costs 20 % of preload with 4.8 mm against 8 % with 12 mm
+  polyester. Re-tensioning to the load cell fixes it either way; the 4.8 mm rope just needs it more often.
+* **Two real advantages for 4.8 mm.** It spools on the drum and fairlead it was supplied with, which removes the
+  rope/drum conflict of §8 entirely. And it needs a far smaller sheave — a 4.8 mm rope wants a sheave of roughly 40 mm
+  against ~110 mm for 14 mm rope, which matters a great deal at the bow, where the hardware has to be carried by an
+  existing fitting.
+* **Two cautions specific to UHMWPE.** It creeps under sustained load (grade-dependent, and this rope's grade is not
+  published), which adds to the bumper creep above; and it has poorer abrasion and UV resistance than polyester, which
+  matters where it passes over the pulley and bears near the bow. Chafe protection at those two points, and periodic
+  inspection, are the price.
+* **The supplied length is the real constraint.** The V path alone is **11.08 m of the 12 m supplied**, leaving under a
+  metre for the lead to the winch and the five drum wraps the winch's own manual requires. **Buy ~15 m of the same
+  4.8 mm rope** rather than re-rigging around the 12 m coil.
+
+**Revised recommendation:** use 4.8 mm UHMWPE for the whole V, in a ~15 m length, with chafe protection at the pulley
+and the bow, and re-tension to the load cell more often than you would with polyester. This replaces item 3 of §10 — the
+rope/drum mismatch disappears instead of needing a splice. Items 1, 2, 4 and 5 of §10 stand unchanged; the bow fitting
+remains the thing that must be sorted before any powered trial.
