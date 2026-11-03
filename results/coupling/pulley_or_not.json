@@ -1,0 +1,145 @@
+{
+ "label": "Exploratory. Rear preload matched to 1972 N in all three arrangements.",
+ "arrangements": {
+  "A bridle (pulley), anchors 0.30 m": {
+   "mode": "bridle",
+   "anchor_z_m": 0.3,
+   "commanded_T0_N": 1600.087934058647,
+   "cases": {
+    "moored": {
+     "dyaw_deg": 0.0014555894882790099,
+     "dy_mm": -1.1114770397890659,
+     "bumper_min_N": 985.6971386511981,
+     "wheel_max_N": -0.0,
+     "legs": {
+      "VEE_ROPE": 1080
+     },
+     "front_resultant_N": 1972.4121678996808
+    },
+    "diff_one": {
+     "dyaw_deg": -0.8365530698369416,
+     "dy_mm": 47.80510176955946,
+     "bumper_min_N": 469.0871426221488,
+     "wheel_max_N": 20.639472069566843,
+     "legs": {
+      "VEE_ROPE": 1004
+     },
+     "front_resultant_N": 1832.232230024049
+    },
+    "diff_opp": {
+     "dyaw_deg": -2.9863555141618905,
+     "dy_mm": 95.29027500691808,
+     "bumper_min_N": -0.0,
+     "wheel_max_N": 135.4925321942757,
+     "legs": {
+      "VEE_ROPE": 1399
+     },
+     "front_resultant_N": 2556.009239898916
+    }
+   }
+  },
+  "B two fixed legs, anchors 0.30 m": {
+   "mode": "legs",
+   "anchor_z_m": 0.3,
+   "commanded_T0_N": 3200.1715349566,
+   "cases": {
+    "moored": {
+     "dyaw_deg": 0.002882910436383936,
+     "dy_mm": -0.29144206732165784,
+     "bumper_min_N": 984.5766823660895,
+     "wheel_max_N": -0.0,
+     "legs": {
+      "LEG_PORT": 1081,
+      "LEG_STBD": 1080
+     },
+     "front_resultant_N": null
+    },
+    "diff_one": {
+     "dyaw_deg": -0.35286363844889773,
+     "dy_mm": 37.99169414358617,
+     "bumper_min_N": 853.6543046033573,
+     "wheel_max_N": 104.82796841957965,
+     "legs": {
+      "LEG_PORT": 1134,
+      "LEG_STBD": 885
+     },
+     "front_resultant_N": null
+    },
+    "diff_opp": {
+     "dyaw_deg": -0.49919450865718634,
+     "dy_mm": 41.89988247368977,
+     "bumper_min_N": 588.5998044394825,
+     "wheel_max_N": 257.27219338845254,
+     "legs": {
+      "LEG_PORT": 1381,
+      "LEG_STBD": 772
+     },
+     "front_resultant_N": null
+    }
+   }
+  },
+  "C two fixed legs, anchors 1.00 m": {
+   "mode": "legs",
+   "anchor_z_m": 1.0,
+   "commanded_T0_N": 5038.9625446704085,
+   "cases": {
+    "moored": {
+     "dyaw_deg": 0.008362318207498479,
+     "dy_mm": -0.35788335120517517,
+     "bumper_min_N": 983.8601941547287,
+     "wheel_max_N": -0.0,
+     "legs": {
+      "LEG_PORT": 1084,
+      "LEG_STBD": 1085
+     },
+     "front_resultant_N": null
+    },
+    "diff_one": {
+     "dyaw_deg": -101.56128483510706,
+     "dy_mm": 3252.4997220009272,
+     "bumper_min_N": -0.0,
+     "wheel_max_N": 5398.939537468956,
+     "legs": {
+      "LEG_PORT": 6819,
+      "LEG_STBD": 0
+     },
+     "front_resultant_N": null
+    },
+    "diff_opp": {
+     "dyaw_deg": -0.4975870339570855,
+     "dy_mm": 41.93147625328165,
+     "bumper_min_N": 588.5106186678479,
+     "wheel_max_N": 256.7474972590633,
+     "legs": {
+      "LEG_PORT": 1389,
+      "LEG_STBD": 777
+     },
+     "front_resultant_N": null
+    }
+   }
+  }
+ },
+ "bow_bearing_pressure": {
+  "10 x 200 mm": {
+   "area_m2": 0.002,
+   "kPa": 986.0,
+   "bar": 9.86
+  },
+  "30 x 250 mm": {
+   "area_m2": 0.0075,
+   "kPa": 262.9,
+   "bar": 2.63
+  },
+  "50 x 300 mm": {
+   "area_m2": 0.015,
+   "kPa": 131.5,
+   "bar": 1.31
+  },
+  "120 x 400 mm": {
+   "area_m2": 0.048,
+   "kPa": 41.1,
+   "bar": 0.41
+  }
+ },
+ "resultant_N": 1972.0
+}

@@ -272,3 +272,65 @@ space at the bow.
 **It does not change §10 item 1.** No load rating is published for it either, and it is still a fender. The pulley
 reaction — 1 224 N with raised anchors, 1 972 N as previously modelled — must be carried by a structural fitting, with
 the fender protecting the hull from chafe. A better fender makes the hull safer; it does not make the fender a padeye.
+
+## 13. Addendum (3 Nov): does the front fender carry anything? And is the pulley helping?
+
+The review put it plainly: the rope passes over the fender, so the fender is not really taking any pressure. That is
+right, with one condition — and checking it turned up something better than the arrangement recommended in §10.
+
+### 13.1 What the bow actually sees depends on how wide the contact is
+
+The resultant on the bow is the same either way (1 972 N as modelled in §5, 1 224 N with the raised anchors of §12).
+What changes is whether it arrives as a point load or a spread one:
+
+| bearing footprint | pressure |
+|---|---|
+| bare 4.8 mm rope bedding into foam, ~10 × 200 mm | **986 kPa (9.9 bar)** — it cuts in and chafes through |
+| 30 × 250 mm | 263 kPa (2.6 bar) |
+| 50 × 300 mm | 132 kPa (1.3 bar) |
+| **a saddle or bearing plate, 120 × 400 mm** | **41 kPa (0.41 bar)** — a fender takes this without noticing |
+
+So: **a fender cannot be a padeye, but it can be a bearing surface.** Spread the direction change over a broad saddle and
+the 1 972 N arrives at the hull as 0.4 bar over the fender's footprint, which is nothing for a hull or a fender. That is
+why no load rating is needed for the fender in that arrangement — the correction in §10 item 1 was aimed at the wrong
+risk. The risk is not that the fender is too weak; it is that a **thin rope on soft foam is a knife**.
+
+### 13.2 And the free-running pulley is actively hurting yaw
+
+Matched at the same 1 972 N of rear preload, under opposed pods (2 396 N·m):
+
+| front arrangement | yaw | leg tensions | wheel |
+|---|---|---|---|
+| **A** one rope over a free pulley (as specified) | **−2.99°** | 1 399 N, equal by construction | 135 N |
+| **B** two legs made off / bearing on a saddle, anchors 0.30 m | **−0.50°** | 1 381 / 772 N | 257 N |
+| **C** same, anchors raised to 1.00 m | **−0.50°** | 1 389 / 777 N | 257 N |
+
+**Fixed legs restrain yaw six times better**, and they cost nothing in peak rope tension (1 381 N against 1 399 N). The
+reason is the one stated in §5: a pulley that equalises the tension cannot resist yaw. The brief specified the pulley so
+the rope could "slide and approximately equalise tension" — but equalising the tension is precisely what throws the yaw
+restraint away. The two legs carrying 1 381 and 772 N *are* the yaw couple.
+
+### 13.3 What this changes
+
+A rope bearing on a broad saddle over the fender is neither model exactly: friction at the saddle is somewhere between
+free-running (A) and fully fixed (B), so the real behaviour sits between those two rows, which bracket it. That is
+convenient rather than awkward:
+
+* **at rigging**, partial sliding helps you pull both legs up evenly from one winch — the reason the brief wanted a
+  pulley in the first place;
+* **under load**, friction lets the legs differ, which is where the yaw restraint comes from.
+
+**Revised recommendation, replacing §10 item 1:** lead the continuous rope over a **broad saddle or a wide-sheave
+roller bearing on the bow fender**, not a small free-running block on a padeye. Size the bearing surface for ~120 ×
+400 mm so the pressure stays near 0.4 bar, and keep the fender between the hardware and the hull. Then:
+
+* the fender's missing load rating stops mattering — it is a bearing surface at 0.4 bar, not a structural attachment;
+* no structural bow fitting has to be found or verified, which is what makes the "no modification to Hydronaute" rule
+  easy to keep rather than hard;
+* yaw restraint improves by roughly 6× over the specified free pulley;
+* and the FenderFlex's three fixing points (§12.3) become the right feature for the job — they are what holds a broad
+  saddle in place against a rope trying to drag it along the stem.
+
+The thing still to verify on the real boat is the **anti-slip of that saddle along the stem**: nothing in this model
+stops the saddle sliding up, down or sideways under an off-axis pull, and that, not the fender's strength, is now the
+open question at the bow.
