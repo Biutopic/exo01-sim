@@ -228,22 +228,34 @@ def rope_hull_clearance(els):
                     continue
                 c = abs(p[1]) - obst
                 if worst is None or c < worst:
+                    lies_on = ("deck edge (chafe, leadable)" if what == "hull" and p[2] < TOPSIDE
+                               else "superstructure (not leadable)")
+                    side_deck = round(float(half_beam(xb) - cabin_at(xb)[0]), 3) if cabin_at(xb)[0] > 0 else None
                     worst, where = float(c), dict(element=e["id"], obstruction=what,
                                                   boat_station_m=round(float(xb), 3),
-                                                  z_m=round(float(p[2]), 3), half_width_m=round(obst, 3))
+                                                  z_m=round(float(p[2]), 3), half_width_m=round(obst, 3),
+                                                  would_lie_on=lies_on, side_deck_width_m=side_deck)
     return worst, where
 
 
 # ──────────────────────────────────────────────────── the gauntlet
+BUMP_MIN_N = 50.0   # N per rear bumper: the compression below which the contact is "open" and rattling
+
+
 def statics(els_fn, t0):
-    """All nine load cases. Returns (all_ok, per-case dict)."""
+    """All nine load cases. Gate: converged, physical, restrained, AND both rear bumpers still loaded - the bumpers
+    are the forward-thrust load path, so an arrangement that lets one open has not passed (COUPLING.md section 5)."""
     els = els_fn(t0, T_SNUG)
+    has_bump = any(e["id"].startswith("BUMPER") for e in els)
     out, ok = {}, True
     for c in CASES:
         r = solve(els, surge_N=c["surge"], yaw_Nm=c["yaw"])
-        good = bool(r["converged"] and r["physical"] and not r["unrestrained"])
+        bump_ok = (not has_bump) or (r["bumper_min_N"] is not None and r["bumper_min_N"] >= BUMP_MIN_N)
+        good = bool(r["converged"] and r["physical"] and not r["unrestrained"] and bump_ok)
         tens = [v["T_N"] for v in r["elements"].values() if v["kind"] in ("line", "bridle")]
-        out[c["id"]] = dict(ok=good, dx_mm=round(r["dx_mm"], 1), dyaw_deg=round(r["dyaw_deg"], 3),
+        out[c["id"]] = dict(ok=good, bumpers_loaded=bool(bump_ok),
+                            bumper_min_N=None if r["bumper_min_N"] is None else round(r["bumper_min_N"], 1),
+                            dx_mm=round(r["dx_mm"], 1), dyaw_deg=round(r["dyaw_deg"], 3),
                             max_tension_N=round(max(tens), 1) if tens else None,
                             bumper_total_N=round(r["bumper_total_N"], 1), wheel_max_N=round(r["wheel_max_N"], 1),
                             transom_to_deck_m=r["transom_to_deck_m"], unrestrained=r["unrestrained"])
@@ -264,8 +276,9 @@ def min_preload_static(els_fn, hi=8000.0):
     return round(hi, 1)
 
 
-def wave_metrics(els, t0):
-    """Linear response in the three reference waves. engaged = nothing goes slack and no contact opens."""
+def wave_metrics(els, t0, primary=()):
+    """Linear response in the three reference waves. engaged = the PRIMARY load path stays in tension and no contact
+    opens. A snug secondary rope going slack in a wave is normal for a backup and is recorded, not failed."""
     cfg = cfg_for(els)
     r = evaluate(cfg)
     ce = r.get("coupled_equilibrium") or {}
@@ -280,10 +293,12 @@ def wave_metrics(els, t0):
             rw = model.regular_wave(w["H_m"], w["T_s"], hd[0], DAMP, cfg["deck_acceleration_points"])
             el = rw.get("lines") or []
             slack = [l["id"] for l in el if l.get("kind") in ("line", "bridle") and l["slack_in_cycle"]]
+            prim_slack = [i for i in slack if any(i.startswith(p_) for p_ in primary)] if primary else slack
             opens = [l["id"] for l in el if l.get("kind") == "fender" and l["slack_in_cycle"]]
             rel = rw.get("relative_motion") or {}
             tg = [v for k_, v in rel.items() if k_.startswith("transom_vs_deck_edge")]
-            res[w["id"]] = dict(engaged=not slack and not opens, slack=slack, opens=opens,
+            res[w["id"]] = dict(engaged=not prim_slack and not opens, primary_slack=prim_slack,
+                                secondary_slack=[i for i in slack if i not in prim_slack], opens=opens,
                                 peak_N=max((l["max_N"] for l in el if l.get("kind") in ("line", "bridle")), default=None),
                                 boat_roll_deg=round(rw["bodies"]["BOAT"]["amplitude_deg"]["roll"], 2),
                                 transom_gap_min_m=min((v["min_clearance_m"] for v in tg
@@ -294,21 +309,21 @@ def wave_metrics(els, t0):
     return res
 
 
-def min_preload_waves(els_fn, hi=24000.0):
-    """Smallest per-element preload at which all three waves stay engaged."""
-    def eng(t):
-        m = wave_metrics(els_fn(t, T_SNUG), t)
-        if "error" in m:
-            return False
-        return all(v.get("engaged") for v in m.values() if "error" not in v) and \
-            all("error" not in v for v in m.values())
-    if not eng(hi):
-        return None
-    lo = 1.0
-    for _ in range(11):
-        mid = 0.5 * (lo + hi)
-        lo, hi = (lo, mid) if eng(mid) else (mid, hi)
-    return round(hi, 1)
+LADDER = [1.0, 200.0, 400.0, 600.0, 800.0, 1000.0, 1300.0, 1600.0, 2000.0, 2500.0,
+          3000.0, 4000.0, 5000.0, 6500.0, 8000.0, 10000.0, 12000.0]
+
+
+def min_preload_waves(els_fn, primary=()):
+    """Lowest preload on the ladder at which all three waves engage. A ladder, not a bisection: engagement is NOT
+    monotone in preload (section 14 found engaged at 900 N, slack at 1100 N, engaged at 1300 N), so a bisection
+    both misses the true threshold and reports None for an arrangement that simply fails at the top of the bracket."""
+    for t in LADDER:
+        m = wave_metrics(els_fn(t, T_SNUG), t, primary)
+        if "error" in m or any("error" in v for v in m.values()):
+            continue
+        if all(v.get("engaged") for v in m.values()):
+            return round(t, 1)
+    return None
 
 
 def redundancy(els_fn, t0):
@@ -335,14 +350,17 @@ for i, (cid, c) in enumerate(CANDS.items(), 1):
     f = c["build"]
     row["n_elements"] = len(f(400.0, T_SNUG))
     row["min_preload_static_N"] = min_preload_static(f)
-    row["min_preload_waves_N"] = min_preload_waves(f) if row["min_preload_static_N"] is not None else None
+    row["min_preload_waves_N"] = (min_preload_waves(f, tuple(c["primary"]))
+                                  if row["min_preload_static_N"] is not None else None)
     # design preload: whichever of the two gates is binding, with a floor so a gateless arrangement still gets a number
     cands_t = [v for v in (row["min_preload_static_N"], row["min_preload_waves_N"]) if v is not None]
     T = max(cands_t) if cands_t else None
     row["design_preload_N"] = T
     if T is not None:
         row["statics_ok"], row["statics"] = statics(f, T)
-        row["waves"] = wave_metrics(f(T, T_SNUG), T)
+        bm = [(k, v["bumper_min_N"]) for k, v in row["statics"].items() if v.get("bumper_min_N") is not None]
+        row["binding_static_case"] = min(bm, key=lambda kv: kv[1])[0] if bm else None
+        row["waves"] = wave_metrics(f(T, T_SNUG), T, tuple(c["primary"]))
         row["redundancy"] = redundancy(f, T)
     cl, where = rope_hull_clearance(f(400.0, T_SNUG))
     row["rope_hull_clearance_m"] = None if cl is None else round(cl, 4)
@@ -357,10 +375,10 @@ for i, (cid, c) in enumerate(CANDS.items(), 1):
           f"({time.time()-t0:.0f} s)", flush=True)
 
 res = dict(label="Exploratory - assumed geometry and masses; contact stiffnesses unknown; boat attachment points assumed.",
-           method="Nine thrust-derived static load cases (hard gate) + three Erdre reference waves, linear, engagement "
+           method="Nine thrust-derived static load cases, gated on both rear bumpers staying loaded (hard gate) + three Erdre reference waves, linear, engagement "
                   "criterion. Time-domain peaks are omitted on purpose: they do not converge in these configurations "
                   "(see results/coupling/coupling_waves.json).",
-           generated="2026-11-03", waves=WAVES, damping=DAMP, k_rope_N_per_m=KR, snug_preload_N=T_SNUG,
+           generated="2026-11-03", waves=WAVES, damping=DAMP, k_rope_N_per_m=KR, snug_preload_N=T_SNUG, bumper_min_N=BUMP_MIN_N, preload_ladder_N=LADDER,
            boat_points=dict(stern_cleat=STERN_CLEAT, midship_cleat=MID_CLEAT, bow_stem=BOW_STEM,
                             transom_quarter=TRANSOM_QTR),
            rows=rows, seconds=time.time() - t0)
