@@ -206,3 +206,69 @@ What it does change:
 and the bow, and re-tension to the load cell more often than you would with polyester. This replaces item 3 of §10 — the
 rope/drum mismatch disappears instead of needing a splice. Items 1, 2, 4 and 5 of §10 stand unchanged; the bow fitting
 remains the thing that must be sorted before any powered trial.
+
+## 12. Addendum (3 Nov): pulley position, rope length, and where the legs cross the gunwale
+
+Two questions from the review, and a third thing they uncovered.
+
+### 12.1 Is 2 × 4.7 m = 12 m enough? It depends where the pulley goes — and 4.7 m implies it is not at the stem
+
+| pulley at boat station | leg | V path | V + drum wraps + lead | α | 2 cos α | tension for 2 kN | supplied 12 m? |
+|---|---|---|---|---|---|---|---|
+| 8.00 m (stemhead) | 5.55 m | 11.09 m | 12.24 m | 24.0° | 1.828 | 1 094 N | **≈ 240 mm short** |
+| 7.50 m | 5.09 m | 10.19 m | 11.34 m | 26.2° | 1.794 | 1 115 N | OK |
+| **7.00 m (≈ 1 m aft of the stem)** | **4.65 m** | **9.30 m** | **10.45 m** | **29.0°** | **1.750** | **1 143 N** | **OK, ~1.5 m spare** |
+| 6.50 m | 4.22 m | 8.44 m | 9.59 m | 32.3° | 1.691 | 1 183 N | OK |
+
+A 4.7 m leg corresponds to the pulley about **1 m aft of the stem**, on the foredeck, not at the stemhead where §3 put
+it. With the pulley there the supplied 12 m coil is genuinely enough, and the penalty is small: α opens from 24° to 29°,
+so the same 2 000 N of rear preload needs **1 143 N instead of 1 094 N of rope tension — 4.5 % more**. That is a fair
+trade for not having to buy rope, and a foredeck cleat or bollard is also a more plausible structural anchor than the
+stemhead itself.
+
+(Drum wraps and lead are taken as 0.65 m + 0.50 m: five wraps on a ~40 mm drum, as the winch's own manual requires,
+plus the run from the fairlead. Both are estimates — the drum diameter is not published.)
+
+### 12.2 The thing both of us missed: the legs pass over the boat's gunwale
+
+With the anchors at the frame at z 0.30 m, each leg crosses the hull edge at **boat station 4.1–4.6 m** — amidships,
+not near the bow — and it does so only **154 mm above the deck line**. Moving the pulley does not fix this: the crossing
+shifts by half a metre at most, because it is set by anchoring the V at y ±2.25 m and bringing it to the centreline.
+
+The proxy hull has **no sheer, no rubbing strake, no toe rail and no guardrail stanchions**, so the model reports
+"clears" where a real boat almost certainly does not. Raising the anchors on the forward posts fixes it, and cheaply:
+
+| anchor height above the EXO rear deck | rope tension for the same preload | rope height at the crossing | bow lift |
+|---|---|---|---|
+| 0.30 m (as modelled) | 1 080 N | 154 mm above the deck | 91 N |
+| 0.60 m | 935 N | 352 mm | 179 N |
+| **1.00 m** (near the top of the posts, which reach 1.15 m) | **669 N** | **616 mm — clears a standard guardrail** | **222 N** |
+
+Raising the anchors is better on three counts at once: the rope clears the deck furniture, the **tension needed falls
+by 38 %** (1 080 → 669 N, because the leg direction lines up better with the pull), and the pulley reaction falls with
+it (1 972 → 1 224 N), which directly eases the bow-fitting problem of §10. The cost is bow lift rising from 91 N to
+222 N — still small against the boat's 2 100 kg, but it trims her down by the stern slightly and should be checked once
+the real deck heights are known.
+
+**This supersedes the anchor height assumed in §3.** It needs confirming against the real boat's guardrail and deck
+geometry, which the proxy hull cannot represent.
+
+### 12.3 Front fender: the Compass/Dan-Fender FenderFlex is the better product, but it changes nothing critical
+
+| | OCEAN PVM2 (previous choice) | FenderFlex |
+|---|---|---|
+| What it is sold as | swim-platform **corner** fender | explicitly **bow**, stern, dock and topside protection; also pontoons, canals and locks |
+| Geometry | fixed 90° corner | **hinged, settable up to 90°** — adapts to the real stem angle |
+| Fixing | one through-hole with nylon bushings | **top, bottom and side fixing points** |
+| Construction | soft PU foam, no air | pre-inflated low-pressure |
+| Load rating | **not published** | **not published** |
+
+It is the right product class where the PVM2 was not, the adjustable angle suits a stem, and three fixing points
+distribute the mounting loads far better than one hole. Two reservations: it is **inflatable rather than closed-cell**,
+so it is more vulnerable to puncture and abrasion exactly where a rope might bear on it; and its dimensions, material
+and weight are not published on the retailer pages reached here, so it cannot yet be checked against the available
+space at the bow.
+
+**It does not change §10 item 1.** No load rating is published for it either, and it is still a fender. The pulley
+reaction — 1 224 N with raised anchors, 1 972 N as previously modelled — must be carried by a structural fitting, with
+the fender protecting the hull from chafe. A better fender makes the hull safer; it does not make the fender a padeye.
