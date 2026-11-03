@@ -32,9 +32,12 @@ from exo01.analysis import evaluate, hydro_for, build_response, HYDRO_DEFAULTS  
 OUT = ROOT / "results" / "coupling"
 QUICK = "--quick" in sys.argv
 ONLY = None
+OUTNAME = "arrangement_search.json"
 for a in sys.argv:
     if a.startswith("--cands"):
         ONLY = set(a.split("=", 1)[1].split(",")) if "=" in a else None
+    if a.startswith("--out="):
+        OUTNAME = a.split("=", 1)[1]
 
 # reuse the final-coupling study's geometry, element builder, solver, thrust-derived load cases
 src = (ROOT / "scripts" / "run_final_coupling.py").read_text()
@@ -67,6 +70,9 @@ AFT_POST = (0.05, 2.25, 0.30)
 MID_POST = (2.10, 2.25, 0.30)
 FWD_POST = (4.95, 2.25, 0.30)
 VEE_ANCHOR = (X_VEE, Y_VEE, Z_VEE)
+
+
+T_SNUG = 150.0   # N: a secondary rope "rigged snug" by hand, not winched. ASSUMED.
 
 
 def pair(id_, exo, boat, kind="line", k=KR, t0=0.0, **kw):
@@ -111,41 +117,59 @@ def tubes(k):
 # ops  = tensioning actions to couple (a winch on a pulley bridle equalises both legs in one pull)
 # fits = boat fittings the arrangement needs that are NOT already there
 CANDS = {}
-C = lambda id_, title, f, ops, fits="": CANDS.__setitem__(id_, dict(title=title, build=f, ops=ops, fits=fits))  # noqa: E731
+
+
+def C(id_, title, f, ops, fits="", primary=()):
+    """f(t_primary, t_snug) -> element list. `primary` names the ids carrying the swept preload, for the record."""
+    CANDS[id_] = dict(title=title, build=f, ops=ops, fits=fits, primary=list(primary))
 
 C("A_vee_pulley", "The brief's configuration: bow-pulley V + 2 rear bumpers + 2 dockwheels",
-  lambda t: vee_pulley(t) + rear() + wheels(), 1)
+  lambda t, g: vee_pulley(t) + rear() + wheels(), 1, primary=("VEE_ROPE",))
 C("B_vee_legs", "Same, two fixed legs to the stem instead of the pulley (§13)",
-  lambda t: vee_legs(t) + rear() + wheels(), 2)
+  lambda t, g: vee_legs(t) + rear() + wheels(), 2, primary=("LEG",))
 C("C_vee_legs_crossed", "Fixed legs + 2 crossed stern ropes (the hybrid)",
-  lambda t: vee_legs(t) + crossed("CROSS", MID_POST, STERN_CLEAT, t0=t) + rear() + wheels(), 4)
+  lambda t, g: vee_legs(t) + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g) + rear() + wheels(), 4,
+  primary=("LEG",))
 C("D_vee_pulley_crossed", "Bow-pulley V + 2 crossed stern ropes",
-  lambda t: vee_pulley(t) + crossed("CROSS", MID_POST, STERN_CLEAT, t0=t) + rear() + wheels(), 3)
+  lambda t, g: vee_pulley(t) + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g) + rear() + wheels(), 3,
+  primary=("VEE_ROPE",))
 C("E_vee_pulley_breasts", "Bow-pulley V + 2 straight stern breast ropes",
-  lambda t: vee_pulley(t) + pair("BREAST", AFT_POST, STERN_CLEAT, t0=t) + rear() + wheels(), 3)
+  lambda t, g: vee_pulley(t) + pair("BREAST", AFT_POST, STERN_CLEAT, t0=g) + rear() + wheels(), 3,
+  primary=("VEE_ROPE",))
 C("F_six_rope", "The 30 Oct winner: 2 bumpers + aft->midship + fwd->stern + crossed (no wheels, as run then)",
-  lambda t: pair("AFT2MID", AFT_POST, MID_CLEAT, t0=t) + pair("FWD2STERN", FWD_POST, STERN_CLEAT, t0=t)
-  + crossed("CROSS", MID_POST, STERN_CLEAT, t0=t) + rear(), 6)
+  lambda t, g: pair("AFT2MID", AFT_POST, MID_CLEAT, t0=t) + pair("FWD2STERN", FWD_POST, STERN_CLEAT, t0=g)
+  + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g) + rear(), 6, primary=("AFT2MID",))
 C("G_six_rope_wheels", "The same six ropes, with the dockwheels added",
-  lambda t: pair("AFT2MID", AFT_POST, MID_CLEAT, t0=t) + pair("FWD2STERN", FWD_POST, STERN_CLEAT, t0=t)
-  + crossed("CROSS", MID_POST, STERN_CLEAT, t0=t) + rear() + wheels(), 6)
+  lambda t, g: pair("AFT2MID", AFT_POST, MID_CLEAT, t0=t) + pair("FWD2STERN", FWD_POST, STERN_CLEAT, t0=g)
+  + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g) + rear() + wheels(), 6, primary=("AFT2MID",))
 C("H_fwd_midship", "No bow rope at all: forward springs to the midship cleats + bumpers + wheels",
-  lambda t: pair("SPRING", FWD_POST, MID_CLEAT, t0=t) + rear() + wheels(), 2)
+  lambda t, g: pair("SPRING", FWD_POST, MID_CLEAT, t0=t) + rear() + wheels(), 2, primary=("SPRING",))
 C("I_fwd_midship_crossed", "Forward springs to midship + 2 crossed stern ropes",
-  lambda t: pair("SPRING", FWD_POST, MID_CLEAT, t0=t) + crossed("CROSS", MID_POST, STERN_CLEAT, t0=t)
-  + rear() + wheels(), 4)
+  lambda t, g: pair("SPRING", FWD_POST, MID_CLEAT, t0=t) + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g)
+  + rear() + wheels(), 4, primary=("SPRING",))
 C("J_vee_pulley_midship", "Bow-pulley V + 2 springs to the midship cleats (belt and braces forward)",
-  lambda t: vee_pulley(t) + pair("SPRING", FWD_POST, MID_CLEAT, t0=t) + rear() + wheels(), 3)
+  lambda t, g: vee_pulley(t) + pair("SPRING", FWD_POST, MID_CLEAT, t0=g) + rear() + wheels(), 3,
+  primary=("VEE_ROPE",))
 C("K_tubes_aft_vee", "2 aft tubes with elastomer cartridges + bow-pulley V + wheels",
-  lambda t: vee_pulley(t) + tubes(1.0e5) + wheels(), 1, "transom-quarter tube brackets")
+  lambda t, g: vee_pulley(t) + tubes(1.0e5) + wheels(), 1, "transom-quarter tube brackets",
+  primary=("VEE_ROPE",))
 C("L_tubes_four", "Four bilateral tubes, cartridges (the old rank 1, re-scored)",
-  lambda t: tubes(1.0e5) + pair("TUBE_F", FWD_POST, MID_CLEAT, kind="strut", k=1.0e5), 0,
+  lambda t, g: tubes(1.0e5) + pair("TUBE_F", FWD_POST, MID_CLEAT, kind="strut", k=1.0e5), 0,
   "transom-quarter + midship tube brackets")
 C("M_vee_pulley_no_wheels", "The brief's configuration without the dockwheels (what do they buy?)",
-  lambda t: vee_pulley(t) + rear(), 1)
+  lambda t, g: vee_pulley(t) + rear(), 1, primary=("VEE_ROPE",))
 C("N_diagonals", "2 bumpers + the two best diagonals only (4 elements) + wheels",
-  lambda t: pair("AFT2MID", AFT_POST, MID_CLEAT, t0=t) + pair("FWD2STERN", FWD_POST, STERN_CLEAT, t0=t)
-  + rear() + wheels(), 4)
+  lambda t, g: pair("AFT2MID", AFT_POST, MID_CLEAT, t0=t) + pair("FWD2STERN", FWD_POST, STERN_CLEAT, t0=g)
+  + rear() + wheels(), 4, primary=("AFT2MID",))
+
+C("O_aft_breasts", "No bow rope at all: 2 aft breast ropes (EXO aft posts -> stern cleats) + bumpers + wheels",
+  lambda t, g: pair("BREAST", AFT_POST, STERN_CLEAT, t0=t) + rear() + wheels(), 2, primary=("BREAST",))
+C("P_aft_breasts_crossed", "Aft breasts + 2 crossed stern ropes (yaw)",
+  lambda t, g: pair("BREAST", AFT_POST, STERN_CLEAT, t0=t) + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g)
+  + rear() + wheels(), 4, primary=("BREAST",))
+C("Q_aft_breasts_midship", "Aft breasts + 2 midship springs - every element short enough for a 3 m strap",
+  lambda t, g: pair("BREAST", AFT_POST, STERN_CLEAT, t0=t) + pair("SPRING", FWD_POST, MID_CLEAT, t0=g)
+  + rear() + wheels(), 4, primary=("BREAST",))
 
 if ONLY:
     CANDS = {k: v for k, v in CANDS.items() if k in ONLY}
@@ -213,7 +237,7 @@ def rope_hull_clearance(els):
 # ──────────────────────────────────────────────────── the gauntlet
 def statics(els_fn, t0):
     """All nine load cases. Returns (all_ok, per-case dict)."""
-    els = els_fn(t0)
+    els = els_fn(t0, T_SNUG)
     out, ok = {}, True
     for c in CASES:
         r = solve(els, surge_N=c["surge"], yaw_Nm=c["yaw"])
@@ -273,7 +297,7 @@ def wave_metrics(els, t0):
 def min_preload_waves(els_fn, hi=24000.0):
     """Smallest per-element preload at which all three waves stay engaged."""
     def eng(t):
-        m = wave_metrics(els_fn(t), t)
+        m = wave_metrics(els_fn(t, T_SNUG), t)
         if "error" in m:
             return False
         return all(v.get("engaged") for v in m.values() if "error" not in v) and \
@@ -289,7 +313,7 @@ def min_preload_waves(els_fn, hi=24000.0):
 
 def redundancy(els_fn, t0):
     """Lose any ONE tension element: how many single losses leave no static equilibrium in the worst case?"""
-    els = els_fn(t0)
+    els = els_fn(t0, T_SNUG)
     ids = [e["id"] for e in els if e.get("kind") in ("line", "bridle", "strut")]
     worst = [c for c in CASES if c["id"] in ("rev100", "diff_opp", "estop")]
     fatal = []
@@ -306,9 +330,10 @@ def redundancy(els_fn, t0):
 rows = []
 t0 = time.time()
 for i, (cid, c) in enumerate(CANDS.items(), 1):
-    row = dict(id=cid, title=c["title"], ops_actions=c["ops"], new_boat_fittings=c["fits"])
+    row = dict(id=cid, title=c["title"], ops_actions=c["ops"], new_boat_fittings=c["fits"],
+               primary_elements=c["primary"])
     f = c["build"]
-    row["n_elements"] = len(f(400.0))
+    row["n_elements"] = len(f(400.0, T_SNUG))
     row["min_preload_static_N"] = min_preload_static(f)
     row["min_preload_waves_N"] = min_preload_waves(f) if row["min_preload_static_N"] is not None else None
     # design preload: whichever of the two gates is binding, with a floor so a gateless arrangement still gets a number
@@ -317,9 +342,9 @@ for i, (cid, c) in enumerate(CANDS.items(), 1):
     row["design_preload_N"] = T
     if T is not None:
         row["statics_ok"], row["statics"] = statics(f, T)
-        row["waves"] = wave_metrics(f(T), T)
+        row["waves"] = wave_metrics(f(T, T_SNUG), T)
         row["redundancy"] = redundancy(f, T)
-    cl, where = rope_hull_clearance(f(400.0))
+    cl, where = rope_hull_clearance(f(400.0, T_SNUG))
     row["rope_hull_clearance_m"] = None if cl is None else round(cl, 4)
     row["rope_hull_clearance_at"] = where
     rows.append(row)
@@ -335,9 +360,9 @@ res = dict(label="Exploratory - assumed geometry and masses; contact stiffnesses
            method="Nine thrust-derived static load cases (hard gate) + three Erdre reference waves, linear, engagement "
                   "criterion. Time-domain peaks are omitted on purpose: they do not converge in these configurations "
                   "(see results/coupling/coupling_waves.json).",
-           generated="2026-11-03", waves=WAVES, damping=DAMP, k_rope_N_per_m=KR,
+           generated="2026-11-03", waves=WAVES, damping=DAMP, k_rope_N_per_m=KR, snug_preload_N=T_SNUG,
            boat_points=dict(stern_cleat=STERN_CLEAT, midship_cleat=MID_CLEAT, bow_stem=BOW_STEM,
                             transom_quarter=TRANSOM_QTR),
            rows=rows, seconds=time.time() - t0)
-(OUT / "arrangement_search.json").write_text(json.dumps(res, indent=1, default=str))
-print(f"\nwritten {OUT/'arrangement_search.json'} ({time.time()-t0:.0f} s)")
+(OUT / OUTNAME).write_text(json.dumps(res, indent=1, default=str))
+print(f"\nwritten {OUT/OUTNAME} ({time.time()-t0:.0f} s)")
