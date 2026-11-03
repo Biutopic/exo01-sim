@@ -133,6 +133,12 @@ def line_geometry(hb, pose_e, pose_b):
         b = to_world(pose_b, ln["boat_point_m"])
         L = float(np.linalg.norm(b - a))
         u = (b - a) / L if L > 0 else np.zeros(3)
+        if str(ln.get("kind", "line")).lower() == "bridle":
+            a2 = to_world(pose_e, ln["exo_point_b_m"])
+            L2 = float(np.linalg.norm(b - a2))
+            u2 = (b - a2) / L2 if L2 > 0 else np.zeros(3)
+            L = L + L2
+            u = u + u2            # resultant direction of the two legs (not a unit vector)
         T0 = float(ln.get("pretension_N", d.get("pretension_N", 0.0)))
         k = float(ln.get("stiffness_N_per_m", d.get("stiffness_N_per_m", 0.0)))
         s = element_sign(ln)
@@ -206,9 +212,12 @@ def clearances(cfg, pose_e, pose_b, exo_assembly):
 
 
 # ---------------------------------------------------------------- coupled static equilibrium with tension-only lines
-ELEMENT_KINDS = {"line": +1, "fender": -1, "strut": 0}
+ELEMENT_KINDS = {"line": +1, "fender": -1, "strut": 0, "bridle": +1}
 # sign of the admissible force: line = tension only (T >= 0), fender = compression only (T <= 0, e.g. a push bar or a
-# fender between the EXO rear deck edge and the boat's transom), strut = bilateral (a rigid or bolted link)
+# fender between the EXO rear deck edge and the boat's transom), strut = bilateral (a rigid or bolted link),
+# bridle = one continuous tension-only rope from TWO exo points over a pulley on the boat: the pulley equalises the
+# tension, so the single tension T acts along both legs and the rope's length is the sum of the two leg lengths.
+# A bridle carries `exo_point_m` (leg A), `exo_point_b_m` (leg B) and `boat_point_m` (the pulley).
 
 
 def element_sign(ln):
@@ -229,6 +238,22 @@ def _line_forces(hb, lines_cfg, pose_e, pose_b, L0, k, active=None):
         a = to_world(pose_e, ln["exo_point_m"])
         b = to_world(pose_b, ln["boat_point_m"])
         s = element_sign(ln)
+        if str(ln.get("kind", "line")).lower() == "bridle":
+            # continuous rope A -> pulley P (on the boat) -> B: one tension, path length = |PA| + |PB|
+            a2 = to_world(pose_e, ln["exo_point_b_m"])
+            d1, d2 = b - a, b - a2
+            L1, L2 = float(np.linalg.norm(d1)), float(np.linalg.norm(d2))
+            u1 = d1 / L1 if L1 > 1e-12 else np.zeros(3)
+            u2 = d2 / L2 if L2 > 1e-12 else np.zeros(3)
+            L = L1 + L2
+            ext = kk * (L - l0)
+            T = ext if (active is None and ext > 0.0) or (active is not None and active[i]) else 0.0
+            out.append(dict(id=ln["id"], a=a, a2=a2, b=b, L=L, u=u1 + u2, T=T, slack=(T == 0.0), L0=l0, k=kk,
+                            extension_N=ext, sign=s, kind="bridle",
+                            legs=[(a, T * u1), (a2, T * u2)], leg_len_m=(L1, L2),
+                            half_angle_deg=float(np.degrees(np.arccos(np.clip(np.linalg.norm(u1 + u2) / 2.0, -1, 1)))),
+                            pulley_reaction_N=float(T * np.linalg.norm(u1 + u2))))
+            continue
         if s < 0 and ln.get("_u0") is not None:
             # fender: signed penetration along its nominal axis, so that a transom pushed past the contact point keeps
             # compressing instead of 'reappearing' as a free gap on the other side
@@ -278,14 +303,36 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
     if eq_b0 is None:
         eq_b0 = eqm.equilibrium(boat_asm, M_b, G_b, rho, g)
     pose_e0, pose_b0 = pose_exo(eq_e0), pose_boat(eq_b0, pl)
-    Lnom = np.array([np.linalg.norm(to_world(pose_b0, l["boat_point_m"]) - to_world(pose_e0, l["exo_point_m"])) for l in lines_cfg])
-    # fenders keep their nominal axis (unit vector at the independent flotations) as the direction of contact
-    lines_cfg = [dict(l, _u0=((to_world(pose_b0, l["boat_point_m"]) - to_world(pose_e0, l["exo_point_m"])) / max(ln_, 1e-12)).tolist())
-                 if element_sign(l) < 0 else l for l, ln_ in zip(lines_cfg, Lnom)]
+    def _lnom(l):
+        b_ = to_world(pose_b0, l["boat_point_m"])
+        d1 = np.linalg.norm(b_ - to_world(pose_e0, l["exo_point_m"]))
+        if str(l.get("kind", "line")).lower() == "bridle":
+            return float(d1 + np.linalg.norm(b_ - to_world(pose_e0, l["exo_point_b_m"])))
+        return float(d1)
+
+    Lnom = np.array([_lnom(l) for l in lines_cfg])
+    # Fenders keep a nominal contact axis. By default it is the line of centres at the independent flotations; an
+    # element may instead declare `axis_m` (the contact normal, EXO frame, pointing from the EXO point toward the boat),
+    # which is what a flat bumper face or a guide wheel actually has. With a declared axis the nominal separation is
+    # measured along it, so `gap_m` is a clearance in that direction and not a 3-D distance.
+    def _axis(l, ln_):
+        ax = l.get("axis_m")
+        if ax is not None:
+            u = np.asarray(ax, float)
+            return u / max(np.linalg.norm(u), 1e-12)
+        return (to_world(pose_b0, l["boat_point_m"]) - to_world(pose_e0, l["exo_point_m"])) / max(ln_, 1e-12)
+
+    _ax = [(_axis(l, ln_) if element_sign(l) < 0 else None) for l, ln_ in zip(lines_cfg, Lnom)]
+    Lnom = np.array([float((to_world(pose_b0, l["boat_point_m"]) - to_world(pose_e0, l["exo_point_m"])) @ u)
+                     if (u is not None and l.get("axis_m") is not None) else ln_
+                     for l, ln_, u in zip(lines_cfg, Lnom, _ax)])
+    lines_cfg = [dict(l, _u0=u.tolist()) if u is not None else l for l, u in zip(lines_cfg, _ax)]
     signs = np.array([element_sign(l) for l in lines_cfg], float) if lines_cfg else np.zeros(0)
     # lines and struts: unstretched length L0 = L_nominal - T0/k (pretension T0 at the nominal berth);
     # fenders: contact length L0 = L_nominal + T0/k (preload T0 in compression at the nominal berth; T0 = 0 -> just touching)
     L0 = Lnom - np.where(k > 0, np.where(signs < 0, -1.0, 1.0) * T0 / np.maximum(k, 1e-12), 0.0)
+    # a fender may start OPEN: gap_m is the free travel before contact, so contact begins at L0 - gap
+    L0 = L0 - np.array([float(l.get("gap_m", 0.0) or 0.0) if element_sign(l) < 0 else 0.0 for l in lines_cfg])
     yaw0 = np.radians(pl.get("yaw_deg", 0.0))
     x0, y0 = pl["x_m"], pl["y_m"]
     scale = np.array([M_e * g] * 6 + [M_b * g] * 3)
@@ -310,7 +357,12 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
         Fe = np.zeros(3); Me = np.zeros(3); Fb = np.zeros(3); Mb = np.zeros(3)
         for l in lf:
             f = l["T"] * l["u"]
-            Fe += f; Me += np.cross(l["a"] - pe["com_world"], f)
+            Fe += f
+            if l.get("legs"):
+                for p_, fp_ in l["legs"]:
+                    Me += np.cross(p_ - pe["com_world"], fp_)
+            else:
+                Me += np.cross(l["a"] - pe["com_world"], f)
             Fb -= f; Mb += np.cross(l["b"] - pb["com_world"], -f)
         if external is not None:
             Fxe, Mxe, Fxb, Mxb = external(pe, pb)
@@ -524,7 +576,11 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
     lines_out = [dict(id=l["id"], kind=l["kind"], a_world=l["a"].tolist(), b_world=l["b"].tolist(), length_m=l["L"], unstretched_length_m=l["L0"],
                       nominal_length_m=float(ln), unit=l["u"].tolist(), tension_N=l["T"], slack=bool(l["slack"]),
                       pretension_N=l["T"], stiffness_N_per_m=l["k"], vertical_component_N=float(l["T"] * abs(l["u"][2])),
-                      nominal_pretension_N=float(t0), compression_N=float(max(0.0, -l["T"]))) for l, ln, t0 in zip(lf, Lnom, T0)]
+                      nominal_pretension_N=float(t0), compression_N=float(max(0.0, -l["T"])),
+                      **({"a2_world": l["a2"].tolist(), "leg_length_m": list(l["leg_len_m"]),
+                          "half_angle_deg": l["half_angle_deg"], "pulley_reaction_N": l["pulley_reaction_N"]}
+                         if l.get("kind") == "bridle" else {}))
+                     for l, ln, t0 in zip(lf, Lnom, T0)]
     ext_net = None
     if external is not None:
         Fxe, Mxe, Fxb, Mxb = external(pe, pb)

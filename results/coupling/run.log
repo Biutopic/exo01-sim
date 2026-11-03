@@ -1,0 +1,45 @@
+EXO 856 kg  G [2.297 0.063 0.642] | boat 2100 kg  G [3.6  0.   0.35] | berth x 2.265 m
+forward 100%: U 2.96 m/s, R_boat 841 N, R_exo 372 N (boat = 69 % of total), pods at y ±1.97 m
+
+[A] preload sweep
+  T0     1 N -> rope      1 N, pulley      1 N, bumpers      1 N, dx   -0.0 mm, alpha 24.0°
+  T0   200 N -> rope    135 N, pulley    246 N, bumpers    246 N, dx   -2.8 mm, alpha 24.0°
+  T0   400 N -> rope    269 N, pulley    492 N, bumpers    492 N, dx   -5.5 mm, alpha 24.0°
+  T0   600 N -> rope    404 N, pulley    738 N, bumpers    738 N, dx   -8.3 mm, alpha 24.0°
+  T0   800 N -> rope    539 N, pulley    985 N, bumpers    984 N, dx  -11.0 mm, alpha 24.1°
+  T0  1200 N -> rope    809 N, pulley   1478 N, bumpers   1478 N, dx  -16.4 mm, alpha 24.1°
+  T0  1600 N -> rope   1080 N, pulley   1972 N, bumpers   1972 N, dx  -21.9 mm, alpha 24.1°
+  T0  2000 N -> rope   1351 N, pulley   2467 N, bumpers   2466 N, dx  -27.3 mm, alpha 24.1°
+  T0  2500 N -> rope   1691 N, pulley   3086 N, bumpers   3085 N, dx  -34.0 mm, alpha 24.1°
+  T0  3000 N -> rope   2031 N, pulley   3706 N, bumpers   3705 N, dx  -40.7 mm, alpha 24.2°
+  T0  3500 N -> rope   2371 N, pulley   4326 N, bumpers   4325 N, dx  -47.4 mm, alpha 24.2°
+
+[B] load cases vs preload
+  moored    surge       +0 N  yaw       0 N·m  -> both bumpers loaded from 200 N; restrained from 200 N
+  fwd100    surge     +841 N  yaw       0 N·m  -> both bumpers loaded from 1 N; restrained from 1 N
+  rev50     surge     -422 N  yaw       0 N·m  -> both bumpers loaded from 400 N; restrained from 400 N
+  rev70     surge     -590 N  yaw       0 N·m  -> both bumpers loaded from 400 N; restrained from 400 N
+  rev100    surge     -843 N  yaw       0 N·m  -> both bumpers loaded from 600 N; restrained from 600 N
+  estop     surge     -625 N  yaw       0 N·m  -> both bumpers loaded from 400 N; restrained from 400 N
+  diff_one  surge     +422 N  yaw    1198 N·m  -> both bumpers loaded from 1200 N; restrained from 1 N
+  diff_opp  surge       +0 N  yaw    2396 N·m  -> both bumpers loaded from 2500 N; restrained from 1 N
+
+[C] sensitivity (unknown stiffnesses), at the design preload
+  27 combinations; moored bumper total 880–2626 N
+
+[D] lateral clearance and yaw
+  gap    0 mm  diff_one  -> wheel     30 N, yaw -0.84°, sway +17.9 mm
+  gap    0 mm  diff_opp  -> wheel    142 N, yaw -2.86°, sway +62.6 mm
+  gap   30 mm  diff_one  -> wheel     21 N, yaw -0.84°, sway +47.8 mm
+  gap   30 mm  diff_opp  -> wheel    135 N, yaw -2.99°, sway +95.3 mm
+  gap   60 mm  diff_one  -> wheel     11 N, yaw -0.83°, sway +77.7 mm
+  gap   60 mm  diff_opp  -> wheel    129 N, yaw -3.11°, sway +128.0 mm
+
+[E] failure modes
+  baseline         restrained cases: worst dx   27.3 mm, worst yaw  0.00°
+  rope_parted      restrained cases: worst dx    8.1 mm, worst yaw  0.00°  |  UNRESTRAINED in: rev70
+  winch_released   restrained cases: worst dx   12.8 mm, worst yaw  0.00°  |  UNRESTRAINED in: fwd100
+  one_bumper_lost  restrained cases: worst dx   67.1 mm, worst yaw  4.27°  |  UNRESTRAINED in: fwd100
+  one_wheel_lost   restrained cases: worst dx   27.3 mm, worst yaw  0.00°
+
+written /home/claude/exo01_sim/results/coupling/final_coupling.json

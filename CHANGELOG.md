@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.3 (3 Nov 2026)
+
+Final coupling configuration: front V-rope on a bow pulley + winch, two rear compression bumpers, two lateral dockwheels
+* New element kinds in `exo01/twobody.py`: `bridle` (one continuous rope from two EXO points over a pulley on the boat;
+  the pulley equalises the tension, so one tension acts along both legs and the length is the sum of the legs), and
+  `axis_m` / `gap_m` on a contact (a bumper or guide wheel declares its own contact normal and the free travel before it
+  touches, instead of inheriting the line of centres). Validated in `exo01/config.py`; 5 tests in
+  `tests/test_coupling_elements.py` (94 tests total).
+* `scripts/run_final_coupling.py`: preload sweep, eight load cases (forward, reverse at three thrust fractions,
+  emergency stop, two differential-thrust cases), 27-combination stiffness sensitivity, lateral-clearance scan and five
+  failure modes -> `results/coupling/final_coupling.json`, read in `docs/COUPLING.md`.
+* `scripts/draw_coupling.py`, `scripts/draw_coupling_results.py`: dimensioned top and side views, free-body diagram and
+  result graphs -> `results/coupling/` and `docs/website/img/2{0,1,2}_coupling_*`.
+* Result: the V geometry does produce the rear compression (aft resultant = 1.83 x rope tension at a 24.0 deg half
+  angle), and that same resultant is the pulley reaction. The PVM2 cannot carry it.
+
 ## v1.2.1 (30 Oct 2026)
 
 * Methodology package for the website: `scripts/draw_methodology.py` -> five figures x FR/EN (calculation chain,

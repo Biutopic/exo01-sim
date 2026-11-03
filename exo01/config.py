@@ -144,9 +144,21 @@ def validate(cfg):
             pt = ln.get(key)
             if pt is None or len(pt) != 3 or not all(finite(v) and v is not None for v in pt):
                 issues.append(("error", f"line {ln.get('id')}: {key} must be three finite numbers"))
-        for key in ("stiffness_N_per_m", "pretension_N"):
+        for key in ("stiffness_N_per_m", "pretension_N", "gap_m"):
             if ln.get(key) is not None and not (finite(ln[key]) and ln[key] >= 0):
                 issues.append(("error", f"line {ln.get('id')}: {key} must be a finite non-negative number"))
+        if str(ln.get("kind", "line")).lower() == "bridle":
+            pt = ln.get("exo_point_b_m")
+            if pt is None or len(pt) != 3 or not all(finite(v) and v is not None for v in pt):
+                issues.append(("error", f"line {ln.get('id')}: a bridle needs exo_point_b_m (the second leg) as three finite numbers"))
+        if ln.get("axis_m") is not None:
+            ax = ln["axis_m"]
+            if len(ax) != 3 or not all(finite(v) and v is not None for v in ax) or not any(ax):
+                issues.append(("error", f"line {ln.get('id')}: axis_m must be three finite numbers, not all zero"))
+            elif str(ln.get("kind", "line")).lower() != "fender":
+                issues.append(("error", f"line {ln.get('id')}: axis_m (a contact normal) applies to a fender, not to {ln.get('kind')}"))
+        if ln.get("gap_m") and str(ln.get("kind", "line")).lower() != "fender":
+            issues.append(("error", f"line {ln.get('id')}: gap_m applies to a fender (a contact that starts open), not to {ln.get('kind')}"))
     ld = (cfg.get("host_boat") or {}).get("line_defaults") or {}
     for key in ("stiffness_N_per_m", "pretension_N"):
         if ld.get(key) is not None and not (finite(ld[key]) and ld[key] >= 0):
