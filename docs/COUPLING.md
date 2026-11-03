@@ -334,3 +334,71 @@ roller bearing on the bow fender**, not a small free-running block on a padeye. 
 The thing still to verify on the real boat is the **anti-slip of that saddle along the stem**: nothing in this model
 stops the saddle sliding up, down or sideways under an off-axis pull, and that, not the fender's strength, is now the
 open question at the bow.
+
+## 14. Addendum (3 Nov): the configuration in waves — and two of my own recommendations reversed
+
+`scripts/run_coupling_waves.py` → `results/coupling/coupling_waves.json`, same three Erdre reference waves, damping and
+settings as the six-rope study of 30 Oct, so the numbers compare directly.
+
+### 14.1 What the time-domain check can and cannot say here
+
+It cannot bound the snatch load in this configuration, and saying so is more useful than quoting a number. At a rear
+preload of 2 000 N the tension-only peaks wander between **11.0 and 15.7 kN from 64 to 1 024 steps per period**, with a
+time-domain/linear amplitude ratio of 6–22. With elements this stiff, **no damping in any element** (the model has
+none — see the methodology) and the contacts opening twice per cycle, the integration does not settle. Those peaks are
+therefore not reported as results.
+
+What is well posed is the **engagement criterion**: the preload at which no rope goes slack and no bumper opens during
+the cycle, in the linear model, which is converged. BEM reuse was checked against an exact solve for one case — leg peak
+2 318 N exact against 2 332 N reused, 0.6 %, boat roll 11.84° against 12.20° — so the reuse is adequate here, which
+matters because an exact BEM costs 347 s per configuration.
+
+### 14.2 It works — with the anchors LOW
+
+Anchors at 0.30 m, 12 mm polyester, sweeping leg pretension:
+
+| leg pretension | rear compression | leg static | beam 0.3 / 2.5 | head 0.3 / 2.5 | beam 0.5 / 3.0 | peak leg tension |
+|---|---|---|---|---|---|---|
+| 700 N | 861 N | 472 N | slack | engaged | slack | 694 N |
+| 900 N | 1 108 N | 607 N | engaged | engaged | engaged | 853 N |
+| 1 100 N | 1 354 N | 742 N | engaged | engaged | *slack* | 1 009 N |
+| **1 300 N** | **1 601 N** | **877 N** | **engaged** | **engaged** | **engaged** | **1 137 N** |
+| 1 500 N | 1 848 N | 1 013 N | engaged | engaged | engaged | 1 246 N |
+
+**From 1 300 N of leg pretension — 1 600 N of rear compression — the coupling stays engaged through all three reference
+waves.** That is the same order as the quasi-static requirement of §5, so **waves do not drive the preload**: the
+differential-thrust case of §5 (2 500 N) remains the governing one. The transom gap stays open throughout.
+
+Peak leg tension at that setting is **1 137 N against the six-rope arrangement's 1 157 N** — the two are within 2 % of
+each other on peak load. Boat roll is **11.8° against 9.4°**, so the preloaded coupling is somewhat harder on the boat's
+roll: tying the two hulls together more stiffly makes the boat follow the EXO more closely.
+
+### 14.3 Two recommendations of mine, reversed
+
+Both were made from quasi-statics alone, and waves overturn them.
+
+| | quasi-static conclusion | in waves |
+|---|---|---|
+| **Anchor height (§12.2)** | raise to 1.00 m: −38 % tension, clears the gunwale | **keep low.** At 1.00 m the preload needed to stay engaged rises from 1 600 N to **11 300 N of rear compression — a factor of 6.** A near-horizontal leg lines up with the relative surge it has to restrain; a raised one is pumped by the relative heave and pitch. |
+| **Rope choice (§11)** | the supplied 4.8 mm UHMWPE works | **use the 12 mm polyester.** At 0.30 m anchors the 4.8 mm needs 3 200 N of rear compression against 1 600 N, and with raised anchors it never engages in beam seas at any preload the solver accepts. Stiffness is what drives slack-and-snatch, which the mooring study already showed and quasi-statics cannot see. |
+
+### 14.4 The conflict this leaves, which is now the main open question
+
+**Low anchors are required for wave behaviour, and low anchors put the rope legs across the boat's gunwale** (§12.2:
+they cross the hull edge amidships, 154 mm above the deck line in a proxy hull that has no toe rail, rubbing strake or
+stanchions). Raising the anchors is no longer available as the fix.
+
+What is left to try, none of it modelled yet:
+
+1. **Outboard standoffs on the EXO frame** so the legs clear the topsides at a low anchor height. The frame is already
+   at y ±2.25 m against a hull half-beam of 1.49 m, so this means brackets, not a wider frame.
+2. **Accept contact and protect it** — a rubbing strip or fender length where each leg crosses, which is cheap but puts
+   a working rope against the boat's side for the whole time she is coupled.
+3. **Move the legs' boat end aft** so they run more nearly fore-and-aft. That changes the V into something closer to two
+   breast lines and loses the self-centring the V gives; it would need its own study.
+
+**Revised bottom line.** The concept holds in waves: engaged from 1 600 N of rear compression, peak rope tension within
+2 % of the six-rope arrangement it replaces, with somewhat more roll transmitted to the boat. The preload is still set by
+the differential-thrust case, not by waves. The front hardware should be **12 mm polyester on low anchors over a broad
+saddle** — not the 4.8 mm rope on raised anchors that §11 and §12 arrived at. And the legs' path over the gunwale is the
+thing to resolve next, on the boat rather than in the model.
