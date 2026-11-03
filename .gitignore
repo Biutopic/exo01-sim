@@ -26,3 +26,4 @@ results/verification/.fresh
 .DS_Store
 Thumbs.db
 *.swp
+results/coupling/arrangement_search.log
