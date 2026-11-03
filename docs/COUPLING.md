@@ -402,3 +402,92 @@ What is left to try, none of it modelled yet:
 the differential-thrust case, not by waves. The front hardware should be **12 mm polyester on low anchors over a broad
 saddle** — not the 4.8 mm rope on raised anchors that §11 and §12 arrived at. And the legs' path over the gunwale is the
 thing to resolve next, on the boat rather than in the model.
+
+## 15. Addendum (3 Nov): a search over seventeen arrangements, and a better one than the brief's
+
+`scripts/run_arrangement_search.py` → `results/coupling/arrangement_search.json`. Seventeen arrangements through one
+gauntlet: the nine thrust-derived static load cases **gated on both rear bumpers staying loaded** (≥ 50 N each — they
+are the forward-thrust load path, §5), the lowest preload that closes them, the three Erdre reference waves on the
+linear engagement criterion, the lowest preload that keeps the primary path engaged, a single-loss redundancy probe,
+and the closest approach of every rope to the hull **and** the superstructure.
+
+### 15.1 Four flaws in the first version of this gauntlet
+
+Worth recording, because the first run produced a plausible-looking ranking that was wrong, and because the same traps
+apply to anything built on this code.
+
+1. **The static gate did not require the bumpers to stay loaded.** Arrangements that let a bumper rattle open scored
+   "passes at 1 N of preload". That is not a design; §5's requirement is both bumpers loaded in every case.
+2. **Engagement counted a snug backup rope going slack as a failure.** The bisection then drove the primary preload to
+   5–7 kN purely to stretch the 150 N backups taut — the uniform-preload artefact returning through displacement
+   instead of through pretension. Engagement is now judged on the primary load path and the contacts only; a backup
+   going slack in a wave is normal and is recorded, not failed.
+3. **The clearance metric could not tell a rope lying on the deck edge from one through structure.** Both read as a
+   large negative number. It now says which, with the side-deck width where there is one.
+4. **The wave preload was found by bisection, which assumes engagement is monotone in preload.** §14 had already
+   disproved that (engaged at 900 N, slack at 1100 N, engaged at 1300 N). Replaced with a ladder scan from the bottom.
+
+### 15.2 The result
+
+Every row below closes all nine static cases with both bumpers loaded and stays engaged in all three waves. Preload is
+per primary element; secondary ropes are rigged snug at 150 N.
+
+| arrangement | preload | peak rope | boat roll | yaw (diff_opp) | surge | single losses fatal | actions |
+|---|---|---|---|---|---|---|---|
+| **I** midship springs + crossed stern ropes | **600 N** | **647 N** | 10,2° | **0,46°** | **15,7 mm** | **0 / 4** | 4 |
+| **C** fixed bow legs + crossed stern ropes | 600 N | 708 N | 10,2° | 0,28° | 13,8 mm | **0 / 4** | 4 |
+| G the six-rope arrangement + dockwheels | 981 N | 1 089 N | 10,2° | — | — | 0 / 6 | 6 |
+| J bow-pulley V + midship springs | 1 196 N | 1 129 N | 11,3° | — | — | 1 / 3 | 3 |
+| B fixed bow legs alone | 1 300 N | 1 137 N | 11,4° | — | — | 2 / 2 | 2 |
+| **A the brief's configuration** | **2 218 N** | **1 586 N** | **14,5°** | **1,66°** | **35,6 mm** | **1 / 1** | 1 |
+| M the same without dockwheels | 2 324 N | 1 671 N | 15,2° | — | — | 1 / 1 | 1 |
+
+**The brief's configuration is last but one.** Against it, arrangement I needs 3,7× less preload, carries 2,5× less peak
+rope tension, transmits 1,4× less roll to the boat, holds yaw 3,6× tighter and surge 2,3× tighter, and survives the loss
+of any single element where the brief's configuration survives none.
+
+**Arrangement I** — two 1,92 m springs from the EXO forward posts to the boat's existing midship cleats, two crossed
+stern ropes from the EXO mid posts to the opposite stern cleats, the two rear bumpers, the two dockwheels. **No bow rope
+at all.** Transom gap 74–94 mm, open throughout. The crossed ropes go slack in the waves, which is what a backup is for.
+
+**Arrangement C is the smallest correction to what the brief specifies**, as §-E asked for: keep the bow legs, swap the
+pulley for two fixed legs (§13), and add two crossed stern ropes to the existing stern cleats. That alone takes the
+configuration from 2 218 N / 1 586 N / no redundancy to 600 N / 708 N / full redundancy. Two ropes and no new fittings.
+
+### 15.3 Why the short forward element wins
+
+Not cleverness — geometry, and it was visible before the solver ran.
+
+- **Compression cannot restrain forward surge.** The only hull surfaces whose outward normal has a forward component
+  lie forward of station 6,20 m; the EXO reaches station 2,94 m. Between stations 1,2 and 6,2 m the hull is
+  parallel-sided, so a pad there has a purely lateral normal. The forward restraint must be tension — that is proved,
+  not chosen.
+- **The bow leg's modelled path is not riggable.** A straight leg from the EXO forward frame to the stemhead crosses
+  inboard of the hull side at station 4,65 m while sitting at z 0,46 m, and reaches **1,03 m inside the envelope at
+  station 7,39 m**. No anchor height fixes it (0,30 / 1,00 / 2,10 m all fail). The real rope would lie in the ~160 mm
+  side deck between the cabin side and the hull edge and be led forward — which means the V's α = 23,95° and its 1,828
+  amplification (§4) describe a rope nobody can rig. **Those numbers need redoing against the led path.**
+- **A 1,92 m spring to the midship cleats has a worst clearance of −102 mm, 81 mm from the cleat** — an ordinary cleat
+  approach, not a fouled path.
+
+### 15.4 Two of my own earlier claims corrected
+
+- **The dockwheels do not "earn their place decisively".** That claim came from the flawed run. With the gates right:
+  A 2 218 N / 14,5° against M 2 324 N / 15,2° — the wheels buy about 5 % of preload and 0,7° of roll. In arrangements I
+  and C they carry **0 N in every static case**, because those arrangements are tight enough laterally that the 30 mm
+  gap never closes. Keep them as a physical stop and insurance against contact, not as a load path — and stop treating
+  the 30 mm gap as a dimension needing precision.
+- **Aft breast ropes to the stern cleats are half an answer.** 2,73 m, surge direction cosine 0,92 against the bow leg's
+  0,91, clean geometry, strap-length — and **no yaw stiffness**, because a rope that aligned with surge has only 0,35
+  left for the athwartships motion yaw produces at the stern. Alone (arrangement O) it is unrestrained under
+  `diff_opp`. With midship springs (Q) it needs 5 000 N and peaks at 6 879 N. Set aside.
+
+### 15.5 What the preloads rest on
+
+- **`diff_opp` — one pod full ahead, one full astern — binds the preload of thirteen of the seventeen arrangements.**
+  It is the design driver, and it rests on the pods' bollard thrust, which `ASSUMPTIONS.md` records as a 1 500 N
+  order-of-magnitude guess. Measuring it would tighten every preload in this table.
+- The absolute preloads scale with the 50 N "bumper still loaded" threshold, which is a choice. The **ratios** between
+  arrangements are the robust part of this table.
+- Element lengths against a 10 ft (3,05 m) ratchet strap: midship spring **1,92 m fits**, aft breast **2,73 m fits**,
+  crossed stern rope 3,62 m and bow leg 5,56 m do not.
