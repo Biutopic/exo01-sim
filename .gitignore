@@ -20,6 +20,7 @@ results/cache/*
 results/comparison/.fresh
 results/coupling/*.log
 results/coupling/arrangement_search.log
+results/coupling/arrangement_sling.log
 results/coupling/smoke.json
 results/exports/
 results/jobs/

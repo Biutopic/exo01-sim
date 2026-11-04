@@ -113,6 +113,30 @@ def tubes(k):
     return pair("TUBE", (2.10, 0.90, 0.25), TRANSOM_QTR, kind="strut", k=k, t0=0.0)
 
 
+# ── the sandwich sling ─────────────────────────────────────────────────────────────────────────────────────────
+# Datums: elements() levels EXO z 0.25 with boat z 0.40, so boat_z = exo_z + 0.15.
+Z_DATUM_OFF = 0.15
+DRAFT_PROXY = 0.381        # m, boat frame, from the coupled equilibrium. The proxy EXCLUDES the keel, so the real
+                           # strap would bear on the keel, not the flat bottom - which is also the only fore-and-aft
+                           # feature it could locate against. Unknown geometry; not modelled.
+Y_THREAD = 1.67            # EXO float inner face: the strap threads the 180 mm float-to-hull gap
+Z_SLING_TOP = 0.30         # EXO frame attachment
+K_SLING = 40_100.0         # N/m: EA 150 kN (same webbing modulus as the 12 mm rope) over the 3.74 m sling path
+
+
+def sling(id_, x_boat, t0):
+    """One strap under the hull at boat station x_boat. Vertical force on the boat = 0.89 x T upward; surge = 0."""
+    return [dict(id=id_, kind="bridle",
+                 exo_point_m=[x_boat + X_BERTH, Y_THREAD, Z_SLING_TOP],
+                 exo_point_b_m=[x_boat + X_BERTH, -Y_THREAD, Z_SLING_TOP],
+                 boat_point_m=[x_boat, 0.0, -DRAFT_PROXY],
+                 stiffness_N_per_m=K_SLING, pretension_N=t0)]
+
+
+def slings(t0, stations=(0.80, 2.50)):
+    return [e for i, x in enumerate(stations) for e in sling(f"SLING_{i+1}", x, t0)]
+
+
 # ──────────────────────────────────────────────────── the candidates
 # ops  = tensioning actions to couple (a winch on a pulley bridle equalises both legs in one pull)
 # fits = boat fittings the arrangement needs that are NOT already there
@@ -170,6 +194,18 @@ C("P_aft_breasts_crossed", "Aft breasts + 2 crossed stern ropes (yaw)",
 C("Q_aft_breasts_midship", "Aft breasts + 2 midship springs - every element short enough for a 3 m strap",
   lambda t, g: pair("BREAST", AFT_POST, STERN_CLEAT, t0=t) + pair("SPRING", FWD_POST, MID_CLEAT, t0=g)
   + rear() + wheels(), 4, primary=("BREAST",))
+
+C("R_sling_bumpers", "Sandwich: 2 under-hull slings + bumpers + wheels, no forward tension element",
+  lambda t, g: slings(t) + rear() + wheels(), 2, primary=("SLING",))
+C("S_sling_midship", "Sandwich slings + 2 midship springs (the section 15 forward element) + bumpers + wheels",
+  lambda t, g: slings(t) + pair("SPRING", FWD_POST, MID_CLEAT, t0=g) + rear() + wheels(), 4,
+  primary=("SLING",))
+C("T_sling_crossed", "Sandwich slings + 2 crossed stern ropes + bumpers + wheels",
+  lambda t, g: slings(t) + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g) + rear() + wheels(), 4,
+  primary=("SLING",))
+C("U_sling_midship_primary", "Sandwich slings snug + 2 midship springs carrying the preload",
+  lambda t, g: slings(g) + pair("SPRING", FWD_POST, MID_CLEAT, t0=t) + rear() + wheels(), 4,
+  primary=("SPRING",))
 
 if ONLY:
     CANDS = {k: v for k, v in CANDS.items() if k in ONLY}
@@ -378,7 +414,7 @@ res = dict(label="Exploratory - assumed geometry and masses; contact stiffnesses
            method="Nine thrust-derived static load cases, gated on both rear bumpers staying loaded (hard gate) + three Erdre reference waves, linear, engagement "
                   "criterion. Time-domain peaks are omitted on purpose: they do not converge in these configurations "
                   "(see results/coupling/coupling_waves.json).",
-           generated="2026-11-03", waves=WAVES, damping=DAMP, k_rope_N_per_m=KR, snug_preload_N=T_SNUG, bumper_min_N=BUMP_MIN_N, preload_ladder_N=LADDER,
+           generated="2026-11-03", waves=WAVES, damping=DAMP, k_rope_N_per_m=KR, k_sling_N_per_m=K_SLING, draft_proxy_m=DRAFT_PROXY, snug_preload_N=T_SNUG, bumper_min_N=BUMP_MIN_N, preload_ladder_N=LADDER,
            boat_points=dict(stern_cleat=STERN_CLEAT, midship_cleat=MID_CLEAT, bow_stem=BOW_STEM,
                             transom_quarter=TRANSOM_QTR),
            rows=rows, seconds=time.time() - t0)
