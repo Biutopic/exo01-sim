@@ -491,3 +491,49 @@ Not cleverness — geometry, and it was visible before the solver ran.
   arrangements are the robust part of this table.
 - Element lengths against a 10 ft (3,05 m) ratchet strap: midship spring **1,92 m fits**, aft breast **2,73 m fits**,
   crossed stern rope 3,62 m and bow leg 5,56 m do not.
+
+## 16. Known defect (8 Nov): a fender with a declared contact axis applies a couple it cannot carry
+
+Found while building the load note (`docs/STRUCTURAL.md`), by summing each element's own force system and checking
+it closes. It does not.
+
+**What is wrong.** A fender with a declared `axis_m` carries its force along that axis (`_line_forces` sets
+`u = _u0` and measures penetration as `L = (b − a)·u`), but the moment is taken at `a` on the EXO and at `b` on the
+boat. Once the bodies displace, `a − b` is no longer parallel to the force, so an equal-and-opposite pair applied at
+two different points leaves a net couple of `cross(a − b, f)`. No pad, roller or strap can transmit a couple.
+
+**How large.** Measured in the real `diff_opp` solve of the brief's configuration: `BUMPER_STBD` at 2 652 N applies
+**178 N·m**, against an applied yaw demand of 2 396 N·m — **7,4 %**. The couple is *restoring*, so it is a spurious
+yaw stiffness: **modelled yaw angles are too small, and any preload set by a yaw case is underestimated.** That is
+non-conservative, and `diff_opp` binds thirteen of the seventeen arrangements in §15.
+
+**What it does and does not affect.**
+
+| | force residual | moment residual | verdict |
+|---|---|---|---|
+| six surge-only cases | 0,02 N | 0,0–1,8 N·m | sound; §15 and the load note rest on these |
+| `diff_one` / `diff_opp`, arrangement I | 0,014 N | 8,3 / 11,5 N·m (0,5 %) | negligible |
+| `diff_one` / `diff_opp`, arrangement A | 0,072 N | 147 / 181 N·m (7,6–12,3 %) | material |
+| bridle elements | — | 0,00 N·m | the bridle itself closes exactly |
+
+The error scales with fender load × the lateral offset of its endpoints, so it is smallest in the §15 recommendation
+(whose dockwheels carry 0 N) and largest in the configuration that recommendation beats — and it *flatters* the
+latter. **Correcting it would widen the §15 gap, not close it.** The ranking stands; the absolute yaw angles and the
+yaw-governed preloads do not.
+
+**A second, related defect found at the same time.** The two force-assembly sites disagreed for bridles:
+`coupling_part` (the Jacobian block) takes one moment per leg at `a` and `a2`, while the full residual lumped both at
+`a` — a difference of `cross(a − a2, T·u2)`. Residual and Jacobian describing different systems degrades convergence
+and biases any bridle result.
+
+**What was tried and rejected.** Applying the contact force at a single point on both bodies makes the couple vanish
+identically and **destabilises the yaw equilibrium**: a symmetric arrangement under no external load then solves
+grossly asymmetric (one bumper 7 131 N, the other 0 N, the bridle at 4 419 N against its 1 600 N pretension). The
+model was reverted. A correct fix needs a contact point defined on the pad *surface* — the projection of one
+reference point onto the other's contact plane, or the midpoint — not a choice between the two reference points, and
+it needs the sway and yaw restraint of a frictionless pad pair formulated properly, since the spurious couple was
+silently supplying it.
+
+`tests/test_coupling_elements.py::test_no_element_applies_a_spurious_couple` reproduces it and is marked
+`xfail(strict=True)`, so it will fail loudly the day the model is fixed. Note that `_u0` is the internal field the
+solver reads; a raw element dict carrying only `axis_m` takes the geometric fallback and cannot exercise the defect.

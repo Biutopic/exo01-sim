@@ -1,0 +1,226 @@
+[
+ {
+  "sling_preload_N": 150.0,
+  "spring_preload_N": 2000.0,
+  "statics_ok": true,
+  "bump_min_N": 845.5,
+  "draft_increase_mm": 1.4,
+  "waves": {
+   "beam_03_25": {
+    "engaged": true,
+    "peak_N": 3090.4321786553046,
+    "roll": 3.92,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   },
+   "head_03_25": {
+    "engaged": true,
+    "peak_N": 1755.535469058229,
+    "roll": 2.88,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   },
+   "beam_05_30": {
+    "engaged": true,
+    "peak_N": 3657.130362908174,
+    "roll": 5.15,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   }
+  }
+ },
+ {
+  "sling_preload_N": 500.0,
+  "spring_preload_N": 2000.0,
+  "statics_ok": true,
+  "bump_min_N": 845.8,
+  "draft_increase_mm": 4.8,
+  "waves": {
+   "beam_03_25": {
+    "engaged": true,
+    "peak_N": 3141.131912845752,
+    "roll": 3.91,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   },
+   "head_03_25": {
+    "engaged": true,
+    "peak_N": 1831.41654478808,
+    "roll": 2.71,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   },
+   "beam_05_30": {
+    "engaged": true,
+    "peak_N": 3666.6460744060228,
+    "roll": 5.24,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   }
+  }
+ },
+ {
+  "sling_preload_N": 1000.0,
+  "spring_preload_N": 2000.0,
+  "statics_ok": true,
+  "bump_min_N": 846.3,
+  "draft_increase_mm": 9.5,
+  "waves": {
+   "beam_03_25": {
+    "engaged": true,
+    "peak_N": 3304.01967259271,
+    "roll": 3.86,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   },
+   "head_03_25": {
+    "engaged": true,
+    "peak_N": 1936.0248936388691,
+    "roll": 2.47,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   },
+   "beam_05_30": {
+    "engaged": true,
+    "peak_N": 3863.4086495244,
+    "roll": 5.2,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   }
+  }
+ },
+ {
+  "sling_preload_N": 2000.0,
+  "spring_preload_N": 2000.0,
+  "statics_ok": true,
+  "bump_min_N": 847.5,
+  "draft_increase_mm": 19.0,
+  "waves": {
+   "beam_03_25": {
+    "engaged": true,
+    "peak_N": 3703.191752774538,
+    "roll": 3.73,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   },
+   "head_03_25": {
+    "engaged": true,
+    "peak_N": 2125.329204304963,
+    "roll": 2.09,
+    "sling_slack": [],
+    "opens": []
+   },
+   "beam_05_30": {
+    "engaged": true,
+    "peak_N": 4383.322448046542,
+    "roll": 5.05,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   }
+  }
+ },
+ {
+  "sling_preload_N": 3000.0,
+  "spring_preload_N": 2000.0,
+  "statics_ok": true,
+  "bump_min_N": 849.0,
+  "draft_increase_mm": 28.6,
+  "waves": {
+   "beam_03_25": {
+    "engaged": true,
+    "peak_N": 4203.018430558505,
+    "roll": 3.54,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   },
+   "head_03_25": {
+    "engaged": true,
+    "peak_N": 2292.5360835251477,
+    "roll": 1.81,
+    "sling_slack": [],
+    "opens": []
+   },
+   "beam_05_30": {
+    "engaged": true,
+    "peak_N": 5074.194170034961,
+    "roll": 4.79,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   }
+  }
+ },
+ {
+  "sling_preload_N": 4000.0,
+  "spring_preload_N": 2000.0,
+  "statics_ok": true,
+  "bump_min_N": 850.6,
+  "draft_increase_mm": 38.1,
+  "waves": {
+   "beam_03_25": {
+    "engaged": true,
+    "peak_N": 4815.674498884988,
+    "roll": 3.24,
+    "sling_slack": [
+     "SLING_1"
+    ],
+    "opens": []
+   },
+   "head_03_25": {
+    "engaged": true,
+    "peak_N": 2421.383481330233,
+    "roll": 1.58,
+    "sling_slack": [],
+    "opens": []
+   },
+   "beam_05_30": {
+    "engaged": false,
+    "peak_N": 5978.49432834951,
+    "roll": 4.35,
+    "sling_slack": [
+     "SLING_1",
+     "SLING_2"
+    ],
+    "opens": []
+   }
+  }
+ }
+]

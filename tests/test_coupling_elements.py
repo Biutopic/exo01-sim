@@ -79,3 +79,71 @@ def test_a_contact_with_a_gap_carries_nothing_until_it_closes(illustrative):
     r2 = evaluate(_cfg([_bridle(), _bumper(+1), _bumper(-1), same_without_gap], illustrative))
     w2 = next(l for l in r2["lines"] if l["id"] == "W")
     assert abs(w2["compression_N"]) >= abs(w["compression_N"])       # closing the gap can only add load
+
+
+@pytest.mark.xfail(reason="KNOWN DEFECT, 8 Nov 2026: a fender with a declared axis_m carries its force along that "
+                          "axis while its two endpoints separate geometrically, and the EXO moment is taken at `a` "
+                          "while the boat moment is taken at `b`. The element therefore applies a couple of "
+                          "cross(a-b, f), which no pad can transmit: measured at 178 Nm from one bumper at 2652 N, "
+                          "7.4 % of the diff_opp yaw demand, acting as a spurious RESTORING couple - so modelled yaw "
+                          "angles are too small wherever a fender is heavily loaded. Surge-only load cases are "
+                          "unaffected (residuals 0.0-1.8 Nm); the two differential-thrust cases are not. "
+                          "Applying the force at a single point was tried and DESTABILISES the yaw equilibrium (a "
+                          "symmetric arrangement with no external load solves asymmetric: one bumper 7131 N, the "
+                          "other 0). A correct fix needs a contact-point definition on the pad surface, not a choice "
+                          "between the two reference points. See docs/COUPLING.md section 16.", strict=True)
+def test_no_element_applies_a_spurious_couple():
+    """Every coupling element must apply a force system with ZERO net moment: a rope, strap or pad carries no couple.
+
+    A fender with a declared axis_m is the case that broke this. Its force lies along the declared axis while its
+    two endpoints separate geometrically once the bodies displace, so taking the EXO moment at `a` and the boat
+    moment at `b` invented a couple of cross(a - b, f) - measured at 178 Nm from one bumper at 2652 N, a spurious
+    RESTORING couple that made reported yaw angles too small. A contact acts at one point on both bodies.
+    """
+    import numpy as np
+    from exo01.twobody import _line_forces
+
+    hb = dict(placement_in_exo_frame=dict(x_m=2.265, y_m=0.0, z_m=0.0))
+    pe = dict(R_world=np.eye(3).tolist(), com_world=[2.3, 0.06, 0.64], G_body=[2.297, 0.063, 0.642],
+              yaw_rad=0.0)
+    # a displaced, yawed boat: exactly the state in which the old code invented a couple
+    psi = np.radians(1.7)
+    Rb = np.array([[np.cos(psi), -np.sin(psi), 0.0], [np.sin(psi), np.cos(psi), 0.0], [0.0, 0.0, 1.0]])
+    pb = dict(R_world=Rb.tolist(), com_world=[5.86, 0.0, 0.35], G_body=[3.6, 0.0, 0.35],
+              yaw_rad=float(psi))
+
+    # NOTE: _u0 is the internal field the solver reads for a declared contact axis; axis_m alone is injected by the
+    # config layer, so a raw dict without _u0 silently takes the geometric fallback and cannot exercise the defect.
+    cfg = [
+        dict(id="ROPE", kind="line", exo_point_m=[4.95, 2.25, 0.30], boat_point_m=[4.30, 1.35, 0.80],
+             stiffness_N_per_m=13500.0, pretension_N=600.0),
+        # a pad whose EXO point and hull point are laterally offset - the real dockwheels had a 30 mm lateral and
+        # 80 mm vertical mismatch, which is why axis_m was introduced in the first place
+        dict(id="BUMPER", kind="fender", exo_point_m=[2.10, 0.90, 0.25], boat_point_m=[0.0, 0.70, 0.40],
+             axis_m=[-1.0, 0.0, 0.0], _u0=[-1.0, 0.0, 0.0],
+             stiffness_N_per_m=50000.0, pretension_N=0.0),
+        dict(id="WHEEL", kind="fender", exo_point_m=[1.20, 1.52, 0.30], boat_point_m=[1.20, 1.49, 0.40],
+             axis_m=[0.0, -1.0, 0.0], _u0=[0.0, -1.0, 0.0], gap_m=0.030,
+             stiffness_N_per_m=200000.0, pretension_N=0.0),
+        dict(id="SLING", kind="bridle", exo_point_m=[3.07, 1.67, 0.30], exo_point_b_m=[3.07, -1.67, 0.30],
+             boat_point_m=[0.80, 0.0, -0.381], stiffness_N_per_m=40100.0, pretension_N=2000.0),
+    ]
+    L0 = np.array([1.0, 2.0, 0.05, 3.6])
+    k = np.array([c["stiffness_N_per_m"] for c in cfg], float)
+    lf = _line_forces(hb, cfg, pe, pb, L0, k, None)
+
+    for l in lf:
+        M = np.zeros(3)
+        F = np.zeros(3)
+        T = float(l["T"])
+        u = np.asarray(l["u"], float)
+        if l.get("legs"):
+            for p_, f_ in l["legs"]:
+                M = M + np.cross(p_, f_); F = F + f_
+            M = M + np.cross(np.asarray(l["b"], float), -T * u); F = F - T * u
+        else:
+            M = M + np.cross(np.asarray(l["a"], float), T * u); F = F + T * u
+            M = M + np.cross(np.asarray(l["b"], float), -T * u); F = F - T * u
+        scale = max(abs(T), 1.0)
+        assert np.linalg.norm(F) < 1e-6 * scale, f"{l['id']} applies a net FORCE to the pair: {F}"
+        assert np.linalg.norm(M) < 1e-6 * scale, f"{l['id']} applies a net COUPLE to the pair: {M} Nm (T={l['T']} N)"
