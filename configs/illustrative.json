@@ -3,7 +3,7 @@
  "name": "illustrative",
  "title": "EXO-01 illustrative (EXO-only) - assumed geometry and mass distribution",
  "mode": "exploratory",
- "result_label": "Exploratory \u2014 assumed geometry and mass distribution.",
+ "result_label": "Exploratory — assumed geometry and mass distribution.",
  "reference_revision": "v3",
  "provenance_key": {
   "user_reported": "value supplied by the user (2026-10-28 mass list / annotation)",
@@ -125,7 +125,7 @@
   },
   {
    "id": "FLOAT_NEG_Y_1",
-   "name": "Float \u2212Y / section 1",
+   "name": "Float −Y / section 1",
    "category": "float",
    "mass_kg": 30,
    "mass_source": "user_reported",
@@ -155,7 +155,7 @@
   },
   {
    "id": "FLOAT_NEG_Y_2",
-   "name": "Float \u2212Y / section 2",
+   "name": "Float −Y / section 2",
    "category": "float",
    "mass_kg": 30,
    "mass_source": "user_reported",
@@ -185,7 +185,7 @@
   },
   {
    "id": "FLOAT_NEG_Y_3",
-   "name": "Float \u2212Y / section 3",
+   "name": "Float −Y / section 3",
    "category": "float",
    "mass_kg": 30,
    "mass_source": "user_reported",
@@ -1780,5 +1780,121 @@
   "Hydronaute (host boat) berth: clear width/length required inside the frame, docking position, connection stiffness"
  ],
  "rigid_connection_assumption": "the six floats and the frame move as ONE rigid body (no joint compliance)",
- "host_boat_note": "Host boat included as a SECOND BODY with assumed mass distribution and a proxy hull; set host_boat.included=false for the EXO-only case (the built-in scenarios cover both)."
+ "host_boat_note": "Host boat included as a SECOND BODY with assumed mass distribution and a proxy hull; set host_boat.included=false for the EXO-only case (the built-in scenarios cover both).",
+ "envelope": {
+  "height_max_m": 3.0,
+  "width_max_m": 4.5,
+  "width_note": "all inclusive, fenders included",
+  "length_max_m": 9.0,
+  "length_note": "overhang aft approximately acceptable",
+  "air_draft_erdre_m": 3.8,
+  "air_draft_margin_m": 0.8,
+  "centre_clear_passage_min_m": 3.0,
+  "centre_note": "the assembly centre must leave >= 3 m clear for the host boat",
+  "source": "Notion 'Cahiers des charges', last edited 2026-05-12"
+ },
+ "design_rules": {
+  "zero_host_boat_modification": true,
+  "host_boat_carries_no_load": true,
+  "host_boat_load_note": "'Le cadre reprend toutes les charges : le bateau ne porte rien.' The frame takes ALL loads. This is a hard rule and it conflicts with every coupling arrangement that reacts load into the host boat's cleats - see docs/COUPLING.md section 17.",
+  "connections_non_permanent": true,
+  "pods_removable_from_water": true,
+  "full_disassembly_minutes": 45,
+  "full_disassembly_people": 2,
+  "boat_compatibility_target_fraction": 0.8,
+  "boat_compatibility_note": "fluvial boats for now; a coupling that depends on one host's cleat positions and ratings cannot meet this",
+  "superstructure_max_component_kg": 5.0,
+  "superstructure_exception": "solar panels",
+  "source": "Notion 'Cahiers des charges', last edited 2026-05-12"
+ },
+ "aero": {
+  "rho_air_kg_m3": 1.225,
+  "coefficients": {
+   "Cx0": 0.8,
+   "Cy0": 1.0,
+   "Cn0": 0.1,
+   "note": "ASSUMED first-harmonic wind coefficients for a bluff, partly open small-craft structure. Cx0 and Cy0 refer to the frontal and lateral projected areas, Cn0 to A_lateral x L. No wind-tunnel, CFD or full-scale basis. These three numbers are the largest single uncertainty in any wind result."
+  },
+  "exo_structure": {
+   "envelope_from_spec": true,
+   "solidity_frontal": 0.45,
+   "solidity_lateral": 0.4,
+   "solidity_note": "ASSUMED fraction of the envelope silhouette that is actually structure: an open tube frame with a trampoline, two 4.20 x 1.60 m modules and a panel roof. Not measured.",
+   "panel_count": 8,
+   "panel_w_m": 1.762,
+   "panel_h_m": 1.134,
+   "panel_area_each_m2": 1.998,
+   "panel_area_total_m2": 15.98,
+   "panel_tilt_deg": 0.0,
+   "panel_source": "Notion 'List des composants', last edited 2026-03-23 (8 x AIKO Neostar S3 475 Wc), dimensions from AIKO Neostar 3S+54 datasheet (AIKO-A-MCE54Db 460-475 W, 1762x1134x30 mm)",
+   "panel_conflict": "Notion 'Cahiers des charges', last edited 2026-05-12 instead specifies 2 x Dualsun bifacial 500 W per module (3 modules = 6 panels, 3.00 kWp). Notion 'List des composants', last edited 2026-03-23 lists 8 x AIKO 475 Wc (3.80 kWp). The cahier is the more recent page. UNRESOLVED - both are carried and results should be given as a range.",
+   "modules": [
+    {
+     "id": "DECK",
+     "title": "Plateforme de pilotage + console POD + affichage BMS/batterie/GPS",
+     "size_m": [
+      4.2,
+      1.6
+     ],
+     "mass_kg_est": 80.0,
+     "source": "Notion 'Cahiers des charges', last edited 2026-05-12"
+    },
+    {
+     "id": "OBSERVATION",
+     "title": "Structure multi-niveaux avec trampoline, supports capteurs orientables",
+     "size_m": [
+      4.2,
+      1.6
+     ],
+     "mass_kg_est": 150.0,
+     "sensor_travel_deg": {
+      "vertical": 45,
+      "horizontal": 360
+     },
+     "source": "Notion 'Cahiers des charges', last edited 2026-05-12"
+    }
+   ]
+  }
+ },
+ "energy": {
+  "battery": {
+   "packs": 6,
+   "pack_v": 48.0,
+   "pack_ah": 100.0,
+   "pack_kwh": 4.8,
+   "total_kwh": 28.8,
+   "pack_mass_kg": 30.0,
+   "supplier": "Voltr, custom",
+   "usable_fraction": 0.8,
+   "usable_note": "ASSUMED depth of discharge for LiFePO4 in service. The BMS limit is not recorded.",
+   "source": "Notion 'List des composants', last edited 2026-03-23 (6 packs, ~30 kg each, custom); Notion 'Cahiers des charges', last edited 2026-05-12 (LiFePO4 48 V / 100 Ah, one per float)",
+   "conflict": "Notion 'Cahiers des charges', last edited 2026-05-12 says one pack per float; Notion 'List des composants', last edited 2026-03-23 lists 6 packs while buoyant_surfaces models 6 floats and Notion 'List des composants', last edited 2026-03-23 lists 8 floats. Pack count 6 is used."
+  },
+  "solar": {
+   "panel_count": 8,
+   "panel_wp": 475.0,
+   "array_kwp": 3.8,
+   "array_kwp_alternative": 3.0,
+   "alternative_note": "Notion 'Cahiers des charges', last edited 2026-05-12: 6 x Dualsun 500 W. See aero.exo_structure.panel_conflict.",
+   "mppt": "Victron SmartSolar MPPT 250/85 TR VE.Can",
+   "mppt_max_charge_a": 85.0,
+   "mppt_max_charge_w": 4080.0,
+   "derate_to_dc_fraction": 0.8,
+   "derate_note": "ASSUMED panel-to-battery derate (temperature, soiling, mismatch, MPPT losses) at full sun. Site irradiance on the Erdre is not recorded in this project.",
+   "source": "Notion 'List des composants', last edited 2026-03-23; AIKO Neostar 3S+54 datasheet (AIKO-A-MCE54Db 460-475 W, 1762x1134x30 mm)"
+  },
+  "propulsion": {
+   "pods": 2,
+   "pod_electrical_kw": 5.0,
+   "pod_v": 48.0,
+   "pod_a": 106.0,
+   "pod_bollard_kgf": 62.0,
+   "pod_bollard_N": 608.0,
+   "total_electrical_kw": 10.0,
+   "total_bollard_N": 1216.0,
+   "source": "Notion 'Cahiers des charges', last edited 2026-05-12 and Notion 'List des composants', last edited 2026-03-23; Rim Drive Technology POD 5.0"
+  },
+  "hotel_load_w": 150.0,
+  "hotel_note": "ASSUMED continuous draw for Cerbo GX, BMS, instruments and lighting. Not from the component list."
+ }
 }

@@ -1,0 +1,936 @@
+{
+ "label": "Exploratory. Hull and float geometry are proxies, the wind coefficients and the two structural solidity ratios are assumed, and the pod disk diameter is not recorded. Energy and envelope figures come from the Notion cahier des charges and component list, with their conflicts carried.",
+ "generated": "2026-11-08",
+ "pose": {
+  "heel_deg": -1.4715516158271222e-05,
+  "trim_deg": 0.35689452542693917,
+  "thrust_on_heel_deg": 88.58996040968873,
+  "thrust_on_trim_deg": 0.12272282460613308,
+  "thrust_on_rejected": true,
+  "warning": "The coupled solve with thrust applied converges to a capsized branch (heel 88.6 deg) and reports itself physical. All figures here use the thrust-off pose (heel -0.00 deg). The project's forward-100 % resistance of 841 N was computed at the capsized pose and is understated by 37 %."
+ },
+ "regression_anchor": {
+  "U_capsized_pose_m_s": 2.959668865493633,
+  "project_value_m_s": 2.9596,
+  "module_validated": true,
+  "U_upright_pose_m_s": 2.806784977074073,
+  "note": "The project's 2.96 m/s was computed at the capsized pose. At the upright pose the same thrust gives a lower speed, so the anchor is EXPECTED to differ now; it is retained to show by how much."
+ },
+ "max_speed": {
+  "constant": {
+   "U_m_s": 2.806784977074073,
+   "U_kn": 5.455958232721294,
+   "thrust_at_speed_N": 1213.5233092988865
+  },
+  "constant_power": {
+   "U_m_s": 2.7395556943230615,
+   "U_kn": 5.325274848813596,
+   "thrust_at_speed_N": 1101.2276443181872
+  },
+  "momentum": {
+   "U_m_s": 2.5355275140668865,
+   "U_kn": 4.928675451685483,
+   "thrust_at_speed_N": 821.1682453863057
+  }
+ },
+ "pods": {
+  "P_water_W": 3016.874463737861,
+  "P_electrical_W": 10000.0,
+  "efficiency": 0.3016874463737861,
+  "induced_velocity_m_s": 2.4860457484585616,
+  "note": "Ideal momentum theory: a real propulsor needs MORE water power for the same thrust, so this is an upper bound on the efficiency consistent with the two stated numbers. A low value means the bollard figure is conservative or the power rating is a peak."
+ },
+ "disk_sensitivity": [
+  {
+   "D_m": 0.15,
+   "A_total_m2": 0.035342917352885174,
+   "implied_efficiency": 0.5028124106229768,
+   "P_water_W": 5028.124106229768,
+   "U_max_m_s": 2.644362974760451,
+   "U_max_kn": 5.140234845309599
+  },
+  {
+   "D_m": 0.2,
+   "A_total_m2": 0.06283185307179587,
+   "implied_efficiency": 0.3771093079672326,
+   "P_water_W": 3771.0930796723255,
+   "U_max_m_s": 2.5894847349963426,
+   "U_max_kn": 5.033559989029598
+  },
+  {
+   "D_m": 0.25,
+   "A_total_m2": 0.09817477042468103,
+   "implied_efficiency": 0.3016874463737861,
+   "P_water_W": 3016.874463737861,
+   "U_max_m_s": 2.5355275140668865,
+   "U_max_kn": 4.928675451685483
+  },
+  {
+   "D_m": 0.3,
+   "A_total_m2": 0.1413716694115407,
+   "implied_efficiency": 0.2514062053114884,
+   "P_water_W": 2514.062053114884,
+   "U_max_m_s": 2.483119573458698,
+   "U_max_kn": 4.826802476962892
+  },
+  {
+   "D_m": 0.35,
+   "A_total_m2": 0.1924225500323748,
+   "implied_efficiency": 0.21549103312413295,
+   "P_water_W": 2154.9103312413295,
+   "U_max_m_s": 2.4327143091298233,
+   "U_max_kn": 4.7288223968591785
+  }
+ ],
+ "windage": {
+  "EXO": {
+   "A_front_m2": 6.247745559676995,
+   "A_lateral_m2": 8.544091710763905,
+   "z_lateral_m": 1.766,
+   "L_m": 4.830909956060173,
+   "floats": {
+    "A_front_m2": 1.2507455596769943,
+    "A_lateral_m2": 3.412091710763904,
+    "A_plan_m2": 5.3745881212018345,
+    "front_centroid": [
+     1.6557041113964537,
+     -0.09894577412594296,
+     0.1905464273088337
+    ],
+    "lateral_centroid": [
+     0.9607659877612253,
+     0.1387507908082687,
+     0.19920929568535992
+    ],
+    "plan_centroid": [
+     0.6567252364017476,
+     -0.0671844864534184,
+     0.3087595705651097
+    ],
+    "z_max_m": 0.5324798692867596,
+    "x_extent_m": [
+     -1.7524709997689734,
+     3.0784389562912002
+    ]
+   },
+   "structure": {
+    "frame_A_front_m2": 4.997,
+    "frame_A_lateral_m2": 5.132,
+    "frame_centroid_z_m": 1.766,
+    "panel_A_plan_m2": 15.98,
+    "panel_tilt_deg": 0.0,
+    "panel_centroid_z_m": 3.0,
+    "note": "DERIVED from the recorded envelope (height, width) x an ASSUMED solidity. The envelope and the panel geometry are real; the two solidity ratios are not measured and dominate the uncertainty. Vertical wind force and the lift of a tilted array are not modelled.",
+    "envelope_from_spec": true,
+    "solidity_frontal": 0.45,
+    "solidity_lateral": 0.4,
+    "solidity_note": "ASSUMED fraction of the envelope silhouette that is actually structure: an open tube frame with a trampoline, two 4.20 x 1.60 m modules and a panel roof. Not measured.",
+    "panel_count": 8,
+    "panel_w_m": 1.762,
+    "panel_h_m": 1.134,
+    "panel_area_each_m2": 1.998,
+    "panel_area_total_m2": 15.98,
+    "panel_source": "Notion 'List des composants', last edited 2026-03-23 (8 x AIKO Neostar S3 475 Wc), dimensions from AIKO Neostar 3S+54 datasheet (AIKO-A-MCE54Db 460-475 W, 1762x1134x30 mm)",
+    "panel_conflict": "Notion 'Cahiers des charges', last edited 2026-05-12 instead specifies 2 x Dualsun bifacial 500 W per module (3 modules = 6 panels, 3.00 kWp). Notion 'List des composants', last edited 2026-03-23 lists 8 x AIKO 475 Wc (3.80 kWp). The cahier is the more recent page. UNRESOLVED - both are carried and results should be given as a range.",
+    "modules": [
+     {
+      "id": "DECK",
+      "title": "Plateforme de pilotage + console POD + affichage BMS/batterie/GPS",
+      "size_m": [
+       4.2,
+       1.6
+      ],
+      "mass_kg_est": 80.0,
+      "source": "Notion 'Cahiers des charges', last edited 2026-05-12"
+     },
+     {
+      "id": "OBSERVATION",
+      "title": "Structure multi-niveaux avec trampoline, supports capteurs orientables",
+      "size_m": [
+       4.2,
+       1.6
+      ],
+      "mass_kg_est": 150.0,
+      "sensor_travel_deg": {
+       "vertical": 45,
+       "horizontal": 360
+      },
+      "source": "Notion 'Cahiers des charges', last edited 2026-05-12"
+     }
+    ],
+    "envelope_height_m": 3.0,
+    "envelope_width_m": 4.5,
+    "exo_length_m": 5.2,
+    "derived": true
+   }
+  },
+  "BOAT": {
+   "A_front_m2": 7.104959884025769,
+   "A_lateral_m2": 17.593969256040893,
+   "z_lateral_m": 0.8461677756434562,
+   "L_m": 8.005819739191828,
+   "hull": {
+    "A_front_m2": 3.08495988402577,
+    "A_lateral_m2": 9.948069256040892,
+    "A_plan_m2": 22.953063875791806,
+    "front_centroid": [
+     3.5789530969359493,
+     2.302818761806614e-05,
+     0.48140515686173296
+    ],
+    "lateral_centroid": [
+     0.4189365700476991,
+     1.0246301470223111,
+     0.3794711046901022
+    ],
+    "plan_centroid": [
+     0.27139075666426216,
+     3.683914549632503e-08,
+     0.9347641062402156
+    ],
+    "z_max_m": 0.9592036079624451,
+    "x_extent_m": [
+     -3.603226653330481,
+     4.402593085861348
+    ]
+   },
+   "cabin": {
+    "A_front_m2": 4.02,
+    "A_lateral_m2": 7.6459,
+    "lateral_centroid_x_m": 3.5469726912462884,
+    "lateral_centroid_z_m": 1.4533861285133205,
+    "z_max_m": 2.28
+   }
+  },
+  "coefficients": {
+   "Cx0": 0.8,
+   "Cy0": 1.0,
+   "Cn0": 0.1,
+   "note": "ASSUMED first-harmonic wind coefficients for a bluff, partly open small-craft structure. Cx0 and Cy0 refer to the frontal and lateral projected areas, Cn0 to A_lateral x L. No wind-tunnel, CFD or full-scale basis. These three numbers are the largest single uncertainty in any wind result."
+  },
+  "rho_air_kg_m3": 1.225
+ },
+ "wind_grid": [
+  {
+   "V_true_kn": 0,
+   "V_true_m_s": 0.0,
+   "by_direction": [
+    {
+     "wind_from_deg": 0,
+     "U_max_m_s": 2.5355275140668865,
+     "U_max_kn": 4.928675451685483,
+     "Fx_N": -42.06317045842315,
+     "Fy_N": 0.0,
+     "Mz_Nm": 0.0,
+     "V_app_m_s": 2.5355275140668865,
+     "beta_deg": 0.0
+    },
+    {
+     "wind_from_deg": 45,
+     "U_max_m_s": 2.5355275140668865,
+     "U_max_kn": 4.928675451685483,
+     "Fx_N": -42.06317045842315,
+     "Fy_N": 0.0,
+     "Mz_Nm": 0.0,
+     "V_app_m_s": 2.5355275140668865,
+     "beta_deg": 0.0
+    },
+    {
+     "wind_from_deg": 90,
+     "U_max_m_s": 2.5355275140668865,
+     "U_max_kn": 4.928675451685483,
+     "Fx_N": -42.06317045842315,
+     "Fy_N": 0.0,
+     "Mz_Nm": 0.0,
+     "V_app_m_s": 2.5355275140668865,
+     "beta_deg": 0.0
+    },
+    {
+     "wind_from_deg": 135,
+     "U_max_m_s": 2.5355275140668865,
+     "U_max_kn": 4.928675451685483,
+     "Fx_N": -42.06317045842315,
+     "Fy_N": 0.0,
+     "Mz_Nm": 0.0,
+     "V_app_m_s": 2.5355275140668865,
+     "beta_deg": 0.0
+    },
+    {
+     "wind_from_deg": 180,
+     "U_max_m_s": 2.5355275140668865,
+     "U_max_kn": 4.928675451685483,
+     "Fx_N": -42.06317045842315,
+     "Fy_N": 0.0,
+     "Mz_Nm": 0.0,
+     "V_app_m_s": 2.5355275140668865,
+     "beta_deg": 0.0
+    }
+   ]
+  },
+  {
+   "V_true_kn": 5,
+   "V_true_m_s": 2.57222,
+   "by_direction": [
+    {
+     "wind_from_deg": 0,
+     "U_max_m_s": 2.401222540049049,
+     "U_max_kn": 4.667607242088641,
+     "Fx_N": -161.83764802537524,
+     "Fy_N": 0.0,
+     "Mz_Nm": 0.0,
+     "V_app_m_s": 4.973442540049049,
+     "beta_deg": 0.0
+    },
+    {
+     "wind_from_deg": 45,
+     "U_max_m_s": 2.430838458245492,
+     "U_max_kn": 4.725176031298823,
+     "Fx_N": -128.52911030714557,
+     "Fy_N": 134.6025371034417,
+     "Mz_Nm": 172.45106943280067,
+     "V_app_m_s": 4.622539951846534,
+     "beta_deg": 23.170631964393777
+    },
+    {
+     "wind_from_deg": 90,
+     "U_max_m_s": 2.489788176197998,
+     "U_max_kn": 4.839765214868864,
+     "Fx_N": -58.31673074573281,
+     "Fy_N": 147.41884041543938,
+     "Mz_Nm": 142.8853854621243,
+     "V_app_m_s": 3.5798548700660136,
+     "beta_deg": 45.93294558580112
+    },
+    {
+     "wind_from_deg": 135,
+     "U_max_m_s": 2.528593775957615,
+     "U_max_kn": 4.915197331405585,
+     "Fx_N": -9.066680182172021,
+     "Fy_N": 56.851805649693546,
+     "Mz_Nm": 28.801935304346255,
+     "V_app_m_s": 1.9524129975972289,
+     "beta_deg": 68.68289110358488
+    },
+    {
+     "wind_from_deg": 180,
+     "U_max_m_s": 2.5355341486738947,
+     "U_max_kn": 4.928688348340917,
+     "Fx_N": 0.00880567296564607,
+     "Fy_N": 1.844414502603474e-16,
+     "Mz_Nm": -2.57037429031998e-16,
+     "V_app_m_s": 0.03668585132610547,
+     "beta_deg": 179.99999999999952
+    }
+   ]
+  },
+  {
+   "V_true_kn": 10,
+   "V_true_m_s": 5.14444,
+   "by_direction": [
+    {
+     "wind_from_deg": 0,
+     "U_max_m_s": 2.2053632906233056,
+     "U_max_kn": 4.286886989882874,
+     "Fx_N": -353.4408804542287,
+     "Fy_N": 0.0,
+     "Mz_Nm": 0.0,
+     "V_app_m_s": 7.349803290623306,
+     "beta_deg": 0.0
+    },
+    {
+     "wind_from_deg": 45,
+     "U_max_m_s": 2.29632185958237,
+     "U_max_kn": 4.4636964559453896,
+     "Fx_N": -270.23157022274756,
+     "Fy_N": 405.34654389142065,
+     "Mz_Nm": 481.6008427251183,
+     "V_app_m_s": 6.960235051294199,
+     "beta_deg": 31.509226217804706
+    },
+    {
+     "wind_from_deg": 90,
+     "U_max_m_s": 2.462172019945065,
+     "U_max_kn": 4.786083655257063,
+     "Fx_N": -91.87755797159683,
+     "Fy_N": 469.7245608751981,
+     "Mz_Nm": 282.6010674378997,
+     "V_app_m_s": 5.703293256479134,
+     "beta_deg": 64.42383330077455
+    },
+    {
+     "wind_from_deg": 135,
+     "U_max_m_s": 2.555709552663314,
+     "U_max_kn": 4.967906230150053,
+     "Fx_N": 26.866221570523745,
+     "Fy_N": 221.02075863834966,
+     "Mz_Nm": -87.81145124636964,
+     "V_app_m_s": 3.7951635570139537,
+     "beta_deg": 106.5641603224014
+    },
+    {
+     "wind_from_deg": 180,
+     "U_max_m_s": 2.5678938299453216,
+     "U_max_kn": 4.991590590900704,
+     "Fx_N": 43.43513813631978,
+     "Fy_N": 1.3015659232581647e-14,
+     "Mz_Nm": -1.813861028297617e-14,
+     "V_app_m_s": 2.576546170054679,
+     "beta_deg": 180.0
+    }
+   ]
+  },
+  {
+   "V_true_kn": 15,
+   "V_true_m_s": 7.71666,
+   "by_direction": [
+    {
+     "wind_from_deg": 0,
+     "U_max_m_s": 1.8607970289709062,
+     "U_max_kn": 3.617103181242091,
+     "Fx_N": -600.1582396725169,
+     "Fy_N": 0.0,
+     "Mz_Nm": 0.0,
+     "V_app_m_s": 9.577457028970906,
+     "beta_deg": 0.0
+    },
+    {
+     "wind_from_deg": 45,
+     "U_max_m_s": 2.074660434559994,
+     "U_max_kn": 4.032820743482272,
+     "Fx_N": -458.26317642898545,
+     "Fy_N": 812.421465145545,
+     "Mz_Nm": 916.840348532727,
+     "V_app_m_s": 9.300098797511085,
+     "beta_deg": 35.924202607199874
+    },
+    {
+     "wind_from_deg": 90,
+     "U_max_m_s": 2.4307308574199156,
+     "U_max_kn": 4.724966871845945,
+     "Fx_N": -128.66920337614647,
+     "Fy_N": 999.4963539915009,
+     "Mz_Nm": 418.4885109955289,
+     "V_app_m_s": 8.090444614285012,
+     "beta_deg": 72.51568779452812
+    },
+    {
+     "wind_from_deg": 135,
+     "U_max_m_s": 2.6178532079317476,
+     "U_max_kn": 5.0887039365445945,
+     "Fx_N": 114.23601182410624,
+     "Fy_N": 537.3036043564031,
+     "Mz_Nm": -345.5758817202699,
+     "V_app_m_s": 6.1507195700179444,
+     "beta_deg": 117.4849116378506
+    },
+    {
+     "wind_from_deg": 180,
+     "U_max_m_s": 2.653525609222245,
+     "U_max_kn": 5.158045597231661,
+     "Fx_N": 167.72749419459888,
+     "Fy_N": 5.0260779683033975e-14,
+     "Mz_Nm": -7.004337459196468e-14,
+     "V_app_m_s": 5.063134390777755,
+     "beta_deg": 180.0
+    }
+   ]
+  },
+  {
+   "V_true_kn": 20,
+   "V_true_m_s": 10.28888,
+   "by_direction": [
+    {
+     "wind_from_deg": 0,
+     "U_max_m_s": 1.2719572882570926,
+     "U_max_kn": 2.472489305458111,
+     "Fx_N": -874.4680093988629,
+     "Fy_N": 0.0,
+     "Mz_Nm": 0.0,
+     "V_app_m_s": 11.560837288257094,
+     "beta_deg": 0.0
+    },
+    {
+     "wind_from_deg": 45,
+     "U_max_m_s": 1.7158185402938186,
+     "U_max_kn": 3.3352873010353288,
+     "Fx_N": -680.3971529117764,
+     "Fy_N": 1347.1445573274723,
+     "Mz_Nm": 1459.4388604403093,
+     "V_app_m_s": 11.565958694324689,
+     "beta_deg": 38.978605504637564
+    },
+    {
+     "wind_from_deg": 90,
+     "U_max_m_s": 2.397683849152273,
+     "U_max_kn": 4.660728571335798,
+     "Fx_N": -165.73288978729002,
+     "Fy_N": 1740.199333740712,
+     "Mz_Nm": 550.3985990094734,
+     "V_app_m_s": 10.564560544333384,
+     "beta_deg": 76.88211178906461
+    },
+    {
+     "wind_from_deg": 135,
+     "U_max_m_s": 2.7092423003151005,
+     "U_max_kn": 5.266350273917278,
+     "Fx_N": 256.6130985943023,
+     "Fy_N": 1000.4632463226478,
+     "Mz_Nm": -741.165680558599,
+     "V_app_m_s": 8.58951366371063,
+     "beta_deg": 122.11290802724233
+    },
+    {
+     "wind_from_deg": 180,
+     "U_max_m_s": 2.774503991285768,
+     "U_max_kn": 5.39320896207511,
+     "Fx_N": 369.4461917775517,
+     "Fy_N": 1.1070727395547882e-13,
+     "Mz_Nm": -1.5428155131338728e-13,
+     "V_app_m_s": 7.514376008714233,
+     "beta_deg": 180.0
+    }
+   ]
+  },
+  {
+   "V_true_kn": 25,
+   "V_true_m_s": 12.8611,
+   "by_direction": [
+    {
+     "wind_from_deg": 0,
+     "U_max_m_s": 0.35782682023527096,
+     "U_max_kn": 0.695560294677887,
+     "Fx_N": -1143.2935290611688,
+     "Fy_N": 0.0,
+     "Mz_Nm": 0.0,
+     "V_app_m_s": 13.218926820235271,
+     "beta_deg": 0.0
+    },
+    {
+     "wind_from_deg": 45,
+     "U_max_m_s": 1.1506114910718586,
+     "U_max_kn": 2.2366117421368674,
+     "Fx_N": -918.234037206239,
+     "Fy_N": 1994.4716710818366,
+     "Mz_Nm": 2078.658570753864,
+     "V_app_m_s": 13.698887377311063,
+     "beta_deg": 41.59508166414992
+    },
+    {
+     "wind_from_deg": 90,
+     "U_max_m_s": 2.3637174113118724,
+     "U_max_kn": 4.594703041170414,
+     "Fx_N": -202.233303584363,
+     "Fy_N": 2692.460545792994,
+     "Mz_Nm": 678.251822118006,
+     "V_app_m_s": 13.076507684031656,
+     "beta_deg": 79.5859341085164
+    },
+    {
+     "wind_from_deg": 135,
+     "U_max_m_s": 2.8196871080321206,
+     "U_max_kn": 5.481037990592019,
+     "Fx_N": 453.57941539621686,
+     "Fy_N": 1608.6166320948983,
+     "Mz_Nm": -1273.088008399208,
+     "V_app_m_s": 11.048669377381824,
+     "beta_deg": 124.60356662496179
+    },
+    {
+     "wind_from_deg": 180,
+     "U_max_m_s": 2.9143704437665963,
+     "U_max_kn": 5.665087830291725,
+     "Fx_N": 647.3303490449039,
+     "Fy_N": 1.9397730951456076e-13,
+     "Mz_Nm": -2.7032659338661676e-13,
+     "V_app_m_s": 9.946729556233404,
+     "beta_deg": 180.0
+    }
+   ]
+  },
+  {
+   "V_true_kn": 30,
+   "V_true_m_s": 15.43332,
+   "by_direction": [
+    {
+     "wind_from_deg": 0,
+     "U_max_m_s": null,
+     "U_max_kn": null,
+     "Fx_N": -1558.4184133737417,
+     "Fy_N": 0.0,
+     "Mz_Nm": 0.0,
+     "V_app_m_s": 15.43332,
+     "beta_deg": 0.0
+    },
+    {
+     "wind_from_deg": 45,
+     "U_max_m_s": 0.32176642443786097,
+     "U_max_kn": 0.6254644323538829,
+     "Fx_N": -1151.3054706397488,
+     "Fy_N": 2736.4328332227906,
+     "Mz_Nm": 2735.431935583433,
+     "V_app_m_s": 15.662495880242359,
+     "beta_deg": 44.16765636103727
+    },
+    {
+     "wind_from_deg": 90,
+     "U_max_m_s": 2.329131301871821,
+     "U_max_kn": 4.5274729647382825,
+     "Fx_N": -237.85312103564007,
+     "Fy_N": 3856.4557671320804,
+     "Mz_Nm": 801.9931021635379,
+     "V_app_m_s": 15.608081843832032,
+     "beta_deg": 81.41792638444457
+    },
+    {
+     "wind_from_deg": 135,
+     "U_max_m_s": 2.940351469661561,
+     "U_max_kn": 5.715590948016812,
+     "Fx_N": 704.995399753508,
+     "Fy_N": 2361.249362210744,
+     "Mz_Nm": -1941.174451672298,
+     "V_app_m_s": 13.51506163748754,
+     "beta_deg": 126.15053646168252
+    },
+    {
+     "wind_from_deg": 180,
+     "U_max_m_s": 3.061310413179646,
+     "U_max_kn": 5.950716527318125,
+     "Fx_N": 1001.4882181188875,
+     "Fy_N": 3.0010332490645756e-13,
+     "Mz_Nm": -4.1822370713864353e-13,
+     "V_app_m_s": 12.372009586820354,
+     "beta_deg": 180.0
+    }
+   ]
+  }
+ ],
+ "energy_curve": [
+  {
+   "U_m_s": 0.5,
+   "U_kn": 0.9719230858946746,
+   "thrust_required_N": 22.453085904453577,
+   "achievable": true,
+   "P_propulsion_W": 62.380100260878656,
+   "hours_battery_only": 108.4847401978747,
+   "range_km_battery_only": 195.27253235617445,
+   "hours_with_full_sun": Infinity,
+   "range_km_with_full_sun": Infinity
+  },
+  {
+   "U_m_s": 0.75,
+   "U_kn": 1.457884628842012,
+   "thrust_required_N": 48.06580814419735,
+   "achievable": true,
+   "P_propulsion_W": 198.3207021104464,
+   "hours_battery_only": 66.14593924622494,
+   "range_km_battery_only": 178.59403596480735,
+   "hours_with_full_sun": Infinity,
+   "range_km_with_full_sun": Infinity
+  },
+  {
+   "U_m_s": 1.0,
+   "U_kn": 1.9438461717893492,
+   "thrust_required_N": 83.32493378788361,
+   "achievable": true,
+   "P_propulsion_W": 456.1207155283155,
+   "hours_battery_only": 38.01222992340322,
+   "range_km_battery_only": 136.8440277242516,
+   "hours_with_full_sun": Infinity,
+   "range_km_with_full_sun": Infinity
+  },
+  {
+   "U_m_s": 1.25,
+   "U_kn": 2.4298077147366866,
+   "thrust_required_N": 129.7282684633261,
+   "achievable": true,
+   "P_propulsion_W": 887.0372586105731,
+   "hours_battery_only": 22.217138110224788,
+   "range_km_battery_only": 99.97712149601155,
+   "hours_with_full_sun": Infinity,
+   "range_km_with_full_sun": Infinity
+  },
+  {
+   "U_m_s": 1.5,
+   "U_kn": 2.915769257684024,
+   "thrust_required_N": 190.71706192707035,
+   "achievable": true,
+   "P_propulsion_W": 1571.2861235595199,
+   "hours_battery_only": 13.385339999345733,
+   "range_km_battery_only": 72.28083599646696,
+   "hours_with_full_sun": Infinity,
+   "range_km_with_full_sun": Infinity
+  },
+  {
+   "U_m_s": 1.75,
+   "U_kn": 3.4017308006313614,
+   "thrust_required_N": 272.6822126057135,
+   "achievable": true,
+   "P_propulsion_W": 2646.904722427531,
+   "hours_battery_only": 8.237677821217588,
+   "range_km_battery_only": 51.8973702736708,
+   "hours_with_full_sun": Infinity,
+   "range_km_with_full_sun": Infinity
+  },
+  {
+   "U_m_s": 2.0,
+   "U_kn": 3.8876923435786983,
+   "thrust_required_N": 386.21424300821764,
+   "achievable": true,
+   "P_propulsion_W": 4355.797358510734,
+   "hours_battery_only": 5.113412381158489,
+   "range_km_battery_only": 36.81656914434112,
+   "hours_with_full_sun": 15.718407367993143,
+   "range_km_with_full_sun": 113.17253304955062
+  },
+  {
+   "U_m_s": 2.25,
+   "U_kn": 4.373653886526036,
+   "thrust_required_N": 547.5889679280807,
+   "achievable": true,
+   "P_propulsion_W": 7115.112702344893,
+   "hours_battery_only": 3.171320383311273,
+   "range_km_battery_only": 25.687695104821312,
+   "hours_with_full_sun": 5.45310897558142,
+   "range_km_with_full_sun": 44.17018270220951
+  },
+  {
+   "U_m_s": 2.5,
+   "U_kn": 4.859615429473373,
+   "thrust_required_N": 780.4858579732633,
+   "achievable": true,
+   "P_propulsion_W": 11625.598495573295,
+   "hours_battery_only": 1.956588449297184,
+   "range_km_battery_only": 17.609296043674657,
+   "hours_with_full_sun": 2.637483855476573,
+   "range_km_with_full_sun": 23.73735469928916
+  },
+  {
+   "U_m_s": 2.75,
+   "U_kn": 5.3455769724207105,
+   "thrust_required_N": 1117.9377752878656,
+   "achievable": false,
+   "P_propulsion_W": 19032.519913325123,
+   "hours_battery_only": 1.2010935009636188,
+   "range_km_battery_only": 11.890825659539825,
+   "hours_with_full_sun": 1.4272864536460157,
+   "range_km_with_full_sun": 14.130135891095556
+  },
+  {
+   "U_m_s": 3.0,
+   "U_kn": 5.831538515368048,
+   "thrust_required_N": 1604.511424006449,
+   "achievable": false,
+   "P_propulsion_W": 31158.81416319605,
+   "hours_battery_only": 0.73589500643189,
+   "range_km_battery_only": 7.947666069464413,
+   "hours_with_full_sun": 0.8150324193646727,
+   "range_km_with_full_sun": 8.802350129138466
+  },
+  {
+   "U_m_s": 3.25,
+   "U_kn": 6.317500058315385,
+   "thrust_required_N": 2298.7181590892887,
+   "achievable": false,
+   "P_propulsion_W": 50834.41279220338,
+   "hours_battery_only": 0.4519028216310715,
+   "range_km_battery_only": 5.287263013083536,
+   "hours_with_full_sun": 0.4805565165613358,
+   "range_km_with_full_sun": 5.622511243767629
+  },
+  {
+   "U_m_s": 3.5,
+   "U_kn": 6.803461601262723,
+   "thrust_required_N": 3275.654947021523,
+   "achievable": false,
+   "P_propulsion_W": 82350.32064988933,
+   "hours_battery_only": 0.27927164183732067,
+   "range_km_battery_only": 3.5188226871502404,
+   "hours_with_full_sun": 0.2899560410977538,
+   "range_km_with_full_sun": 3.653446117831698
+  },
+  {
+   "U_m_s": 3.75,
+   "U_kn": 7.289423144210059,
+   "thrust_required_N": 4629.87535213877,
+   "achievable": false,
+   "P_propulsion_W": 132071.265191901,
+   "hours_battery_only": 0.1742533620939159,
+   "range_km_battery_only": 2.3524203882678645,
+   "hours_with_full_sun": 0.1783540358253473,
+   "range_km_with_full_sun": 2.4077794836421886
+  },
+  {
+   "U_m_s": 4.0,
+   "U_kn": 7.775384687157397,
+   "thrust_required_N": 6478.4904679777055,
+   "achievable": false,
+   "P_propulsion_W": 209246.54833438812,
+   "hours_battery_only": 0.11003046699321482,
+   "range_km_battery_only": 1.5844387247022935,
+   "hours_with_full_sun": 0.11165141201463158,
+   "range_km_with_full_sun": 1.6077803330106948
+  }
+ ],
+ "solar_neutral": {
+  "full sun": {
+   "solar_w": 3040.0,
+   "U_m_s": 1.793542247533012,
+   "U_kn": 3.4863702318095107
+  },
+  "half sun": {
+   "solar_w": 1520.0,
+   "U_m_s": 1.4374211699648127,
+   "U_kn": 2.7941256384850686
+  },
+  "overcast": {
+   "solar_w": 760.0,
+   "U_m_s": 1.1035891764172754,
+   "U_kn": 2.1452075958068817
+  }
+ },
+ "spec_sources": {
+  "envelope": {
+   "height_max_m": 3.0,
+   "width_max_m": 4.5,
+   "width_note": "all inclusive, fenders included",
+   "length_max_m": 9.0,
+   "length_note": "overhang aft approximately acceptable",
+   "air_draft_erdre_m": 3.8,
+   "air_draft_margin_m": 0.8,
+   "centre_clear_passage_min_m": 3.0,
+   "centre_note": "the assembly centre must leave >= 3 m clear for the host boat",
+   "source": "Notion 'Cahiers des charges', last edited 2026-05-12"
+  },
+  "design_rules": {
+   "zero_host_boat_modification": true,
+   "host_boat_carries_no_load": true,
+   "host_boat_load_note": "'Le cadre reprend toutes les charges : le bateau ne porte rien.' The frame takes ALL loads. This is a hard rule and it conflicts with every coupling arrangement that reacts load into the host boat's cleats - see docs/COUPLING.md section 17.",
+   "connections_non_permanent": true,
+   "pods_removable_from_water": true,
+   "full_disassembly_minutes": 45,
+   "full_disassembly_people": 2,
+   "boat_compatibility_target_fraction": 0.8,
+   "boat_compatibility_note": "fluvial boats for now; a coupling that depends on one host's cleat positions and ratings cannot meet this",
+   "superstructure_max_component_kg": 5.0,
+   "superstructure_exception": "solar panels",
+   "source": "Notion 'Cahiers des charges', last edited 2026-05-12"
+  },
+  "energy": {
+   "battery": {
+    "packs": 6,
+    "pack_v": 48.0,
+    "pack_ah": 100.0,
+    "pack_kwh": 4.8,
+    "total_kwh": 28.8,
+    "pack_mass_kg": 30.0,
+    "supplier": "Voltr, custom",
+    "usable_fraction": 0.8,
+    "usable_note": "ASSUMED depth of discharge for LiFePO4 in service. The BMS limit is not recorded.",
+    "source": "Notion 'List des composants', last edited 2026-03-23 (6 packs, ~30 kg each, custom); Notion 'Cahiers des charges', last edited 2026-05-12 (LiFePO4 48 V / 100 Ah, one per float)",
+    "conflict": "Notion 'Cahiers des charges', last edited 2026-05-12 says one pack per float; Notion 'List des composants', last edited 2026-03-23 lists 6 packs while buoyant_surfaces models 6 floats and Notion 'List des composants', last edited 2026-03-23 lists 8 floats. Pack count 6 is used."
+   },
+   "solar": {
+    "panel_count": 8,
+    "panel_wp": 475.0,
+    "array_kwp": 3.8,
+    "array_kwp_alternative": 3.0,
+    "alternative_note": "Notion 'Cahiers des charges', last edited 2026-05-12: 6 x Dualsun 500 W. See aero.exo_structure.panel_conflict.",
+    "mppt": "Victron SmartSolar MPPT 250/85 TR VE.Can",
+    "mppt_max_charge_a": 85.0,
+    "mppt_max_charge_w": 4080.0,
+    "derate_to_dc_fraction": 0.8,
+    "derate_note": "ASSUMED panel-to-battery derate (temperature, soiling, mismatch, MPPT losses) at full sun. Site irradiance on the Erdre is not recorded in this project.",
+    "source": "Notion 'List des composants', last edited 2026-03-23; AIKO Neostar 3S+54 datasheet (AIKO-A-MCE54Db 460-475 W, 1762x1134x30 mm)"
+   },
+   "propulsion": {
+    "pods": 2,
+    "pod_electrical_kw": 5.0,
+    "pod_v": 48.0,
+    "pod_a": 106.0,
+    "pod_bollard_kgf": 62.0,
+    "pod_bollard_N": 608.0,
+    "total_electrical_kw": 10.0,
+    "total_bollard_N": 1216.0,
+    "source": "Notion 'Cahiers des charges', last edited 2026-05-12 and Notion 'List des composants', last edited 2026-03-23; Rim Drive Technology POD 5.0"
+   },
+   "hotel_load_w": 150.0,
+   "hotel_note": "ASSUMED continuous draw for Cerbo GX, BMS, instruments and lighting. Not from the component list."
+  }
+ },
+ "card": {
+  "exo_rows": {
+   "starboard": {
+    "S_wet": 3.7825478658417238,
+    "xmin": -1.6632502989461064,
+    "xmax": 2.9106015841024817,
+    "A_front_max": 0.17500836567158684
+   },
+   "port": {
+    "S_wet": 3.931515318067481,
+    "xmin": -1.6674436128384862,
+    "xmax": 2.9176743382010355,
+    "A_front_max": 0.1822181937249485
+   }
+  },
+  "boat_geo": {
+   "S_wet": 16.251052282419195,
+   "L_wl": 7.784842480423351,
+   "centroid": [
+    -0.011912174986113922,
+    1.9451407600265812e-07,
+    -0.12335847352644153
+   ],
+   "A_front": 0.3424867236286477
+  },
+  "resistance_cfg": {
+   "nu_m2_s": 1.14e-06,
+   "rho_note": "water density from environment",
+   "exo": {
+    "form_factor_k": 0.3,
+    "pressure_drag_cd": 0.15,
+    "note": "per float row: ITTC-57 friction on the wetted area x (1+k) + Cd x submerged frontal area of one float for the nose/flat-end junctions and gaps (ASSUMED coefficients; the flat-to-flat junction of the rear and middle floats and the nose-to-flat junction of the middle and end floats are not resolved)"
+   },
+   "boat": {
+    "form_factor_k": 0.25,
+    "appendage_factor": 1.15,
+    "residuary_c_at_fr02": 0.0015,
+    "residuary_exponent": 4.0,
+    "note": "ITTC-57 friction on the proxy hull's wetted area x (1+k) x appendages (keel, rudder, propeller) + residuary C_R = c (Fr/0.2)^n on the wetted area (ASSUMED; the proxy hull is not the real hull)"
+   },
+   "drag_points": "EXO: resultant at the centroid of the submerged float volume (world); boat: at its centre of buoyancy"
+  },
+  "rho_water": 1000.0,
+  "rho_air": 1.225,
+  "g": 9.80665,
+  "areas": {
+   "EXO": {
+    "A_front_m2": 6.247745559676995,
+    "A_lateral_m2": 8.544091710763905,
+    "z_lateral_m": 1.766,
+    "L_m": 4.830909956060173
+   },
+   "BOAT": {
+    "A_front_m2": 7.104959884025769,
+    "A_lateral_m2": 17.593969256040893,
+    "z_lateral_m": 0.8461677756434562,
+    "L_m": 8.005819739191828
+   }
+  },
+  "coefficients": {
+   "Cx0": 0.8,
+   "Cy0": 1.0,
+   "Cn0": 0.1,
+   "note": "ASSUMED first-harmonic wind coefficients for a bluff, partly open small-craft structure. Cx0 and Cy0 refer to the frontal and lateral projected areas, Cn0 to A_lateral x L. No wind-tunnel, CFD or full-scale basis. These three numbers are the largest single uncertainty in any wind result."
+  },
+  "T0_N": 1216.0,
+  "T0_horizontal_N": 1213.5233092988865,
+  "thrust_horizontal_factor": 0.9979632477786895,
+  "P_electrical_W": 10000.0,
+  "A_disk_m2": 0.09817477042468103,
+  "disk_diameter_m": 0.25,
+  "battery_kwh": 28.8,
+  "usable_fraction": 0.8,
+  "solar_full_w": 3040.0,
+  "hotel_w": 150.0
+ }
+}
