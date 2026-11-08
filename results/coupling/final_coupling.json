@@ -75,7 +75,7 @@
    "wheel_max_N": -0.0,
    "one_bumper_open": true,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17725375650852726
   },
   {
    "preload_N": 200,
@@ -92,7 +92,7 @@
    "wheel_max_N": -0.0,
    "one_bumper_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17799983339794223
   },
   {
    "preload_N": 400,
@@ -109,7 +109,7 @@
    "wheel_max_N": -0.0,
    "one_bumper_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17803475159535886
   },
   {
    "preload_N": 600,
@@ -126,7 +126,7 @@
    "wheel_max_N": -0.0,
    "one_bumper_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17806176541555008
   },
   {
    "preload_N": 800,
@@ -143,7 +143,7 @@
    "wheel_max_N": -0.0,
    "one_bumper_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17808615550223728
   },
   {
    "preload_N": 1200,
@@ -160,7 +160,7 @@
    "wheel_max_N": -0.0,
    "one_bumper_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17813081473075232
   },
   {
    "preload_N": 1600,
@@ -177,7 +177,7 @@
    "wheel_max_N": -0.0,
    "one_bumper_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.1781717618583034
   },
   {
    "preload_N": 2000,
@@ -194,7 +194,7 @@
    "wheel_max_N": -0.0,
    "one_bumper_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17820983384484723
   },
   {
    "preload_N": 2500,
@@ -211,7 +211,7 @@
    "wheel_max_N": -0.0,
    "one_bumper_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17825402840414073
   },
   {
    "preload_N": 3000,
@@ -228,7 +228,7 @@
    "wheel_max_N": -0.0,
    "one_bumper_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17829496259586874
   },
   {
    "preload_N": 3500,
@@ -245,7 +245,7 @@
    "wheel_max_N": -0.0,
    "one_bumper_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17833304246339754
   }
  ],
  "cases": {
@@ -271,7 +271,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": true,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17725375650852726
     },
     {
      "preload_N": 200,
@@ -289,7 +289,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17799983339794223
     },
     {
      "preload_N": 400,
@@ -307,7 +307,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17803475159535886
     },
     {
      "preload_N": 600,
@@ -325,7 +325,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17806176541555008
     },
     {
      "preload_N": 800,
@@ -343,7 +343,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17808615550223728
     },
     {
      "preload_N": 1200,
@@ -361,7 +361,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17813081473075232
     },
     {
      "preload_N": 1600,
@@ -379,7 +379,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1781717618583034
     },
     {
      "preload_N": 2000,
@@ -397,7 +397,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17820983384484723
     },
     {
      "preload_N": 2500,
@@ -415,7 +415,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17825402840414073
     },
     {
      "preload_N": 3000,
@@ -433,7 +433,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17829496259586874
     },
     {
      "preload_N": 3500,
@@ -451,7 +451,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17833304246339754
     }
    ],
    "min_preload_both_bumpers_N": 200,
@@ -479,7 +479,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1770697297027628
     },
     {
      "preload_N": 200,
@@ -497,7 +497,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17706972970276413
     },
     {
      "preload_N": 400,
@@ -515,7 +515,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17799590054243475
     },
     {
      "preload_N": 600,
@@ -533,7 +533,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17802989396994184
     },
     {
      "preload_N": 800,
@@ -551,7 +551,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17805615881024095
     },
     {
      "preload_N": 1200,
@@ -569,7 +569,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17810213038989153
     },
     {
      "preload_N": 1600,
@@ -587,7 +587,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1781436027169323
     },
     {
      "preload_N": 2000,
@@ -605,7 +605,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17818194926982267
     },
     {
      "preload_N": 2500,
@@ -623,7 +623,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17822631258337163
     },
     {
      "preload_N": 3000,
@@ -641,7 +641,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1782672989190046
     },
     {
      "preload_N": 3500,
@@ -659,7 +659,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17830535703234185
     }
    ],
    "min_preload_both_bumpers_N": 1,
@@ -687,7 +687,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": true,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17801735062765411
     },
     {
      "preload_N": 200,
@@ -705,7 +705,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": true,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17801865663371252
     },
     {
      "preload_N": 400,
@@ -723,7 +723,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17805155269989026
     },
     {
      "preload_N": 600,
@@ -741,7 +741,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17807739718413695
     },
     {
      "preload_N": 800,
@@ -759,7 +759,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17810130684645675
     },
     {
      "preload_N": 1200,
@@ -777,7 +777,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17814555464054793
     },
     {
      "preload_N": 1600,
@@ -795,7 +795,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17818632713971794
     },
     {
      "preload_N": 2000,
@@ -813,7 +813,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17822431808657102
     },
     {
      "preload_N": 2500,
@@ -831,7 +831,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17826848283070507
     },
     {
      "preload_N": 3000,
@@ -849,7 +849,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1783094346600591
     },
     {
      "preload_N": 3500,
@@ -867,7 +867,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17834756378393135
     }
    ],
    "min_preload_both_bumpers_N": 400,
@@ -895,7 +895,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": true,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17802082999469726
     },
     {
      "preload_N": 200,
@@ -913,7 +913,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": true,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1780217214474622
     },
     {
      "preload_N": 400,
@@ -931,7 +931,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17805813572961826
     },
     {
      "preload_N": 600,
@@ -949,7 +949,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17808365514148417
     },
     {
      "preload_N": 800,
@@ -967,7 +967,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17810741690631637
     },
     {
      "preload_N": 1200,
@@ -985,7 +985,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17815153180031507
     },
     {
      "preload_N": 1600,
@@ -1003,7 +1003,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17819224890841157
     },
     {
      "preload_N": 2000,
@@ -1021,7 +1021,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1782302176960524
     },
     {
      "preload_N": 2500,
@@ -1039,7 +1039,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17827438048624966
     },
     {
      "preload_N": 3000,
@@ -1057,7 +1057,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1783153477451771
     },
     {
      "preload_N": 3500,
@@ -1075,7 +1075,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1783535039603239
     }
    ],
    "min_preload_both_bumpers_N": 400,
@@ -1103,7 +1103,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": true,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17802733639129298
     },
     {
      "preload_N": 200,
@@ -1121,7 +1121,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": true,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17802792235225784
     },
     {
      "preload_N": 400,
@@ -1139,7 +1139,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": true,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17802851129893105
     },
     {
      "preload_N": 600,
@@ -1157,7 +1157,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17809307366260319
     },
     {
      "preload_N": 800,
@@ -1175,7 +1175,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17811664912227299
     },
     {
      "preload_N": 1200,
@@ -1193,7 +1193,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1781605932660768
     },
     {
      "preload_N": 1600,
@@ -1211,7 +1211,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17820124200566023
     },
     {
      "preload_N": 2000,
@@ -1229,7 +1229,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1782391883703971
     },
     {
      "preload_N": 2500,
@@ -1247,7 +1247,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17828335882981916
     },
     {
      "preload_N": 3000,
@@ -1265,7 +1265,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17832435826182946
     },
     {
      "preload_N": 3500,
@@ -1283,7 +1283,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17836256330479272
     }
    ],
    "min_preload_both_bumpers_N": 600,
@@ -1311,7 +1311,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": true,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17802167287527126
     },
     {
      "preload_N": 200,
@@ -1329,7 +1329,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": true,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1780225069068273
     },
     {
      "preload_N": 400,
@@ -1347,7 +1347,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17805949226994544
     },
     {
      "preload_N": 600,
@@ -1365,7 +1365,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17808495160399285
     },
     {
      "preload_N": 800,
@@ -1383,7 +1383,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17810868529754686
     },
     {
      "preload_N": 1200,
@@ -1401,7 +1401,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17815277467416113
     },
     {
      "preload_N": 1600,
@@ -1419,7 +1419,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.178193481312924
     },
     {
      "preload_N": 2000,
@@ -1437,7 +1437,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17823144623979892
     },
     {
      "preload_N": 2500,
@@ -1455,7 +1455,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17827560933149988
     },
     {
      "preload_N": 3000,
@@ -1473,7 +1473,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.17831658037671994
     },
     {
      "preload_N": 3500,
@@ -1491,7 +1491,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1783547427439589
     }
    ],
    "min_preload_both_bumpers_N": 400,
@@ -1519,7 +1519,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1039468666830694
     },
     {
      "preload_N": 200,
@@ -1537,7 +1537,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.11325453674259678
     },
     {
      "preload_N": 400,
@@ -1555,7 +1555,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.12254192668423292
     },
     {
      "preload_N": 600,
@@ -1573,7 +1573,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1317708033265077
     },
     {
      "preload_N": 800,
@@ -1591,7 +1591,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.14094951118139853
     },
     {
      "preload_N": 1200,
@@ -1609,7 +1609,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1431135340098839
     },
     {
      "preload_N": 1600,
@@ -1627,7 +1627,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.14314457577622086
     },
     {
      "preload_N": 2000,
@@ -1645,7 +1645,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.14317445407670149
     },
     {
      "preload_N": 2500,
@@ -1663,7 +1663,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.14321030804207124
     },
     {
      "preload_N": 3000,
@@ -1681,7 +1681,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.14324464404774306
     },
     {
      "preload_N": 3500,
@@ -1699,7 +1699,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.14327758896067766
     }
    ],
    "min_preload_both_bumpers_N": 1200,
@@ -1727,7 +1727,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.03730508563619139
     },
     {
      "preload_N": 200,
@@ -1745,7 +1745,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.04633156816572992
     },
     {
      "preload_N": 400,
@@ -1763,7 +1763,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.05528477060783232
     },
     {
      "preload_N": 600,
@@ -1781,7 +1781,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.06412864488166137
     },
     {
      "preload_N": 800,
@@ -1799,7 +1799,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.07287195977743255
     },
     {
      "preload_N": 1200,
@@ -1817,7 +1817,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.09008839235897104
     },
     {
      "preload_N": 1600,
@@ -1835,7 +1835,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.10699112412661571
     },
     {
      "preload_N": 2000,
@@ -1853,7 +1853,7 @@
      "one_bumper_open": true,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.12362937376545946
     },
     {
      "preload_N": 2500,
@@ -1871,7 +1871,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.12937067083692355
     },
     {
      "preload_N": 3000,
@@ -1889,7 +1889,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.1294410817255507
     },
     {
      "preload_N": 3500,
@@ -1907,7 +1907,7 @@
      "one_bumper_open": false,
      "both_bumpers_open": false,
      "unrestrained": false,
-     "hull_to_float_min_m": null
+     "hull_to_float_min_m": 0.12950931084290285
     }
    ],
    "min_preload_both_bumpers_N": 2500,
@@ -2276,7 +2276,7 @@
    "dy_mm": 17.93846602734657,
    "bumper_min_N": 472.00039716415176,
    "bumper_max_N": 1793.878772016555,
-   "hull_to_float_min_m": null,
+   "hull_to_float_min_m": 0.15985966457683065,
    "converged": true
   },
   {
@@ -2287,7 +2287,7 @@
    "dy_mm": 62.55506783536163,
    "bumper_min_N": -0.0,
    "bumper_max_N": 2546.329648003365,
-   "hull_to_float_min_m": null,
+   "hull_to_float_min_m": 0.10735625148450323,
    "converged": true
   },
   {
@@ -2298,7 +2298,7 @@
    "dy_mm": 47.80145176772889,
    "bumper_min_N": 469.0470875536423,
    "bumper_max_N": 1784.3503612696932,
-   "hull_to_float_min_m": null,
+   "hull_to_float_min_m": 0.14314457577622086,
    "converged": true
   },
   {
@@ -2309,7 +2309,7 @@
    "dy_mm": 95.26473250702435,
    "bumper_min_N": -0.0,
    "bumper_max_N": 2551.393605328323,
-   "hull_to_float_min_m": null,
+   "hull_to_float_min_m": 0.10699112412661571,
    "converged": true
   },
   {
@@ -2320,7 +2320,7 @@
    "dy_mm": 77.66343933666587,
    "bumper_min_N": 468.4847502833156,
    "bumper_max_N": 1777.0834070031992,
-   "hull_to_float_min_m": null,
+   "hull_to_float_min_m": 0.11325276160710684,
    "converged": true
   },
   {
@@ -2331,7 +2331,7 @@
    "dy_mm": 127.97895522722739,
    "bumper_min_N": -0.0,
    "bumper_max_N": 2556.478043513799,
-   "hull_to_float_min_m": null,
+   "hull_to_float_min_m": 0.07497384611908808,
    "converged": true
   }
  ],
@@ -2352,7 +2352,7 @@
    "one_bumper_open": false,
    "both_bumpers_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.1781717618583034
   },
   {
    "mode": "baseline",
@@ -2370,7 +2370,7 @@
    "one_bumper_open": false,
    "both_bumpers_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.1781436027169323
   },
   {
    "mode": "baseline",
@@ -2388,7 +2388,7 @@
    "one_bumper_open": false,
    "both_bumpers_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17819224890841157
   },
   {
    "mode": "rope_parted",
@@ -2406,7 +2406,7 @@
    "one_bumper_open": true,
    "both_bumpers_open": true,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17710301294343722
   },
   {
    "mode": "rope_parted",
@@ -2424,7 +2424,7 @@
    "one_bumper_open": false,
    "both_bumpers_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17706972970276325
   },
   {
    "mode": "rope_parted",
@@ -2442,7 +2442,7 @@
    "one_bumper_open": true,
    "both_bumpers_open": true,
    "unrestrained": true,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.1563281180596765
   },
   {
    "mode": "winch_released",
@@ -2460,7 +2460,7 @@
    "one_bumper_open": true,
    "both_bumpers_open": true,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17710301294343722
   },
   {
    "mode": "winch_released",
@@ -2478,7 +2478,7 @@
    "one_bumper_open": false,
    "both_bumpers_open": false,
    "unrestrained": true,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17820087443821286
   },
   {
    "mode": "winch_released",
@@ -2496,7 +2496,7 @@
    "one_bumper_open": true,
    "both_bumpers_open": true,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.1780208256344613
   },
   {
    "mode": "one_bumper_lost",
@@ -2514,7 +2514,7 @@
    "one_bumper_open": true,
    "both_bumpers_open": true,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.033712151563137116
   },
   {
    "mode": "one_bumper_lost",
@@ -2532,7 +2532,7 @@
    "one_bumper_open": false,
    "both_bumpers_open": false,
    "unrestrained": true,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": -3.799269867249781
   },
   {
    "mode": "one_bumper_lost",
@@ -2550,7 +2550,7 @@
    "one_bumper_open": false,
    "both_bumpers_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.10905772456920548
   },
   {
    "mode": "one_wheel_lost",
@@ -2568,7 +2568,7 @@
    "one_bumper_open": false,
    "both_bumpers_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.1781717618583034
   },
   {
    "mode": "one_wheel_lost",
@@ -2586,7 +2586,7 @@
    "one_bumper_open": false,
    "both_bumpers_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.1781436027169323
   },
   {
    "mode": "one_wheel_lost",
@@ -2604,122 +2604,8 @@
    "one_bumper_open": false,
    "both_bumpers_open": false,
    "unrestrained": false,
-   "hull_to_float_min_m": null
+   "hull_to_float_min_m": 0.17819224890841157
   }
  ],
- "design_preload_N": 1600.0,
- "clearances_at_design_preload": {
-  "moored": {
-   "preload_N": 1600.0,
-   "hull_to_float_min_m": 0.1781717618583034,
-   "transom_to_deck_m": 0.10608045386119969,
-   "flags": [],
-   "dx_mm": -21.87157987922972,
-   "dy_mm": -1.1114661915782345,
-   "dyaw_deg": 0.0014555193472915574,
-   "rope_N": 1080.2770898877236,
-   "pulley_N": 1972.3034697602038,
-   "bumper_min_N": 985.6428192829947,
-   "bumper_max_N": 986.2485115554875,
-   "wheel_max_N": -0.0
-  },
-  "fwd100": {
-   "preload_N": 1600.0,
-   "hull_to_float_min_m": 0.1781436027169323,
-   "transom_to_deck_m": 0.09993612272084684,
-   "flags": [],
-   "dx_mm": -27.25089914835933,
-   "dy_mm": -1.0810920765511738,
-   "dyaw_deg": 0.0012731051330250515,
-   "rope_N": 942.7296513834973,
-   "pulley_N": 1720.859145447331,
-   "bumper_min_N": 1280.4276520954838,
-   "bumper_max_N": 1281.1477691562434,
-   "wheel_max_N": -0.0
-  },
-  "rev50": {
-   "preload_N": 1600.0,
-   "hull_to_float_min_m": 0.17818632713971794,
-   "transom_to_deck_m": 0.10915781391268942,
-   "flags": [],
-   "dx_mm": -19.173632639746856,
-   "dy_mm": -1.1276044991363496,
-   "dyaw_deg": 0.0015538682749955265,
-   "rope_N": 1149.314726244527,
-   "pulley_N": 2098.542704149917,
-   "bumper_min_N": 837.937165883118,
-   "bumper_max_N": 838.49964144036,
-   "wheel_max_N": -0.0
-  },
-  "rev70": {
-   "preload_N": 1600.0,
-   "hull_to_float_min_m": 0.17819224890841157,
-   "transom_to_deck_m": 0.1103882092895887,
-   "flags": [],
-   "dx_mm": -18.09426294699232,
-   "dy_mm": -1.1342460285744174,
-   "dyaw_deg": 0.0015946013412586287,
-   "rope_N": 1176.944252504465,
-   "pulley_N": 2149.071326682414,
-   "bumper_min_N": 778.8696866936284,
-   "bumper_max_N": 779.4176586425783,
-   "wheel_max_N": -0.0
-  },
-  "rev100": {
-   "preload_N": 1600.0,
-   "hull_to_float_min_m": 0.17820124200566023,
-   "transom_to_deck_m": 0.11223322589296325,
-   "flags": [],
-   "dx_mm": -16.47501117114689,
-   "dy_mm": -1.1444186778054288,
-   "dyaw_deg": 0.0016572666316542505,
-   "rope_N": 1218.4037855056333,
-   "pulley_N": 2224.899062538288,
-   "bumper_min_N": 690.2840153808265,
-   "bumper_max_N": 690.8133122280668,
-   "wheel_max_N": -0.0
-  },
-  "estop": {
-   "preload_N": 1600.0,
-   "hull_to_float_min_m": 0.178193481312924,
-   "transom_to_deck_m": 0.11064273469439012,
-   "flags": [],
-   "dx_mm": -17.870932330800066,
-   "dy_mm": -1.1356339493111305,
-   "dyaw_deg": 0.0016031318086003772,
-   "rope_N": 1182.6617127005513,
-   "pulley_N": 2159.5278261996746,
-   "bumper_min_N": 766.6498969175927,
-   "bumper_max_N": 767.1950714613685,
-   "wheel_max_N": -0.0
-  },
-  "diff_one": {
-   "preload_N": 1600.0,
-   "hull_to_float_min_m": 0.14314457577622086,
-   "transom_to_deck_m": 0.10312354501138721,
-   "flags": [],
-   "dx_mm": -24.396138740884822,
-   "dy_mm": 47.80145176772889,
-   "dyaw_deg": -0.8363834011583732,
-   "rope_N": 1003.6465701031618,
-   "pulley_N": 1832.2301337194622,
-   "bumper_min_N": 469.0470875536423,
-   "bumper_max_N": 1784.3503612696932,
-   "wheel_max_N": 20.633356947735713
-  },
-  "diff_opp": {
-   "preload_N": 1600.0,
-   "hull_to_float_min_m": 0.10699112412661571,
-   "transom_to_deck_m": 0.12189190231534353,
-   "flags": [],
-   "dx_mm": -6.7864247731574325,
-   "dy_mm": 95.26473250702435,
-   "dyaw_deg": -2.9852280014308143,
-   "rope_N": 1398.7419345653907,
-   "pulley_N": 2555.537831067099,
-   "bumper_min_N": -0.0,
-   "bumper_max_N": 2551.393605328323,
-   "wheel_max_N": 135.4119700189005
-  }
- }
+ "design_preload_N": 1600.0
 }

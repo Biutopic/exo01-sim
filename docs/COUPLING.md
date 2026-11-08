@@ -485,8 +485,11 @@ Not cleverness — geometry, and it was visible before the solver ran.
 ### 15.5 What the preloads rest on
 
 - **`diff_opp` — one pod full ahead, one full astern — binds the preload of thirteen of the seventeen arrangements.**
-  It is the design driver, and it rests on the pods' bollard thrust, which `ASSUMPTIONS.md` records as a 1 500 N
-  order-of-magnitude guess. Measuring it would tighten every preload in this table.
+  It is the design driver. CORRECTION (8 Nov): it does not rest on a guess. Its 2 396 N·m is 1 216 N × 1,97 m, and
+  1 216 N is the pods' datasheet figure (2 × Rim Drive POD 5.0, 62 kgf each). The 1 500 N order-of-magnitude guess
+  belongs to the boat's Volvo inboard, which no load case uses. The real unknown is the **reverse** thrust fraction
+  of a rim drive, typically 60–80 % of forward, where `diff_opp` assumes 100 % — so the case is more likely
+  conservative than optimistic.
 - The absolute preloads scale with the 50 N "bumper still loaded" threshold, which is a choice. The **ratios** between
   arrangements are the robust part of this table.
 - Element lengths against a 10 ft (3,05 m) ratchet strap: midship spring **1,92 m fits**, aft breast **2,73 m fits**,
@@ -537,3 +540,59 @@ silently supplying it.
 `tests/test_coupling_elements.py::test_no_element_applies_a_spurious_couple` reproduces it and is marked
 `xfail(strict=True)`, so it will fail loudly the day the model is fixed. Note that `_u0` is the internal field the
 solver reads; a raw element dict carrying only `axis_m` takes the geometric fallback and cannot exercise the defect.
+
+## 17. The cahier des charges rules out the arrangement §15 recommends
+
+Reading the project's own `Cahiers des charges` (Notion, last edited 12 May 2026) after §15 was written. Three rules
+in it bear directly on the coupling, and the arrangement study met none of them because it never had them:
+
+> **Zéro modification des bateaux hôtes.**
+> **Le cadre reprend toutes les charges : le bateau ne porte rien.**
+> **Compatible avec 80 % des bateaux (fluviaux pour l'instant).**
+
+Against those:
+
+| | what §15 recommends | the rule |
+|---|---|---|
+| **Fittings** | `docs/STRUCTURAL.md` §5.1 calls for verifying or refitting every cleat used — through-bolted, backing plate | a refit **is** a modification |
+| **Load path** | 571 N into the midship cleats, 137 N into the stern cleats | the boat is to carry nothing |
+| **Generality** | depends on *this* boat's cleat positions and ratings | must fit 80 % of boats |
+
+### 17.1 The rule as written cannot be met, so the reading matters
+
+Any coupling that propels the boat must put force into it: that is what propulsion is. Taken literally, "le bateau ne
+porte rien" forbids the bumpers as much as the ropes. The reading that makes engineering sense is **the boat carries
+none of the EXO's weight or structural loads** — which the next line supports ("la structure doit flotter
+indépendamment et ne pas ajouter ni retirer de poids au bateau hôte").
+
+**That distinction decides the recommendation, and it is a specification question rather than a physics one.** Under
+the narrow reading (no weight), §15 stands. Under the broad reading (no load at all into boat fittings), every
+rope-to-cleat arrangement in §15 is out.
+
+### 17.2 What the broad reading promotes
+
+**The sandwich sling** — set aside in §16 as a lifting idea and then shown unable to lift (the EXO frame spans boat
+stations −2,27 to +2,94 m while the boat's centre of mass is at 3,60 m, so every sling sits aft of it). As a
+*coupling* element it is the only arrangement tested that satisfies all three rules at once:
+
+- it bears on the hull and needs **no boat fittings whatsoever**
+- it therefore works on any hull form, which is what "80 % of boats" requires
+- the boat carries no attachment load, only bearing pressure
+
+Its known weaknesses stay real and are engineering problems rather than specification violations: **no surge
+restraint at all** (a transverse strap has a surge direction cosine of exactly zero, and a frictionless wrap can only
+transmit force normal to the hull), so it needs the bumpers plus a short forward tension element; it wants 200–300 mm
+lifting slings rather than 50 mm tie-downs, for bearing; and its working length chafes under the hull where it cannot
+be inspected. §16 also settled that it should be rigged **snug, not preloaded** — preloading costs 63 % more peak
+load to buy 0,8° of roll.
+
+### 17.3 Other spec items the coupling study did not have
+
+- **Disassembly ≤ 45 min with 2 people, non-permanent connections.** This is a hard constraint on the "ops actions"
+  column of §15.2, which counted actions without a budget to compare them against.
+- **No superstructure component over 5 kg**, solar panels excepted. Relevant to anything bolted to the frame.
+- **Dimensional envelope 3,00 × 4,50 × 9,00 m, air draft 3,80 m.** §15's arrangements all sit inside it, but the
+  figure now drives the windage model in `docs/PERFORMANCE.md`.
+
+**Open question for the project, not for the model:** which reading of "le bateau ne porte rien" is intended. The
+answer changes the recommended arrangement.

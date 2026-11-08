@@ -143,8 +143,12 @@ Against the largest textile design load of 1 901 N:
 
 **Would materially change the loads in this note:**
 
-4. **The pods' bollard thrust.** §15.5 found `diff_opp` binds the preload of thirteen of seventeen arrangements,
-   and it rests on a 1 500 N order-of-magnitude guess. Measure it and every preload in this note tightens.
+4. **The pods' reverse-thrust fraction.** §15.5 found `diff_opp` binds the preload of thirteen of seventeen
+   arrangements. CORRECTION (8 Nov): that case does **not** rest on a guess. Its 2 396 N·m is 1 216 N × 1,97 m, and
+   1 216 N is the pods' datasheet figure (2 × Rim Drive POD 5.0, 62 kgf each, component list 12 Sep). The 1 500 N
+   order-of-magnitude guess is the *boat's* Volvo inboard, which no load case uses. What is genuinely unknown is the
+   **reverse** thrust a rim drive delivers — typically 60–80 % of forward — and `diff_opp` assumes 100 %, so it is
+   more likely an over-estimate than an under-estimate.
 5. **A measured snatch load**, which would replace the ×2,5 judgement with a number.
 6. **The three contact stiffnesses** (bumper, wheel, rope), still unmeasured, which spread the quasi-static
    answer by a factor of 3 (§7) even though rope tension pins it exactly.

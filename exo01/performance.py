@@ -43,6 +43,17 @@ def induced_velocity(T0, A_disk, rho=RHO_WATER):
     return float(np.sqrt(max(float(T0), 0.0) / (2.0 * rho * A)))
 
 
+def induced_velocity_at_speed(T, A_disk, U, rho=RHO_WATER):
+    """Induced velocity that produces thrust T at forward speed U, from T = 2 ρ A (U + w) w.
+
+    At U = 0 this reduces to the bollard relation. Using the bollard relation AT SPEED overstates the water power
+    by about 25 % at 2.4 m/s, which is how a 10 kW installation came out drawing 12.6 kW.
+    """
+    A = max(float(A_disk), 1e-6)
+    U = max(float(U), 0.0)
+    return float(0.5 * (-U + np.sqrt(U * U + 2.0 * max(float(T), 0.0) / (rho * A))))
+
+
 def water_power_at_bollard(T0, A_disk, rho=RHO_WATER):
     """Power delivered to the water at bollard pull, P0 = T0 · w0. Ideal; a real propulsor needs more."""
     return float(T0) * induced_velocity(T0, A_disk, rho)
@@ -159,9 +170,10 @@ def max_speed(*, T0, model, A_disk, P_water, exo_rows, boat_geo, res_cfg, V_true
 def electrical_power_for_thrust(T_required, T0, P_electrical_max, A_disk, U_water, rho=RHO_WATER):
     """Electrical power to hold a given thrust, scaled from the full-power point.
 
-    ASSUMPTION, and a crude one: electrical power is taken proportional to the ideal water power at that thrust,
-    with the same overall efficiency as at bollard. Real pod efficiency varies with loading; without a pod
-    efficiency map this is the most that can be said.
+    ASSUMPTION, and a crude one: electrical power is taken proportional to the ideal water power at that thrust and
+    speed, with the same overall efficiency as at bollard. Real pod efficiency varies with loading; without a pod
+    efficiency map this is the most that can be said. The consistency check is that at full thrust this must return
+    the installed electrical power, no more.
     """
     T_required = max(float(T_required), 0.0)
     if T_required <= 0.0:
@@ -169,7 +181,7 @@ def electrical_power_for_thrust(T_required, T0, P_electrical_max, A_disk, U_wate
     eff = water_power_at_bollard(T0, A_disk, rho) / float(P_electrical_max) if P_electrical_max else None
     if not eff or eff <= 0:
         return float("nan")
-    w = induced_velocity(T_required, A_disk, rho)         # induced velocity for THIS thrust
+    w = induced_velocity_at_speed(T_required, A_disk, U_water, rho)
     P_water = T_required * (max(float(U_water), 0.0) + w)
     return float(P_water / eff)
 

@@ -610,9 +610,9 @@
    "U_kn": 0.9719230858946746,
    "thrust_required_N": 22.453085904453577,
    "achievable": true,
-   "P_propulsion_W": 62.380100260878656,
-   "hours_battery_only": 108.4847401978747,
-   "range_km_battery_only": 195.27253235617445,
+   "P_propulsion_W": 49.904822548739055,
+   "hours_battery_only": 115.25484831353977,
+   "range_km_battery_only": 207.45872696437158,
    "hours_with_full_sun": Infinity,
    "range_km_with_full_sun": Infinity
   },
@@ -621,9 +621,9 @@
    "U_kn": 1.457884628842012,
    "thrust_required_N": 48.06580814419735,
    "achievable": true,
-   "P_propulsion_W": 198.3207021104464,
-   "hours_battery_only": 66.14593924622494,
-   "range_km_battery_only": 178.59403596480735,
+   "P_propulsion_W": 158.65782532806406,
+   "hours_battery_only": 74.64576663660289,
+   "range_km_battery_only": 201.54356991882779,
    "hours_with_full_sun": Infinity,
    "range_km_with_full_sun": Infinity
   },
@@ -632,9 +632,9 @@
    "U_kn": 1.9438461717893492,
    "thrust_required_N": 83.32493378788361,
    "achievable": true,
-   "P_propulsion_W": 456.1207155283155,
-   "hours_battery_only": 38.01222992340322,
-   "range_km_battery_only": 136.8440277242516,
+   "P_propulsion_W": 364.91061428820774,
+   "hours_battery_only": 44.74563033012943,
+   "range_km_battery_only": 161.08426918846595,
    "hours_with_full_sun": Infinity,
    "range_km_with_full_sun": Infinity
   },
@@ -643,9 +643,9 @@
    "U_kn": 2.4298077147366866,
    "thrust_required_N": 129.7282684633261,
    "achievable": true,
-   "P_propulsion_W": 887.0372586105731,
-   "hours_battery_only": 22.217138110224788,
-   "range_km_battery_only": 99.97712149601155,
+   "P_propulsion_W": 709.6615271210525,
+   "hours_battery_only": 26.801245924264382,
+   "range_km_battery_only": 120.60560665918973,
    "hours_with_full_sun": Infinity,
    "range_km_with_full_sun": Infinity
   },
@@ -654,9 +654,9 @@
    "U_kn": 2.915769257684024,
    "thrust_required_N": 190.71706192707035,
    "achievable": true,
-   "P_propulsion_W": 1571.2861235595199,
-   "hours_battery_only": 13.385339999345733,
-   "range_km_battery_only": 72.28083599646696,
+   "P_propulsion_W": 1257.0480767161725,
+   "hours_battery_only": 16.374707006296273,
+   "range_km_battery_only": 88.42341783399986,
    "hours_with_full_sun": Infinity,
    "range_km_with_full_sun": Infinity
   },
@@ -665,9 +665,9 @@
    "U_kn": 3.4017308006313614,
    "thrust_required_N": 272.6822126057135,
    "achievable": true,
-   "P_propulsion_W": 2646.904722427531,
-   "hours_battery_only": 8.237677821217588,
-   "range_km_battery_only": 51.8973702736708,
+   "P_propulsion_W": 2117.5391846219454,
+   "hours_battery_only": 10.160794643044433,
+   "range_km_battery_only": 64.01300625117993,
    "hours_with_full_sun": Infinity,
    "range_km_with_full_sun": Infinity
   },
@@ -676,116 +676,116 @@
    "U_kn": 3.8876923435786983,
    "thrust_required_N": 386.21424300821764,
    "achievable": true,
-   "P_propulsion_W": 4355.797358510734,
-   "hours_battery_only": 5.113412381158489,
-   "range_km_battery_only": 36.81656914434112,
-   "hours_with_full_sun": 15.718407367993143,
-   "range_km_with_full_sun": 113.17253304955062
+   "P_propulsion_W": 3485.277760916525,
+   "hours_battery_only": 6.337892594537581,
+   "range_km_battery_only": 45.63282668067058,
+   "hours_with_full_sun": 38.70462078832955,
+   "range_km_with_full_sun": 278.6732696759728
   },
   {
    "U_m_s": 2.25,
    "U_kn": 4.373653886526036,
    "thrust_required_N": 547.5889679280807,
    "achievable": true,
-   "P_propulsion_W": 7115.112702344893,
-   "hours_battery_only": 3.171320383311273,
-   "range_km_battery_only": 25.687695104821312,
-   "hours_with_full_sun": 5.45310897558142,
-   "range_km_with_full_sun": 44.17018270220951
+   "P_propulsion_W": 5696.781529224881,
+   "hours_battery_only": 3.9406295386334476,
+   "range_km_battery_only": 31.919099262930924,
+   "hours_with_full_sun": 8.208690188424718,
+   "range_km_with_full_sun": 66.49039052624023
   },
   {
    "U_m_s": 2.5,
    "U_kn": 4.859615429473373,
    "thrust_required_N": 780.4858579732633,
    "achievable": true,
-   "P_propulsion_W": 11625.598495573295,
-   "hours_battery_only": 1.956588449297184,
-   "range_km_battery_only": 17.609296043674657,
-   "hours_with_full_sun": 2.637483855476573,
-   "range_km_with_full_sun": 23.73735469928916
+   "P_propulsion_W": 9321.684853290775,
+   "hours_battery_only": 2.4325133655597875,
+   "range_km_battery_only": 21.89262029003809,
+   "hours_with_full_sun": 3.58226507136953,
+   "range_km_with_full_sun": 32.24038564232577
   },
   {
    "U_m_s": 2.75,
    "U_kn": 5.3455769724207105,
    "thrust_required_N": 1117.9377752878656,
    "achievable": false,
-   "P_propulsion_W": 19032.519913325123,
-   "hours_battery_only": 1.2010935009636188,
-   "range_km_battery_only": 11.890825659539825,
-   "hours_with_full_sun": 1.4272864536460157,
-   "range_km_with_full_sun": 14.130135891095556
+   "P_propulsion_W": 15300.298914841695,
+   "hours_battery_only": 1.4912332846756495,
+   "range_km_battery_only": 14.76320951828893,
+   "hours_with_full_sun": 1.8565225671112613,
+   "range_km_with_full_sun": 18.379573414401488
   },
   {
    "U_m_s": 3.0,
    "U_kn": 5.831538515368048,
    "thrust_required_N": 1604.511424006449,
    "achievable": false,
-   "P_propulsion_W": 31158.81416319605,
-   "hours_battery_only": 0.73589500643189,
-   "range_km_battery_only": 7.947666069464413,
-   "hours_with_full_sun": 0.8150324193646727,
-   "range_km_with_full_sun": 8.802350129138466
+   "P_propulsion_W": 25147.08167351782,
+   "hours_battery_only": 0.9107769938585194,
+   "range_km_battery_only": 9.83639153367201,
+   "hours_with_full_sun": 1.0351761447420003,
+   "range_km_with_full_sun": 11.179902363213602
   },
   {
    "U_m_s": 3.25,
    "U_kn": 6.317500058315385,
    "thrust_required_N": 2298.7181590892887,
    "achievable": false,
-   "P_propulsion_W": 50834.41279220338,
-   "hours_battery_only": 0.4519028216310715,
-   "range_km_battery_only": 5.287263013083536,
-   "hours_with_full_sun": 0.4805565165613358,
-   "range_km_with_full_sun": 5.622511243767629
+   "P_propulsion_W": 41243.495225595085,
+   "hours_battery_only": 0.5566091936530536,
+   "range_km_battery_only": 6.512327565740728,
+   "hours_with_full_sun": 0.6007275181695652,
+   "range_km_with_full_sun": 7.028511962583913
   },
   {
    "U_m_s": 3.5,
    "U_kn": 6.803461601262723,
    "thrust_required_N": 3275.654947021523,
    "achievable": false,
-   "P_propulsion_W": 82350.32064988933,
-   "hours_battery_only": 0.27927164183732067,
-   "range_km_battery_only": 3.5188226871502404,
-   "hours_with_full_sun": 0.2899560410977538,
-   "range_km_with_full_sun": 3.653446117831698
+   "P_propulsion_W": 67248.35075507677,
+   "hours_battery_only": 0.34184812746719206,
+   "range_km_battery_only": 4.30728640608662,
+   "hours_with_full_sun": 0.3579955006566501,
+   "range_km_with_full_sun": 4.510743308273791
   },
   {
    "U_m_s": 3.75,
    "U_kn": 7.289423144210059,
    "thrust_required_N": 4629.87535213877,
    "achievable": false,
-   "P_propulsion_W": 132071.265191901,
-   "hours_battery_only": 0.1742533620939159,
-   "range_km_battery_only": 2.3524203882678645,
-   "hours_with_full_sun": 0.1783540358253473,
-   "range_km_with_full_sun": 2.4077794836421886
+   "P_propulsion_W": 108658.85503574969,
+   "hours_battery_only": 0.2117474721375397,
+   "range_km_battery_only": 2.858590873856786,
+   "hours_with_full_sun": 0.21783350110212052,
+   "range_km_with_full_sun": 2.9407522648786273
   },
   {
    "U_m_s": 4.0,
    "U_kn": 7.775384687157397,
    "thrust_required_N": 6478.4904679777055,
    "achievable": false,
-   "P_propulsion_W": 209246.54833438812,
-   "hours_battery_only": 0.11003046699321482,
-   "range_km_battery_only": 1.5844387247022935,
-   "hours_with_full_sun": 0.11165141201463158,
-   "range_km_with_full_sun": 1.6077803330106948
+   "P_propulsion_W": 173561.306656194,
+   "hours_battery_only": 0.13263385350960671,
+   "range_km_battery_only": 1.9099274905383368,
+   "hours_with_full_sun": 0.13499632979556753,
+   "range_km_with_full_sun": 1.9439471490561724
   }
  ],
  "solar_neutral": {
   "full sun": {
    "solar_w": 3040.0,
-   "U_m_s": 1.793542247533012,
-   "U_kn": 3.4863702318095107
+   "U_m_s": 1.905277833773859,
+   "U_kn": 3.70356702337642
   },
   "half sun": {
    "solar_w": 1520.0,
-   "U_m_s": 1.4374211699648127,
-   "U_kn": 2.7941256384850686
+   "U_m_s": 1.5400401333327893,
+   "U_kn": 2.9936011175809014
   },
   "overcast": {
    "solar_w": 760.0,
-   "U_m_s": 1.1035891764172754,
-   "U_kn": 2.1452075958068817
+   "U_m_s": 1.1890765808300998,
+   "U_kn": 2.311381959610958
   }
  },
  "spec_sources": {
