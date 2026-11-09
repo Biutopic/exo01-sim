@@ -1188,3 +1188,40 @@ unknown.** Two honest routes, and they differ in kind rather than degree:
    same enquiry**. This is the only route that ends with a documented bearing.
 
 Route 2 is the one that closes the item. Route 1 is defensible only because the area margin is large.
+
+## 26. Addendum (9 Nov): the rope is sized by stiffness, not strength
+
+§18.2 specified 12 mm polyester with "MBL 25–30 kN against 9,5 kN required" — a 3x margin that looks like
+over-specification, and an expensive one: ready-made 4:1 tackles stop at 10 mm, so 12 mm forces custom blocks and
+roughly doubles the deck-gear bill. Worth checking whether the margin can be spent.
+
+It cannot. Stiffness scales with area, so thinner rope is softer, and §19–§20 established that softness is exactly
+what this coupling cannot afford:
+
+| rope | MBL vs 9,5 kN required | k | min preload | wave peak | fatal single losses |
+|---|---|---|---|---|---|
+| **12 mm** | 3,1x | 13 500 N/m | **600 N** | **647 N** | **0 / 4** |
+| 10 mm | 2,1x | 9 375 N/m | 658 N | 745 N | **2 / 4** |
+| 8 mm | 1,3x | 6 000 N/m | — | — | **statics do not close** |
+
+**The strength margin is incidental.** 12 mm is the thinnest rope that keeps full single-failure redundancy; at
+10 mm, losing either midship spring becomes fatal, which is the same collapse §20.3 produced by softening the
+crossed ropes, reached here by thinning every rope at once. 8 mm does not hold the static cases at all.
+
+So the apparent 3x safety margin is not margin to spend. It is the by-product of a stiffness requirement, and the
+specification stands: **12 mm polyester double braid, all four legs.**
+
+### 26.1 But the deck gear does not have to follow the rope
+
+The market research priced a clutch-per-leg plus a shared 6:1 tackle at about 1 220 EUR, because a clutch that
+**releases under load** was treated as a requirement and because 12 mm rules out ready-made tackles. The first of
+those is wrong, and it is worth saying why: **release-under-load is satisfied at the BOAT end, by the quick-release
+shackles of §22.** The EXO end never has to let go under tension. It only has to hold.
+
+That collapses the requirement from a rope clutch to a plain horn cleat, and the tackle from a 12 mm-rated purchase
+to any cheap handy-billy that grips the leg with a rolling hitch — it is a separate hauling tackle, not part of the
+load path, so it need not match the leg's diameter or rating at all.
+
+Procedure that follows: haul with the tackle, make fast on the cleat, release the tackle, **then read the gauge**
+and adjust. Reading after making fast is the point; the transfer from tackle to cleat always loses a little, and
+the §21.3 rule is that every leg must end at or above 600 N, not near it.

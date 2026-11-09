@@ -254,6 +254,16 @@ for _kw in (50000.0, 100000.0, 150000.0, 250000.0):
                             + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g) + rear() + wheels()),
       4, primary=("SPRING",))
 
+# Rope DIAMETER. 12 mm was specified with MBL 25-30 kN against 9,5 kN required - a 3x margin that also forces
+# custom tackle, since ready-made 4:1 palans stop at 10 mm. Thinner rope is cheaper and unlocks the off-the-shelf
+# market, but it is also softer (k scales with area), and sections 19-20 showed softness is what hurts here.
+for _d in (10, 8):
+    _k = 13500.0 * (_d / 12.0) ** 2
+    C(f"I_rope_{_d}mm", f"Arrangement I rigged in {_d} mm polyester instead of 12 mm (k {_k:.0f} N/m)",
+      lambda t, g, _kk=_k: (pair("SPRING", FWD_POST, MID_CLEAT, t0=t, k=_kk)
+                            + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g, k=_kk) + rear() + wheels()),
+      4, primary=("SPRING",))
+
 if ONLY:
     CANDS = {k: v for k, v in CANDS.items() if k in ONLY}
 
