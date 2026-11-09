@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>EXO-01 — 3D coupling simulator</title>
+<script type="importmap">
+{ "imports": { "three": "./vendor/three/build/three.module.js", "three/addons/": "./vendor/three/addons/" } }
+</script>
+<style>
+:root{
+  --bg:#0c1318; --panel:#141d24; --sunk:#101820; --rule:#243039; --rule-2:#1a242b;
+  --ink:#e3ebf1; --ink-2:#96a8b4; --ink-3:#6a7c89;
+  --accent:#3fb3bd; --rope:#d9a441; --fender:#2f9aa6; --wheel:#64798a;
+  --good:#5bb37f; --warn:#d99a3c; --bad:#e0685c;
+  --f:"IBM Plex Sans",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --fm:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:14px;line-height:1.5;
+  overflow:hidden;color-scheme:dark}
+#app{display:grid;grid-template-columns:352px 1fr;height:100%}
+@media (max-width:900px){#app{grid-template-columns:1fr;grid-template-rows:auto 1fr;overflow:auto}
+  #view{min-height:56vh}}
+#side{background:var(--panel);border-right:1px solid var(--rule);overflow-y:auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:16px;padding-block:18px 28px}
+#view{position:relative;min-width:0}
+canvas{display:block}
+h1{font-size:1.06rem;font-weight:600;margin:0;letter-spacing:.01em}
+.sub{color:var(--ink-2);font-size:.81rem;margin:.3rem 0 0}
+.lab{font-size:.67rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);
+  display:block;margin:0 0 5px}
+.grp{margin-top:18px;padding-top:16px;border-top:1px solid var(--rule-2)}
+select,input[type=number]{width:100%;background:var(--sunk);color:var(--ink);border:1px solid var(--rule);
+  border-radius:5px;padding:6px 7px;font-family:var(--f);font-size:.82rem}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.row{display:flex;gap:8px;align-items:center;margin-top:8px}
+.row>*{min-width:0}
+.fld{flex:1}
+.fld .top{display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+.val{font-family:var(--fm);font-size:.78rem;color:var(--accent)}
+table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:8px}
+th,td{text-align:right;padding:4px 5px;border-bottom:1px solid var(--rule-2)}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.65rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+td.n{font-family:var(--fm);font-variant-numeric:tabular-nums}
+.chip{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  padding:2px 7px;border-radius:99px}
+.chip.ok{background:#12343a;color:var(--accent)}
+.chip.bad{background:var(--bad);color:#170806}
+.note{font-size:.76rem;color:var(--ink-2);margin-top:8px}
+.warn{font-size:.76rem;color:var(--warn);margin-top:8px;border-left:2px solid var(--warn);padding-left:9px}
+#hud{position:absolute;left:14px;top:14px;background:rgba(16,24,31,.82);border:1px solid var(--rule);
+  border-radius:7px;padding:9px 12px;font-family:var(--fm);font-size:.76rem;pointer-events:none;
+  backdrop-filter:blur(3px);max-width:min(62vw,420px)}
+#legend{position:absolute;right:14px;bottom:14px;background:rgba(16,24,31,.82);border:1px solid var(--rule);
+  border-radius:7px;padding:9px 12px;font-size:.73rem;backdrop-filter:blur(3px)}
+#legend i{display:inline-block;width:16px;height:3px;border-radius:2px;margin-right:7px;vertical-align:middle}
+#views{position:absolute;right:14px;top:14px;display:flex;gap:6px}
+#views button{background:rgba(16,24,31,.82);border:1px solid var(--rule);color:var(--ink-2);border-radius:6px;
+  padding:5px 10px;font-size:.73rem;cursor:pointer;font-family:var(--f)}
+#views button:hover{color:var(--ink);border-color:var(--accent)}
+#boot{position:absolute;inset:0;display:grid;place-items:center;color:var(--ink-2);font-size:.85rem}
+a{color:var(--accent)}
+footer{margin-top:20px;padding-top:14px;border-top:1px solid var(--rule-2);font-size:.72rem;color:var(--ink-3)}
+</style>
+</head>
+<body>
+<div id="app">
+  <aside id="side">
+    <h1>EXO-01 — 3D coupling</h1>
+    <p class="sub">The coupling arrangements, solved. Drag to orbit, scroll to zoom.</p>
+
+    <div class="grp">
+      <span class="lab">Arrangement</span>
+      <select id="arr"></select>
+      <div id="arrMeta" class="note"></div>
+    </div>
+
+    <div class="grp">
+      <span class="lab">Load case</span>
+      <select id="case"></select>
+      <div id="caseState" class="note"></div>
+      <table id="els"></table>
+      <div id="stiffNote" class="note"></div>
+    </div>
+
+    <div class="grp">
+      <span class="lab">Speed, wind &amp; energy — computed live</span>
+      <div class="row"><div class="fld"><div class="top"><span class="lab" style="margin:0">Thrust</span><span class="val" id="vThr">100 %</span></div>
+        <input type="range" id="thr" min="0" max="100" step="5" value="100"></div></div>
+      <div class="row"><div class="fld"><div class="top"><span class="lab" style="margin:0">Wind</span><span class="val" id="vWind">0 kn</span></div>
+        <input type="range" id="wind" min="0" max="35" step="1" value="0"></div></div>
+      <div class="row"><div class="fld"><div class="top"><span class="lab" style="margin:0">Wind from</span><span class="val" id="vDir">0°</span></div>
+        <input type="range" id="dir" min="0" max="180" step="15" value="0"></div></div>
+      <div class="row"><div class="fld"><div class="top"><span class="lab" style="margin:0">Sunlight</span><span class="val" id="vSun">100 %</span></div>
+        <input type="range" id="sun" min="0" max="100" step="5" value="100"></div></div>
+      <div class="row"><div class="fld"><span class="lab">Thrust model</span>
+        <select id="model">
+          <option value="momentum">actuator disk (physical)</option>
+          <option value="constant_power">constant power</option>
+          <option value="constant">constant (optimistic)</option>
+        </select></div></div>
+      <table id="perf"></table>
+    </div>
+
+    <div class="grp">
+      <div id="caveats" class="warn"></div>
+      <footer>
+        Exploratory. Proxy hull and float surfaces; assumed contact stiffnesses, wind coefficients and boat
+        attachment points. The coupling solves here are <b>precomputed</b>; the speed, wind and energy model runs
+        live in this page from the same geometry the Python module uses.
+        <br><br>Full simulator (solves on demand): <code>python app.py</code> in the repository.
+      </footer>
+    </div>
+  </aside>
+
+  <div id="view">
+    <div id="boot">loading the models…</div>
+    <div id="hud"></div>
+    <div id="views">
+      <button data-v="iso">iso</button><button data-v="top">top</button>
+      <button data-v="side">side</button><button data-v="stern">stern</button>
+    </div>
+    <div id="legend">
+      <div><i style="background:#d9a441"></i>rope — tension</div>
+      <div><i style="background:#2f9aa6"></i>bumper — compression</div>
+      <div><i style="background:#64798a"></i>dockwheel</div>
+      <div><i style="background:#e0685c"></i>slack / open</div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+const $ = (id) => document.getElementById(id);
+const D = await fetch('./data.json').then(r => r.json());
+const C = D.card, KN = 0.514444, RHO = C.rho_water, RHOA = C.rho_air, G = C.g, NU = C.resistance_cfg.nu_m2_s;
+const fmt = (v, d = 0) => (v === null || v === undefined || !isFinite(v)) ? '—' : (+v).toFixed(d);
+
+/* ───────────────────────────── scene */
+const view = $('view');
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+view.appendChild(renderer.domElement);
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0x0c1318);
+const camera = new THREE.PerspectiveCamera(45, 1, 0.05, 400);
+const orbit = new OrbitControls(camera, renderer.domElement);
+orbit.enableDamping = true; orbit.target.set(4.5, 0.4, 0);
+scene.add(new THREE.HemisphereLight(0xdfe9f3, 0x24313a, 1.15));
+const sun = new THREE.DirectionalLight(0xffffff, 1.25); sun.position.set(7, 11, 5); scene.add(sun);
+/* physics is Z-up; three is Y-up */
+const physics = new THREE.Group();
+physics.quaternion.set(-Math.SQRT1_2, 0, 0, Math.SQRT1_2);
+scene.add(physics);
+
+const water = new THREE.Mesh(new THREE.PlaneGeometry(90, 90),
+  new THREE.MeshBasicMaterial({ color: 0x14465e, transparent: true, opacity: 0.42, side: THREE.DoubleSide }));
+water.visible = true; physics.add(water);
+const FRAMEABLE = [];   // only the bodies and the coupling count towards framing
+const grid = new THREE.GridHelper(80, 80, 0x1d2a33, 0x16212a);
+grid.position.y = -0.002; scene.add(grid);
+
+const bodies = {};
+function makeBody() {
+  const outer = new THREE.Group(), inner = new THREE.Group(), model = new THREE.Group();
+  inner.add(model); outer.add(inner); physics.add(outer);
+  return { outer, inner, model };
+}
+bodies.EXO = makeBody(); bodies.BOAT = makeBody();
+const ropes = new THREE.Group(); physics.add(ropes);
+
+function setPose(b, pose) {
+  if (!pose) return;
+  const m = new THREE.Matrix4().set(
+    pose.R[0][0], pose.R[0][1], pose.R[0][2], 0,
+    pose.R[1][0], pose.R[1][1], pose.R[1][2], 0,
+    pose.R[2][0], pose.R[2][1], pose.R[2][2], 0, 0, 0, 0, 1);
+  b.inner.quaternion.setFromRotationMatrix(m);
+  b.model.position.set(-pose.G_body[0], -pose.G_body[1], -pose.G_body[2]);
+  const c = pose.com_world || [0, 0, pose.zG];
+  b.outer.position.set(c[0], c[1], c[2]);
+}
+
+const loader = new GLTFLoader();
+const load = (url, body) => new Promise((res) => loader.load(url,
+  (g) => { body.model.add(g.scene); res(true); },
+  undefined, () => res(false)));
+await Promise.all([load('./assets/exo.glb', bodies.EXO), load('./assets/boat.glb', bodies.BOAT)]);
+$('boot').remove();
+
+/* ───────────────────────────── coupling elements */
+const COL = { rope: 0xd9a441, fender: 0x2f9aa6, wheel: 0x64798a, slack: 0xe0685c };
+const UP = new THREE.Vector3(0, 1, 0);
+function drawElements(aid, caseId) {
+  ropes.clear();
+  const A = D.arrangements[aid], cs = A.cases[caseId] || {};
+  const T = cs.tensions || {};
+  for (const e of A.geometry) {
+    const t = T[e.id];
+    const isFender = e.kind === 'fender';
+    const live = t !== undefined && t !== null;
+    let col = e.id.startsWith('WHEEL') ? COL.wheel : (isFender ? COL.fender : COL.rope);
+    if (live && (isFender ? Math.abs(t) < 1 : t < 1)) col = COL.slack;
+    const legs = e.a2 ? [[e.a, e.b], [e.a2, e.b]] : [[e.a, e.b]];
+    for (const [p0, p1] of legs) {
+      const a = new THREE.Vector3(...p0), b = new THREE.Vector3(...p1);
+      const d = new THREE.Vector3().subVectors(b, a), L = d.length();
+      if (L < 1e-6) continue;
+      const r = isFender ? 0.075 : 0.022;
+      const cyl = new THREE.Mesh(new THREE.CylinderGeometry(r, r, L, 10),
+        new THREE.MeshBasicMaterial({ color: col }));
+      cyl.position.copy(a).addScaledVector(d, 0.5);
+      cyl.quaternion.setFromUnitVectors(UP, d.clone().normalize());
+      ropes.add(cyl);
+      for (const p of [a, b]) {
+        const s = new THREE.Mesh(new THREE.SphereGeometry(0.045, 10, 10),
+          new THREE.MeshBasicMaterial({ color: 0xcfdbe3 }));
+        s.position.copy(p); ropes.add(s);
+      }
+    }
+  }
+  setPose(bodies.EXO, cs.exo_pose); setPose(bodies.BOAT, cs.boat_pose);
+}
+
+/* ───────────────────────────── live physics (same model as exo01/performance.py) */
+function cf(Re) { Re = Math.max(Re, 1e3); return 0.075 / Math.pow(Math.log10(Re) - 2, 2); }
+function hydro(U) {
+  U = Math.abs(U);
+  if (U < 1e-9) return { total: 0, exo: 0, boat: 0 };
+  const ce = C.resistance_cfg.exo, q = 0.5 * RHO * U * U;
+  let ex = 0;
+  for (const k in C.exo_rows) {
+    const r = C.exo_rows[k], L = Math.max(r.xmax - r.xmin, 0.1);
+    ex += q * (1 + ce.form_factor_k) * cf(U * L / NU) * r.S_wet + q * ce.pressure_drag_cd * r.A_front_max;
+  }
+  const cb = C.resistance_cfg.boat, g = C.boat_geo, L = Math.max(g.L_wl, 0.5), Fr = U / Math.sqrt(G * L);
+  const bo = q * g.S_wet * (1 + cb.form_factor_k) * cf(U * L / NU) * cb.appendage_factor
+    + q * g.S_wet * cb.residuary_c_at_fr02 * Math.pow(Fr / 0.2, cb.residuary_exponent);
+  return { total: ex + bo, exo: ex, boat: bo, Fr };
+}
+const aDisk = () => 2 * Math.PI * Math.pow(C.disk_diameter_m / 2, 2);
+const w0 = (T, A) => Math.sqrt(Math.max(T, 0) / (2 * RHO * A));
+const pW = (T, A) => T * w0(T, A);
+const wAt = (T, A, U) => 0.5 * (-Math.max(U, 0) + Math.sqrt(Math.max(U, 0) ** 2 + 2 * Math.max(T, 0) / (RHO * A)));
+function thrust(U, T0, model, A) {
+  if (T0 <= 0) return 0;
+  if (model === 'constant') return T0;
+  const P = pW(T0, A);
+  if (model === 'constant_power') return Math.min(T0, P / Math.max(U, 1e-6));
+  U = Math.max(U, 0);
+  if (U < 1e-9) return 2 * RHO * A * Math.pow(P / (2 * RHO * A), 2 / 3);
+  let lo = 1e-12, hi = Math.max(Math.pow(P / (2 * RHO * A), 1 / 3), 1e-6);
+  const f = (w) => 2 * RHO * A * w * Math.pow(U + w, 2) - P;
+  while (f(hi) < 0 && hi < 1e4) hi *= 2;
+  for (let i = 0; i < 70; i++) { const m = 0.5 * (lo + hi); if (f(m) < 0) lo = m; else hi = m; }
+  const w = 0.5 * (lo + hi); return 2 * RHO * A * (U + w) * w;
+}
+function windTotal(Ug) {
+  const V = S.wind * KN, th = S.dir * Math.PI / 180;
+  const ax = -V * Math.cos(th) - Ug, ay = -V * Math.sin(th);
+  const Va = Math.hypot(ax, ay), beta = Math.atan2(-ay, -ax);
+  const co = C.coefficients, q = 0.5 * RHOA * Va * Va;
+  let Fx = 0, Fy = 0;
+  for (const a of [C.areas.EXO, C.boat_windage]) {
+    Fx += -q * co.Cx0 * Math.cos(beta) * a.A_front_m2;
+    Fy += q * co.Cy0 * Math.sin(beta) * a.A_lateral_m2;
+  }
+  return { Va, beta: beta * 180 / Math.PI, Fx, Fy };
+}
+const T0 = () => C.T0_horizontal_N * (S.thr / 100);
+const net = (U) => thrust(Math.max(U, 0), T0(), S.model, aDisk()) - hydro(U).total + windTotal(U).Fx;
+function solveSpeed() {
+  if (net(0) <= 0) return null;
+  let lo = 1e-6, hi = 12; if (net(hi) > 0) return hi;
+  for (let i = 0; i < 80; i++) { const m = 0.5 * (lo + hi); if (net(m) > 0) lo = m; else hi = m; }
+  return 0.5 * (lo + hi);
+}
+function pElec(T, U) {
+  const A = aDisk(), eff = pW(C.T0_horizontal_N, A) / C.P_electrical_W;
+  if (!(eff > 0) || T <= 0) return T <= 0 ? 0 : NaN;
+  return T * (Math.max(U, 0) + wAt(T, A, U)) / eff;
+}
+function solarNeutral() {
+  const budget = C.solar_full_w * (S.sun / 100) - C.hotel_w;
+  if (budget <= 0) return null;
+  const f = (U) => pElec(hydro(U).total, U) - budget;
+  if (f(1e-3) > 0) return 0; if (f(6) < 0) return 6;
+  let lo = 1e-3, hi = 6;
+  for (let i = 0; i < 70; i++) { const m = 0.5 * (lo + hi); if (f(m) < 0) lo = m; else hi = m; }
+  return 0.5 * (lo + hi);
+}
+
+/* ───────────────────────────── panels */
+const S = { arr: D.default, case: 'still', thr: 100, wind: 0, dir: 0, sun: 100, model: 'momentum' };
+
+function fillSelects() {
+  $('arr').innerHTML = Object.keys(D.arrangements).sort()
+    .map(k => `<option value="${k}">${k}</option>`).join('');
+  $('arr').value = S.arr;
+  $('case').innerHTML = D.load_cases.map(c => `<option value="${c.id}">${c.label}</option>`).join('');
+  $('case').value = S.case;
+  $('stiffNote').textContent = D.stiffness_note;
+}
+
+function panels() {
+  const A = D.arrangements[S.arr], meta = D.catalogue[S.arr], cs = A.cases[S.case] || {};
+  const fit = meta.needs_boat_fittings
+    ? `<span style="color:var(--warn)">needs ${meta.needs_boat_fittings}</span>`
+    : `<span style="color:var(--good)">no boat fittings</span>`;
+  $('arrMeta').innerHTML = `<b>${meta.title}</b><br>${meta.n_elements} elements · preload `
+    + `${fmt(meta.design_preload_N)} N · ${meta.ops_actions} tensioning action`
+    + `${meta.ops_actions === 1 ? '' : 's'} · ${fit}<br>${meta.note || ''}`;
+
+  const ok = cs.ok;
+  $('caseState').innerHTML = cs.error ? `<span class="chip bad">error</span> ${cs.error}`
+    : `<span class="chip ${ok ? 'ok' : 'bad'}">${ok ? 'holds' : 'does not hold'}</span> `
+      + `surge ${fmt(cs.dx_mm, 1)} mm · sway ${fmt(cs.dy_mm, 1)} mm · yaw ${fmt(cs.dyaw_deg, 2)}°`
+      + (cs.bumper_min_N !== null && cs.bumper_min_N !== undefined
+        ? ` · least-loaded bumper ${fmt(cs.bumper_min_N)} N` : '');
+
+  const T = cs.tensions || {};
+  const rows = A.geometry.slice().sort((a, b) => Math.abs(T[b.id] || 0) - Math.abs(T[a.id] || 0));
+  $('els').innerHTML = '<tr><th>element</th><th>length</th><th>load</th></tr>' + rows.map(e => {
+    const t = T[e.id];
+    if (t === undefined || t === null) return `<tr><td>${e.id}</td><td class="n">${fmt(e.length_m, 2)} m</td><td>—</td></tr>`;
+    const f = e.kind === 'fender';
+    const col = f ? (t < -1 ? 'var(--fender)' : 'var(--bad)') : (t > 1 ? 'var(--rope)' : 'var(--bad)');
+    const lbl = f ? `${fmt(-t)} N comp` : `${fmt(t)} N`;
+    return `<tr><td>${e.id}</td><td class="n">${fmt(e.length_m, 2)} m</td>`
+      + `<td class="n" style="color:${col}">${lbl}</td></tr>`;
+  }).join('');
+
+  const U = solveSpeed(), sn = solarNeutral(), h = hydro(Math.max(U || 0, 0)), w = windTotal(U || 0);
+  const eff = pW(C.T0_horizontal_N, aDisk()) / C.P_electrical_W;
+  $('perf').innerHTML = '<tr><th>quantity</th><th>value</th></tr>'
+    + [['speed over ground', U === null ? 'cannot make headway' : `${fmt(U, 2)} m/s = ${fmt(U / KN, 2)} kn`],
+       ['hydrodynamic resistance', `${fmt(h.total)} N`],
+       ['wind drag / side force', `${fmt(w.Fx)} / ${fmt(w.Fy)} N`],
+       ['solar-neutral speed', sn === null ? '—' : `${fmt(sn, 2)} m/s = ${fmt(sn / KN, 2)} kn`],
+       ['implied pod efficiency', `${fmt(100 * eff)} %`]]
+      .map(([k, v]) => `<tr><td>${k}</td><td class="n">${v}</td></tr>`).join('');
+
+  $('hud').innerHTML = `${S.arr}<br>${D.load_cases.find(c => c.id === S.case).label}`
+    + `<br>${U === null ? 'no headway' : fmt(U, 2) + ' m/s'}  ·  wind ${S.wind} kn`;
+  $('caveats').textContent = C.pose.warning || '';
+  drawElements(S.arr, S.case);
+}
+
+fillSelects();
+panels();            // draw the default arrangement so the bounding box includes the coupling
+$('arr').onchange = (e) => { S.arr = e.target.value; panels(); };
+$('case').onchange = (e) => { S.case = e.target.value; panels(); };
+$('model').onchange = (e) => { S.model = e.target.value; panels(); };
+for (const [id, key, f] of [['thr', 'thr', v => v + ' %'], ['wind', 'wind', v => v + ' kn'],
+                            ['dir', 'dir', v => v + '°'], ['sun', 'sun', v => v + ' %']]) {
+  const el = $(id), out = $('v' + id[0].toUpperCase() + id.slice(1));
+  el.addEventListener('input', () => { S[key] = +el.value; out.textContent = f(+el.value); panels(); });
+  out.textContent = f(+el.value);
+}
+/* frame from the actual bounding box: the physics group is rotated Z-up -> Y-up, so hand-picked
+   camera coordinates are easy to get wrong. */
+scene.updateMatrixWorld(true);          // expandByObject reads world matrices; without this the box is empty
+const BOX = new THREE.Box3();
+for (const o of [bodies.EXO.outer, bodies.BOAT.outer, ropes]) BOX.expandByObject(o);
+if (BOX.isEmpty()) BOX.setFromCenterAndSize(new THREE.Vector3(5, 1, 0), new THREE.Vector3(12, 4, 6));
+window.__box = { min: BOX.min.toArray(), max: BOX.max.toArray() };
+const CTR = BOX.getCenter(new THREE.Vector3());
+const RAD = Math.max(BOX.getSize(new THREE.Vector3()).length() * 0.5, 1);
+function frame(dir, mult = 2.1) {
+  const d = new THREE.Vector3(...dir).normalize().multiplyScalar(RAD * mult);
+  camera.position.copy(CTR).add(d);
+  orbit.target.copy(CTR);
+  camera.near = RAD / 100; camera.far = RAD * 40; camera.updateProjectionMatrix();
+  orbit.update();
+}
+const VIEWS = { iso: [0.95, 0.62, 0.95], top: [0.02, 1, 0.02], side: [0.05, 0.12, 1], stern: [-1, 0.28, 0.04] };
+for (const b of document.querySelectorAll('#views button')) {
+  b.onclick = () => frame(VIEWS[b.dataset.v], b.dataset.v === 'top' ? 1.75 : 2.1);
+}
+frame(VIEWS.iso);
+
+function resize() {
+  const w = view.clientWidth, h = view.clientHeight;
+  renderer.setSize(w, h); camera.aspect = w / Math.max(h, 1); camera.updateProjectionMatrix();
+}
+addEventListener('resize', resize); resize();
+panels();
+frame(VIEWS.iso);   // after layout and after the coupling is drawn
+window.__cam = () => ({ pos: camera.position.toArray(), target: orbit.target.toArray(),
+                        ctr: CTR.toArray(), rad: RAD, aspect: camera.aspect });
+(function loop() { requestAnimationFrame(loop); orbit.update(); renderer.render(scene, camera); })();
+</script>
+</body>
+</html>
