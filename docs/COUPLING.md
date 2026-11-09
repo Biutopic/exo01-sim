@@ -958,3 +958,71 @@ hardware quality rather than dependent on ball-bearing blocks.
 
 Arrangement I at 600 N, rove as one rope, **measured at the dead end**, then jammed. One pull, four clutches.
 `Y_full_rove` is registered and kept as the priced alternative, not deleted.
+
+## 22. Addendum (9 Nov): emergency release — a requirement nobody wrote down
+
+The operator's answer to §21 is that one rope being one failure is also one rope being one **release**: if
+something goes wrong, the boat is free in seconds. That is a fair reframe and it exposes a gap. **The cahier des
+charges does not state an emergency-release requirement, and nothing in §1–§21 tested for one.** Every load case
+asked whether the coupling holds. None asked how fast it can be made to let go, or whether letting go is safe.
+
+It is a real requirement: a powered platform strapped to a hull on a river needs a way off, for fire, flooding,
+grounding, a person in the water, or an EXO fault.
+
+### 22.1 Letting go is not free: stored energy
+
+Every element is a spring holding 1/2 k x^2. At release that energy goes somewhere.
+
+| rig | preload | moored | at `diff_opp` | most energetic single element |
+|---|---|---|---|---|
+| **I** — four legs | 600 N | 22,9 J | **32,5 J** | SPRING_PORT, 21,4 J, 56 mm of stretch |
+| **Y** — one rope | 2 500 N | 134,8 J | **167,4 J** | ROVE, **85,9 J, 113 mm of stretch** |
+
+This inverts the safety argument for the single rope. **The one-rope rig stores 5,2x the energy, and 86 J of it
+sits in the one rope you would have to cut** — 113 mm of stretch in a single line, recoiling toward whoever is
+holding the knife. Arrangement I's worst single element holds 21,4 J, a quarter of that, and releasing it does not
+require getting a blade onto a loaded rope at all.
+
+So one rope buys a fast release by making the release itself the dangerous part.
+
+### 22.2 The arrangement that gives both
+
+Four independent legs, each ending in a **quick-release shackle at the boat cleat**, with the four lanyards led to
+a single ring. One pull frees all four. That keeps §21's redundancy under way — 0/4 fatal single losses — and
+still releases in one action, with a fitting designed to let go under load rather than a knife on a loaded rope.
+Working loads of 600–850 N are modest for sailing-grade release shackles.
+
+Strictly better than the single rope on both axes: same one-action release, a quarter of the energy per element,
+and full redundancy retained.
+
+### 22.3 But sequential release has one sharp edge
+
+Lanyards never let go at the same instant, so the real question is what the remaining ropes see as they go one at
+a time:
+
+| state | 4 ropes | 3 ropes | 2 ropes | 1 rope |
+|---|---|---|---|---|
+| moored | 491 N | 173 N | 147 N | 0 N |
+| forward 100 % | 411 N | 171 N | 135 N | 0 N |
+| **`diff_opp`** | 761 N | **2 419 N** | 583 N, **unrestrained** | 2 419 N |
+
+With the pods neutral or driving together, release is completely benign — loads fall monotonically to zero as the
+legs go. **Under full differential thrust it spikes to 2 419 N on a remaining leg, 3,2x the four-rope load**, and
+by two ropes the boat is no longer restrained at all. Nothing breaks (MBL is 9,5 kN) but the coupling is briefly
+carrying three times its design load in an uncontrolled state.
+
+**So the release procedure has an interlock: pods to neutral, THEN release.** Ideally the same action does both —
+a release that cuts propulsion before freeing the shackles. That is a control requirement, not a rigging one, and
+it is now on the list.
+
+### 22.4 What this changes
+
+Arrangement I is unchanged mechanically. What changes is the **fittings at the boat end** — quick-release shackles
+rather than plain eyes or bowlines — and a new requirement for the specification:
+
+> **R-REL.** The coupling shall be releasable from the EXO in a single action, under load, without tools, and that
+> action shall cut propulsion before or as it frees the boat.
+
+Not modelled and still open: the separation transient (two free bodies in water), and whether the rear bumpers
+push the hulls apart usefully or merely drop contact. Both matter for what happens in the five seconds after the
+ring is pulled, and neither is a static question.
