@@ -639,7 +639,7 @@ forbids, so either the rule is read narrowly (no structural load, weight) or the
 |---|---|---|---|---|
 | midship spring | 2 | EXO (4,95, ±2,25, 0,30) → boat midship cleat (4,30, ±1,35, 0,80); **1,88 m** | F_k 761 N, F_d 1 901 N | **MBL ≥ 9,5 kN** — 12 mm polyester is far inside it |
 | crossed stern rope | 2 | EXO (2,10, ±2,25, 0,30) → **opposite** stern cleat (0,30, ∓1,30, 0,80); **3,60 m** | F_k 621 N (**wave**, DAF 4,2–4,5), F_d 1 553 N | **MBL ≥ 7,8 kN**; the longest, softest ropes in the set |
-| rear bumper | 2 | EXO crossmember (2,10, ±0,90) bearing on the transom | ~800 N, ≈0,2 bar | load the crossmember in line, no cantilevered bracket |
+| rear bumper | 2 | EXO crossmember (2,10, ±0,90) bearing on the transom | ~800 N, **≤0,10 bar — see §25.1** | ≥800 cm² bearing area; load the crossmember in line, no cantilevered bracket |
 | dockwheel | 2 | boat station 1,20, y ±1,49, 30 mm gap | **0 N in every static case** | physical stop and insurance; the gap needs no precision |
 
 Preload **600 N** on the springs, read on an inline dynamometer; the crossed ropes rigged **snug** (≈150 N), not
@@ -1144,3 +1144,47 @@ answered. If either fails, it returns to being a gate and `V_spec_zero_fittings`
 peak rope load (§18).
 
 Source: EN ISO 15084:2018 / ISO 15084:2003, clause 6.2.
+
+## 25. Addendum (9 Nov): procurement, and a contact-pressure figure I had invented
+
+Sourcing the build surfaced one correction and one structural gap in the market.
+
+### 25.1 The 0,2 bar bearing pressure was mine, not anyone's
+
+§18.2 specified the rear bumpers at "~800 N, ≈0,2 bar", giving 400 cm² of bearing area. **That pressure was an
+assumption I made and never derived.** Surveying what vendors actually publish, exactly one product in the whole
+dock-fender market states a pressure limit at all — the Plastimo Pontoon Bumper, at **0,10 bar** — and it is half
+my figure.
+
+0,2 bar is not a hull-strength limit in any case: it is 20 kPa, where a person standing on two feet puts about
+25 kPa through the deck. The real constraint is gelcoat marking and local deformation, which is a finish question,
+not a structural one, and I had no basis for either number.
+
+**Specify to 0,10 bar**: the published figure, the conservative direction, and the pads that satisfy it cost no
+more. Required bearing area per pad therefore doubles:
+
+| pressure | area per pad | footprint |
+|---|---|---|
+| 0,2 bar (withdrawn) | 400 cm² | 20 × 20 cm |
+| **0,10 bar (specified)** | **800 cm²** | **28 × 28 cm** |
+
+Caveat carried with it: the Plastimo page does not make clear whether its 0,10 bar is a bearing limit or an
+internal/inflation figure. It is being used as the former because nothing better exists, and it should be
+confirmed with the manufacturer before it is treated as verified rather than adopted.
+
+### 25.2 The market does not publish load ratings for bearing pads
+
+Across Plastimo, Ocean/Lalizas, Osculati and Majoni, **no retail dock fender or bearing pad publishes a load
+capacity**. They are impact-absorption products, not structural bearings, and are sold on dimensions and material
+alone. The French industrial elastomer makers (Flandre Elastomères and similar) do make drilled compact-rubber
+blocks in the right size class with the right fixing, but sell quote-only with no published price or curve.
+
+The brief's rule therefore applies to the pads exactly as it applied to the shock absorbers: **unpublished means
+unknown.** Two honest routes, and they differ in kind rather than degree:
+
+1. Buy an oversized marine fender with a bolt-through fixing and accept an undocumented pad, relying on the area
+   margin to make the pressure question moot.
+2. Ask a French elastomer manufacturer for a drilled block near 280 × 280 mm **and its compression curve in the
+   same enquiry**. This is the only route that ends with a documented bearing.
+
+Route 2 is the one that closes the item. Route 1 is defensible only because the area margin is large.
