@@ -228,6 +228,19 @@ C("X_yoke_midship_crossed", "Arrangement I with the two midship springs replaced
   lambda t, g: (AR.yoke("YOKE", FWD_POST, MID_CLEAT, t0=t)
                 + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g) + rear() + wheels()), 1, primary=("YOKE",))
 
+# Arrangement I with a shock absorber in series with the CROSSED STERN ROPES. Section 19 measured an absorber on
+# the primary pair and it cost preload, because that pair carries the yaw case by being unequal. The crossed ropes
+# carry no differential job and ARE wave-governed (amplification 4,2-4,5 against <=1,1 for everything else), so
+# this is the place the idea should pay if it pays anywhere. k_eff = 1/(1/k_rope + 1/k_shock).
+for _ks in (27000.0, 13500.0, 5000.0, 2000.0, 800.0):
+    _ke = 1.0 / (1.0 / KR + 1.0 / _ks)
+    C(f"I_shock_cross_{int(_ks)}",
+      f"Arrangement I with a {_ks:.0f} N/m shock absorber in series with the crossed stern ropes "
+      f"(k_eff {_ke:.0f} N/m)",
+      lambda t, g, _k=_ke: (pair("SPRING", FWD_POST, MID_CLEAT, t0=t)
+                            + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g, k=_k) + rear() + wheels()),
+      4, primary=("SPRING",))
+
 if ONLY:
     CANDS = {k: v for k, v in CANDS.items() if k in ONLY}
 

@@ -1,0 +1,1552 @@
+{
+ "label": "Exploratory - assumed geometry and masses; contact stiffnesses unknown; boat attachment points assumed.",
+ "method": "Nine thrust-derived static load cases, gated on both rear bumpers staying loaded (hard gate) + three Erdre reference waves, linear, engagement criterion. Time-domain peaks are omitted on purpose: they do not converge in these configurations (see results/coupling/coupling_waves.json).",
+ "generated": "2026-11-03",
+ "waves": [
+  {
+   "id": "beam_03_25",
+   "H_m": 0.3,
+   "T_s": 2.5,
+   "heading_deg": 90
+  },
+  {
+   "id": "head_03_25",
+   "H_m": 0.3,
+   "T_s": 2.5,
+   "heading_deg": 180
+  },
+  {
+   "id": "beam_05_30",
+   "H_m": 0.5,
+   "T_s": 3.0,
+   "heading_deg": 90
+  }
+ ],
+ "damping": {
+  "EXO": {
+   "zeta": {
+    "heave": 0.05,
+    "roll": 0.05,
+    "pitch": 0.05
+   },
+   "absolute": {
+    "surge": 0,
+    "sway": 0,
+    "yaw": 0
+   }
+  },
+  "BOAT": {
+   "zeta": {
+    "heave": 0.05,
+    "roll": 0.1,
+    "pitch": 0.1
+   },
+   "absolute": {
+    "surge": 0,
+    "sway": 0,
+    "yaw": 0
+   }
+  }
+ },
+ "k_rope_N_per_m": 13500.0,
+ "k_sling_N_per_m": 40100.0,
+ "draft_proxy_m": 0.381,
+ "snug_preload_N": 150.0,
+ "bumper_min_N": 50.0,
+ "preload_ladder_N": [
+  1.0,
+  200.0,
+  400.0,
+  600.0,
+  800.0,
+  1000.0,
+  1300.0,
+  1600.0,
+  2000.0,
+  2500.0,
+  3000.0,
+  4000.0,
+  5000.0,
+  6500.0,
+  8000.0,
+  10000.0,
+  12000.0
+ ],
+ "boat_points": {
+  "stern_cleat": [
+   0.3,
+   1.3,
+   0.8
+  ],
+  "midship_cleat": [
+   4.3,
+   1.35,
+   0.8
+  ],
+  "bow_stem": [
+   8.0,
+   0.0,
+   0.78
+  ],
+  "transom_quarter": [
+   0.25,
+   0.9,
+   0.4
+  ]
+ },
+ "rows": [
+  {
+   "id": "I_fwd_midship_crossed",
+   "title": "Forward springs to midship + 2 crossed stern ropes",
+   "ops_actions": 4,
+   "new_boat_fittings": "",
+   "primary_elements": [
+    "SPRING"
+   ],
+   "n_elements": 8,
+   "min_preload_static_N": 557.6,
+   "min_preload_waves_N": 600.0,
+   "design_preload_N": 600.0,
+   "statics_ok": true,
+   "statics": {
+    "moored": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 441.0,
+     "dx_mm": -9.1,
+     "dyaw_deg": -0.0,
+     "max_tension_N": 490.7,
+     "bumper_total_N": 882.4,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11588341607782127,
+     "unrestrained": false
+    },
+    "fwd100": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 790.4,
+     "dx_mm": -15.7,
+     "dyaw_deg": -0.0,
+     "max_tension_N": 410.5,
+     "bumper_total_N": 1581.0,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.10876551210894636,
+     "unrestrained": false
+    },
+    "rev50": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 265.9,
+     "dx_mm": -5.8,
+     "dyaw_deg": -0.0,
+     "max_tension_N": 531.0,
+     "bumper_total_N": 532.4,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11945109472822812,
+     "unrestrained": false
+    },
+    "rev70": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 195.9,
+     "dx_mm": -4.4,
+     "dyaw_deg": -0.0,
+     "max_tension_N": 547.1,
+     "bumper_total_N": 392.4,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.12087801802426812,
+     "unrestrained": false
+    },
+    "rev100": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 90.9,
+     "dx_mm": -2.4,
+     "dyaw_deg": -0.0,
+     "max_tension_N": 571.3,
+     "bumper_total_N": 182.4,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.12301824582085708,
+     "unrestrained": false
+    },
+    "estop": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 181.4,
+     "dx_mm": -4.1,
+     "dyaw_deg": -0.0,
+     "max_tension_N": 550.5,
+     "bumper_total_N": 363.4,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.12117323237182287,
+     "unrestrained": false
+    },
+    "diff_one": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 436.9,
+     "dx_mm": -12.4,
+     "dyaw_deg": -0.227,
+     "max_tension_N": 586.5,
+     "bumper_total_N": 1232.0,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11231019211352988,
+     "unrestrained": false
+    },
+    "diff_opp": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 79.9,
+     "dx_mm": -9.1,
+     "dyaw_deg": -0.458,
+     "max_tension_N": 760.5,
+     "bumper_total_N": 882.3,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11587092353854933,
+     "unrestrained": false
+    }
+   },
+   "binding_static_case": "diff_opp",
+   "waves": {
+    "beam_03_25": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [
+      "CROSS_P2S"
+     ],
+     "opens": [],
+     "peak_N": 620.8674711377616,
+     "boat_roll_deg": 9.83,
+     "transom_gap_min_m": 0.09095375169482077,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.001149706526222259,
+       "dtrim_deg": 0.05893302350029988,
+       "dz_m": 0.0023166854266709613,
+       "dx_m": -0.0008151133286515844,
+       "dy_m": 1.2869355291156293e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.0017803785079114523,
+       "dtrim_deg": 0.00030008412613225985,
+       "dz_m": 0.00018974056735854283,
+       "dx_m": 0.049299920448443224,
+       "dy_m": -6.937559135959301e-05,
+       "dyaw_deg": 0.008999110169484343
+      },
+      "tier": "near",
+      "dz_m": 0.0023166854266709613,
+      "dheel_deg": 0.001149706526222259,
+      "dtrim_deg": 0.05893302350029988,
+      "boat_dx_m": 0.049299920448443224,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    },
+    "head_03_25": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [
+      "CROSS_P2S",
+      "CROSS_S2P"
+     ],
+     "opens": [],
+     "peak_N": 646.5913251741451,
+     "boat_roll_deg": 0.05,
+     "transom_gap_min_m": 0.07427225979246377,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.001149706526222259,
+       "dtrim_deg": 0.05893302350029988,
+       "dz_m": 0.0023166854266709613,
+       "dx_m": -0.0008151133286515844,
+       "dy_m": 1.2869355291156293e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.0017803785079114523,
+       "dtrim_deg": 0.00030008412613225985,
+       "dz_m": 0.00018974056735854283,
+       "dx_m": 0.049299920448443224,
+       "dy_m": -6.937559135959301e-05,
+       "dyaw_deg": 0.008999110169484343
+      },
+      "tier": "near",
+      "dz_m": 0.0023166854266709613,
+      "dheel_deg": 0.001149706526222259,
+      "dtrim_deg": 0.05893302350029988,
+      "boat_dx_m": 0.049299920448443224,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    },
+    "beam_05_30": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [
+      "CROSS_P2S",
+      "CROSS_S2P"
+     ],
+     "opens": [],
+     "peak_N": 571.4204070612616,
+     "boat_roll_deg": 10.2,
+     "transom_gap_min_m": 0.09370815300228698,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.001149706526222259,
+       "dtrim_deg": 0.05893302350029988,
+       "dz_m": 0.0023166854266709613,
+       "dx_m": -0.0008151133286515844,
+       "dy_m": 1.2869355291156293e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.0017803785079114523,
+       "dtrim_deg": 0.00030008412613225985,
+       "dz_m": 0.00018974056735854283,
+       "dx_m": 0.049299920448443224,
+       "dy_m": -6.937559135959301e-05,
+       "dyaw_deg": 0.008999110169484343
+      },
+      "tier": "near",
+      "dz_m": 0.0023166854266709613,
+      "dheel_deg": 0.001149706526222259,
+      "dtrim_deg": 0.05893302350029988,
+      "boat_dx_m": 0.049299920448443224,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    }
+   },
+   "redundancy": {
+    "n_tension_elements": 4,
+    "n_single_losses_fatal": 0,
+    "fatal": []
+   },
+   "rope_hull_clearance_m": -1.4087,
+   "rope_hull_clearance_at": {
+    "element": "CROSS_P2S",
+    "obstruction": "hull",
+    "boat_station_m": 0.13,
+    "z_m": 0.617,
+    "half_width_m": 1.413,
+    "would_lie_on": "deck edge (chafe, leadable)",
+    "side_deck_width_m": null
+   }
+  },
+  {
+   "id": "I_shock_cross_27000",
+   "title": "Arrangement I with a 27000 N/m shock absorber in series with the crossed stern ropes (k_eff 9000 N/m)",
+   "ops_actions": 4,
+   "new_boat_fittings": "",
+   "primary_elements": [
+    "SPRING"
+   ],
+   "n_elements": 8,
+   "min_preload_static_N": 588.8,
+   "min_preload_waves_N": 400.0,
+   "design_preload_N": 588.8,
+   "statics_ok": true,
+   "statics": {
+    "moored": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 433.8,
+     "dx_mm": -8.9,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 481.2,
+     "bumper_total_N": 867.8,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11603042573419842,
+     "unrestrained": false
+    },
+    "fwd100": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 783.4,
+     "dx_mm": -15.6,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 400.9,
+     "bumper_total_N": 1566.9,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.10890707751677686,
+     "unrestrained": false
+    },
+    "rev50": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 258.5,
+     "dx_mm": -5.6,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 521.6,
+     "bumper_total_N": 517.5,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11960089480530955,
+     "unrestrained": false
+    },
+    "rev70": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 188.5,
+     "dx_mm": -4.3,
+     "dyaw_deg": -0.0,
+     "max_tension_N": 537.7,
+     "bumper_total_N": 377.4,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.12102894593051516,
+     "unrestrained": false
+    },
+    "rev100": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 83.4,
+     "dx_mm": -2.3,
+     "dyaw_deg": -0.0,
+     "max_tension_N": 561.9,
+     "bumper_total_N": 167.3,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.1231708781222598,
+     "unrestrained": false
+    },
+    "estop": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 174.0,
+     "dx_mm": -4.0,
+     "dyaw_deg": -0.0,
+     "max_tension_N": 541.1,
+     "bumper_total_N": 348.4,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.12132439446131382,
+     "unrestrained": false
+    },
+    "diff_one": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 417.1,
+     "dx_mm": -12.3,
+     "dyaw_deg": -0.243,
+     "max_tension_N": 573.4,
+     "bumper_total_N": 1217.6,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11245508523990866,
+     "unrestrained": false
+    },
+    "diff_opp": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 50.3,
+     "dx_mm": -8.9,
+     "dyaw_deg": -0.486,
+     "max_tension_N": 745.3,
+     "bumper_total_N": 865.6,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11603931993550809,
+     "unrestrained": false
+    }
+   },
+   "binding_static_case": "diff_opp",
+   "waves": {
+    "beam_03_25": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [
+      "CROSS_P2S",
+      "CROSS_S2P"
+     ],
+     "opens": [],
+     "peak_N": 660.3151212133723,
+     "boat_roll_deg": 9.77,
+     "transom_gap_min_m": 0.08925582606183413,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0011101545818101256,
+       "dtrim_deg": 0.05930055813067659,
+       "dz_m": 0.002335062482236694,
+       "dx_m": -0.0008201928061932762,
+       "dy_m": 1.242662620021262e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.001671254132915877,
+       "dtrim_deg": 0.0002282286545504691,
+       "dz_m": 0.0001849619592990681,
+       "dx_m": 0.049443700079121466,
+       "dy_m": -7.526674427173747e-05,
+       "dyaw_deg": 0.00905507930329496
+      },
+      "tier": "near",
+      "dz_m": 0.002335062482236694,
+      "dheel_deg": 0.0011101545818101256,
+      "dtrim_deg": 0.05930055813067659,
+      "boat_dx_m": 0.049443700079121466,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    },
+    "head_03_25": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [
+      "CROSS_P2S",
+      "CROSS_S2P"
+     ],
+     "opens": [],
+     "peak_N": 635.1201194014196,
+     "boat_roll_deg": 0.08,
+     "transom_gap_min_m": 0.07426864790552372,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0011101545818101256,
+       "dtrim_deg": 0.05930055813067659,
+       "dz_m": 0.002335062482236694,
+       "dx_m": -0.0008201928061932762,
+       "dy_m": 1.242662620021262e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.001671254132915877,
+       "dtrim_deg": 0.0002282286545504691,
+       "dz_m": 0.0001849619592990681,
+       "dx_m": 0.049443700079121466,
+       "dy_m": -7.526674427173747e-05,
+       "dyaw_deg": 0.00905507930329496
+      },
+      "tier": "near",
+      "dz_m": 0.002335062482236694,
+      "dheel_deg": 0.0011101545818101256,
+      "dtrim_deg": 0.05930055813067659,
+      "boat_dx_m": 0.049443700079121466,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    },
+    "beam_05_30": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [
+      "CROSS_P2S"
+     ],
+     "opens": [],
+     "peak_N": 551.9037757871324,
+     "boat_roll_deg": 10.16,
+     "transom_gap_min_m": 0.09304830401441416,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0011101545818101256,
+       "dtrim_deg": 0.05930055813067659,
+       "dz_m": 0.002335062482236694,
+       "dx_m": -0.0008201928061932762,
+       "dy_m": 1.242662620021262e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.001671254132915877,
+       "dtrim_deg": 0.0002282286545504691,
+       "dz_m": 0.0001849619592990681,
+       "dx_m": 0.049443700079121466,
+       "dy_m": -7.526674427173747e-05,
+       "dyaw_deg": 0.00905507930329496
+      },
+      "tier": "near",
+      "dz_m": 0.002335062482236694,
+      "dheel_deg": 0.0011101545818101256,
+      "dtrim_deg": 0.05930055813067659,
+      "boat_dx_m": 0.049443700079121466,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    }
+   },
+   "redundancy": {
+    "n_tension_elements": 4,
+    "n_single_losses_fatal": 2,
+    "fatal": [
+     {
+      "lost": "SPRING_PORT",
+      "case": "rev100"
+     },
+     {
+      "lost": "SPRING_STBD",
+      "case": "rev100"
+     }
+    ]
+   },
+   "rope_hull_clearance_m": -1.4087,
+   "rope_hull_clearance_at": {
+    "element": "CROSS_P2S",
+    "obstruction": "hull",
+    "boat_station_m": 0.13,
+    "z_m": 0.617,
+    "half_width_m": 1.413,
+    "would_lie_on": "deck edge (chafe, leadable)",
+    "side_deck_width_m": null
+   }
+  },
+  {
+   "id": "I_shock_cross_13500",
+   "title": "Arrangement I with a 13500 N/m shock absorber in series with the crossed stern ropes (k_eff 6750 N/m)",
+   "ops_actions": 4,
+   "new_boat_fittings": "",
+   "primary_elements": [
+    "SPRING"
+   ],
+   "n_elements": 8,
+   "min_preload_static_N": 622.0,
+   "min_preload_waves_N": 400.0,
+   "design_preload_N": 622.0,
+   "statics_ok": true,
+   "statics": {
+    "moored": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 457.8,
+     "dx_mm": -9.4,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 508.5,
+     "bumper_total_N": 915.9,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11554653586089536,
+     "unrestrained": false
+    },
+    "fwd100": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 807.5,
+     "dx_mm": -16.1,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 428.1,
+     "bumper_total_N": 1615.2,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.10842087394545352,
+     "unrestrained": false
+    },
+    "rev50": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 282.5,
+     "dx_mm": -6.1,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 548.9,
+     "bumper_total_N": 565.4,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11911819866384166,
+     "unrestrained": false
+    },
+    "rev70": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 212.4,
+     "dx_mm": -4.8,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 565.1,
+     "bumper_total_N": 425.3,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.12054673370942837,
+     "unrestrained": false
+    },
+    "rev100": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 107.3,
+     "dx_mm": -2.8,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 589.3,
+     "bumper_total_N": 215.1,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.12268939873968865,
+     "unrestrained": false
+    },
+    "estop": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 197.9,
+     "dx_mm": -4.5,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 568.4,
+     "bumper_total_N": 396.3,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.12084228282329379,
+     "unrestrained": false
+    },
+    "diff_one": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 429.3,
+     "dx_mm": -12.8,
+     "dyaw_deg": -0.258,
+     "max_tension_N": 597.3,
+     "bumper_total_N": 1265.7,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11197061462977942,
+     "unrestrained": false
+    },
+    "diff_opp": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 50.3,
+     "dx_mm": -9.4,
+     "dyaw_deg": -0.516,
+     "max_tension_N": 765.7,
+     "bumper_total_N": 913.4,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11555774724995826,
+     "unrestrained": false
+    }
+   },
+   "binding_static_case": "diff_opp",
+   "waves": {
+    "beam_03_25": {
+     "engaged": false,
+     "primary_slack": [],
+     "secondary_slack": [
+      "CROSS_P2S",
+      "CROSS_S2P"
+     ],
+     "opens": [
+      "BUMPER_PORT",
+      "BUMPER_STBD"
+     ],
+     "peak_N": 1075.6006567795216,
+     "boat_roll_deg": 9.55,
+     "transom_gap_min_m": 0.07949500263211813,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0011859917454457745,
+       "dtrim_deg": 0.0612142139660985,
+       "dz_m": 0.0025320450602016598,
+       "dx_m": -0.0008466177210504355,
+       "dy_m": 1.3275517957461735e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.0018900034206623371,
+       "dtrim_deg": -0.001554039889638721,
+       "dz_m": 3.706166411715506e-05,
+       "dx_m": 0.04896232808108092,
+       "dy_m": -8.635029379596584e-05,
+       "dyaw_deg": 0.009100215236347653
+      },
+      "tier": "near",
+      "dz_m": 0.0025320450602016598,
+      "dheel_deg": 0.0011859917454457745,
+      "dtrim_deg": 0.0612142139660985,
+      "boat_dx_m": 0.04896232808108092,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    },
+    "head_03_25": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [
+      "CROSS_P2S"
+     ],
+     "opens": [],
+     "peak_N": 653.3703655442304,
+     "boat_roll_deg": 0.17,
+     "transom_gap_min_m": 0.07198186589028971,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0011859917454457745,
+       "dtrim_deg": 0.0612142139660985,
+       "dz_m": 0.0025320450602016598,
+       "dx_m": -0.0008466177210504355,
+       "dy_m": 1.3275517957461735e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.0018900034206623371,
+       "dtrim_deg": -0.001554039889638721,
+       "dz_m": 3.706166411715506e-05,
+       "dx_m": 0.04896232808108092,
+       "dy_m": -8.635029379596584e-05,
+       "dyaw_deg": 0.009100215236347653
+      },
+      "tier": "near",
+      "dz_m": 0.0025320450602016598,
+      "dheel_deg": 0.0011859917454457745,
+      "dtrim_deg": 0.0612142139660985,
+      "boat_dx_m": 0.04896232808108092,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    },
+    "beam_05_30": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [
+      "CROSS_P2S",
+      "CROSS_S2P"
+     ],
+     "opens": [],
+     "peak_N": 622.4516774537515,
+     "boat_roll_deg": 10.12,
+     "transom_gap_min_m": 0.08769123372058751,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0011859917454457745,
+       "dtrim_deg": 0.0612142139660985,
+       "dz_m": 0.0025320450602016598,
+       "dx_m": -0.0008466177210504355,
+       "dy_m": 1.3275517957461735e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.0018900034206623371,
+       "dtrim_deg": -0.001554039889638721,
+       "dz_m": 3.706166411715506e-05,
+       "dx_m": 0.04896232808108092,
+       "dy_m": -8.635029379596584e-05,
+       "dyaw_deg": 0.009100215236347653
+      },
+      "tier": "near",
+      "dz_m": 0.0025320450602016598,
+      "dheel_deg": 0.0011859917454457745,
+      "dtrim_deg": 0.0612142139660985,
+      "boat_dx_m": 0.04896232808108092,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    }
+   },
+   "redundancy": {
+    "n_tension_elements": 4,
+    "n_single_losses_fatal": 2,
+    "fatal": [
+     {
+      "lost": "SPRING_PORT",
+      "case": "rev100"
+     },
+     {
+      "lost": "SPRING_STBD",
+      "case": "rev100"
+     }
+    ]
+   },
+   "rope_hull_clearance_m": -1.4087,
+   "rope_hull_clearance_at": {
+    "element": "CROSS_P2S",
+    "obstruction": "hull",
+    "boat_station_m": 0.13,
+    "z_m": 0.617,
+    "half_width_m": 1.413,
+    "would_lie_on": "deck edge (chafe, leadable)",
+    "side_deck_width_m": null
+   }
+  },
+  {
+   "id": "I_shock_cross_5000",
+   "title": "Arrangement I with a 5000 N/m shock absorber in series with the crossed stern ropes (k_eff 3649 N/m)",
+   "ops_actions": 4,
+   "new_boat_fittings": "",
+   "primary_elements": [
+    "SPRING"
+   ],
+   "n_elements": 8,
+   "min_preload_static_N": 722.6,
+   "min_preload_waves_N": 1000.0,
+   "design_preload_N": 1000.0,
+   "statics_ok": true,
+   "statics": {
+    "moored": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 728.0,
+     "dx_mm": -14.9,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 820.6,
+     "bumper_total_N": 1456.1,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11010173839959769,
+     "unrestrained": false
+    },
+    "fwd100": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 1077.6,
+     "dx_mm": -21.6,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 740.2,
+     "bumper_total_N": 2155.5,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.10297663615775976,
+     "unrestrained": false
+    },
+    "rev50": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 552.7,
+     "dx_mm": -11.6,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 861.0,
+     "bumper_total_N": 1105.6,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11367319101665485,
+     "unrestrained": false
+    },
+    "rev70": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 482.6,
+     "dx_mm": -10.3,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 877.1,
+     "bumper_total_N": 965.5,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11510165511512493,
+     "unrestrained": false
+    },
+    "rev100": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 377.4,
+     "dx_mm": -8.2,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 901.3,
+     "bumper_total_N": 755.2,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11724422776216858,
+     "unrestrained": false
+    },
+    "estop": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 468.1,
+     "dx_mm": -10.0,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 880.4,
+     "bumper_total_N": 936.5,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11539719048586017,
+     "unrestrained": false
+    },
+    "diff_one": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 663.5,
+     "dx_mm": -18.3,
+     "dyaw_deg": -0.304,
+     "max_tension_N": 898.9,
+     "bumper_total_N": 1805.9,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.10652784420180117,
+     "unrestrained": false
+    },
+    "diff_opp": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 247.9,
+     "dx_mm": -14.9,
+     "dyaw_deg": -0.608,
+     "max_tension_N": 1057.0,
+     "bumper_total_N": 1453.1,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11011883866317751,
+     "unrestrained": false
+    }
+   },
+   "binding_static_case": "diff_opp",
+   "waves": {
+    "beam_03_25": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [
+      "CROSS_P2S",
+      "CROSS_S2P"
+     ],
+     "opens": [],
+     "peak_N": 928.8537496298092,
+     "boat_roll_deg": 10.72,
+     "transom_gap_min_m": 0.07828011258292338,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0020795163911997297,
+       "dtrim_deg": 0.07865859556536543,
+       "dz_m": 0.004425466704361614,
+       "dx_m": -0.0010873697869300258,
+       "dy_m": 2.327729440833315e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.004450045914040092,
+       "dtrim_deg": -0.019268488823551585,
+       "dz_m": -0.001434858592261612,
+       "dx_m": 0.04356057944013436,
+       "dy_m": -0.00016631144771068383,
+       "dyaw_deg": 0.009288152429645072
+      },
+      "tier": "near",
+      "dz_m": 0.004425466704361614,
+      "dheel_deg": 0.0020795163911997297,
+      "dtrim_deg": 0.07865859556536543,
+      "boat_dx_m": 0.04356057944013436,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    },
+    "head_03_25": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [],
+     "opens": [],
+     "peak_N": 1007.4720607411293,
+     "boat_roll_deg": 0.13,
+     "transom_gap_min_m": 0.09073508932119066,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0020795163911997297,
+       "dtrim_deg": 0.07865859556536543,
+       "dz_m": 0.004425466704361614,
+       "dx_m": -0.0010873697869300258,
+       "dy_m": 2.327729440833315e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.004450045914040092,
+       "dtrim_deg": -0.019268488823551585,
+       "dz_m": -0.001434858592261612,
+       "dx_m": 0.04356057944013436,
+       "dy_m": -0.00016631144771068383,
+       "dyaw_deg": 0.009288152429645072
+      },
+      "tier": "near",
+      "dz_m": 0.004425466704361614,
+      "dheel_deg": 0.0020795163911997297,
+      "dtrim_deg": 0.07865859556536543,
+      "boat_dx_m": 0.04356057944013436,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    },
+    "beam_05_30": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [
+      "CROSS_P2S",
+      "CROSS_S2P"
+     ],
+     "opens": [],
+     "peak_N": 1127.0883050565756,
+     "boat_roll_deg": 10.85,
+     "transom_gap_min_m": 0.05603361163952562,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0020795163911997297,
+       "dtrim_deg": 0.07865859556536543,
+       "dz_m": 0.004425466704361614,
+       "dx_m": -0.0010873697869300258,
+       "dy_m": 2.327729440833315e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.004450045914040092,
+       "dtrim_deg": -0.019268488823551585,
+       "dz_m": -0.001434858592261612,
+       "dx_m": 0.04356057944013436,
+       "dy_m": -0.00016631144771068383,
+       "dyaw_deg": 0.009288152429645072
+      },
+      "tier": "near",
+      "dz_m": 0.004425466704361614,
+      "dheel_deg": 0.0020795163911997297,
+      "dtrim_deg": 0.07865859556536543,
+      "boat_dx_m": 0.04356057944013436,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    }
+   },
+   "redundancy": {
+    "n_tension_elements": 4,
+    "n_single_losses_fatal": 2,
+    "fatal": [
+     {
+      "lost": "SPRING_PORT",
+      "case": "rev100"
+     },
+     {
+      "lost": "SPRING_STBD",
+      "case": "rev100"
+     }
+    ]
+   },
+   "rope_hull_clearance_m": -1.4087,
+   "rope_hull_clearance_at": {
+    "element": "CROSS_P2S",
+    "obstruction": "hull",
+    "boat_station_m": 0.13,
+    "z_m": 0.617,
+    "half_width_m": 1.413,
+    "would_lie_on": "deck edge (chafe, leadable)",
+    "side_deck_width_m": null
+   }
+  },
+  {
+   "id": "I_shock_cross_2000",
+   "title": "Arrangement I with a 2000 N/m shock absorber in series with the crossed stern ropes (k_eff 1742 N/m)",
+   "ops_actions": 4,
+   "new_boat_fittings": "",
+   "primary_elements": [
+    "SPRING"
+   ],
+   "n_elements": 8,
+   "min_preload_static_N": 819.7,
+   "min_preload_waves_N": 800.0,
+   "design_preload_N": 819.7,
+   "statics_ok": true,
+   "statics": {
+    "moored": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 599.6,
+     "dx_mm": -12.3,
+     "dyaw_deg": 0.001,
+     "max_tension_N": 671.6,
+     "bumper_total_N": 1199.8,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11268583383078967,
+     "unrestrained": false
+    },
+    "fwd100": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 949.3,
+     "dx_mm": -19.0,
+     "dyaw_deg": 0.001,
+     "max_tension_N": 591.1,
+     "bumper_total_N": 1899.5,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.10555644205438952,
+     "unrestrained": false
+    },
+    "rev50": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 424.4,
+     "dx_mm": -9.0,
+     "dyaw_deg": 0.001,
+     "max_tension_N": 712.0,
+     "bumper_total_N": 849.1,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.1162594517252411,
+     "unrestrained": false
+    },
+    "rev70": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 354.3,
+     "dx_mm": -7.6,
+     "dyaw_deg": 0.001,
+     "max_tension_N": 728.1,
+     "bumper_total_N": 708.9,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11768878489599954,
+     "unrestrained": false
+    },
+    "rev100": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 249.2,
+     "dx_mm": -5.6,
+     "dyaw_deg": 0.0,
+     "max_tension_N": 752.4,
+     "bumper_total_N": 498.5,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11983266443579232,
+     "unrestrained": false
+    },
+    "estop": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 339.8,
+     "dx_mm": -7.4,
+     "dyaw_deg": 0.001,
+     "max_tension_N": 731.5,
+     "bumper_total_N": 679.8,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11798450029113061,
+     "unrestrained": false
+    },
+    "diff_one": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 471.7,
+     "dx_mm": -15.7,
+     "dyaw_deg": -0.385,
+     "max_tension_N": 732.2,
+     "bumper_total_N": 1549.7,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.10911015442655492,
+     "unrestrained": false
+    },
+    "diff_opp": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 50.3,
+     "dx_mm": -12.3,
+     "dyaw_deg": -0.696,
+     "max_tension_N": 902.0,
+     "bumper_total_N": 1196.1,
+     "wheel_max_N": 78.2,
+     "transom_to_deck_m": 0.11271233959604254,
+     "unrestrained": false
+    }
+   },
+   "binding_static_case": "diff_opp",
+   "waves": {
+    "beam_03_25": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [],
+     "opens": [],
+     "peak_N": 818.6948750688659,
+     "boat_roll_deg": 10.42,
+     "transom_gap_min_m": 0.08340671642294502,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0016543303940693935,
+       "dtrim_deg": 0.07120676551901671,
+       "dz_m": 0.0035922833473371885,
+       "dx_m": -0.0009845548405174043,
+       "dy_m": 1.851792142854025e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.0032398039403401355,
+       "dtrim_deg": -0.011333890461413615,
+       "dz_m": -0.0007751587551512729,
+       "dx_m": 0.04612125684404811,
+       "dy_m": -0.00018770695734396706,
+       "dyaw_deg": 0.009600032372681177
+      },
+      "tier": "near",
+      "dz_m": 0.0035922833473371885,
+      "dheel_deg": 0.0016543303940693935,
+      "dtrim_deg": 0.07120676551901671,
+      "boat_dx_m": 0.04612125684404811,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    },
+    "head_03_25": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [],
+     "opens": [],
+     "peak_N": 885.6121863728956,
+     "boat_roll_deg": 0.08,
+     "transom_gap_min_m": 0.08125251437442915,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0016543303940693935,
+       "dtrim_deg": 0.07120676551901671,
+       "dz_m": 0.0035922833473371885,
+       "dx_m": -0.0009845548405174043,
+       "dy_m": 1.851792142854025e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.0032398039403401355,
+       "dtrim_deg": -0.011333890461413615,
+       "dz_m": -0.0007751587551512729,
+       "dx_m": 0.04612125684404811,
+       "dy_m": -0.00018770695734396706,
+       "dyaw_deg": 0.009600032372681177
+      },
+      "tier": "near",
+      "dz_m": 0.0035922833473371885,
+      "dheel_deg": 0.0016543303940693935,
+      "dtrim_deg": 0.07120676551901671,
+      "boat_dx_m": 0.04612125684404811,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    },
+    "beam_05_30": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [],
+     "opens": [],
+     "peak_N": 911.6675433244668,
+     "boat_roll_deg": 10.56,
+     "transom_gap_min_m": 0.0764105084001929,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0016543303940693935,
+       "dtrim_deg": 0.07120676551901671,
+       "dz_m": 0.0035922833473371885,
+       "dx_m": -0.0009845548405174043,
+       "dy_m": 1.851792142854025e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.0032398039403401355,
+       "dtrim_deg": -0.011333890461413615,
+       "dz_m": -0.0007751587551512729,
+       "dx_m": 0.04612125684404811,
+       "dy_m": -0.00018770695734396706,
+       "dyaw_deg": 0.009600032372681177
+      },
+      "tier": "near",
+      "dz_m": 0.0035922833473371885,
+      "dheel_deg": 0.0016543303940693935,
+      "dtrim_deg": 0.07120676551901671,
+      "boat_dx_m": 0.04612125684404811,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    }
+   },
+   "redundancy": {
+    "n_tension_elements": 4,
+    "n_single_losses_fatal": 2,
+    "fatal": [
+     {
+      "lost": "SPRING_PORT",
+      "case": "rev100"
+     },
+     {
+      "lost": "SPRING_STBD",
+      "case": "rev100"
+     }
+    ]
+   },
+   "rope_hull_clearance_m": -1.4087,
+   "rope_hull_clearance_at": {
+    "element": "CROSS_P2S",
+    "obstruction": "hull",
+    "boat_station_m": 0.13,
+    "z_m": 0.617,
+    "half_width_m": 1.413,
+    "would_lie_on": "deck edge (chafe, leadable)",
+    "side_deck_width_m": null
+   }
+  },
+  {
+   "id": "I_shock_cross_800",
+   "title": "Arrangement I with a 800 N/m shock absorber in series with the crossed stern ropes (k_eff 755 N/m)",
+   "ops_actions": 4,
+   "new_boat_fittings": "",
+   "primary_elements": [
+    "SPRING"
+   ],
+   "n_elements": 8,
+   "min_preload_static_N": 846.6,
+   "min_preload_waves_N": 600.0,
+   "design_preload_N": 846.6,
+   "statics_ok": true,
+   "statics": {
+    "moored": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 618.7,
+     "dx_mm": -12.7,
+     "dyaw_deg": 0.001,
+     "max_tension_N": 693.8,
+     "bumper_total_N": 1238.6,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.1122946683905579,
+     "unrestrained": false
+    },
+    "fwd100": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 968.4,
+     "dx_mm": -19.4,
+     "dyaw_deg": 0.001,
+     "max_tension_N": 613.3,
+     "bumper_total_N": 1938.4,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.10516441061229731,
+     "unrestrained": false
+    },
+    "rev50": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 443.4,
+     "dx_mm": -9.4,
+     "dyaw_deg": 0.001,
+     "max_tension_N": 734.2,
+     "bumper_total_N": 887.9,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11586873641579487,
+     "unrestrained": false
+    },
+    "rev70": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 373.3,
+     "dx_mm": -8.0,
+     "dyaw_deg": 0.001,
+     "max_tension_N": 750.4,
+     "bumper_total_N": 747.6,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11729825266331328,
+     "unrestrained": false
+    },
+    "rev100": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 268.2,
+     "dx_mm": -6.0,
+     "dyaw_deg": 0.001,
+     "max_tension_N": 774.6,
+     "bumper_total_N": 537.2,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.11944241008512169,
+     "unrestrained": false
+    },
+    "estop": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 358.8,
+     "dx_mm": -7.8,
+     "dyaw_deg": 0.001,
+     "max_tension_N": 753.7,
+     "bumper_total_N": 718.6,
+     "wheel_max_N": -0.0,
+     "transom_to_deck_m": 0.1175940061533729,
+     "unrestrained": false
+    },
+    "diff_one": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 432.0,
+     "dx_mm": -16.0,
+     "dyaw_deg": -0.461,
+     "max_tension_N": 742.1,
+     "bumper_total_N": 1588.5,
+     "wheel_max_N": 24.2,
+     "transom_to_deck_m": 0.10871893449230674,
+     "unrestrained": false
+    },
+    "diff_opp": {
+     "ok": true,
+     "bumpers_loaded": true,
+     "bumper_min_N": 50.2,
+     "dx_mm": -12.7,
+     "dyaw_deg": -0.72,
+     "max_tension_N": 934.4,
+     "bumper_total_N": 1234.4,
+     "wheel_max_N": 171.4,
+     "transom_to_deck_m": 0.11233046083781151,
+     "unrestrained": false
+    }
+   },
+   "binding_static_case": "diff_opp",
+   "waves": {
+    "beam_03_25": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [],
+     "opens": [],
+     "peak_N": 833.1723380672404,
+     "boat_roll_deg": 10.45,
+     "transom_gap_min_m": 0.08265124722831205,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0017232719768235163,
+       "dtrim_deg": 0.07267137409758005,
+       "dz_m": 0.003746005319954282,
+       "dx_m": -0.0010047665326240462,
+       "dy_m": 1.9289627469942783e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.003444796989614865,
+       "dtrim_deg": -0.012748056911279549,
+       "dz_m": -0.0008923403736026403,
+       "dx_m": 0.045732703101128536,
+       "dy_m": -0.0002646319225893256,
+       "dyaw_deg": 0.01009199855991412
+      },
+      "tier": "near",
+      "dz_m": 0.003746005319954282,
+      "dheel_deg": 0.0017232719768235163,
+      "dtrim_deg": 0.07267137409758005,
+      "boat_dx_m": 0.045732703101128536,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    },
+    "head_03_25": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [],
+     "opens": [],
+     "peak_N": 905.2681043395164,
+     "boat_roll_deg": 0.08,
+     "transom_gap_min_m": 0.08283807246530507,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0017232719768235163,
+       "dtrim_deg": 0.07267137409758005,
+       "dz_m": 0.003746005319954282,
+       "dx_m": -0.0010047665326240462,
+       "dy_m": 1.9289627469942783e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.003444796989614865,
+       "dtrim_deg": -0.012748056911279549,
+       "dz_m": -0.0008923403736026403,
+       "dx_m": 0.045732703101128536,
+       "dy_m": -0.0002646319225893256,
+       "dyaw_deg": 0.01009199855991412
+      },
+      "tier": "near",
+      "dz_m": 0.003746005319954282,
+      "dheel_deg": 0.0017232719768235163,
+      "dtrim_deg": 0.07267137409758005,
+      "boat_dx_m": 0.045732703101128536,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    },
+    "beam_05_30": {
+     "engaged": true,
+     "primary_slack": [],
+     "secondary_slack": [],
+     "opens": [],
+     "peak_N": 947.4142979793434,
+     "boat_roll_deg": 10.58,
+     "transom_gap_min_m": 0.07225774432288928,
+     "pose_reuse": {
+      "EXO": {
+       "dheel_deg": 0.0017232719768235163,
+       "dtrim_deg": 0.07267137409758005,
+       "dz_m": 0.003746005319954282,
+       "dx_m": -0.0010047665326240462,
+       "dy_m": 1.9289627469942783e-05,
+       "dyaw_deg": 0.0
+      },
+      "BOAT": {
+       "dheel_deg": -0.003444796989614865,
+       "dtrim_deg": -0.012748056911279549,
+       "dz_m": -0.0008923403736026403,
+       "dx_m": 0.045732703101128536,
+       "dy_m": -0.0002646319225893256,
+       "dyaw_deg": 0.01009199855991412
+      },
+      "tier": "near",
+      "dz_m": 0.003746005319954282,
+      "dheel_deg": 0.0017232719768235163,
+      "dtrim_deg": 0.07267137409758005,
+      "boat_dx_m": 0.045732703101128536,
+      "note": "BEM of nearby poses reused (same geometry and grid); coefficients moved exactly to the current COMs; the pose differences are NOT accounted for (run Compute BEM for the exact poses)"
+     }
+    }
+   },
+   "redundancy": {
+    "n_tension_elements": 4,
+    "n_single_losses_fatal": 2,
+    "fatal": [
+     {
+      "lost": "SPRING_PORT",
+      "case": "rev100"
+     },
+     {
+      "lost": "SPRING_STBD",
+      "case": "rev100"
+     }
+    ]
+   },
+   "rope_hull_clearance_m": -1.4087,
+   "rope_hull_clearance_at": {
+    "element": "CROSS_P2S",
+    "obstruction": "hull",
+    "boat_station_m": 0.13,
+    "z_m": 0.617,
+    "half_width_m": 1.413,
+    "would_lie_on": "deck edge (chafe, leadable)",
+    "side_deck_width_m": null
+   }
+  }
+ ],
+ "seconds": 226.585955619812
+}

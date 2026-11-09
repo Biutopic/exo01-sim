@@ -751,3 +751,100 @@ the arrangement that saves three tensioning actions is also the one that forces 
 **Arrangement I stands unchanged.** X is registered as `X_yoke_midship_crossed` and kept in the catalogue as a
 measured negative result, not deleted: it is the cleanest demonstration in the study of why the midship pair must
 stay independent.
+
+## 20. Addendum (9 Nov): one continuous rope, and the shock absorber closed out negative
+
+### 20.1 The rig as drawn
+
+One continuous rope: dead-ended at one point, rove through a block at every turn, through the shock absorber and
+the loop, with the free tail as the hauling part. One pull brings the whole coupling up to tension.
+
+Mechanically that is **one tension everywhere, so rank 1** on the boat's three in-plane DOF — the §19 result at
+maximum scale. The magnitude of the pattern is settable; the distribution is not. `diff_opp` needs the legs to be
+unequal (524 N against 76 N), and a single rope cannot do that at any preload.
+
+With one counter-intuitive wrinkle worth recording: **better blocks make the restraint worse.** A real rope holds
+some tension difference up to the point it renders through the sheaves. Plain-bush blocks over 6 turns hold a
+difference down to roughly 53 % before slipping — sloppy, but real differential capacity. Ball-bearing blocks
+over the same path equalise to within ~83 %, and give nearly all of it up. (Catalogue efficiencies, not measured.)
+
+### 20.2 But the drawing carries its own fix: the jammers
+
+Reeve the rope as drawn, haul the single tail until every leg is up, **then close each clutch**. At that instant
+the rope stops being one rope and becomes N independent springs, each at the preload just set and free to differ
+under load. Arrangement I's mechanics, one tensioning action instead of four.
+
+That depends on a question §15–§19 never asked, because every run so far used *equal* preloads: **how unequal can
+the pair be before arrangement I stops closing?** The rove does not deliver equal legs — tension grades from the
+hauling tail down to the dead end by eta^n. `scripts/run_preload_spread.py` holds the port spring at 600 N and
+walks the starboard one down, all nine static cases:
+
+| starboard / port | starboard | outcome |
+|---|---|---|
+| 100% | 600 N | holds, peak 760 N |
+| 95% | 570 N | holds, peak 751 N |
+| 90% | 540 N | holds, peak 742 N |
+| 85% | 510 N | holds, peak 733 N |
+| 80% | 480 N | holds, peak 724 N |
+| 75% | 450 N | **fails** — a bumper opened at `rev100` |
+| 70% | 420 N | **fails** — a bumper opened at `rev100` |
+| 60% | 360 N | **fails** — a bumper opened at `rev100` |
+
+**The limit is 80 %.** Below it, reverse thrust lifts the boat off a bumper and contact is lost — the asymmetric
+pair lets the boat skew far enough that one bumper unloads.
+
+Against what the hardware actually delivers:
+
+| rove | far leg | verdict |
+|---|---|---|
+| ball bearing, 4 turns | 88.5% | **inside** the 80 % limit |
+| ball bearing, 8 turns | 78.4% | **outside** it |
+| plain bush, 4 turns | 65.6% | **outside** it |
+| plain bush, 8 turns | 43.0% | **outside** it |
+
+So the scheme works, but only on ball-bearing blocks with a short path — and an eight-turn rove at 78,4 % is
+*outside* the limit, by a margin too small to design on.
+
+**The fix is free: measure at the dead end, not at the tail.** Haul until the FAR leg reads 600 N. Every other leg
+is then above 600 N rather than below, the gradient costs nothing but a little extra tension on the near legs
+(~765 N at the tail for an eight-turn ball-bearing rove), and that is still a seventh of the 9,5 kN MBL. The
+dynamometer moves to the far end; nothing else changes.
+
+### 20.3 The shock absorber on the crossed stern ropes: I was wrong
+
+§19 left this open and predicted it would pay, because the crossed ropes are the only wave-governed elements in
+the set (amplification 4,2–4,5) and carry no differential job. The gauntlet says the opposite, on every axis:
+
+| absorber in series with the crossed ropes | min preload | wave peak | beam 0,3 m | fatal single losses |
+|---|---|---|---|---|
+| none — the selected arrangement | 558 N | 621 N | engaged | **0 / 4** |
+| 27000 N/m | 589 N | 660 N | engaged | **2 / 4** |
+| 13500 N/m | 622 N | 1076 N | **contact lost** | **2 / 4** |
+| 5000 N/m | 723 N | 929 N | engaged | **2 / 4** |
+| 2000 N/m | 820 N | 819 N | engaged | **2 / 4** |
+| 800 N/m | 847 N | 833 N | engaged | **2 / 4** |
+
+**Redundancy collapses from 0/4 to 2/4 at every stiffness tested**, and the failures name themselves:
+`SPRING_PORT@rev100` and `SPRING_STBD@rev100`. That is the mechanism. The crossed ropes are not only the
+wave-governed elements — they are the **backup load path for the springs**. At full stiffness they pick up reverse
+thrust when a spring is lost. Softened, they cannot, and losing either spring becomes fatal.
+
+The peak rises for the same reason. A soft element in a *parallel* path does not absorb the load, it **hands it to
+its stiff neighbour** — and goes slack sooner, which is why both crossed ropes slack in the beam wave at every
+absorber stiffness where the baseline slacks only one.
+
+### 20.4 The general rule, which explains §19 and §20.3 together
+
+**A series spring only reduces peaks when it is in series with the WHOLE load path.** In a coupling with parallel
+redundant paths, softening any single element does two bad things at once: it transfers that element's share to
+the stiff elements beside it, and it removes that element as a backup when a neighbour fails.
+
+There is therefore **no place in this coupling for a shock absorber**, forward or aft. Not a tuning problem — a
+topology one. The only configuration where an absorber would help is one with a single load path, which is exactly
+the configuration §19 ruled out for having no yaw capacity.
+
+### 20.5 What stands
+
+Arrangement I, unchanged, at 600 N on the springs and snug on the crossed ropes. What §20 adds is **how to tension
+it**: rove it as one rope through ball-bearing blocks, haul one tail, read the dynamometer **at the dead end**,
+then jam each leg. Four tensioning actions become one pull and four clutch closures, with the mechanics untouched.

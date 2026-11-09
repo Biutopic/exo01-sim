@@ -1,0 +1,129 @@
+{
+ "arrangement": "I_fwd_midship_crossed",
+ "held_leg_N": 600.0,
+ "cases": [
+  "moored",
+  "fwd100",
+  "rev50",
+  "rev70",
+  "rev100",
+  "estop",
+  "diff_one",
+  "diff_opp"
+ ],
+ "rows": [
+  {
+   "ratio": 1.0,
+   "port_N": 600.0,
+   "stbd_N": 600.0,
+   "ok": true,
+   "peak_T_N": 760.5,
+   "peak_case": "diff_opp",
+   "bumper_min_N": 79.9
+  },
+  {
+   "ratio": 0.95,
+   "port_N": 600.0,
+   "stbd_N": 570.0,
+   "ok": true,
+   "peak_T_N": 751.3,
+   "peak_case": "diff_opp",
+   "bumper_min_N": 69.6
+  },
+  {
+   "ratio": 0.9,
+   "port_N": 600.0,
+   "stbd_N": 540.0,
+   "ok": true,
+   "peak_T_N": 742.1,
+   "peak_case": "diff_opp",
+   "bumper_min_N": 47.6
+  },
+  {
+   "ratio": 0.85,
+   "port_N": 600.0,
+   "stbd_N": 510.0,
+   "ok": true,
+   "peak_T_N": 732.9,
+   "peak_case": "diff_opp",
+   "bumper_min_N": 25.7
+  },
+  {
+   "ratio": 0.8,
+   "port_N": 600.0,
+   "stbd_N": 480.0,
+   "ok": true,
+   "peak_T_N": 723.7,
+   "peak_case": "diff_opp",
+   "bumper_min_N": 3.7
+  },
+  {
+   "ratio": 0.75,
+   "port_N": 600.0,
+   "stbd_N": 450.0,
+   "ok": false,
+   "failed_case": "rev100",
+   "reason": "a bumper opened"
+  },
+  {
+   "ratio": 0.7,
+   "port_N": 600.0,
+   "stbd_N": 420.0,
+   "ok": false,
+   "failed_case": "rev100",
+   "reason": "a bumper opened"
+  },
+  {
+   "ratio": 0.6,
+   "port_N": 600.0,
+   "stbd_N": 360.0,
+   "ok": false,
+   "failed_case": "rev100",
+   "reason": "a bumper opened"
+  },
+  {
+   "ratio": 0.5,
+   "port_N": 600.0,
+   "stbd_N": 300.0,
+   "ok": false,
+   "failed_case": "rev70",
+   "reason": "a bumper opened"
+  },
+  {
+   "ratio": 0.4,
+   "port_N": 600.0,
+   "stbd_N": 240.0,
+   "ok": false,
+   "failed_case": "rev70",
+   "reason": "a bumper opened"
+  },
+  {
+   "ratio": 0.3,
+   "port_N": 600.0,
+   "stbd_N": 180.0,
+   "ok": false,
+   "failed_case": "rev50",
+   "reason": "a bumper opened"
+  }
+ ],
+ "tolerated_down_to": 0.8,
+ "hardware": [
+  {
+   "hardware": "ball bearing, 4 turns",
+   "far_leg_fraction": 0.885
+  },
+  {
+   "hardware": "ball bearing, 8 turns",
+   "far_leg_fraction": 0.784
+  },
+  {
+   "hardware": "plain bush, 4 turns",
+   "far_leg_fraction": 0.656
+  },
+  {
+   "hardware": "plain bush, 8 turns",
+   "far_leg_fraction": 0.43
+  }
+ ],
+ "caveat": "Statics only. The crossed ropes are wave-governed and are NOT varied here; they stay snug."
+}
