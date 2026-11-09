@@ -1225,3 +1225,75 @@ load path, so it need not match the leg's diameter or rating at all.
 Procedure that follows: haul with the tackle, make fast on the cleat, release the tackle, **then read the gauge**
 and adjust. Reading after making fast is the point; the transfer from tackle to cleat always loses a little, and
 the §21.3 rule is that every leg must end at or above 600 N, not near it.
+
+## 27. The build (9 Nov): bill of materials and procedure
+
+Arrangement I, four independent legs, quick-release at the boat end. Everything below follows from §18 (the
+arrangement), §21 (the tensioning rule), §22 (R-REL), §24 (the cleats), §25 (the pads) and §26 (the rope).
+
+### 27.1 Bill of materials
+
+Prices read from live vendor pages on 9 Nov 2026 and are time-sensitive; several carried promotional countdowns.
+
+| item | qty | unit | line | note |
+|---|---|---|---|---|
+| **Lancelin Braid 16 uni, 12 mm polyester double braid** — 20 m | 1 | 3,80 €/m | **76,00 €** | BL 2 900 kg = 28,4 kN. §26: 12 mm is set by stiffness, not strength |
+| **Wichard HR 2673 quick-release snap shackle**, 70 mm swivel eye | 4 | 81,38 € | **325,52 €** | WL 880 kg, BL 1 500 kg. Releases under load by lanyard — this is the R-REL item |
+| **Osculati chafe sleeve 06.452.01**, 450 mm, rope 12–16 mm | 4 | 9,60 € | **38,40 €** | For the crossed ropes on the deck edge (§18.2) |
+| **OCEAN PVM1 bearing pad**, 60 × 25 × 17 cm, solid PU, bolt-through | 2 | 119,45 € | **238,90 €** | 1 500 cm² against the 800 cm² of §25.1. **Load NOT published** |
+| **Caujolle PVC wheel Ø250**, bore Ø20, 100 kg published | 2 | 12,90 € | **25,80 €** | The only wheel found anywhere with a published load. Bracket to fabricate |
+| **PCE-CS 300 hanging gauge**, 0–300 kg, 0,05 kg | 1 | 175,08 € | **175,08 €** | ≈0,5 N steps at the 61 kg working point |
+| horn cleat for the EXO frame | 4 | ~20 € | *~80 €* | **NOT researched.** Only has to hold 600 N |
+| hauling tackle, 4:1 | 1 | ~150 € | *~150 €* | **NOT researched.** Outside the load path (§26.1) — need not match the rope |
+| soft strop around each boat cleat | 4 | ~10 € | *~40 €* | **NOT researched.** Gives the shackle something to clip to |
+
+**Verified lines 879,70 €. Estimated lines ~270 €. Total ≈ 1 150 €.**
+
+### 27.2 Margin check
+
+| element | breaking load | × design load (F_d = 1 901 N) | spec requires |
+|---|---|---|---|
+| rope, Lancelin Braid 16 | 28,4 kN | 14,9× | ≥ 9,5 kN (5×) |
+| **shackle, Wichard HR 2673** | **14,7 kN** | **7,7×** | ≥ 9,5 kN (5×) |
+| shackle, Wichard HR 2674 (+33 € across four) | 22,6 kN | 11,9× | ≥ 9,5 kN (5×) |
+
+With the 2673 the **shackle** is the governing element rather than the rope. It still clears the requirement by
+55 %, so this is a choice rather than a problem; the 2674 moves the governing element back to the rope for 33 €
+across the set.
+
+### 27.3 Rigging procedure
+
+1. Soft strop on each of the four boat cleats; snap shackle clipped to the strop, lanyard led where it can be
+   reached from the EXO.
+2. Chafe sleeve on each crossed rope where it crosses the deck edge.
+3. Per leg: haul with the tackle (rolling hitch onto the leg), make fast on the EXO cleat, remove the tackle,
+   **then read the gauge and adjust.** Reading after making fast is the point — the transfer always loses a little.
+4. **Every leg at or above 600 N** (§21.3). The floor is what binds, not the ratio between legs; one leg below it
+   and a bumper opens under reverse thrust.
+5. Crossed ropes snug by hand, ~150 N, not tensioned.
+
+### 27.4 Release procedure
+
+**Pods to neutral, then pull the ring.** Not negotiable: §22.3 measured the remaining leg spiking to 2 419 N —
+3,2× design — if the legs go while full differential thrust is applied, and by two legs gone the boat is
+unrestrained. With the pods neutral, loads fall monotonically to zero as the shackles let go.
+
+### 27.5 Before the first powered trial
+
+1. **Inspect the cleats** (§24.3): CE-marked hull with original cleats, and through-bolted to backing plates. Not
+   a test rig — ten minutes with a torch from below. If either fails, the gate returns and `V_spec_zero_fittings`
+   is the fallback at 6× peak rope load.
+2. **Ask Plastimo** whether their 0,10 bar is a bearing limit or an inflation figure (§25.1), or get a compression
+   curve from a French elastomer maker for a documented pad.
+3. **Ask Caujolle** for the wheel's bracket/axle arrangement before fabricating.
+
+### 27.6 What the market would not tell us
+
+Three items have **no published load rating anywhere**: the bearing pads, every purpose-made marine dock wheel,
+and all chafe gear. For the pads and the wheel this is the brief's unknown-means-unknown case, carried as such.
+The chafe gear is not load-bearing, so it does not matter there.
+
+One item is over-specified by a factor nobody needs and it is worth naming so it is not re-bought: the research
+first proposed four load-releasing rope clutches plus a custom 12 mm 6:1 tackle, about **1 220 € for the
+tensioning section alone**. That rested on treating release-under-load as a requirement at the EXO end, where
+§22 puts it at the boat end. Cleats plus one shared tackle do the same job for roughly **230 €**.
