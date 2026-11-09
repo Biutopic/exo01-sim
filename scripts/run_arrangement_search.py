@@ -244,6 +244,16 @@ for _ks in (27000.0, 13500.0, 5000.0, 2000.0, 800.0):
 C("Y_full_rove", "ONE continuous rope through blocks: all four of arrangement I's legs on a single tension",
   lambda t, g: AR.build("Y_full_rove", preload_N=t, snug_N=g), 1, primary=("ROVE",))
 
+# Arrangement I with WEBBING on the short midship springs instead of rope. A 25 mm polyester ratchet strap over
+# 1,88 m is far stiffer than 12 mm double braid; the springs are not wave-governed (DAF <= 1,1), so this may be a
+# free practical simplification - or it may push their peak up. Measured rather than assumed.
+for _kw in (50000.0, 100000.0, 150000.0, 250000.0):
+    C(f"I_webbing_springs_{int(_kw)}",
+      f"Arrangement I with ratchet-strap springs ({_kw:.0f} N/m) instead of 12 mm rope",
+      lambda t, g, _k=_kw: (pair("SPRING", FWD_POST, MID_CLEAT, t0=t, k=_k)
+                            + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g) + rear() + wheels()),
+      4, primary=("SPRING",))
+
 if ONLY:
     CANDS = {k: v for k, v in CANDS.items() if k in ONLY}
 

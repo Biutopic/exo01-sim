@@ -1026,3 +1026,66 @@ rather than plain eyes or bowlines — and a new requirement for the specificati
 Not modelled and still open: the separation transient (two free bodies in water), and whether the rear bumpers
 push the hulls apart usefully or merely drop contact. Both matter for what happens in the five seconds after the
 ring is pulled, and neither is a static question.
+
+## 23. Addendum (9 Nov): the build — webbing against rope on the springs
+
+Specifying what to actually buy raised a question the study had never asked: every run so far assumed 12 mm rope
+everywhere, at the one stiffness K_ROPE["mid"] = 13 500 N/m. A ratchet strap is far stiffer, and it is also its own
+tensioner, which would delete the tackle, the cleat and the clutch from the springs entirely. Worth measuring.
+
+| spring element | min preload | wave peak | boat roll | fatal single losses |
+|---|---|---|---|---|
+| 12 mm rope, 13 500 N/m | **600 N** | 647 N | 10,20° | 0/4 |
+| webbing ~50 000 N/m | **600 N** | **524 N** | 9,97° | 0/4 |
+| webbing ~100 000 N/m | 800 N | 533 N | 9,86° | 0/4 |
+| webbing ~150 000 N/m | 1 000 N | 536 N | 9,76° | 0/4 |
+| webbing ~250 000 N/m | 1 600 N | 600 N | 9,68° | 0/4 |
+
+**Stiffer springs lower the peak**, which is not obvious until you see where the peak lives: it is in the CROSSED
+ropes, which are wave-governed. Stiffening the springs reduces the boat's motion, so the crossed ropes see less.
+Every webbing case beats rope on peak load, on roll, and ties it on redundancy.
+
+The cost is preload. The optimum sits near **50 000 N/m**, and above it the preload needed for `diff_opp` climbs:
+600 → 800 → 1 000 → 1 600 N.
+
+### 23.1 Which band is a real strap in? Unpublished, and it straddles the optimum
+
+For 25 mm polyester webbing over the spring's 1,88 m, taking the usual 7–10 % elongation at break:
+
+| strap | stretch at 600 N | implied k |
+|---|---|---|
+| 800 kg MBL, 7 % | 10,1 mm | **60 kN/m** |
+| 2 000 kg MBL, 10 % | 5,8 mm | 104 kN/m |
+| 2 000 kg MBL, 7 % | 4,0 mm | 149 kN/m |
+| 5 000 kg MBL, 7 % | 1,6 mm | 373 kN/m |
+
+So the **lighter** strap is the better one mechanically — which inverts the usual instinct to buy the strongest.
+But an 800 kg strap is 7,8 kN MBL against the 9,5 kN the springs require, so the strap soft enough to be optimal
+is too weak, and the strap strong enough is too stiff. That bind is real.
+
+Worse, this table is the WEBBING alone. The ratchet mechanism, the wrap on the mandrel and the hooks all add
+compliance, so installed stiffness is lower than these figures and **nobody publishes it**. The brief's rule
+applies again: unknown, so either bound it or measure it.
+
+**Measuring it takes five minutes**: rig the strap, pull to 600 N on the gauge, measure the extension. k = 600/x.
+Until that is done, a strap-sprung build must be preloaded to **1 000 N** to cover the stiff case — which is still
+a better peak (536 N) than rope at 600 N (647 N), but presses harder on the one gate that is already open: **the
+host boat's cleat ratings are unknown** (§18.1), and 1 000 N is two-thirds more pull-out load than 600 N.
+
+### 23.2 Build decision
+
+**Crossed stern ropes: 12 mm polyester rope, always.** They are the wave-governed elements and §18.2 requires them
+to stay the longest, softest elements in the set. Webbing there would be the wrong direction.
+
+**Midship springs: rope at 600 N by default**, because it keeps the least load on unrated cleats, and the stiffness
+is known rather than inferred. Ratchet straps are the better choice on peak load and much the better choice on
+handling — they are their own tensioner — and become the recommendation the moment either of two things happens:
+the strap's installed stiffness is measured, or the cleats are rated and 1 000 N is shown to be comfortable.
+
+### 23.3 A limitation this exposed
+
+The model carries ONE rope stiffness for every rope regardless of length. Real axial stiffness goes as 1/L, so the
+1,88 m spring and the 3,60 m crossed rope cannot both be 13 500 N/m — they should differ by about a factor of two.
+This has been true since §1 and does not change any ranking, since every arrangement was compared on the same
+assumption, but it means the absolute stiffnesses are nominal. Fixing it is a per-element EA/L, and it should be
+done before any number here is used as a procurement specification rather than a comparison.
