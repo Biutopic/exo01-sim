@@ -40,7 +40,7 @@ for eid, e in sorted(a["elements"].items(), key=lambda kv: -max(abs(kv[1]["max_a
         continue
     des = G_DYN * ch
     rows.append(dict(id=eid, kind=e["kind"], L=e["length_m"], ch=ch, src=src, design=des,
-                     mbl=(F_TEXTILE if e["kind"] in ("line", "bridle") else F_METAL) * des,
+                     mbl=(F_TEXTILE if e["kind"] in ("line", "bridle", "yoke") else F_METAL) * des,
                      daf=e["dynamic_amplification"]))
 
 pts = [p for p in a["attachment_points"] if p["max_resultant_N"] >= 1.0]
@@ -102,7 +102,7 @@ for r in rows:
         w(f"| `{r['id']}` | {r['kind']} | {r['L']:.2f} m | — | {r['src']} | — | — | "
           f"insurance only; size for handling, not load |")
         continue
-    cap = (f"MBL ≥ **{fmt(r['mbl'])} N**" if r["kind"] in ("line", "bridle")
+    cap = (f"MBL ≥ **{fmt(r['mbl'])} N**" if r["kind"] in ("line", "bridle", "yoke")
            else f"WLL basis ≥ **{fmt(r['mbl'])} N**")
     mark = " ⚠" if str(r["src"]).replace("static ", "") in YAW_CASES else ""
     w(f"| `{r['id']}` | {r['kind']} | {r['L']:.2f} m | {fmt(r['ch'])} N | {r['src']}{mark} | "

@@ -657,3 +657,97 @@ else: the wave governs them, not the statics. Keep them the longest and softest 
 4. **The pods' reverse-thrust fraction** — `diff_opp` assumes 100 % of forward, where a rim drive typically gives
    60–80 %, so the design case is probably conservative.
 5. **The three contact stiffnesses**, still unmeasured.
+
+## 19. Addendum (9 Nov): equalising the midship pair, and softening it — two routes to the same loss
+
+Two proposals, from two sketches: a single rope equalising the midship pair over turning blocks with one winch, and
+a shock absorber ("ressort") in series with the coupling rope. They look unrelated. They fail for the same reason,
+and measuring both is how that became visible.
+
+A new element was needed first. `bridle` is one rope from TWO points on the EXO over a turning point on the boat;
+the mirror did not exist. `yoke` is now the general equalised pair: two legs, four points, ONE tension, path length
+= the sum of the legs, with the rail run between the blocks folded into L0. `bridle` and the single-point yoke are
+special cases of it. Implementing it also fixed §16 defect 2 — the full-residual assembly had been lumping both
+bridle legs at one point while the Jacobian correctly took a moment per leg.
+
+### 19.1 The measurement
+
+Arrangement **X** is arrangement I with the two midship springs replaced by one equalised rope. Nothing else
+changes — same points, same crossed ropes, same bumpers, same wheels, same gauntlet.
+
+| | **I** — two independent springs | **X** — one equalised rope |
+|---|---|---|
+| minimum preload, statics | 558 N → design **600 N** | **2120 N** |
+| peak rope load | **621 N** | **4066 N** |
+| binding static case | `diff_opp` | `diff_opp` |
+| fatal single losses | **0 / 4** | **1 / 3** (lose the rope, lose both legs) |
+| beam wave 0,3 m / 2,5 s | engaged | **both bumpers open** — contact lost |
+| boat roll | 9.83° | 8.9° |
+| tensioning actions | 4 | **1** |
+
+**3,5× the preload and 6,3× the peak load, to save three tensioning actions.**
+
+### 19.2 Why: a symmetric equalised pair has exactly zero yaw capacity
+
+Not "less" — zero, and provably so rather than approximately. `tests/test_yoke_element.py` asserts it directly:
+mirrored legs at one tension produce no net sway force and no couple about either body, to machine precision.
+
+Both arrangements bind on `diff_opp` — one pod full ahead, one full astern, 2 395 N·m of pure yaw. Two independent
+springs resist that couple **by becoming unequal**: at the yawed pose one carries 524 N while the other falls to
+76 N, and the difference *is* the restoring couple. Equalise them and the mechanism is deleted, not weakened. The
+whole yaw demand then falls on the crossed stern ropes, on a short moment arm, and the preload has to climb until
+they alone can carry it.
+
+This is §13.2 reappearing at full size. There the free bow pulley restrained yaw 6× worse than two fixed legs, for
+exactly this reason. The lesson generalises: **equalisation is only free where the pair has no differential job.**
+
+### 19.3 The shock absorber reaches the same loss from the other side
+
+A spring in series cannot change what the coupling must hold — statics are statics. It changes the stiffness the
+boat feels, k_eff = 1/(1/k_rope + 1/k_shock), which the *softer* element dominates. Applied to the primary pair
+(`scripts/run_shock_absorber.py`, all nine static cases, arrangement I otherwise untouched):
+
+| absorber | k_eff (N/m) | min preload | at the design 600 N |
+|---|---|---|---|
+| none — rope alone | 13 500 | 600 N | holds |
+| 27000 N/m | 9000 | 600 N | holds |
+| 13500 N/m | 6750 | 800 N | **fails** (diff_opp) |
+| 8000 N/m | 5023 | 800 N | **fails** (diff_opp) |
+| 5000 N/m | 3648 | 1200 N | **fails** (diff_opp) |
+| 3000 N/m | 2454 | 1200 N | **fails** (diff_opp) |
+| 2000 N/m | 1741 | 1200 N | **fails** (diff_opp) |
+| 1200 N/m | 1102 | 1200 N | **fails** (diff_opp) |
+| 800 N/m | 755 | 1600 N | **fails** (diff_opp) |
+| 500 N/m | 482 | 1600 N | **fails** (diff_opp) |
+
+Softening the pair reduces the differential force available at any given yaw rotation, so `diff_opp` fails at the
+design preload and the minimum climbs from 600 N to 1 600 N. Same mechanism, different route.
+
+The absorber is modelled as a **linear spring of unlimited stroke**. A real mooring compensator is progressive and
+hysteretic and bottoms out; past that point the rope stiffness returns in full and the peak is the rope-only peak.
+That makes these figures optimistic for the absorber, which only strengthens the conclusion.
+
+**Where an absorber would pay, and is not yet tested:** the crossed stern ropes. They are wave-governed with
+amplification 4,2–4,5 against ≤1,1 for everything else (§18.2), and they carry no static preload job. That is the
+open question this addendum leaves behind.
+
+### 19.4 Tensioning: no winch is needed, but a dynamometer is
+
+At 600 N per spring, hand tension is sufficient with any purchase:
+
+| method | hand force for 600 N | verdict |
+|---|---|---|
+| ratchet strap (~12:1 lever) | ~50–150 N on the handle | ample, and controllable |
+| 4:1 tackle on blocks | ~180 N including sheave friction | trivial |
+| nœud de tendeur (~3:1, rope on rope) | ~200 N plus heavy friction | workable, marginal |
+| bare direct pull | 600 N | **no** — sustained haul is 200–400 N, and it cannot be cleated off at the top of a pull |
+
+The binding constraint is not reaching 600 N but **knowing** it was reached: the inline dynamometer of §18.2 stays
+mandatory whatever pulls the rope. Note the asymmetry — arrangement X at 2 120 N *would* need a powered winch, so
+the arrangement that saves three tensioning actions is also the one that forces a winch onto the frame.
+
+### 19.5 Decision
+
+**Arrangement I stands unchanged.** X is registered as `X_yoke_midship_crossed` and kept in the catalogue as a
+measured negative result, not deleted: it is the cleanest demonstration in the study of why the midship pair must
+stay independent.

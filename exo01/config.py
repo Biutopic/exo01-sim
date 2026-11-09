@@ -151,6 +151,14 @@ def validate(cfg):
             pt = ln.get("exo_point_b_m")
             if pt is None or len(pt) != 3 or not all(finite(v) and v is not None for v in pt):
                 issues.append(("error", f"line {ln.get('id')}: a bridle needs exo_point_b_m (the second leg) as three finite numbers"))
+        if str(ln.get("kind", "line")).lower() == "yoke":
+            pt = ln.get("boat_point_b_m")
+            if pt is None or len(pt) != 3 or not all(finite(v) and v is not None for v in pt):
+                issues.append(("error", f"line {ln.get('id')}: a yoke needs boat_point_b_m (the second leg) as "
+                                        f"three finite numbers"))
+        if ln.get("boat_point_b_m") is not None and str(ln.get("kind", "line")).lower() != "yoke":
+            issues.append(("error", f"line {ln.get('id')}: boat_point_b_m (a second boat leg) applies to a yoke, "
+                                    f"not to {ln.get('kind')}"))
         if ln.get("axis_m") is not None:
             ax = ln["axis_m"]
             if len(ax) != 3 or not all(finite(v) and v is not None for v in ax) or not any(ax):

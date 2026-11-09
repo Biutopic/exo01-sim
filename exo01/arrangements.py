@@ -89,6 +89,17 @@ def crossed(id_, exo, boat, k=None, t0=0.0):
                  boat_point_m=list(boat), stiffness_N_per_m=k, pretension_N=t0)]
 
 
+def yoke(id_, exo, boat, k=None, t0=0.0):
+    """ONE rope making a mirrored pair, equalised by turning blocks at the posts and a winch on the rail between
+    them. Mechanically the pair of `pair()`, minus their differential stiffness: a single tension in both legs.
+    Path length is the sum of the two legs; the rail run between the blocks is fixed and folds into L0."""
+    k = K_ROPE["mid"] if k is None else k
+    return [dict(id=id_, kind="yoke",
+                 exo_point_m=[exo[0], +exo[1], exo[2]], boat_point_m=[boat[0], +boat[1], boat[2]],
+                 exo_point_b_m=[exo[0], -exo[1], exo[2]], boat_point_b_m=[boat[0], -boat[1], boat[2]],
+                 stiffness_N_per_m=k, pretension_N=t0)]
+
+
 def vee_pulley(t0, k=None):
     """One continuous rope from both EXO anchors over a pulley at the stem: the pulley equalises the tension."""
     k = K_ROPE["mid"] if k is None else k
@@ -173,6 +184,16 @@ ARRANGEMENTS = {
         preload=600.0, ops=4, primary=("SPRING",), fittings="midship and stern cleats",
         note="Best of seventeen: 600 N preload, 647 N peak, full redundancy, holds all 16 wind cases. Conflicts with "
              "the cahier des charges under a broad reading of 'the boat carries nothing' (section 17)."),
+    "X_yoke_midship_crossed": _A(
+        lambda t, g: (yoke("YOKE", FWD_POST, MID_CLEAT, t0=t)
+                      + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g) + bumpers() + wheels()),
+        "MEASURED NEGATIVE RESULT (section 19): arrangement I with the midship springs equalised into one rope",
+        preload=2150.0, ops=1, primary=("YOKE",), fittings="midship and stern cleats",
+        note="Kept as evidence, not as an option. One winch and one tensioning action instead of four, at 3,5x the "
+             "preload (2120 N) and 6,3x the peak load (4080 N), with a single point of failure and contact lost in "
+             "a 0,3 m beam wave. A symmetric equalised pair has provably ZERO yaw capacity, and the binding case "
+             "diff_opp is pure yaw: the springs' job is to be unequal. Also needs a powered winch, which arrangement "
+             "I does not. Section 19 has the mechanism."),
     "U_sling_midship": _A(
         lambda t, g: (slings(g) + pair("SPRING", FWD_POST, MID_CLEAT, t0=t) + bumpers() + wheels()),
         "Under-hull slings (snug) + 2 midship springs carrying the preload",
@@ -247,6 +268,9 @@ def element_geometry(arrangement_id=None, preload_N=None, snug_N=T_SNUG):
                    stiffness_N_per_m=e.get("stiffness_N_per_m"), pretension_N=e.get("pretension_N"))
         if e.get("exo_point_b_m") is not None:
             rec["a2"] = list(np.asarray(e["exo_point_b_m"], float))
+        if e.get("boat_point_b_m") is not None:
+            rec["b2"] = (np.asarray(e["boat_point_b_m"], float)
+                         + np.array([X_BERTH, 0.0, Z_DATUM_OFFSET])).tolist()
         rec["length_m"] = float(np.linalg.norm(b - np.asarray(rec["a"], float)))
         out.append(rec)
     return out

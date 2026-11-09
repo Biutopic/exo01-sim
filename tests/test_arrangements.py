@@ -12,6 +12,7 @@ import numpy as np
 import pytest
 
 from exo01 import arrangements as AR
+from exo01.twobody import ELEMENT_KINDS
 
 ROOT = Path(__file__).resolve().parents[1]
 MARKER = "# ──────────────────────────────────────────────────────────────── A · preload sweep"
@@ -73,7 +74,7 @@ def test_every_arrangement_builds_and_is_well_formed():
         ids = [e["id"] for e in els]
         assert len(ids) == len(set(ids)), f"{aid} has duplicate element ids"
         for e in els:
-            assert e["kind"] in ("line", "fender", "strut", "bridle")
+            assert e["kind"] in ELEMENT_KINDS, f"{aid}: {e['id']} declares an unmodelled kind"
             assert e["stiffness_N_per_m"] > 0
             if e["kind"] == "bridle":
                 assert e.get("exo_point_b_m") is not None, f"{e['id']} is a bridle with one leg"

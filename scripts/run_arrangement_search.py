@@ -27,6 +27,7 @@ sys.path.insert(0, str(ROOT))
 warnings.simplefilter("ignore")
 import numpy as np  # noqa: E402
 
+from exo01 import arrangements as AR  # noqa: E402
 from exo01.analysis import evaluate, hydro_for, build_response, HYDRO_DEFAULTS  # noqa: E402
 
 OUT = ROOT / "results" / "coupling"
@@ -222,6 +223,11 @@ C("V_spec_zero_fittings", "Zero boat fittings: 2 under-hull slings + 2 fixed bow
 C("W_spec_sling_only", "Zero boat fittings, no bow rope: slings + bumpers + wheels only",
   lambda t, g: slings(t) + rear() + wheels(), 2, primary=("SLING",))
 
+C("X_yoke_midship_crossed", "Arrangement I with the two midship springs replaced by ONE equalised rope: a winch "
+                              "on the frame rail, turning blocks at the forward posts, one tension in both legs",
+  lambda t, g: (AR.yoke("YOKE", FWD_POST, MID_CLEAT, t0=t)
+                + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g) + rear() + wheels()), 1, primary=("YOKE",))
+
 if ONLY:
     CANDS = {k: v for k, v in CANDS.items() if k in ONLY}
 
@@ -303,7 +309,7 @@ def statics(els_fn, t0):
         r = solve(els, surge_N=c["surge"], yaw_Nm=c["yaw"])
         bump_ok = (not has_bump) or (r["bumper_min_N"] is not None and r["bumper_min_N"] >= BUMP_MIN_N)
         good = bool(r["converged"] and r["physical"] and not r["unrestrained"] and bump_ok)
-        tens = [v["T_N"] for v in r["elements"].values() if v["kind"] in ("line", "bridle")]
+        tens = [v["T_N"] for v in r["elements"].values() if v["kind"] in ("line", "bridle", "yoke")]
         out[c["id"]] = dict(ok=good, bumpers_loaded=bool(bump_ok),
                             bumper_min_N=None if r["bumper_min_N"] is None else round(r["bumper_min_N"], 1),
                             dx_mm=round(r["dx_mm"], 1), dyaw_deg=round(r["dyaw_deg"], 3),
@@ -343,14 +349,14 @@ def wave_metrics(els, t0, primary=()):
             model = build_response(r, hdd, cfg)
             rw = model.regular_wave(w["H_m"], w["T_s"], hd[0], DAMP, cfg["deck_acceleration_points"])
             el = rw.get("lines") or []
-            slack = [l["id"] for l in el if l.get("kind") in ("line", "bridle") and l["slack_in_cycle"]]
+            slack = [l["id"] for l in el if l.get("kind") in ("line", "bridle", "yoke") and l["slack_in_cycle"]]
             prim_slack = [i for i in slack if any(i.startswith(p_) for p_ in primary)] if primary else slack
             opens = [l["id"] for l in el if l.get("kind") == "fender" and l["slack_in_cycle"]]
             rel = rw.get("relative_motion") or {}
             tg = [v for k_, v in rel.items() if k_.startswith("transom_vs_deck_edge")]
             res[w["id"]] = dict(engaged=not prim_slack and not opens, primary_slack=prim_slack,
                                 secondary_slack=[i for i in slack if i not in prim_slack], opens=opens,
-                                peak_N=max((l["max_N"] for l in el if l.get("kind") in ("line", "bridle")), default=None),
+                                peak_N=max((l["max_N"] for l in el if l.get("kind") in ("line", "bridle", "yoke")), default=None),
                                 boat_roll_deg=round(rw["bodies"]["BOAT"]["amplitude_deg"]["roll"], 2),
                                 transom_gap_min_m=min((v["min_clearance_m"] for v in tg
                                                        if v["min_clearance_m"] is not None), default=None),
@@ -380,7 +386,7 @@ def min_preload_waves(els_fn, primary=()):
 def redundancy(els_fn, t0):
     """Lose any ONE tension element: how many single losses leave no static equilibrium in the worst case?"""
     els = els_fn(t0, T_SNUG)
-    ids = [e["id"] for e in els if e.get("kind") in ("line", "bridle", "strut")]
+    ids = [e["id"] for e in els if e.get("kind") in ("line", "bridle", "yoke", "yoke", "strut")]
     worst = [c for c in CASES if c["id"] in ("rev100", "diff_opp", "estop")]
     fatal = []
     for drop in ids:

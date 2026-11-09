@@ -1,0 +1,130 @@
+{
+ "arrangement": "I_fwd_midship_crossed",
+ "k_rope_N_per_m": 13500.0,
+ "cases": [
+  "moored",
+  "fwd100",
+  "rev50",
+  "rev70",
+  "rev100",
+  "estop",
+  "diff_one",
+  "diff_opp"
+ ],
+ "rows": [
+  {
+   "k_shock_N_per_m": null,
+   "k_eff_N_per_m": 13499.8,
+   "min_preload_N": 600,
+   "at_600N": {
+    "ok": true,
+    "peak_T_N": 760.5423739514231,
+    "peak_case": "diff_opp",
+    "max_dx_mm": 15.74978412276136,
+    "max_dyaw_deg": 0.4583644932818089,
+    "bumper_min_N": 79.93826595333874
+   }
+  },
+  {
+   "k_shock_N_per_m": 27000.0,
+   "k_eff_N_per_m": 9000.0,
+   "min_preload_N": 600,
+   "at_600N": {
+    "ok": true,
+    "peak_T_N": 767.2832733099317,
+    "peak_case": "diff_opp",
+    "max_dx_mm": 16.72098006702282,
+    "max_dyaw_deg": 0.5723104305220132,
+    "bumper_min_N": 17.13977454596005
+   },
+   "stroke_at_preload_mm": 22.2,
+   "stroke_at_peak_mm": 28.4,
+   "extra_travel_vs_rope_mm": 28.4
+  },
+  {
+   "k_shock_N_per_m": 13500.0,
+   "k_eff_N_per_m": 6750.0,
+   "min_preload_N": 800,
+   "at_600N": {
+    "ok": false,
+    "failed_case": "diff_opp",
+    "reason": "a bumper opened"
+   }
+  },
+  {
+   "k_shock_N_per_m": 8000.0,
+   "k_eff_N_per_m": 5023.3,
+   "min_preload_N": 800,
+   "at_600N": {
+    "ok": false,
+    "failed_case": "diff_opp",
+    "reason": "a bumper opened"
+   }
+  },
+  {
+   "k_shock_N_per_m": 5000.0,
+   "k_eff_N_per_m": 3648.6,
+   "min_preload_N": 1200,
+   "at_600N": {
+    "ok": false,
+    "failed_case": "diff_opp",
+    "reason": "a bumper opened"
+   }
+  },
+  {
+   "k_shock_N_per_m": 3000.0,
+   "k_eff_N_per_m": 2454.5,
+   "min_preload_N": 1200,
+   "at_600N": {
+    "ok": false,
+    "failed_case": "diff_opp",
+    "reason": "a bumper opened"
+   }
+  },
+  {
+   "k_shock_N_per_m": 2000.0,
+   "k_eff_N_per_m": 1741.9,
+   "min_preload_N": 1200,
+   "at_600N": {
+    "ok": false,
+    "failed_case": "diff_opp",
+    "reason": "a bumper opened"
+   }
+  },
+  {
+   "k_shock_N_per_m": 1200.0,
+   "k_eff_N_per_m": 1102.0,
+   "min_preload_N": 1200,
+   "at_600N": {
+    "ok": false,
+    "failed_case": "diff_opp",
+    "reason": "a bumper opened"
+   }
+  },
+  {
+   "k_shock_N_per_m": 800.0,
+   "k_eff_N_per_m": 755.2,
+   "min_preload_N": 1600,
+   "at_600N": {
+    "ok": false,
+    "failed_case": "diff_opp",
+    "reason": "a bumper opened"
+   }
+  },
+  {
+   "k_shock_N_per_m": 500.0,
+   "k_eff_N_per_m": 482.1,
+   "min_preload_N": 1600,
+   "at_600N": {
+    "ok": false,
+    "failed_case": "diff_opp",
+    "reason": "a bumper opened"
+   }
+  }
+ ],
+ "caveats": [
+  "The absorber is modelled as a LINEAR spring of unlimited stroke. Real mooring compensators are progressive and hysteretic, and they bottom out: past that point the rope stiffness returns in full and the peak is the rope-only peak, not the soft one.",
+  "Stroke is the ABSORBER's own extension. The boat's displacement is reported separately as max_dx_mm and includes it.",
+  "Statics cannot be improved by a series spring - the same load must be carried. What changes is displacement, and in a wave, the peak."
+ ]
+}

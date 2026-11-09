@@ -133,12 +133,20 @@ def line_geometry(hb, pose_e, pose_b):
         b = to_world(pose_b, ln["boat_point_m"])
         L = float(np.linalg.norm(b - a))
         u = (b - a) / L if L > 0 else np.zeros(3)
-        if str(ln.get("kind", "line")).lower() == "bridle":
+        kind_ = str(ln.get("kind", "line")).lower()
+        if kind_ == "bridle":
             a2 = to_world(pose_e, ln["exo_point_b_m"])
             L2 = float(np.linalg.norm(b - a2))
             u2 = (b - a2) / L2 if L2 > 0 else np.zeros(3)
             L = L + L2
             u = u + u2            # resultant direction of the two legs (not a unit vector)
+        elif kind_ == "yoke":
+            b2 = to_world(pose_b, ln["boat_point_b_m"])
+            a2 = to_world(pose_e, ln["exo_point_b_m"]) if ln.get("exo_point_b_m") is not None else a
+            L2 = float(np.linalg.norm(b2 - a2))
+            u2 = (b2 - a2) / L2 if L2 > 0 else np.zeros(3)
+            L = L + L2
+            u = u + u2
         T0 = float(ln.get("pretension_N", d.get("pretension_N", 0.0)))
         k = float(ln.get("stiffness_N_per_m", d.get("stiffness_N_per_m", 0.0)))
         s = element_sign(ln)
@@ -212,18 +220,24 @@ def clearances(cfg, pose_e, pose_b, exo_assembly):
 
 
 # ---------------------------------------------------------------- coupled static equilibrium with tension-only lines
-ELEMENT_KINDS = {"line": +1, "fender": -1, "strut": 0, "bridle": +1}
+ELEMENT_KINDS = {"line": +1, "fender": -1, "strut": 0, "bridle": +1, "yoke": +1}
 # sign of the admissible force: line = tension only (T >= 0), fender = compression only (T <= 0, e.g. a push bar or a
 # fender between the EXO rear deck edge and the boat's transom), strut = bilateral (a rigid or bolted link),
 # bridle = one continuous tension-only rope from TWO exo points over a pulley on the boat: the pulley equalises the
 # tension, so the single tension T acts along both legs and the rope's length is the sum of the two leg lengths.
 # A bridle carries `exo_point_m` (leg A), `exo_point_b_m` (leg B) and `boat_point_m` (the pulley).
+#
+# yoke = the mirror: one continuous rope from ONE point on the EXO (a winch or turning block on the frame) to TWO
+# points on the boat. The single tension acts along both legs and the path length is the sum of the two leg lengths.
+# A yoke carries `exo_point_m` (the winch), `boat_point_m` (leg A) and `boat_point_b_m` (leg B).
+# Equalising a symmetric pair this way removes the differential stiffness two independent ropes would have had -
+# the same effect COUPLING.md section 13.2 measured for a free pulley against fixed legs.
 
 
 def element_sign(ln):
     kind = str(ln.get("kind", "line")).lower()
     if kind not in ELEMENT_KINDS:
-        raise ValueError(f"line {ln.get('id')}: unknown kind {kind!r} (line, fender, strut)")
+        raise ValueError(f"line {ln.get('id')}: unknown kind {kind!r} (line, fender, strut, bridle, yoke)")
     return ELEMENT_KINDS[kind]
 
 
@@ -253,6 +267,28 @@ def _line_forces(hb, lines_cfg, pose_e, pose_b, L0, k, active=None):
                             legs=[(a, T * u1), (a2, T * u2)], leg_len_m=(L1, L2),
                             half_angle_deg=float(np.degrees(np.arccos(np.clip(np.linalg.norm(u1 + u2) / 2.0, -1, 1)))),
                             pulley_reaction_N=float(T * np.linalg.norm(u1 + u2))))
+            continue
+        if str(ln.get("kind", "line")).lower() == "yoke":
+            # One continuous rope making TWO legs that share a single tension, because the turning points between
+            # them (blocks on the frame, a winch on the rail) equalise it. The general form has four points:
+            #   leg A: exo_point_m   -> boat_point_m
+            #   leg B: exo_point_b_m -> boat_point_b_m   (falls back to exo_point_m when only one EXO point is given)
+            # Rope between the turning points runs along the frame; its length is fixed, so it folds into L0.
+            b2 = to_world(pose_b, ln["boat_point_b_m"])
+            a2 = to_world(pose_e, ln["exo_point_b_m"]) if ln.get("exo_point_b_m") is not None else a
+            d1, d2 = b - a, b2 - a2
+            L1, L2 = float(np.linalg.norm(d1)), float(np.linalg.norm(d2))
+            u1 = d1 / L1 if L1 > 1e-12 else np.zeros(3)
+            u2 = d2 / L2 if L2 > 1e-12 else np.zeros(3)
+            L = L1 + L2
+            ext = kk * (L - l0)
+            T = ext if (active is None and ext > 0.0) or (active is not None and active[i]) else 0.0
+            out.append(dict(id=ln["id"], a=a, a2=a2, b=b, b2=b2, L=L, u=u1 + u2, T=T, slack=(T == 0.0), L0=l0, k=kk,
+                            extension_N=ext, sign=s, kind="yoke",
+                            legs=[(a, T * u1), (a2, T * u2)], legs_b=[(b, -T * u1), (b2, -T * u2)],
+                            leg_len_m=(L1, L2),
+                            half_angle_deg=float(np.degrees(np.arccos(np.clip(np.linalg.norm(u1 + u2) / 2.0, -1, 1)))),
+                            winch_reaction_N=float(T * np.linalg.norm(u1 + u2))))
             continue
         if s < 0 and ln.get("_u0") is not None:
             # fender: signed penetration along its nominal axis, so that a transom pushed past the contact point keeps
@@ -306,8 +342,13 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
     def _lnom(l):
         b_ = to_world(pose_b0, l["boat_point_m"])
         d1 = np.linalg.norm(b_ - to_world(pose_e0, l["exo_point_m"]))
-        if str(l.get("kind", "line")).lower() == "bridle":
+        kind_ = str(l.get("kind", "line")).lower()
+        if kind_ == "bridle":
             return float(d1 + np.linalg.norm(b_ - to_world(pose_e0, l["exo_point_b_m"])))
+        if kind_ == "yoke":
+            a2_ = (to_world(pose_e0, l["exo_point_b_m"]) if l.get("exo_point_b_m") is not None
+                   else to_world(pose_e0, l["exo_point_m"]))
+            return float(d1 + np.linalg.norm(to_world(pose_b0, l["boat_point_b_m"]) - a2_))
         return float(d1)
 
     Lnom = np.array([_lnom(l) for l in lines_cfg])
@@ -363,7 +404,12 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
                     Me += np.cross(p_ - pe["com_world"], fp_)
             else:
                 Me += np.cross(l["a"] - pe["com_world"], f)
-            Fb -= f; Mb += np.cross(l["b"] - pb["com_world"], -f)
+            Fb -= f
+            if l.get("legs_b"):
+                for p_, fp_ in l["legs_b"]:
+                    Mb += np.cross(p_ - pb["com_world"], fp_)
+            else:
+                Mb += np.cross(l["b"] - pb["com_world"], -f)
         if external is not None:
             Fxe, Mxe, Fxb, Mxb = external(pe, pb)
             Fe = Fe + np.asarray(Fxe, float); Me = Me + np.asarray(Mxe, float)
@@ -416,7 +462,12 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
         for l in lf:
             f = l["T"] * l["u"]                        # on the EXO (toward the boat)
             Fe += f; Me += np.cross(l["a"] - pe["com_world"], f)
-            Fb -= f; Mb += np.cross(l["b"] - pb["com_world"], -f)
+            Fb -= f
+            if l.get("legs_b"):
+                for p_, fp_ in l["legs_b"]:
+                    Mb += np.cross(p_ - pb["com_world"], fp_)
+            else:
+                Mb += np.cross(l["b"] - pb["com_world"], -f)
         if external is not None:
             Fxe, Mxe, Fxb, Mxb = external(pe, pb)
             Fe = Fe + np.asarray(Fxe, float); Me = Me + np.asarray(Mxe, float)
