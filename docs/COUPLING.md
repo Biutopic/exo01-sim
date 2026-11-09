@@ -879,7 +879,21 @@ Two further points the datasheet settles:
    which flatters it; a real coil goes solid and is then rigid steel. So the real part performs no better than the
    modelled one and probably worse.
 
-**Where this part does belong: the dock lines from the pair to the quay.** There it is in series with the whole
+**The rubber type is the better product and changes nothing.** The other candidate checked was a Unimer wrap-around
+compensator (EPDM rubber, 520 mm, 710 g, for 14-18 mm rope): the line spirals around the body, the rubber stretches,
+and when the wrap is used up the rope goes straight and takes over. That inherent end-stop is better engineering
+than a coil going solid - it stops absorbing rather than becoming a rigid link - and the rubber is genuinely softer
+with more travel than the steel coil. It is also sized for 14-18 mm rope against the coupling's 12 mm, so the
+matching model would be the 10-12 mm one.
+
+None of that matters, and the reason is worth stating because it is why no further hardware needs checking.
+**Unimer publishes no force-elongation data either**, so the brief's rule applies: where manufacturer curves are
+unavailable, run a sensitivity analysis rather than invent a specification. That is what §20.3 already is. The
+sweep spans 800 to 27 000 N/m, which brackets everything a rubber compensator or a steel coil of this size could
+plausibly be, and **every value in that range makes the coupling worse**. The missing datasheet therefore blocks
+nothing: the conclusion does not depend on which absorber, because the whole space it could occupy has been tested.
+
+**Where these parts do belong: the dock lines from the pair to the quay.** There it is in series with the whole
 load path - one line, one path - which is the only topology §20.4 says a series spring helps. That is what a
 mooring spring is designed for. Inside the coupling, between parallel redundant elements, it is the wrong part in
 the wrong place, and this is not a sizing problem that a different model number fixes.
