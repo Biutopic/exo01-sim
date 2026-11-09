@@ -1143,7 +1143,7 @@ async function loadArrangements() {
   sel.innerHTML = Object.entries(ARR.catalogue.arrangements)
     .sort((a, b) => a[0].localeCompare(b[0]))
     .map(([k, v]) => `<option value="${k}">${k} — ${v.title}</option>`).join('');
-  sel.value = 'I_fwd_midship_crossed';
+  sel.value = ARR.catalogue.default || sel.value;   // the selected arrangement, from exo01/arrangements.py
   showArrMeta();
 }
 

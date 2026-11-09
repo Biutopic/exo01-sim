@@ -213,9 +213,19 @@ ARRANGEMENTS = {
 }
 
 
-def build(arrangement_id, preload_N=None, snug_N=T_SNUG):
+DEFAULT = "I_fwd_midship_crossed"
+"""The selected arrangement (decision of 9 Nov 2026, docs/COUPLING.md section 18).
+
+Chosen on mechanics for a FIXED ROUTE with a KNOWN HOST BOAT. It is the best of seventeen on every mechanical
+measure, and it knowingly departs from the cahier des charges rule against loading the host boat's fittings. That
+departure is scoped, not waived: the moment a second host boat or the 80 % compatibility target becomes binding,
+V_spec_zero_fittings is the arrangement to return to, at a factor of 6 in peak rope load.
+"""
+
+
+def build(arrangement_id=None, preload_N=None, snug_N=T_SNUG):
     """Element list for a named arrangement."""
-    a = ARRANGEMENTS[arrangement_id]
+    a = ARRANGEMENTS[arrangement_id or DEFAULT]
     t = a["design_preload_N"] if preload_N is None else float(preload_N)
     return a["build"](t, float(snug_N))
 
@@ -226,9 +236,10 @@ def catalogue():
             for k, v in ARRANGEMENTS.items()}
 
 
-def element_geometry(arrangement_id, preload_N=None, snug_N=T_SNUG):
+def element_geometry(arrangement_id=None, preload_N=None, snug_N=T_SNUG):
     """Element endpoints in a single frame (the EXO frame), ready for drawing."""
     out = []
+    arrangement_id = arrangement_id or DEFAULT
     for e in build(arrangement_id, preload_N, snug_N):
         b = np.asarray(e["boat_point_m"], float) + np.array([X_BERTH, 0.0, Z_DATUM_OFFSET])
         rec = dict(id=e["id"], kind=e.get("kind", "line"),

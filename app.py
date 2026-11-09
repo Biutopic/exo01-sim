@@ -615,7 +615,7 @@ def download(fname):
 @app.get("/api/arrangements")
 def get_arrangements():
     """The catalogue, with each arrangement's published verdict and whether it needs fittings on the host boat."""
-    return jsonify(_np(dict(arrangements=AR.catalogue(), snug_preload_N=AR.T_SNUG,
+    return jsonify(_np(dict(arrangements=AR.catalogue(), default=AR.DEFAULT, snug_preload_N=AR.T_SNUG,
                             stiffness_note=AR.STIFFNESS_NOTE)))
 
 
@@ -627,7 +627,7 @@ def post_arrangement():
     Returns the element geometry in the EXO frame plus the tension in each element, for drawing in the viewer.
     """
     body = request.get_json(force=True)
-    aid = body.get("arrangement") or "I_fwd_midship_crossed"
+    aid = body.get("arrangement") or AR.DEFAULT
     if aid not in AR.ARRANGEMENTS:
         return jsonify(error=f"unknown arrangement {aid!r}", available=sorted(AR.ARRANGEMENTS)), 400
     preload = body.get("preload_N")

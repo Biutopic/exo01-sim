@@ -596,3 +596,64 @@ load to buy 0,8° of roll.
 
 **Open question for the project, not for the model:** which reading of "le bateau ne porte rien" is intended. The
 answer changes the recommended arrangement.
+
+## 18. Decision (9 Nov): arrangement I, scoped to a fixed route
+
+**Selected: `I_fwd_midship_crossed`** — two 1,88 m springs from the EXO forward posts to the boat's midship cleats,
+two crossed stern ropes from the mid posts to the opposite stern cleats, the two rear bumpers, the two dockwheels.
+
+**Basis.** EXO-01 operates a known route with a known host boat. Generic compatibility across 80 % of hulls is a
+goal for the product, not a constraint on the first boat, so the mechanical case decides. On that case I wins every
+column of §15.2: 600 N of preload against 2 218 N, 647 N of peak rope load against 1 586 N, 10,2° of boat roll
+against 14,5°, yaw 3,6× tighter, surge 2,3× tighter, and it survives the loss of any single element where the
+brief's configuration survives none. It also holds all sixteen wind cases where the brief's holds twelve
+(`docs/PERFORMANCE.md` §3.2).
+
+**What this knowingly accepts.** §17 showed that any rope-to-cleat arrangement departs from two rules in the cahier
+des charges — *zéro modification des bateaux hôtes* and *le cadre reprend toutes les charges* — under the broad
+reading of the second. That departure is now a scoped decision rather than an oversight:
+
+| | accepted | revisit when |
+|---|---|---|
+| Load into the host's cleats | 571 N at the midship cleats, 137 N at the stern cleats | a host boat whose cleats cannot take it |
+| Dependence on cleat positions | this boat's geometry | a second host boat enters the programme |
+| Generic compatibility | not met | the 80 % target becomes binding |
+
+The fallback is `V_spec_zero_fittings`, which meets all three rules and costs a factor of 6 in peak rope load
+(4 075 N against 647 N) and half the redundancy, buying a factor of 3 in transmitted roll.
+
+### 18.1 The one thing that can actually fail
+
+**No cleat on Hydronaute has a known rating.** A design load of 1 901 N is trivial for a through-bolted cleat on a
+backing plate and entirely capable of tearing a screwed cleat out of a thin deck laminate — pull-out, not shear.
+Everything else in `docs/STRUCTURAL.md` has comfortable margin; this does not, because it has no margin at all until
+somebody looks.
+
+**This gates powered trials.** Verify or refit the four cleats the arrangement uses before any trial under thrust.
+Note the circularity to resolve with the project: a refit is itself the modification the cahier des charges
+forbids, so either the rule is read narrowly (no structural load, weight) or the refit is an accepted exception.
+
+### 18.2 What to build
+
+| element | ×  | geometry | design load | specify |
+|---|---|---|---|---|
+| midship spring | 2 | EXO (4,95, ±2,25, 0,30) → boat midship cleat (4,30, ±1,35, 0,80); **1,88 m** | F_k 761 N, F_d 1 901 N | **MBL ≥ 9,5 kN** — 12 mm polyester is far inside it |
+| crossed stern rope | 2 | EXO (2,10, ±2,25, 0,30) → **opposite** stern cleat (0,30, ∓1,30, 0,80); **3,60 m** | F_k 621 N (**wave**, DAF 4,2–4,5), F_d 1 553 N | **MBL ≥ 7,8 kN**; the longest, softest ropes in the set |
+| rear bumper | 2 | EXO crossmember (2,10, ±0,90) bearing on the transom | ~800 N, ≈0,2 bar | load the crossmember in line, no cantilevered bracket |
+| dockwheel | 2 | boat station 1,20, y ±1,49, 30 mm gap | **0 N in every static case** | physical stop and insurance; the gap needs no precision |
+
+Preload **600 N** on the springs, read on an inline dynamometer; the crossed ropes rigged **snug** (≈150 N), not
+tensioned. Four tensioning actions to couple, against the cahier des charges budget of 45 minutes for two people.
+
+**The crossed ropes are the ones to watch.** Their dynamic amplification is 4,2–4,5 against ≤1,1 for everything
+else: the wave governs them, not the statics. Keep them the longest and softest elements or they are what snatches.
+
+### 18.3 Still open, and unchanged by this decision
+
+1. **Cleat ratings** (§18.1) — gates trials.
+2. **The fender-couple defect** (§16) — the yaw-governed preloads stay lower bounds until it is fixed.
+3. **The capsize branch** (`docs/PERFORMANCE.md` §1) — resistance under thrust cannot be evaluated at the pose the
+   boat is actually in.
+4. **The pods' reverse-thrust fraction** — `diff_opp` assumes 100 % of forward, where a rim drive typically gives
+   60–80 %, so the design case is probably conservative.
+5. **The three contact stiffnesses**, still unmeasured.
