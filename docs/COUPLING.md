@@ -1089,3 +1089,58 @@ The model carries ONE rope stiffness for every rope regardless of length. Real a
 This has been true since §1 and does not change any ranking, since every arrangement was compared on the same
 assumption, but it means the absolute stiffnesses are nominal. Fixing it is a per-element EA/L, and it should be
 done before any number here is used as a procurement specification rather than a comparison.
+
+## 24. Addendum (9 Nov): the cleat gate, mostly closed
+
+§18.1 made unknown cleat ratings the gate on powered trials, and §18.3 kept it open. Specifying a build forced the
+question properly, and two things turn out to be in our favour.
+
+### 24.1 Every rope pulls DOWN on its cleat
+
+The direction of pull decides the failure mode. An upward pull levers fastenings out of a deck; a horizontal or
+downward pull bears into it. ISO 15084 tests strong points horizontally. Ours:
+
+| element | horizontal run | vertical | angle | at the cleat |
+|---|---|---|---|---|
+| midship spring ×2 | 1,85 m | −0,35 m | **−10,7°** | downward into the deck |
+| crossed stern rope ×2 | 3,58 m | −0,35 m | **−5,6°** | downward into the deck |
+
+All four pull **below** horizontal, because the EXO attachment points sit 0,35 m lower than the boat's cleats once
+the datum offset is applied. This is both the benign direction and close to the condition the standard tests. The
+failure mode §18.2 warned about — pull-out, not shear — is the one the geometry happens to avoid.
+
+### 24.2 What a compliant cleat is required to hold
+
+EN ISO 15084 clause 6.2, forward mooring strong points: **Pn = f × (3,5·LC − 4,3) kN**, where LC = (LH + LWL)/2
+and f is 1,0 for categories A/B, 0,9 for C, 0,75 for D. Breaking strength need not exceed a load equal to mLDC.
+
+LH is 8,00 m; LWL is not in the configuration, so a range is carried:
+
+| LWL | LC | category | required breaking strength | against our F_d = 1,90 kN |
+|---|---|---|---|---|
+| 7,00 m | 7,50 m | C, f = 0,90 | 19,8 kN | **10,4×** |
+| 7,00 m | 7,50 m | D, f = 0,75 | 16,5 kN | **8,7×** |
+| 7,50 m | 7,75 m | C, f = 0,90 | 20,5 kN | **10,8×** |
+| 7,50 m | 7,75 m | D, f = 0,75 | 17,1 kN | **9,0×** |
+
+The mLDC cap is 20,6 kN for a 2 100 kg boat and does not bind for category D.
+
+So a compliant cleat carries **8,7 to 10,8 times** the design load of the element attached to it, pulled in the
+benign direction. The operator's original argument — that cleats sized for mooring an 8 m boat are an order of
+magnitude above what this coupling asks — is **supported by the standard**, not merely plausible.
+
+### 24.3 What is still genuinely unknown, and it is no longer a test rig
+
+Two conditions, neither of which needs instrumentation:
+
+1. **Is the boat within the standard's scope?** EN ISO 15084 applies to CE-marked recreational craft. If the hull
+   predates CE marking, or the cleats are not original, the calculation above describes a boat other than this one.
+2. **Are the cleats properly backed?** A cleat through-bolted to a backing plate develops the standard's load; one
+   screwed into a cored deck does not, whatever its own casting is rated for. This is a ten-minute inspection from
+   below, not a pull test.
+
+**§18.1 is therefore downgraded from a gate to an inspection.** Verify those two things and the cleat question is
+answered. If either fails, it returns to being a gate and `V_spec_zero_fittings` is the fallback, at factor 6 in
+peak rope load (§18).
+
+Source: EN ISO 15084:2018 / ISO 15084:2003, clause 6.2.
