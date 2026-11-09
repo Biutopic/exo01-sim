@@ -1131,3 +1131,128 @@ $('viewTop').onclick = () => view('top'); $('viewSide').onclick = () => view('si
   ['rho', 'depth'].forEach((id) => $(id).addEventListener('change', evaluate));
   window.__exo = { S, bodies3d, selectComponent, firstOrderPreview, commitHandle, findHandle, evaluate, doEvaluate, writeLines, linesList, setThrust, runWave, autoWave, runOptimise, applyPose, startAnim, stopAnim, camera, orbit, scene, renderer, resize, view, placeHandles, renderComponents };
 })();
+
+// ============================================================ coupling arrangements
+// The picker writes an arrangement into host_boat.lines, so the existing solve, 3D rendering, tension colouring,
+// wave response and export all apply to it unchanged. One geometry source: exo01/arrangements.py.
+const ARR = { catalogue: null };
+
+async function loadArrangements() {
+  try { ARR.catalogue = await api('/api/arrangements'); } catch (e) { return; }
+  const sel = $('arrSel'); if (!sel) return;
+  sel.innerHTML = Object.entries(ARR.catalogue.arrangements)
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .map(([k, v]) => `<option value="${k}">${k} — ${v.title}</option>`).join('');
+  sel.value = 'I_fwd_midship_crossed';
+  showArrMeta();
+}
+
+function showArrMeta() {
+  const sel = $('arrSel'); if (!sel || !ARR.catalogue) return;
+  const m = ARR.catalogue.arrangements[sel.value]; if (!m) return;
+  const fit = m.needs_boat_fittings
+    ? `<span style="color:#ffb74d">needs ${m.needs_boat_fittings}</span>`
+    : `<span style="color:#81c784">no boat fittings</span>`;
+  $('arrMeta').innerHTML = `${m.n_elements} elements · design preload ${fmt(m.design_preload_N, 0)} N · `
+    + `${m.ops_actions} tensioning action${m.ops_actions === 1 ? '' : 's'} to couple · ${fit}<br>${m.note || ''}`;
+}
+
+async function applyArrangement() {
+  const sel = $('arrSel'); if (!sel || !S.config) return;
+  setStatus('loading arrangement…');
+  try {
+    const r = await api('/api/arrangement', { ...statePayload(), arrangement: sel.value });
+    const eb = effectiveBoat();
+    if (eb) {
+      eb.lines = r.config_lines;
+      eb.placement_in_exo_frame = Object.assign({}, eb.placement_in_exo_frame || {}, { x_m: r.berth_x_m });
+    }
+    renderLines(); placeLineHandles(); renderArrElements(r);
+    evaluate();
+    setStatus(`loaded ${sel.value} (${r.config_lines.length} elements) into the mooring lines`, 'ok');
+  } catch (e) { console.error('applyArrangement', e); setStatus(`arrangement: ${e.message}`, 'bad'); }
+}
+
+async function solveArrangement() {
+  const sel = $('arrSel'); if (!sel) return;
+  setStatus('solving…');
+  try {
+    const r = await api('/api/arrangement', {
+      ...statePayload(), arrangement: sel.value,
+      surge_N: parseFloat($('arrSurge').value) || 0,
+      sway_N: parseFloat($('arrSway').value) || 0,
+      yaw_Nm: parseFloat($('arrYaw').value) || 0,
+    });
+    renderArrElements(r);
+    setStatus('solved', 'ok');
+  } catch (e) { setStatus(`arrangement: ${e.message}`, 'bad'); }
+}
+
+function renderArrElements(r) {
+  const t = $('arrTable'); if (!t) return;
+  const rows = (r.elements || []).slice().sort((a, b) => Math.abs(b.tension_N || 0) - Math.abs(a.tension_N || 0));
+  t.innerHTML = '<tr><th>element</th><th>kind</th><th>length</th><th>load</th></tr>' + rows.map((e) => {
+    const T = e.tension_N;
+    const col = T === null || T === undefined ? '#90a4ae'
+      : (e.kind === 'fender' ? (T < -1 ? '#26c6da' : '#ef5350')
+        : (T > 1 ? '#ffeb3b' : '#ef5350'));
+    const label = T === null || T === undefined ? 'not computed'
+      : (e.kind === 'fender' ? `${fmt(-T, 0)} N compression` : `${fmt(T, 0)} N`);
+    return `<tr><td>${e.id}</td><td>${e.kind}</td><td>${fmt(e.length_m, 2)} m</td>`
+      + `<td style="color:${col}">${label}</td></tr>`;
+  }).join('');
+  const st = r.state || {}, d = r.demand || {};
+  const demand = (d.surge_N || d.sway_N || d.yaw_Nm)
+    ? `under ${fmt(d.surge_N, 0)} N surge / ${fmt(d.sway_N, 0)} N sway / ${fmt(d.yaw_Nm, 0)} N·m yaw: ` : 'still water: ';
+  $('arrNote').innerHTML = demand
+    + `${st.converged ? 'converged' : '<span style="color:#ef5350">did not converge</span>'}, `
+    + `surge ${fmt(st.dx_mm, 1)} mm, sway ${fmt(st.dy_mm, 1)} mm, yaw ${fmt(st.dyaw_deg, 2)}°. `
+    + (ARR.catalogue ? ARR.catalogue.stiffness_note : '');
+}
+
+// ============================================================ speed, wind and energy
+async function runPerformance() {
+  const out = $('perfOut'); if (!out) return;
+  out.textContent = 'computing…';
+  try {
+    const r = await api('/api/performance', {
+      ...statePayload(),
+      thrust_fraction: 1.0,
+      thrust_model: $('perfModel').value,
+      disk_diameter_m: parseFloat($('perfDisk').value) || 0.25,
+      wind_kn: parseFloat($('perfWind').value) || 0,
+      wind_from_deg: parseFloat($('perfDir').value) || 0,
+      current_m_s: parseFloat($('perfCur').value) || 0,
+      panel_tilt_deg: parseFloat($('perfTilt').value) || 0,
+      sun_fraction: (parseFloat($('perfSun').value) || 0) / 100,
+    });
+    const sp = r.speed, en = r.energy, w = r.wind, th = r.thrust;
+    const kn = (v) => (v === null || v === undefined) ? 'cannot make headway' : `${fmt(v, 2)} m/s = ${fmt(v / 0.514444, 2)} kn`;
+    const end = en.endurance;
+    let h = `<b>Speed at full thrust: ${kn(sp.U_m_s)}</b><br>`;
+    h += `by model — actuator disk ${fmt(sp.by_model.momentum, 2)}, constant power ${fmt(sp.by_model.constant_power, 2)}, `
+      + `constant ${fmt(sp.by_model.constant, 2)} m/s. The spread is the uncertainty until the pod's measured curve exists.<br>`;
+    h += `resistance ${fmt(r.resistance.total_N, 0)} N (EXO ${fmt(r.resistance.exo_N, 0)}, hull ${fmt(r.resistance.boat_N, 0)})<br>`;
+    if (w) {
+      h += `wind: apparent ${fmt(w.V_app_m_s, 2)} m/s at ${fmt(w.beta_deg, 0)}°, drag ${fmt(w.Fx_total_N, 0)} N; `
+        + `windage EXO ${fmt(r.windage.EXO.A_front_m2, 1)}/${fmt(r.windage.EXO.A_lateral_m2, 1)} m², `
+        + `boat ${fmt(r.windage.BOAT.A_front_m2, 1)}/${fmt(r.windage.BOAT.A_lateral_m2, 1)} m² (front/lateral)<br>`;
+    }
+    if (end) {
+      h += `endurance ${isFinite(end.hours) ? fmt(end.hours, 1) + ' h, ' + fmt(end.range_km, 0) + ' km' : 'solar covers the draw'}`
+        + ` at ${fmt(end.P_net_W, 0)} W net<br>`;
+    }
+    h += `<b>solar-neutral speed ${kn(en.solar_neutral_m_s)}</b> — held indefinitely at ${fmt(en.solar_w, 0)} W of array<br>`;
+    h += `<span class="nc">implied pod efficiency ${fmt(100 * th.implied.efficiency, 0)} % (ideal theory, an upper bound) · `
+      + `pose heel ${fmt(r.pose.heel_deg, 2)}° · ${r.caveats[0]}</span>`;
+    out.innerHTML = h;
+  } catch (e) {
+    out.innerHTML = `<span style="color:#ef5350">${e.message}</span>`;
+  }
+}
+
+$('arrSel') && $('arrSel').addEventListener('change', showArrMeta);
+$('arrApply') && $('arrApply').addEventListener('click', applyArrangement);
+$('arrSolve') && $('arrSolve').addEventListener('click', solveArrangement);
+$('perfRun') && $('perfRun').addEventListener('click', runPerformance);
+loadArrangements();

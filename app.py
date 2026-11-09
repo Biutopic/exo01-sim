@@ -19,6 +19,7 @@ import numpy as np
 from flask import Flask, jsonify, request, send_from_directory, Response
 
 from exo01 import __version__
+from exo01 import aero, arrangements as AR, performance as perf
 from exo01.analysis import build_response, evaluate, strip_private, has_boat, hydro_for, HYDRO_DEFAULTS
 from exo01.config import (CONFIG_DIR, SCENARIO_DIR, ROOT, list_scenarios, load_config, load_scenario, resolve,
                           resolve_scenario)
@@ -607,6 +608,192 @@ def post_optimise():
 @app.get("/api/download/<fname>")
 def download(fname):
     return send_from_directory(EXPORT_DIR, fname, as_attachment=True)
+
+
+# ------------------------------------------------------------------ coupling arrangements
+# One source of geometry (exo01/arrangements.py) for the studies, the explorer and this server.
+@app.get("/api/arrangements")
+def get_arrangements():
+    """The catalogue, with each arrangement's published verdict and whether it needs fittings on the host boat."""
+    return jsonify(_np(dict(arrangements=AR.catalogue(), snug_preload_N=AR.T_SNUG,
+                            stiffness_note=AR.STIFFNESS_NOTE)))
+
+
+@app.post("/api/arrangement")
+def post_arrangement():
+    """Solve one arrangement under an optional surge / sway / yaw demand.
+
+    Body: {base, overrides, arrangement, preload_N, snug_N, surge_N, sway_N, yaw_Nm}
+    Returns the element geometry in the EXO frame plus the tension in each element, for drawing in the viewer.
+    """
+    body = request.get_json(force=True)
+    aid = body.get("arrangement") or "I_fwd_midship_crossed"
+    if aid not in AR.ARRANGEMENTS:
+        return jsonify(error=f"unknown arrangement {aid!r}", available=sorted(AR.ARRANGEMENTS)), 400
+    preload = body.get("preload_N")
+    snug = float(body.get("snug_N") or AR.T_SNUG)
+    els = AR.build(aid, preload, snug)
+
+    cfg = _state_from_request(body)
+    hb = dict(cfg.get("host_boat") or {})
+    hb["lines"] = els
+    hb["placement_in_exo_frame"] = dict(hb.get("placement_in_exo_frame") or {}, x_m=AR.X_BERTH)
+    cfg = resolve(cfg, {"host_boat": hb})
+
+    surge = float(body.get("surge_N") or 0.0)
+    sway = float(body.get("sway_N") or 0.0)
+    yaw = float(body.get("yaw_Nm") or 0.0)
+
+    if surge or sway or yaw:
+        from exo01.twobody import coupled_equilibrium
+
+        def external(pe, pb):
+            # globally balanced: whatever is applied to one body is reacted on the other, with the moment
+            # transported between the two centres of mass. An unbalanced wrench makes a divergent solve look
+            # converged (COUPLING.md, the external-wrench fix).
+            Fb = np.array([-surge, -sway, 0.0])
+            Mb = np.array([0.0, 0.0, -yaw])
+            Fe = -Fb
+            Me = -Mb - np.cross(np.asarray(pb["com_world"]) - np.asarray(pe["com_world"]), Fb)
+            return Fe, Me, Fb, Mb
+
+        base = _evaluate_cached(cfg)
+        rho = float((cfg.get("environment") or {}).get("water_density_kg_m3") or 1000.0)
+        bmass = (base.get("bodies") or {}).get("boat", {}).get("mass") or {}
+        eq, beq, pe, pb, lines, info, q = coupled_equilibrium(
+            cfg, base["_assembly"], base["mass"]["total_mass_kg"], base["mass"]["com_m"],
+            base["_boat_assembly"], bmass["total_mass_kg"], bmass["com_m"], rho, G_STD, external=external)
+        tensions = {l["id"]: float(l["tension_N"]) for l in lines}
+        state = dict(converged=bool(info.get("converged")), dx_mm=1000 * float(q[3]), dy_mm=1000 * float(q[4]),
+                     dyaw_deg=float(np.degrees(q[5])), residual_relative=info.get("residual_relative"))
+    else:
+        res = _evaluate_cached(cfg)
+        ce = res.get("coupled_equilibrium") or {}
+        tensions = {l["id"]: float(l["tension_N"]) for l in (res.get("lines") or [])}
+        sh = ce.get("boat_shift_from_nominal") or {}
+        state = dict(converged=bool(ce.get("converged")),
+                     dx_mm=(sh.get("dx_m") * 1000.0) if sh.get("dx_m") is not None else None,
+                     dy_mm=(sh.get("dy_m") * 1000.0) if sh.get("dy_m") is not None else None,
+                     dyaw_deg=sh.get("dyaw_deg"), residual_relative=ce.get("residual_relative"))
+
+    geom = AR.element_geometry(aid, preload, snug)
+    for g in geom:
+        g["tension_N"] = tensions.get(g["id"])
+    meta = {k: v for k, v in AR.ARRANGEMENTS[aid].items() if k != "build"}
+    # config_lines is the element list exactly as host_boat.lines wants it, so the viewer can drop an arrangement
+    # straight into the configuration and let the existing solve, 3D rendering and export paths handle it.
+    return jsonify(_np(dict(arrangement=aid, meta=meta, elements=geom, state=state, config_lines=els,
+                            demand=dict(surge_N=surge, sway_N=sway, yaw_Nm=yaw),
+                            berth_x_m=AR.X_BERTH, z_datum_offset_m=AR.Z_DATUM_OFFSET)))
+
+
+# ------------------------------------------------------------------ speed, wind and energy
+_POSE_GATE_DEG = 5.0
+
+
+def _attitude(beq):
+    R = np.asarray(beq["R"], float)
+    return (float(np.degrees(np.arctan2(R[2, 1], R[2, 2]))),
+            float(np.degrees(np.arcsin(-np.clip(R[2, 0], -1.0, 1.0)))))
+
+
+@app.post("/api/performance")
+def post_performance():
+    """Speed, wind and energy at the current configuration.
+
+    Body adds: {thrust_fraction, thrust_model, disk_diameter_m, wind_kn, wind_from_deg, current_m_s,
+                panel_tilt_deg, sun_fraction}
+
+    POSE GATE: resistance is evaluated at the thrust-off pose. The coupled solve WITH thrust applied converges to a
+    capsized branch for some arrangements - 88.6 deg of heel, reported as physical - and resistance there understates
+    the boat's wetted area by 44 % (docs/PERFORMANCE.md section 1).
+    """
+    from exo01.propulsion import boat_geometry, exo_geometry
+
+    body = request.get_json(force=True)
+    cfg = _state_from_request(body)
+    cfg = resolve(cfg, {"propulsion": {"thrust_fraction": 0.0}})
+    res = _evaluate_cached(cfg)
+    if not has_boat(res):
+        return jsonify(error="performance needs a host boat in the configuration"), 400
+
+    heel, trim = _attitude(res["_boat_eq"])
+    if abs(heel) > _POSE_GATE_DEG:
+        return jsonify(error="pose gate", detail=f"boat heel {heel:.1f} deg at the reference pose; refusing to "
+                                                 f"evaluate resistance there", heel_deg=heel, trim_deg=trim), 409
+
+    exo_rows = exo_geometry(res["_assembly"], res["_eq"])
+    boat_geo = boat_geometry(res["_boat_assembly"], res["_boat_eq"])
+    res_cfg = cfg["propulsion"]["resistance"]
+
+    tilt = float(body.get("panel_tilt_deg") or 0.0)
+    acfg = dict(cfg.get("aero") or {})
+    acfg["exo_structure"] = dict(acfg.get("exo_structure") or {}, panel_tilt_deg=tilt)
+    cfg_a = dict(cfg, aero=acfg)
+    ft = res["_assembly"].world_tris(res["_eq"]["R"], res["_eq"]["G_body"], res["_eq"]["zG"])
+    ht = res["_boat_assembly"].world_tris(res["_boat_eq"]["R"], res["_boat_eq"]["G_body"], res["_boat_eq"]["zG"])
+    areas = aero.body_areas(cfg_a, float_tris_world=ft, hull_tris_world=ht)
+    coeffs, rho_air = areas["_coefficients"], areas["_rho_air_kg_m3"]
+
+    en = cfg.get("energy") or {}
+    prop = en.get("propulsion") or {}
+    T0_full = float(prop.get("total_bollard_N") or 1216.0)
+    P_elec = float(prop.get("total_electrical_kw") or 10.0) * 1000.0
+    frac = float(body.get("thrust_fraction", 1.0))
+    model = body.get("thrust_model") or "momentum"
+    D = float(body.get("disk_diameter_m") or 0.25)
+    A_disk = 2 * np.pi * (D / 2) ** 2
+
+    d = np.asarray(res["_eq"]["R"], float) @ np.asarray(
+        cfg["propulsion"]["units"]["EXO_PODS"]["direction_body"], float)
+    h_factor = float(np.hypot(d[0], d[1]))
+    T0 = T0_full * h_factor * frac
+
+    V = float(body.get("wind_kn") or 0.0) * perf.KNOT
+    ang = float(body.get("wind_from_deg") or 0.0)
+    cur = float(body.get("current_m_s") or 0.0)
+    base = dict(T0=T0, A_disk=A_disk, P_water=None, exo_rows=exo_rows, boat_geo=boat_geo, res_cfg=res_cfg)
+
+    U = perf.max_speed(model=model, V_true=V, wind_from_deg=ang, areas=areas, coeffs=coeffs,
+                       rho_air=rho_air, current_m_s=cur, **base)
+    bat = en.get("battery") or {}
+    sol = en.get("solar") or {}
+    solar_full = min(float(sol.get("array_kwp") or 0.0) * 1000.0 * float(sol.get("derate_to_dc_fraction") or 0.8),
+                     float(sol.get("mppt_max_charge_w") or 1e9))
+    solar = solar_full * float(body.get("sun_fraction", 1.0))
+    hotel = float(en.get("hotel_load_w") or 150.0)
+
+    end = None if U is None else perf.endurance(
+        U, model=model, P_electrical_max=P_elec, battery_kwh=float(bat.get("total_kwh") or 0.0),
+        usable_fraction=float(bat.get("usable_fraction") or 0.8), hotel_w=hotel, solar_w=solar,
+        V_true=V, wind_from_deg=ang, areas=areas, coeffs=coeffs, rho_air=rho_air, current_m_s=cur, **base)
+    sn = perf.solar_neutral_speed(model=model, P_electrical_max=P_elec, solar_w=solar, hotel_w=hotel,
+                                  current_m_s=cur, **base)
+    wind = perf.wind_resistance(U or 0.0, V, ang, areas, coeffs, rho_air) if V else None
+    hyd = perf.hydro_resistance(max((U or 0.0) - cur, 0.0), exo_rows, boat_geo, res_cfg)
+
+    models = {m: perf.max_speed(model=m, V_true=V, wind_from_deg=ang, areas=areas, coeffs=coeffs,
+                                rho_air=rho_air, current_m_s=cur, **base)
+              for m in ("constant", "constant_power", "momentum")}
+
+    return jsonify(_np(dict(
+        pose=dict(heel_deg=heel, trim_deg=trim, gate_deg=_POSE_GATE_DEG),
+        thrust=dict(bollard_N=T0_full, horizontal_factor=h_factor, setting_fraction=frac, applied_N=T0,
+                    model=model, disk_diameter_m=D,
+                    implied=perf.implied_efficiency(T0_full * h_factor, A_disk, P_elec)),
+        speed=dict(U_m_s=U, U_kn=None if U is None else U / perf.KNOT, by_model=models,
+                   current_m_s=cur, U_through_water_m_s=None if U is None else U - cur),
+        resistance=hyd, wind=wind,
+        windage={b: {k: v for k, v in areas[b].items()
+                     if k in ("A_front_m2", "A_lateral_m2", "z_lateral_m", "L_m")} for b in ("EXO", "BOAT")},
+        energy=dict(endurance=end, solar_neutral_m_s=sn, solar_w=solar, solar_full_w=solar_full, hotel_w=hotel,
+                    battery_kwh=bat.get("total_kwh"), usable_fraction=bat.get("usable_fraction")),
+        caveats=[
+            "Wind coefficients and the two structural solidity ratios are ASSUMED; they dominate every wind figure.",
+            "The pod disk diameter is not recorded; it is worth about 0.2 m/s across its plausible range.",
+            "Resistance is evaluated at the thrust-off pose (see the pose gate).",
+            "Sinkage and trim at speed, wave-added resistance and gusts are not modelled.",
+        ])))
 
 
 if __name__ == "__main__":

@@ -62,11 +62,41 @@
       <div id="linesNote" class="row small"></div>
     </details>
 
+    <details class="sec" id="arrSection" open>
+      <summary><h2>Coupling arrangement <span class="hint">(load a studied arrangement into the lines above)</span></h2></summary>
+      <div class="row"><label>arrangement</label><select id="arrSel"></select><button id="arrApply">load</button></div>
+      <div id="arrMeta" class="row small"></div>
+      <div class="row"><label>demand</label>
+        <input id="arrSurge" type="number" step="50" value="0" style="width:72px" title="surge, N">
+        <input id="arrSway" type="number" step="50" value="0" style="width:72px" title="sway, N">
+        <input id="arrYaw" type="number" step="100" value="0" style="width:80px" title="yaw, N·m">
+        <button id="arrSolve">solve</button>
+        <span class="small">surge N / sway N / yaw N·m, applied as a globally balanced wrench</span></div>
+      <table id="arrTable" class="edit"></table>
+      <div id="arrNote" class="row small"></div>
+    </details>
+
     <details class="sec" id="propSection" open>
       <summary><h2>Propulsion <span class="hint">(quasi-static: thrust = resistance at the steady speed)</span></h2></summary>
       <div class="row"><label>motor</label><button id="thr0" class="thr on">off</button><button id="thr20" class="thr">20 %</button><button id="thr50" class="thr">50 %</button><button id="thr100" class="thr">100 %</button><input id="thrCustom" type="number" step="5" min="0" max="100" value="0" style="width:60px"><span class="small">% of bollard thrust</span></div>
       <div class="row"><label>unit</label><select id="thrUnit"><option value="EXO_PODS">EXO rim-drive pods (2 × POD 5.0)</option><option value="BOAT_ENGINE">Hydronaute engine (Volvo)</option></select></div>
       <div id="propNote" class="row small">Off = identical to the moored case. The steady speed and the force split between the hulls come from assumed resistance coefficients (editable in the config); line loads are the physical content, the speed is indicative.</div>
+    </details>
+
+    <details class="sec" id="perfSection">
+      <summary><h2>Speed, wind &amp; energy <span class="hint">(thrust that falls with speed; windage from the real meshes)</span></h2></summary>
+      <div class="row"><label>thrust model</label><select id="perfModel">
+        <option value="momentum">actuator disk (physical)</option>
+        <option value="constant_power">constant power</option>
+        <option value="constant">constant (optimistic)</option></select>
+        <label>disk ⌀</label><input id="perfDisk" type="number" step="0.01" min="0.10" max="0.50" value="0.25" style="width:64px"><span class="small">m</span></div>
+      <div class="row"><label>wind</label><input id="perfWind" type="number" step="1" min="0" max="40" value="0" style="width:64px"><span class="small">kn from</span>
+        <input id="perfDir" type="number" step="15" min="0" max="180" value="0" style="width:64px"><span class="small">° (0 = ahead)</span></div>
+      <div class="row"><label>current</label><input id="perfCur" type="number" step="0.1" value="0" style="width:64px"><span class="small">m/s following</span>
+        <label>panel tilt</label><input id="perfTilt" type="number" step="5" min="0" max="45" value="0" style="width:64px"><span class="small">°</span></div>
+      <div class="row"><label>sunlight</label><input id="perfSun" type="number" step="10" min="0" max="100" value="100" style="width:64px"><span class="small">%</span>
+        <button id="perfRun">compute</button></div>
+      <div id="perfOut" class="row small"></div>
     </details>
 
     <details class="sec" open>

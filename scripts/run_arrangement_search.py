@@ -133,6 +133,14 @@ def sling(id_, x_boat, t0):
                  stiffness_N_per_m=K_SLING, pretension_N=t0)]
 
 
+def ANS_vee_legs_saddle(t0):
+    """Two fixed legs to a broad saddle on the stem. The saddle BEARS on the hull - it is not a fitting - so this
+    satisfies 'zero modification'. Section 12 measured 0.41 bar under a 120 x 400 mm saddle against 9.9 bar for a
+    bare rope. Section 15.3 showed the straight-line path is not riggable and the real legs must be led along the
+    ~160 mm side deck, which changes the half-angle; that penalty is NOT modelled here."""
+    return vee_legs(t0)
+
+
 def slings(t0, stations=(0.80, 2.50)):
     return [e for i, x in enumerate(stations) for e in sling(f"SLING_{i+1}", x, t0)]
 
@@ -206,6 +214,13 @@ C("T_sling_crossed", "Sandwich slings + 2 crossed stern ropes + bumpers + wheels
 C("U_sling_midship_primary", "Sandwich slings snug + 2 midship springs carrying the preload",
   lambda t, g: slings(g) + pair("SPRING", FWD_POST, MID_CLEAT, t0=t) + rear() + wheels(), 4,
   primary=("SPRING",))
+
+C("V_spec_zero_fittings", "Zero boat fittings: 2 under-hull slings + 2 fixed bow legs on a stem saddle + bumpers "
+                          "+ wheels. Everything bears on the hull; nothing attaches to it.",
+  lambda t, g: ANS_vee_legs_saddle(t) + slings(g) + rear() + wheels(), 3,
+  primary=("LEG",))
+C("W_spec_sling_only", "Zero boat fittings, no bow rope: slings + bumpers + wheels only",
+  lambda t, g: slings(t) + rear() + wheels(), 2, primary=("SLING",))
 
 if ONLY:
     CANDS = {k: v for k, v in CANDS.items() if k in ONLY}
