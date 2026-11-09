@@ -790,25 +790,14 @@ walks the starboard one down, all nine static cases:
 | 70% | 420 N | **fails** — a bumper opened at `rev100` |
 | 60% | 360 N | **fails** — a bumper opened at `rev100` |
 
-**The limit is 80 %.** Below it, reverse thrust lifts the boat off a bumper and contact is lost — the asymmetric
-pair lets the boat skew far enough that one bumper unloads.
+**CORRECTED 9 Nov (see §21.3).** This table was produced with a bumper gate of 1 N where the gauntlet's own gate
+is 50 N — below that a rear bumper is open and rattling, not loaded. On the correct gate the tolerance is **95 %**,
+not 80 %, and no rove of any quality delivers that ratio.
 
-Against what the hardware actually delivers:
-
-| rove | far leg | verdict |
-|---|---|---|
-| ball bearing, 4 turns | 88.5% | **inside** the 80 % limit |
-| ball bearing, 8 turns | 78.4% | **outside** it |
-| plain bush, 4 turns | 65.6% | **outside** it |
-| plain bush, 8 turns | 43.0% | **outside** it |
-
-So the scheme works, but only on ball-bearing blocks with a short path — and an eight-turn rove at 78,4 % is
-*outside* the limit, by a margin too small to design on.
-
-**The fix is free: measure at the dead end, not at the tail.** Haul until the FAR leg reads 600 N. Every other leg
-is then above 600 N rather than below, the gradient costs nothing but a little extra tension on the near legs
-(~765 N at the tail for an eight-turn ball-bearing rove), and that is still a seventh of the 9,5 kN MBL. The
-dynamometer moves to the far end; nothing else changes.
+But the ratio was the wrong thing to measure. The sweep pinned the STRONG leg at 600 N and let the weak one fall
+below it, which starves the bumpers — the failures are all "a bumper opened at `rev100`". **The binding constraint
+is the absolute floor on the weakest leg, not the ratio between them**, and §21.3 shows the scheme holds at every
+rove quality once the floor is respected.
 
 ### 20.3 The shock absorber on the crossed stern ropes: I was wrong
 
@@ -897,3 +886,75 @@ nothing: the conclusion does not depend on which absorber, because the whole spa
 load path - one line, one path - which is the only topology §20.4 says a series spring helps. That is what a
 mooring spring is designed for. Inside the coupling, between parallel redundant elements, it is the wrong part in
 the wrong place, and this is not a sizing problem that a different model number fixes.
+
+## 21. Addendum (9 Nov): can it be ONE line? Yes — and here is the bill
+
+The operator's objection to §20 is that one line is easier to handle, and it is. §19 and §20 both answered "the
+single rope cannot hold `diff_opp`", which is true and is also answering a question nobody asked. **`diff_opp` is a
+load case we chose.** It assumes the pods are driven in full opposition — one full ahead, one full astern. If they
+are not, the yaw demand falls and a simpler rig may be enough. That turns a rigging limit into a control limit,
+which is a trade worth putting numbers on rather than refusing.
+
+`yoke` was generalised to N legs for this (`legs_m`), so one rope through blocks at every turn can now be modelled
+directly. `Y_full_rove` is arrangement I's four ropes on a single tension — the rig as drawn, with no clutches.
+
+### 21.1 The differential-thrust ceiling
+
+The largest opposed-pod thrust each rig holds with every pure-surge case also passing. f = 1,0 is `diff_opp`
+(2 396 N·m); f = 0 is both pods commanded together.
+
+| preload | **I** — four jammed legs | **X** — springs equalised | **Y** — everything one line |
+|---|---|---|---|
+| 600 N | **100%** | 20% | 0% |
+| 1000 N | **100%** | 40% | 0% |
+| 1500 N | **100%** | 60% | 0% |
+| 2000 N | **100%** | 90% | 80% |
+
+**Y holds nothing differential below 2 000 N**, and needs **2 500 N** to hold the full case (peak 1 684 N). So one
+line is possible, at **4,2× the preload and 2,2× the peak** of arrangement I — plus the thing no preload buys back:
+
+**One rope is one failure.** Arrangement I is 0/4 fatal single losses. A single rove is 1/1 by construction, and
+§18.2 already records that the crossed ropes lie on the deck edge — chafe, leadable, but chafe. One chafe-through
+takes the entire coupling, under way, rather than one leg of four.
+
+2 500 N also changes the tensioning answer: a 4:1 tackle needs 625 N at the hauling part, past what a person
+sustains. One line therefore brings back the ratchet strap or winch that §20.4 had removed.
+
+### 21.2 So the clutches are the cheapest thing in the system
+
+Both rigs are **one continuous rope, one pull**. The only difference is whether four clutches close afterwards —
+perhaps thirty seconds. That thirty seconds buys a 4,2× reduction in preload, a 2,2× reduction in peak load, full
+single-failure redundancy, hand tensioning without a strap, and no differential-thrust discipline to remember.
+
+The one-line rig is not refused. It is **priced**: if the clutches are genuinely unacceptable, rig `Y_full_rove`
+at 2 500 N, protect the deck-edge leads against chafe as a safety-critical item rather than a nicety, and accept
+that the coupling has no redundancy.
+
+### 21.3 Correction: the preload spread, and what actually binds
+
+§20.2's 80 % tolerance was computed with a bumper gate of 1 N against the gauntlet's 50 N. Re-run correctly the
+ratio tolerance is 95 %, which no rove delivers — but the ratio was the wrong quantity. Holding the WEAK leg at
+600 N and letting the strong one rise by the rove loss:
+
+| rove | eta^n | weak leg | strong leg | outcome |
+|---|---|---|---|---|
+| ball bearing, 4 turns | 88,5 % | 600 N | 678 N | holds, peak 800 N |
+| ball bearing, 6 turns | 83,3 % | 600 N | 720 N | holds, peak 822 N |
+| ball bearing, 8 turns | 78,4 % | 600 N | 766 N | holds, peak 845 N |
+| plain bush, 4 turns | 65,6 % | 600 N | 914 N | holds, peak 922 N |
+| plain bush, 8 turns | 43,0 % | 600 N | 1 394 N | holds, peak 1 169 N |
+
+against tail measurement, where the weak leg falls below 600 N:
+
+| ball bearing, 4 turns | 88,5 % | 531 N | 600 N | **fails** at `rev100`, bumper 41 N |
+| ball bearing, 8 turns | 78,4 % | 470 N | 600 N | **fails** at `rev100`, bumper 0 N |
+
+**The binding constraint is the floor, not the ratio.** Every leg at or above 600 N and the arrangement holds at
+any rove quality, cheap blocks included; one leg below it and a bumper opens under reverse thrust. The dead-end
+measurement rule of §20.2 survives, for a better reason than the one given for it, and it is now insensitive to
+hardware quality rather than dependent on ball-bearing blocks.
+
+### 21.4 What stands
+
+Arrangement I at 600 N, rove as one rope, **measured at the dead end**, then jammed. One pull, four clutches.
+`Y_full_rove` is registered and kept as the priced alternative, not deleted.

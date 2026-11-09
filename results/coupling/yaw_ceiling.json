@@ -1,0 +1,125 @@
+{
+ "yaw_full_Nm": 2395.5,
+ "bollard_N": 1216.0,
+ "y_pod_m": 1.97,
+ "surge_cases": [
+  "moored",
+  "fwd100",
+  "rev50",
+  "rev70",
+  "rev100",
+  "estop"
+ ],
+ "fractions": [
+  0.0,
+  0.1,
+  0.2,
+  0.3,
+  0.4,
+  0.5,
+  0.6,
+  0.7,
+  0.8,
+  0.9,
+  1.0
+ ],
+ "rows": [
+  {
+   "rig": "I_fwd_midship_crossed",
+   "preload_N": 600.0,
+   "surge_cases_ok": true,
+   "surge_failed": null,
+   "max_diff_fraction": 1.0,
+   "peak_T_N": 760.5
+  },
+  {
+   "rig": "I_fwd_midship_crossed",
+   "preload_N": 1000.0,
+   "surge_cases_ok": true,
+   "surge_failed": null,
+   "max_diff_fraction": 1.0,
+   "peak_T_N": 1088.2
+  },
+  {
+   "rig": "I_fwd_midship_crossed",
+   "preload_N": 1500.0,
+   "surge_cases_ok": true,
+   "surge_failed": null,
+   "max_diff_fraction": 1.0,
+   "peak_T_N": 1498.1
+  },
+  {
+   "rig": "I_fwd_midship_crossed",
+   "preload_N": 2000.0,
+   "surge_cases_ok": true,
+   "surge_failed": null,
+   "max_diff_fraction": 1.0,
+   "peak_T_N": 1908.5
+  },
+  {
+   "rig": "X_yoke_midship_crossed",
+   "preload_N": 600.0,
+   "surge_cases_ok": true,
+   "surge_failed": null,
+   "max_diff_fraction": 0.2,
+   "peak_T_N": 414.0
+  },
+  {
+   "rig": "X_yoke_midship_crossed",
+   "preload_N": 1000.0,
+   "surge_cases_ok": true,
+   "surge_failed": null,
+   "max_diff_fraction": 0.4,
+   "peak_T_N": 696.9
+  },
+  {
+   "rig": "X_yoke_midship_crossed",
+   "preload_N": 1500.0,
+   "surge_cases_ok": true,
+   "surge_failed": null,
+   "max_diff_fraction": 0.6,
+   "peak_T_N": 1051.0
+  },
+  {
+   "rig": "X_yoke_midship_crossed",
+   "preload_N": 2000.0,
+   "surge_cases_ok": true,
+   "surge_failed": null,
+   "max_diff_fraction": 0.9,
+   "peak_T_N": 1407.5
+  },
+  {
+   "rig": "Y_full_rove",
+   "preload_N": 600.0,
+   "surge_cases_ok": true,
+   "surge_failed": null,
+   "max_diff_fraction": 0.0,
+   "peak_T_N": 368.3
+  },
+  {
+   "rig": "Y_full_rove",
+   "preload_N": 1000.0,
+   "surge_cases_ok": true,
+   "surge_failed": null,
+   "max_diff_fraction": 0.0,
+   "peak_T_N": 615.0
+  },
+  {
+   "rig": "Y_full_rove",
+   "preload_N": 1500.0,
+   "surge_cases_ok": true,
+   "surge_failed": null,
+   "max_diff_fraction": 0.0,
+   "peak_T_N": 924.7
+  },
+  {
+   "rig": "Y_full_rove",
+   "preload_N": 2000.0,
+   "surge_cases_ok": true,
+   "surge_failed": null,
+   "max_diff_fraction": 0.8,
+   "peak_T_N": 1218.3
+  }
+ ],
+ "note": "The differential fraction f drives one pod to +f and the other to -f of bollard thrust. f = 1,0 is the diff_opp design case. Statics only; the wave cases are separate."
+}

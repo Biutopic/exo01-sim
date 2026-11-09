@@ -274,21 +274,31 @@ def _line_forces(hb, lines_cfg, pose_e, pose_b, L0, k, active=None):
             #   leg A: exo_point_m   -> boat_point_m
             #   leg B: exo_point_b_m -> boat_point_b_m   (falls back to exo_point_m when only one EXO point is given)
             # Rope between the turning points runs along the frame; its length is fixed, so it folds into L0.
-            b2 = to_world(pose_b, ln["boat_point_b_m"])
-            a2 = to_world(pose_e, ln["exo_point_b_m"]) if ln.get("exo_point_b_m") is not None else a
-            d1, d2 = b - a, b2 - a2
-            L1, L2 = float(np.linalg.norm(d1)), float(np.linalg.norm(d2))
-            u1 = d1 / L1 if L1 > 1e-12 else np.zeros(3)
-            u2 = d2 / L2 if L2 > 1e-12 else np.zeros(3)
-            L = L1 + L2
+            # N legs on one tension. `legs_m` = [[exo_point, boat_point], ...] for the general rove; the two-leg
+            # form (boat_point_b_m / exo_point_b_m) is kept because arrangements and tests are written against it.
+            if ln.get("legs_m"):
+                pts = [(to_world(pose_e, lg[0]), to_world(pose_b, lg[1])) for lg in ln["legs_m"]]
+            else:
+                pts = [(a, b),
+                       (to_world(pose_e, ln["exo_point_b_m"]) if ln.get("exo_point_b_m") is not None else a,
+                        to_world(pose_b, ln["boat_point_b_m"]))]
+            lens, units = [], []
+            for a_i, b_i in pts:
+                d = b_i - a_i
+                Li = float(np.linalg.norm(d))
+                lens.append(Li)
+                units.append(d / Li if Li > 1e-12 else np.zeros(3))
+            L = float(sum(lens))
+            u = np.sum(units, axis=0)
             ext = kk * (L - l0)
             T = ext if (active is None and ext > 0.0) or (active is not None and active[i]) else 0.0
-            out.append(dict(id=ln["id"], a=a, a2=a2, b=b, b2=b2, L=L, u=u1 + u2, T=T, slack=(T == 0.0), L0=l0, k=kk,
-                            extension_N=ext, sign=s, kind="yoke",
-                            legs=[(a, T * u1), (a2, T * u2)], legs_b=[(b, -T * u1), (b2, -T * u2)],
-                            leg_len_m=(L1, L2),
-                            half_angle_deg=float(np.degrees(np.arccos(np.clip(np.linalg.norm(u1 + u2) / 2.0, -1, 1)))),
-                            winch_reaction_N=float(T * np.linalg.norm(u1 + u2))))
+            out.append(dict(id=ln["id"], a=pts[0][0], a2=pts[1][0], b=pts[0][1], b2=pts[1][1],
+                            L=L, u=u, T=T, slack=(T == 0.0), L0=l0, k=kk,
+                            extension_N=ext, sign=s, kind="yoke", n_legs=len(pts),
+                            legs=[(p_[0], T * ui) for p_, ui in zip(pts, units)],
+                            legs_b=[(p_[1], -T * ui) for p_, ui in zip(pts, units)],
+                            leg_len_m=tuple(lens),
+                            winch_reaction_N=float(T * np.linalg.norm(u))))
             continue
         if s < 0 and ln.get("_u0") is not None:
             # fender: signed penetration along its nominal axis, so that a transom pushed past the contact point keeps
@@ -346,6 +356,9 @@ def coupled_equilibrium(cfg, exo_asm, M_e, G_e, boat_asm, M_b, G_b, rho, g, warm
         if kind_ == "bridle":
             return float(d1 + np.linalg.norm(b_ - to_world(pose_e0, l["exo_point_b_m"])))
         if kind_ == "yoke":
+            if l.get("legs_m"):
+                return float(sum(np.linalg.norm(to_world(pose_b0, lg[1]) - to_world(pose_e0, lg[0]))
+                                 for lg in l["legs_m"]))
             a2_ = (to_world(pose_e0, l["exo_point_b_m"]) if l.get("exo_point_b_m") is not None
                    else to_world(pose_e0, l["exo_point_m"]))
             return float(d1 + np.linalg.norm(to_world(pose_b0, l["boat_point_b_m"]) - a2_))

@@ -100,6 +100,23 @@ def yoke(id_, exo, boat, k=None, t0=0.0):
                  stiffness_N_per_m=k, pretension_N=t0)]
 
 
+def rove(id_, pairs, k=None, t0=0.0):
+    """ONE rope through blocks at every turn, making N legs that all share a single tension. The general form of
+    `yoke`. `pairs` is [(exo_point, boat_point), ...]. Rank 1 on the boat's three in-plane DOF whatever the
+    routing, so it sets the magnitude of a fixed force pattern and cannot redistribute between legs."""
+    k = K_ROPE["mid"] if k is None else k
+    pairs = [(list(e), list(b)) for e, b in pairs]
+    return [dict(id=id_, kind="yoke",
+                 exo_point_m=pairs[0][0], boat_point_m=pairs[0][1],
+                 exo_point_b_m=pairs[1][0], boat_point_b_m=pairs[1][1],
+                 legs_m=[[e, b] for e, b in pairs],
+                 stiffness_N_per_m=k, pretension_N=t0)]
+
+
+def _mirror(p, sgn):
+    return [p[0], sgn * p[1], p[2]]
+
+
 def vee_pulley(t0, k=None):
     """One continuous rope from both EXO anchors over a pulley at the stem: the pulley equalises the tension."""
     k = K_ROPE["mid"] if k is None else k
@@ -194,6 +211,16 @@ ARRANGEMENTS = {
              "a 0,3 m beam wave. A symmetric equalised pair has provably ZERO yaw capacity, and the binding case "
              "diff_opp is pure yaw: the springs' job is to be unequal. Also needs a powered winch, which arrangement "
              "I does not. Section 19 has the mechanism."),
+    "Y_full_rove": _A(
+        lambda t, g: (rove("ROVE", [(_mirror(FWD_POST, +1), _mirror(MID_CLEAT, +1)),
+                                    (_mirror(FWD_POST, -1), _mirror(MID_CLEAT, -1)),
+                                    (_mirror(MID_POST, +1), _mirror(STERN_CLEAT, -1)),
+                                    (_mirror(MID_POST, -1), _mirror(STERN_CLEAT, +1))], t0=t)
+                      + bumpers() + wheels()),
+        "ONE continuous rope through blocks: all four of arrangement I's legs on a single tension (section 21)",
+        preload=600.0, ops=1, primary=("ROVE",), fittings="midship and stern cleats",
+        note="The simplest rig to handle - one pull couples everything - and rank 1 on three DOF, so it cannot "
+             "redistribute load between legs. Measured in section 21."),
     "U_sling_midship": _A(
         lambda t, g: (slings(g) + pair("SPRING", FWD_POST, MID_CLEAT, t0=t) + bumpers() + wheels()),
         "Under-hull slings (snug) + 2 midship springs carrying the preload",

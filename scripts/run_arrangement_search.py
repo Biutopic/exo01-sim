@@ -241,6 +241,9 @@ for _ks in (27000.0, 13500.0, 5000.0, 2000.0, 800.0):
                             + crossed("CROSS", MID_POST, STERN_CLEAT, t0=g, k=_k) + rear() + wheels()),
       4, primary=("SPRING",))
 
+C("Y_full_rove", "ONE continuous rope through blocks: all four of arrangement I's legs on a single tension",
+  lambda t, g: AR.build("Y_full_rove", preload_N=t, snug_N=g), 1, primary=("ROVE",))
+
 if ONLY:
     CANDS = {k: v for k, v in CANDS.items() if k in ONLY}
 

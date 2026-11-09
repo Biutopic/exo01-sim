@@ -138,3 +138,26 @@ def test_the_combo_geometry_carries_both_boat_points_for_drawing():
     (g,) = [e for e in AR.element_geometry("X_yoke_midship_crossed") if e["id"] == "YOKE"]
     assert g.get("a2") is not None and g.get("b2") is not None
     assert g["a"][1] == pytest.approx(-g["a2"][1]) and g["b"][1] == pytest.approx(-g["b2"][1])
+
+
+def test_an_n_leg_rove_shares_one_tension_across_every_leg():
+    """The general rove: four legs, one rope, one tension. Path length is the sum of all four."""
+    pe, pb = _poses()
+    els = [e for e in AR.build("Y_full_rove") if e["id"] == "ROVE"]
+    (r,), _ = _run(els, pe, pb)
+    assert r["n_legs"] == 4
+    assert r["L"] == pytest.approx(sum(r["leg_len_m"]), rel=1e-12)
+    tens = [float(np.linalg.norm(f)) for _, f in r["legs_b"]]
+    assert max(tens) == pytest.approx(min(tens), rel=1e-12), "a rove that does not equalise is not a rove"
+    assert np.allclose(sum((f for _, f in r["legs"]), np.zeros(3)),
+                       r["T"] * np.asarray(r["u"], float), atol=1e-9)
+    assert np.allclose(sum((f for _, f in r["legs_b"]), np.zeros(3)),
+                       -r["T"] * np.asarray(r["u"], float), atol=1e-9)
+
+
+def test_the_full_rove_reuses_arrangement_I_s_geometry_exactly():
+    rove = [e for e in AR.build("Y_full_rove") if e["id"] == "ROVE"][0]
+    legs = {(tuple(a), tuple(b)) for a, b in rove["legs_m"]}
+    want = {(tuple(e["exo_point_m"]), tuple(e["boat_point_m"]))
+            for e in AR.build("I_fwd_midship_crossed") if e.get("kind", "line") == "line"}
+    assert legs == want, "the rove must be arrangement I's four ropes, not a different geometry"

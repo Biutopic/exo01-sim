@@ -30,6 +30,9 @@ NS = {"__file__": str(ROOT / "scripts" / "run_final_coupling.py"), "__name__": "
 exec(compile(head, "head", "exec"), NS)
 solve, CASES = NS["solve"], NS["CASES"]
 OUT = ROOT / "results" / "coupling"
+# the gauntlet's own gate (scripts/run_arrangement_search.py): below this a rear bumper is
+# open and rattling, not loaded. Must match, or these scripts grade on a laxer curve.
+BUMP_MIN_N = 50.0
 
 T_HIGH = 600.0
 # sheave efficiency eta over n turns: the far leg sits at eta**n of the near one
@@ -53,7 +56,7 @@ def check(t_port, t_stbd):
         r = solve(build(t_port, t_stbd), surge_N=c["surge"], yaw_Nm=c["yaw"])
         if not (r["converged"] and r["physical"]) or r["unrestrained"]:
             return dict(ok=False, failed_case=c["id"], reason="no restrained equilibrium")
-        if r.get("bumper_min_N") is not None and r["bumper_min_N"] <= 1.0:
+        if r.get("bumper_min_N") is not None and r["bumper_min_N"] < BUMP_MIN_N:
             return dict(ok=False, failed_case=c["id"], reason="a bumper opened")
         T = max((v["T_N"] for v in r["elements"].values()
                  if v["kind"] in ("line", "bridle", "yoke")), default=0.0)

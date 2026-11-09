@@ -34,28 +34,25 @@
    "ratio": 0.9,
    "port_N": 600.0,
    "stbd_N": 540.0,
-   "ok": true,
-   "peak_T_N": 742.1,
-   "peak_case": "diff_opp",
-   "bumper_min_N": 47.6
+   "ok": false,
+   "failed_case": "rev100",
+   "reason": "a bumper opened"
   },
   {
    "ratio": 0.85,
    "port_N": 600.0,
    "stbd_N": 510.0,
-   "ok": true,
-   "peak_T_N": 732.9,
-   "peak_case": "diff_opp",
-   "bumper_min_N": 25.7
+   "ok": false,
+   "failed_case": "rev100",
+   "reason": "a bumper opened"
   },
   {
    "ratio": 0.8,
    "port_N": 600.0,
    "stbd_N": 480.0,
-   "ok": true,
-   "peak_T_N": 723.7,
-   "peak_case": "diff_opp",
-   "bumper_min_N": 3.7
+   "ok": false,
+   "failed_case": "rev100",
+   "reason": "a bumper opened"
   },
   {
    "ratio": 0.75,
@@ -78,7 +75,7 @@
    "port_N": 600.0,
    "stbd_N": 360.0,
    "ok": false,
-   "failed_case": "rev100",
+   "failed_case": "rev70",
    "reason": "a bumper opened"
   },
   {
@@ -86,7 +83,7 @@
    "port_N": 600.0,
    "stbd_N": 300.0,
    "ok": false,
-   "failed_case": "rev70",
+   "failed_case": "rev50",
    "reason": "a bumper opened"
   },
   {
@@ -94,7 +91,7 @@
    "port_N": 600.0,
    "stbd_N": 240.0,
    "ok": false,
-   "failed_case": "rev70",
+   "failed_case": "rev50",
    "reason": "a bumper opened"
   },
   {
@@ -106,7 +103,7 @@
    "reason": "a bumper opened"
   }
  ],
- "tolerated_down_to": 0.8,
+ "tolerated_down_to": 0.95,
  "hardware": [
   {
    "hardware": "ball bearing, 4 turns",
