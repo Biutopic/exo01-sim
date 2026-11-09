@@ -848,3 +848,38 @@ the configuration §19 ruled out for having no yaw capacity.
 Arrangement I, unchanged, at 600 N on the springs and snug on the crossed ropes. What §20 adds is **how to tension
 it**: rove it as one rope through ball-bearing blocks, haul one tail, read the dynamometer **at the dead end**,
 then jam each leg. Four tensioning actions become one pull and four clutch closures, with the mechanics untouched.
+
+### 20.6 The hardware check: a stainless mooring spring lands in the worst band
+
+The absorber in §19 and §20.3 was a stiffness, not a part. Checked against the part actually proposed - a polished
+stainless mooring spring of the common type (cnautiquefrance REM0013, 340 x 75 mm, 29,95 EUR):
+
+| | 340 x 75 mm | 390 x 90 mm |
+|---|---|---|
+| maximum compression load | **200 kg = 1 962 N** | not published |
+| rated boat length | 9 m | 13 m |
+| rated hull weight | **3 500 kg** | 10 000 kg |
+| published spring rate | **none** | none |
+
+The pair is 2 956 kg (boat 2 100 + EXO 856), so the 340 x 75 is the nominal size and the 390 x 90 the safe one.
+
+**No vendor publishes a spring rate**, so it has to be inferred: 1 962 N over a usable travel of 100-200 mm for a
+340 mm spring gives **k ~ 10 000-20 000 N/m**. INFERRED, not measured - hanging a known load and reading the
+deflection would settle it in five minutes, and should be done before anyone buys one.
+
+That band is the problem. The rope is 13 500 N/m, so this spring is **comparable to or stiffer than the rope it is
+meant to soften** - and 13 500 N/m is the single worst row of the §20.3 sweep: wave peak 1 076 N against the
+baseline's 621 N, and the only stiffness at which the beam wave opens both bumpers and contact is lost outright.
+
+Two further points the datasheet settles:
+
+1. **The 1 962 N ceiling independently kills arrangement X.** That arrangement needs 2 120 N of preload (§19.1).
+   The spring bottoms out before the coupling reaches working tension.
+2. **It bottoms out, and §19.3's model did not.** The sweep treated the absorber as linear with unlimited stroke,
+   which flatters it; a real coil goes solid and is then rigid steel. So the real part performs no better than the
+   modelled one and probably worse.
+
+**Where this part does belong: the dock lines from the pair to the quay.** There it is in series with the whole
+load path - one line, one path - which is the only topology §20.4 says a series spring helps. That is what a
+mooring spring is designed for. Inside the coupling, between parallel redundant elements, it is the wrong part in
+the wrong place, and this is not a sizing problem that a different model number fixes.
